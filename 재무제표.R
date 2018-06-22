@@ -3,11 +3,13 @@ library(plotly)
 
 
 #################get KRX stock table and create data frame ##################
-url ="http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13"
-txt <- read_html(url)
-st_table <- html_nodes(txt, xpath = "/html/body/table")
-stock_table <- html_table(st_table)[[1]]
-stock_table[[2]] <- sprintf("%06d",stock_table[[2]]) 
+st_table ="http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13" %>%
+  read_html() %>%
+  html_nodes(xpath = '/html/body/table') %>%
+  html_table %>%
+  .[[1]]
+
+stock_table[[2]] <- sprintf("%06d",st_table[[2]]) 
 #############################################################################
 
 
