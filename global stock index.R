@@ -1,11 +1,13 @@
 library(quantmod)
 library(rvest)
 
-global_url = 'https://in.finance.yahoo.com/world-indices/'
-global_txt <- read_html(global_url)
-global_table <- html_nodes(global_txt,xpath='//*[@id="yfin-list"]/div[2]/div/div/table')
-global_table = html_table(global_table)[[1]]
-global_table = global_table[,-c(7:9)]
+global_table = 'https://in.finance.yahoo.com/world-indices/' %>%
+  read_html() %>%
+  html_nodes(xpath='//*[@id="yfin-list"]/div[2]/div/div/table') %>%
+  html_table() %>%
+  .[[1]] %>%
+  .[,-c(7:9)]
+
 global_table["Country"] <- NA
 global_table = global_table[,c(1:2,7,3:6)]
 global_table[3] <- c("India","India","United States","United States","Japan","Hongkong",
