@@ -38,7 +38,7 @@ fs <- function(z) {
   if(grepl(pattern = '데이터가 존재하지 않습니다. 기업명을 다시 확인 해 주세요',x=BS_table)){
     print('잘못된 데이터입니다.csv파일로 저장되지 않습니다.기업명을 다시 확인 해 주세요')
   } else {
-    write.csv(BS_table,paste0("경로를 지정하세요",paste0(com,".csv")))
+    write.csv(BS_table,paste0("경로를 지정하세요",paste0(com,".csv"))) #경로지정시 'computer/document/' 이런식으로 지정,경로 끝에 /반드시 첨부
     print('해당경로에 csv파일로 저장되었습니다')
     View(x=BS_table,title = paste0("B/S:",com)) #단위 : 억원
     date = gsub('\t|\r|\n','',x=colnames(BS_table)) 
