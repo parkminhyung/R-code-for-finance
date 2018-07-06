@@ -42,22 +42,21 @@ fs <- function(z) {
     print('해당경로에 csv파일로 저장되었습니다')
     View(x=BS_table,title = paste0("B/S:",com)) #단위 : 억원
     date = gsub('\t|\r|\n','',x=colnames(BS_table)) 
-     p1 = plot_ly(data = data.frame(gsub('\t|\r|','',x=BS_table[1,])),
-               x= ~date ,
-               y = as.numeric(gsub(',','',BS_table[1,])),
-               type = 'bar',mode='lines',name = '매출액') 
-    layout(title = paste(com,"재무상태 (단위:억원)"),yaxis = list(categoryorder = "category ascending"))
+    p1 = plot_ly(data = data.frame(gsub('\t|\r|','',x=BS_table[1,])),
+                 x= ~date ,
+                 y = as.numeric(gsub(',','',BS_table[1,])),
+                 type = 'bar',name = '매출액') 
     
-  p2 = plot_ly(data = data.frame(gsub('\t|\r','',x=BS_table[2,])),
-               x= ~date, 
-               y = as.numeric(gsub(',','',BS_table[2,])),
-               type = 'bar',mode='lines',name = '영업이익') 
-  
-  p3 = plot_ly(data = data.frame(gsub('\t|\r','',x=BS_table[6,])),
-               x= ~date, 
-               y = as.numeric(gsub(',','',BS_table[6,])),
-               type = 'bar',mode='lines',name = '당기순이익') 
-  
+    p2 = plot_ly(data = data.frame(gsub('\t|\r','',x=BS_table[2,])),
+                 x= ~date, 
+                 y = as.numeric(gsub(',','',BS_table[2,])),
+                 type = 'bar',name = '영업이익') 
+    
+    p3 = plot_ly(data = data.frame(gsub('\t|\r','',x=BS_table[6,])),
+                 x= ~date, 
+                 y = as.numeric(gsub(',','',BS_table[6,])),
+                 type = 'bar',name = '당기순이익') 
+    subplot(p1,p2,p3,nrows = 3, shareX = TRUE)
   }
 }
 
