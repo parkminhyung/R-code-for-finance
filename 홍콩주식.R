@@ -38,18 +38,6 @@ View(hk_table)
 hk_table = hk_table[,-c(1,4,14)]
 View(hk_table)
 
-colnames(hk_table) = c("코드",
-                       "회사명",
-                       "역사최고가(HKD)",
-                       "등락폭",
-                       "등락률",
-                       "시가",
-                       "고가",
-                       "저가",
-                       "종가",
-                       "거래량",
-                       "거래금액(HKD)")
-
 remDr$close()
 pjs$stop()
 
