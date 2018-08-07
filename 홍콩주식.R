@@ -14,20 +14,16 @@ hk_url = remDr$findElement(using = 'xpath', value = '//*[@id="main-table_next"]'
 hk_st = list()
 hk_table = list()
 for (i in 1:115) {
-    if(i < 116) {
-      hk_url$clickElement()
-      
-      hk_table = remDr$getPageSource()[[1]] %>%
-               read_html() %>%
-               html_nodes(xpath = '//*[@id="main-table"]') %>%
-               html_table(fill = TRUE) %>%
-               .[[1]]
-      
-      hk_st[[i]] = hk_table
-      
-    } else if(i==116) {
-      break()
-    }
+    hk_url$clickElement()
+    
+    hk_table = remDr$getPageSource()[[1]] %>%
+      read_html() %>%
+      html_nodes(xpath = '//*[@id="main-table"]') %>%
+      html_table(fill = TRUE) %>%
+      .[[1]]
+    
+    hk_st[[i]] = hk_table
+    
   cat(i/115*100,"% :crawling in progress","\n")
 }
 
@@ -37,4 +33,3 @@ View(hk_table)
 
 remDr$close()
 pjs$stop()
-
