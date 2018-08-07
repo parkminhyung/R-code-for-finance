@@ -23,8 +23,6 @@ for (i in 1:115) {
                html_table(fill = TRUE) %>%
                .[[1]]
       
-      Sys.sleep(3)
-      
       hk_st[[i]] = hk_table
       
     } else if(i==116) {
