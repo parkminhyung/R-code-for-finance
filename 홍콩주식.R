@@ -1,5 +1,6 @@
 library(rvest)
 library(RSelenium)
+library(progress)
 
 pjs = wdman::phantomjs(port = 1111L, version = "2.1.1") # need to install 'wdman' package
 remDr = remoteDriver(remoteServerAddr = 'localhost',
@@ -14,6 +15,9 @@ hk_url = remDr$findElement(using = 'xpath', value = '//*[@id="main-table_next"]'
 hk_st = list()
 hk_table = list()
 for (i in 1:115) {
+  
+    Sys.sleep(2)
+    
     hk_url$clickElement()
     
     hk_table = remDr$getPageSource()[[1]] %>%
@@ -24,7 +28,7 @@ for (i in 1:115) {
     
     hk_st[[i]] = hk_table
     
-  cat(i/115*100,"% :crawling in progress","\n")
+    cat(i/115*100,"% :crawling in progress","\n")
 }
 
 hk_table = do.call("rbind",hk_st) 
@@ -33,3 +37,6 @@ View(hk_table)
 
 remDr$close()
 pjs$stop()
+
+
+
