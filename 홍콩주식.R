@@ -14,6 +14,7 @@ hk_url = remDr$findElement(using = 'xpath', value = '//*[@id="main-table_next"]'
 
 hk_st = list()
 hk_table = list()
+pb = progress_bar$new(total = 115)
 for (i in 1:115) {
   
     Sys.sleep(2)
@@ -28,15 +29,13 @@ for (i in 1:115) {
     
     hk_st[[i]] = hk_table
     
-    cat(i/115*100,"% :crawling in progress","\n")
+    pb$tick()
 }
 
 hk_table = do.call("rbind",hk_st) 
 hk_table = hk_table[,-c(1,4,14)]
+hk_table[[1]] = sprintf("%05d",as.integer(hk_table[[1]]))
 View(hk_table)
 
 remDr$close()
 pjs$stop()
-
-
-
