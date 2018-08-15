@@ -32,8 +32,9 @@ for (i in 1:115) {
     pb$tick()
 }
 
-hk_table = do.call("rbind",hk_st) 
-hk_table = hk_table[,-c(1,4,14)]
+hk_table = do.call("rbind",hk_st) %>%
+  .[,-c(1,4,14)]
+
 hk_table[[1]] = sprintf("%05d",as.integer(hk_table[[1]]))
 View(hk_table)
 
