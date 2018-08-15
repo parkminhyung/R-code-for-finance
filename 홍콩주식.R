@@ -112,6 +112,7 @@ hk_fs = function(x) {
                type = 'bar', name = '주당손익')
   subplot(p1,p2,p3,nrows = 3,shareX = TRUE) %>%
     print()
+  colnames(hk_table2) = NA
   View(x=hk_table2,title = paste0("B/S:",x))
 }
 
