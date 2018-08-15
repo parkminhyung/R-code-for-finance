@@ -71,14 +71,14 @@ hk_fs = function(x) {
   
   hk_table2 = list()
   hk_table2 = rbind.fill(hk_df1,hk_df2,hk_df3) 
-  rownames(hk_table2) = c('===손익계산서:보고날짜',
+  rownames(hk_table2) = c('===손익계산서: 보고날짜',
                           '매출액',
                           '영업이익',
                           '세전영업이익',
                           '법인세비용',
                           '세후영업이익',
                           '주당손익',
-                          '===재무상태표:보고날짜',
+                          '===재무상태표: 보고날짜',
                           '매출채권',
                           '재고자산',
                           '유동자산',
@@ -88,7 +88,7 @@ hk_fs = function(x) {
                           '비유동부채',
                           '총부채',
                           '총자본',
-                          '===현금흐름표:보고날짜',
+                          '===현금흐름표: 보고날짜',
                           '기초현금흐름',
                           '경영활동현금흐름',
                           '투자활동으로인한현금흐름',
@@ -115,4 +115,3 @@ hk_fs = function(x) {
   colnames(hk_table2) = NA
   View(x=hk_table2,title = paste0("B/S:",x))
 }
-
