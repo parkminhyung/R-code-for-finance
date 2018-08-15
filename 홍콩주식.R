@@ -48,21 +48,21 @@ pjs$stop()
 ########################################################################
 
 hk_fs = function(x) {
-  hk_df1 = paste0('http://stock.finance.sina.com.cn/hkstock/finance/','01810','.html') %>%
+  hk_df1 = paste0('http://stock.finance.sina.com.cn/hkstock/finance/',x,'.html') %>%
     read_html(encoding = 'GBK') %>%
     html_nodes(xpath = '/html/body/div/div[9]/div/div[2]/div/table') %>%
     .[[1]] %>%
     html_table(fill=TRUE) %>%
     .[c(1,3,20,4:6,11),] 
   
-  hk_df2 = paste0('http://stock.finance.sina.com.cn/hkstock/finance/','01810','.html') %>%
+  hk_df2 = paste0('http://stock.finance.sina.com.cn/hkstock/finance/',x,'.html') %>%
     read_html(encoding = 'GBK') %>%
     html_nodes(xpath = '/html/body/div/div[7]/div/div[2]/div/table') %>%
     .[[1]] %>%
     html_table(fill=TRUE) %>%
     .[c(1,18,19,4,3,24,5,7,25,9),]
   
-  hk_df3 = paste0('http://stock.finance.sina.com.cn/hkstock/finance/','01810','.html') %>%
+  hk_df3 = paste0('http://stock.finance.sina.com.cn/hkstock/finance/',x,'.html') %>%
     read_html(encoding = 'GBK') %>%
     html_nodes(xpath = '/html/body/div/div[8]/div/div[2]/div/table') %>%
     .[[1]] %>%
@@ -114,3 +114,4 @@ hk_fs = function(x) {
     print()
   View(x=hk_table2,title = paste0("B/S:",x))
 }
+
