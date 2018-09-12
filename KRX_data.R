@@ -18,7 +18,7 @@ View(KRX_data)
 
 start_date = '2018-01-01'
 end_date = Sys.Date()
-
+stock_data = new.env()
 stock_data_kr = list()
 
 for (i in 1:nrow(KRX_data)) {
@@ -29,6 +29,7 @@ for (i in 1:nrow(KRX_data)) {
         src ="yahoo",
         from = start_date,
         to = end_date,
+        env = stock_data,
         auto.assign = TRUE),silent = FALSE)
   })
   cat(KRX_data[i,1],": download complete", "\n")
