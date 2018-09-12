@@ -19,10 +19,10 @@ View(KRX_data)
 start_date = '2018-01-01'
 end_date = Sys.Date()
 stock_data = new.env()
-stock_data_kr = list()
+
 
 for (i in 1:nrow(KRX_data)) {
-  stock_data_kr[i] = sapply(KRX_data[i,1], function(x){
+  sapply(KRX_data[i,1], function(x){
     try(
       getSymbols(
         x,
