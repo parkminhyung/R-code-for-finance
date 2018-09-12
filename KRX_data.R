@@ -18,8 +18,8 @@ KOSDAQ_data = KOSDAQ_data[,c(1,2,8,3:7)]
 KOSDAQ_data[1] = paste0(KOSDAQ_data[,1],'.KQ')
 
 KRX_DATA = rbind(KOSPI_data,KOSDAQ_data) 
-KRX_DATA = KRX_DATA[grep(pattern = '[0-9]',x=KRX_DATA[,1]),]
-KRX_DATA = KRX_DATA[-c(grep(pattern = '[가-힣]',x=KRX_DATA[,1])),]
+KRX_DATA = KRX_DATA[grep(pattern = '[0-9]',x=KRX_DATA[,1]),] %>%
+  .[-c(grep(pattern = '[가-힣]',x=.[,1])),]
 
 View(KRX_DATA)
 
