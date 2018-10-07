@@ -66,12 +66,6 @@ for (i in 1:nrow(stock_table)) {
           gsub(pattern = ',',replacement = '',x=.) %>%
           as.numeric()
         
-        NETIN =  NETIN = incomestatement[grep(pattern = '당기순이익',x=incomestatement[,1]),
-                                         grep(pattern = Date[j],x=colnames(incomestatement))] %>%
-          .[[1]] %>%
-          gsub(pattern = ',',replacement = '',x=.) %>%
-          as.numeric()
-        
         ASSET = balancesheet[grep(pattern = '자산',x=balancesheet[,1]),
                              grep(pattern = Date[j],x=colnames(incomestatement))] %>%
           .[[1]] %>%
