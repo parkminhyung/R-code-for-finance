@@ -18,9 +18,11 @@
 
 world_mkt_repo = function() {
   
-  DATE = c(Sys.Date()+1,Sys.Date())
+ DATE = c(Sys.Date()+1,Sys.Date())
   
-  if(weekdays(Sys.Date())=="Saturday") {
+  if(weekdays(Sys.Date())=="Friday") {
+    DATE[1] = Sys.Date()+3
+  } else if(weekdays(Sys.Date())=="Saturday"){
     DATE[1] = Sys.Date()+2
     DATE[2] = Sys.Date()-1
   } else if(weekdays(Sys.Date())=="Sunday"){
