@@ -27,8 +27,9 @@ world_mkt_repo = function() {
     DATE[1] = Sys.Date()+1
     DATE[2] = Sys.Date()-2
   }
-  month = c(paste0(format(DATE[1]-1,"%m"),'월',format(Sys.Date(),"%d"),'일'),paste0(format(Sys.Date()-1,"%m"),'월',format(DATE[2]-1,"%d"),'일'))
   
+  month = c(paste0(format(DATE[1]-1,"%m"),'월',format(DATE[1]-1,"%d"),'일'),paste0(format(DATE[2]-1,"%m"),'월',format(DATE[2]-1,"%d"),'일'))
+
   par(mfrow = c(3,3))
   
   table = 'https://finance.yahoo.com/world-indices'  %>%
