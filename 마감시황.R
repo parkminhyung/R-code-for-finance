@@ -209,7 +209,7 @@ world_mkt_repo = function() {
     html_nodes(xpath = '//*[@id="span_article_content"]/p') %>%
     as.character() %>%
     strsplit('<br><br>')  
-  if(!grepl('마감지수',CRUDEOIL[1])==TRUE){
+  if(!grepl('현지시간',CRUDEOIL[1])==TRUE){
     CRUDEOIL[1] = '마감시황을 아직 이용하실 수 없습니다'
     CRUDEOIL=CRUDEOIL[[1]]
   } else {
@@ -276,4 +276,3 @@ world_mkt_repo = function() {
   names(WOD_MKT) = c("US","CHINA","JAPAN","TAIWAN","KOSPI","KOSDAQ","CURRENCY","GOLD and SILVER","CRUDEOIL")
   WOD_MKT %>% print()
 }
-
