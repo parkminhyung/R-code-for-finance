@@ -172,6 +172,7 @@ world_mkt_repo = function() {
     strsplit('<br><br>')
   if(!grepl('마감시황',CHINA[1])==TRUE){
     CHINA[1] = '마감시황을 아직 이용하실 수 없습니다'
+    CHINA = CHINA[[1]]
   } else {
     CHINA = CHINA[[grep('마감지수',x=CHINA)]] %>%
       gsub(pattern = '<p>|</p>','',x=.)
@@ -182,8 +183,9 @@ world_mkt_repo = function() {
     html_nodes(xpath = '//*[@id="span_article_content"]/p') %>%
     as.character() %>%
     strsplit('<br><br>')  
-  if(!grepl('[가-힣]',JAPAN[1])==TRUE){
+  if(!grepl('마감지수',JAPAN[1])==TRUE){
     JAPAN[1] = '마감시황을 아직 이용하실 수 없습니다'
+    JAPAN = JAPAN[[1]]
   }  else {
     JAPAN = JAPAN[[grep('마감지수',x=JAPAN)]] %>%
       gsub(pattern = '<p>|</p>','',x=.)
@@ -194,8 +196,9 @@ world_mkt_repo = function() {
     html_nodes(xpath = '//*[@id="span_article_content"]/p') %>%
     as.character() %>%
     strsplit('<br><br>') 
-  if(!grepl('[가-힣]',TAIWAN[1])==TRUE){
+  if(!grepl('마감지수',TAIWAN[1])==TRUE){
     TAIWAN[1] = '마감시황을 아직 이용하실 수 없습니다'
+    TAIWAN = TAIWAN[[1]]
   } else {
     TAIWAN = TAIWAN[[grep('마감지수',x=TAIWAN)]] %>%
       gsub(pattern = '<p>|</p>','',x=.)
@@ -206,8 +209,9 @@ world_mkt_repo = function() {
     html_nodes(xpath = '//*[@id="span_article_content"]/p') %>%
     as.character() %>%
     strsplit('<br><br>')  
-  if(!grepl('[가-힣]',CRUDEOIL[1])==TRUE){
+  if(!grepl('마감지수',CRUDEOIL[1])==TRUE){
     CRUDEOIL[1] = '마감시황을 아직 이용하실 수 없습니다'
+    CRUDEOIL=CRUDEOIL[[1]]
   } else {
     CRUDEOIL = CRUDEOIL[[grep('마감',x=CRUDEOIL)]] %>%
       gsub(pattern = '<p>|</p>','',x=.)
@@ -220,6 +224,7 @@ world_mkt_repo = function() {
     strsplit('<br><br>') 
   if(!grepl('[가-힣]',KOSPI[1])==TRUE){
     KOSPI[1] = '마감시황을 아직 이용하실 수 없습니다'
+    KOSPI = KOSPI[[1]]
   } else {
     KOSPI = KOSPI[[1]]
     KOSPI[1] = gsub(pattern = '<p>','',x=KOSPI[1])
@@ -233,6 +238,7 @@ world_mkt_repo = function() {
     strsplit('<br><br>') 
   if(!grepl('[가-힣]',KOSDAQ[1])==TRUE){
     KOSDAQ[1] = '마감시황을 아직 이용하실 수 없습니다'
+    KOSDAQ = KOSDAQ[[1]]
   } else {
     KOSDAQ = KOSDAQ[[1]]
     KOSDAQ[1] = gsub(pattern = '<p>','',x=KOSDAQ[1])
@@ -246,6 +252,7 @@ world_mkt_repo = function() {
     strsplit('<br><br>') 
   if(!grepl('[가-힣]',CURRENCY[1])==TRUE){
     CURRENCY[1] = '마감시황을 아직 이용하실 수 없습니다'
+    CURRENCY = CURRENCY[[1]]
   } else {
     CURRENCY = CURRENCY[[grep('서울외환시장',x=CURRENCY)]] %>%
       gsub(pattern = '<p>|</p>','',x=.)
