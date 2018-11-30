@@ -167,6 +167,7 @@ world_mkt_repo = function() {
   }else {
     US = US[[grep(month[2],x=US)]] %>%
       gsub(pattern = '<p>|</p>|<br>','',x=.)
+    US = gsub('S&amp;P','S&P',x=US)
   }
   
   CHINA = paste0('http://www.paxnet.co.kr/stock/infoStock/marketView?type=F&market=CH&sendDate=',DATE[1]) %>%
