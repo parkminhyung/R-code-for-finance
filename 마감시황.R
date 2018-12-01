@@ -19,22 +19,17 @@
 world_mkt_repo = function() {
   
   DATE = c(Sys.Date()+1,Sys.Date())
-  
-  if(weekdays(Sys.Date())=="Friday") {
+  month = c(paste0(format(Sys.Date(),"%m"),'월',format(Sys.Date(),"%d"),'일'),paste0(format(Sys.Date()-1,"%m"),'월',format(Sys.Date()-1,"%d"),'일'))
+
+    if(weekdays(Sys.Date())=="Friday") {
     DATE[1] = Sys.Date()+3
   } else if(weekdays(Sys.Date())=="Saturday"){
     DATE[1] = Sys.Date()+2
     DATE[2] = Sys.Date()-1
+    month = c(paste0(format(Sys.Date()-1,"%m"),'월',format(Sys.Date()-1,"%d"),'일'),paste0(format(Sys.Date()-2,"%m"),'월',format(Sys.Date()-2,"%d"),'일'))
   } else if(weekdays(Sys.Date())=="Sunday"){
     DATE[1] = Sys.Date()+1
     DATE[2] = Sys.Date()-2
-  }
-  
-  month = c(paste0(format(Sys.Date(),"%m"),'월',format(Sys.Date(),"%d"),'일'),paste0(format(Sys.Date()-1,"%m"),'월',format(Sys.Date()-1,"%d"),'일'))
-  
-  if(weekdays(Sys.Date())=='Saturday'){
-    month = c(paste0(format(Sys.Date()-1,"%m"),'월',format(Sys.Date()-1,"%d"),'일'),paste0(format(Sys.Date()-2,"%m"),'월',format(Sys.Date()-2,"%d"),'일'))
-  }else if(weekdays(Sys.Date())=='Sunday'){
     month = c(paste0(format(Sys.Date()-2,"%m"),'월',format(Sys.Date()-2,"%d"),'일'),paste0(format(Sys.Date()-3,"%m"),'월',format(Sys.Date()-3,"%d"),'일'))
   }
   
