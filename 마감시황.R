@@ -18,7 +18,7 @@
 
 world_mkt_repo = function() {
   
- DATE = c(Sys.Date()+1,Sys.Date())
+  DATE = c(Sys.Date()+1,Sys.Date())
   
   if(weekdays(Sys.Date())=="Friday") {
     DATE[1] = Sys.Date()+3
@@ -31,7 +31,13 @@ world_mkt_repo = function() {
   }
   
   month = c(paste0(format(Sys.Date(),"%m"),'월',format(Sys.Date(),"%d"),'일'),paste0(format(Sys.Date()-1,"%m"),'월',format(Sys.Date()-1,"%d"),'일'))
-
+  
+  if(weekdays(Sys.Date())=='Saturday'){
+    month = c(paste0(format(Sys.Date()-1,"%m"),'월',format(Sys.Date()-1,"%d"),'일'),paste0(format(Sys.Date()-2,"%m"),'월',format(Sys.Date()-2,"%d"),'일'))
+  }else if(weekdays(Sys.Date())=='Sunday'){
+    month = c(paste0(format(Sys.Date()-2,"%m"),'월',format(Sys.Date()-2,"%d"),'일'),paste0(format(Sys.Date()-3,"%m"),'월',format(Sys.Date()-3,"%d"),'일'))
+  }
+  
   par(mfrow = c(3,3))
   
   table = 'https://finance.yahoo.com/world-indices'  %>%
@@ -281,4 +287,3 @@ world_mkt_repo = function() {
   names(WOD_MKT) = c("US","CHINA","JAPAN","TAIWAN","KOSPI","KOSDAQ","CURRENCY","GOLD and SILVER","CRUDEOIL")
   WOD_MKT %>% print()
 }
-
