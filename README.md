@@ -1,7 +1,7 @@
 # R-code-for-finance
 R code for finance <br>
 
-20181202<br>
+# 20181201 update
 1.마감시황 업데이트 되었습니다<br>
 - 주말에 금요일 시황이 뜨도록 수정하였습니다.<br>
 - 미국 및 WTI의 금요일 시황은 월요일에 업데이트 됩니다.<br>
