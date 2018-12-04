@@ -19,7 +19,7 @@
 world_mkt_repo = function() {
   
   DATE = c(Sys.Date()+1,Sys.Date())
-  month = c(paste0(format(Sys.Date(),"%m"),'월',format(Sys.Date(),"%d"),'일'),paste0(format(Sys.Date()-1,"%m"),'월',format(Sys.Date()-1,"%d"),'일'))
+  month = c(paste0(format(Sys.Date(),"%m"),'월',format(Sys.Date(),"%d") %>% as.numeric(),'일'),paste0(format(Sys.Date()-1,"%m"),'월',format(Sys.Date()-1,"%d") %>% as.numeric(),'일'))
 
   if(weekdays(Sys.Date())=="Friday") {
     DATE[1] = Sys.Date()+3
