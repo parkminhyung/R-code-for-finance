@@ -35,7 +35,7 @@ View(stock_table)
 ############################################################################
 pb = progress_bar$new(total = nrow(stock_table))
 Date = paste0(2015:2017,'/12') 
-Date[4] = "2018/06"
+Date[4] = "2018/09"
 for (i in 1:nrow(stock_table)) {
     try({
       for (j in 1:length(Date)) {
