@@ -11,16 +11,15 @@
   } 
 }
 
-{
-  library(rvest)
-  library(EBImage)
-}
+library(rvest)
+library(EBImage)
+
 
 world_mkt_repo = function() {
   
   DATE = c(Sys.Date()+1,Sys.Date())
   month = c(paste0(format(Sys.Date(),"%m"),'월',format(Sys.Date(),"%d") %>% as.numeric(),'일'),paste0(format(Sys.Date()-1,"%m"),'월',format(Sys.Date()-1,"%d") %>% as.numeric(),'일'))
-
+  
   if(weekdays(Sys.Date())=="Friday") {
     DATE[1] = Sys.Date()+3
   } else if(weekdays(Sys.Date())=="Saturday"){
@@ -182,7 +181,7 @@ world_mkt_repo = function() {
     CHINA[1] = '마감시황을 아직 이용하실 수 없습니다'
     CHINA = CHINA[[1]]
   }else {
-    CHINA = CHINA[[grep(month[1],x=CHINA)]] %>%
+    CHINA = CHINA[[grep(month[1],x=CHINA)[1]]] %>%
       gsub(pattern = '<p>|</p>|<br>','',x=.)
   }
   
@@ -195,7 +194,7 @@ world_mkt_repo = function() {
     JAPAN[1] = '마감시황을 아직 이용하실 수 없습니다'
     JAPAN = JAPAN[[1]]
   }else {
-    JAPAN = JAPAN[[grep(month[1],x=JAPAN)]] %>%
+    JAPAN = JAPAN[[grep(month[1],x=JAPAN)[1]]] %>%
       gsub(pattern = '<p>|</p>|<br>','',x=.)
   }
   
@@ -208,7 +207,7 @@ world_mkt_repo = function() {
     TAIWAN[1] = '마감시황을 아직 이용하실 수 없습니다'
     TAIWAN = TAIWAN[[1]]
   }else {
-    TAIWAN = TAIWAN[[grep(month[1],x=TAIWAN)]] %>%
+    TAIWAN = TAIWAN[[grep(month[1],x=TAIWAN)[1]]] %>%
       gsub(pattern = '<p>|</p>|<br>','',x=.)
   }
   
@@ -221,7 +220,7 @@ world_mkt_repo = function() {
     CRUDEOIL[1] = '마감시황을 아직 이용하실 수 없습니다'
     CRUDEOIL = CRUDEOIL[[1]]
   }else {
-    CRUDEOIL = CRUDEOIL[[grep(month[2],x=CRUDEOIL)]] %>%
+    CRUDEOIL = CRUDEOIL[[grep(month[2],x=CRUDEOIL)[1]]] %>%
       gsub(pattern = '<p>|</p>|<br>','',x=.)
   }
   
@@ -262,7 +261,7 @@ world_mkt_repo = function() {
     CURRENCY[1] = '마감시황을 아직 이용하실 수 없습니다'
     CURRENCY = CURRENCY[[1]]
   }else {
-    CURRENCY = CURRENCY[[grep(month[1],x=CURRENCY)]] %>%
+    CURRENCY = CURRENCY[[grep(month[1],x=CURRENCY)[1]]] %>%
       gsub(pattern = '<p>|</p>|<br>','',x=.)
   }
   
