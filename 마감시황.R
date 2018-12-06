@@ -168,7 +168,7 @@ world_mkt_repo = function() {
     US[1] = '마감시황을 아직 이용하실 수 없습니다'
     US = US[[1]]
   }else {
-    US = US[[grep(month[2],x=US)]] %>%
+    US = US[[grep(month[2],x=US)[1]]] %>%
       gsub(pattern = '<p>|</p>|<br>','',x=.)
     US = gsub('S&amp;P','S&P',x=US)
   }
