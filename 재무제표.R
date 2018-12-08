@@ -71,7 +71,8 @@ kr_fs = function(com) {
                x= ~date, 
                y = as.numeric(gsub(',','',kr_table[6,])),
                type = 'bar',name = '당기순이익') 
-  subplot(p1,p2,p3,nrows = 3, shareX = TRUE)
+  subplot(p1,p2,p3,nrows = 3, shareX = TRUE) %>%
+  print()
 }
 
 
