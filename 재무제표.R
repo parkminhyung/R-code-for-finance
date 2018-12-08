@@ -3,33 +3,33 @@ library(RSelenium)
 library(plotly)
 
 #################get KRX stock table and create data frame ##################
-df_kospi ="http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType=stockMkt" %>%
-  read_html() %>%
-  html_nodes(xpath = '/html/body/table') %>%
-  html_table() %>%
-  .[[1]]
-df_kospi$시장구분 = 'KOSPI'
-
-df_kosdaq = "http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType=kosdaqMkt" %>%
-  read_html() %>%
-  html_nodes(xpath = '/html/body/table') %>%
-  html_table() %>%
-  .[[1]]
-df_kosdaq$시장구분 = 'KOSDAQ'
-
-df_konex = "http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType=konexMkt" %>%
-  read_html() %>%
-  html_nodes(xpath = '/html/body/table') %>%
-  html_table() %>%
-  .[[1]]
-df_konex$시장구분 = 'KONEX'
-
-stock_table = rbind(df_kospi,df_kosdaq,df_konex) %>%
-  sprintf("%06d",.[[2]]) 
-
-stock_table[[2]] = sprintf("%06d",stock_table[[2]]) 
-stock_table = stock_table[,c(1,2,10,3:9)]
-View(stock_table)
+{
+  df_kospi ="http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType=stockMkt" %>%
+    read_html() %>%
+    html_nodes(xpath = '/html/body/table') %>%
+    html_table() %>%
+    .[[1]]
+  df_kospi$시장구분 = 'KOSPI'
+  
+  df_kosdaq = "http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType=kosdaqMkt" %>%
+    read_html() %>%
+    html_nodes(xpath = '/html/body/table') %>%
+    html_table() %>%
+    .[[1]]
+  df_kosdaq$시장구분 = 'KOSDAQ'
+  
+  df_konex = "http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType=konexMkt" %>%
+    read_html() %>%
+    html_nodes(xpath = '/html/body/table') %>%
+    html_table() %>%
+    .[[1]]
+  df_konex$시장구분 = 'KONEX'
+  
+  stock_table = rbind(df_kospi,df_kosdaq,df_konex)
+  stock_table[[2]] = sprintf("%06d",stock_table[[2]]) 
+  stock_table = stock_table[,c(1,2,10,3:9)]
+  View(stock_table)
+}
 #############################################################################
 
 pjs = wdman::phantomjs(port = 1111L, version = "2.1.1") # need to install 'wdman' package
@@ -77,4 +77,3 @@ kr_fs = function(com) {
 
 remDr$close()
 pjs$stop()
-
