@@ -34,7 +34,7 @@ R code for finance <br>
 
 - SUPERTREND는 '코스닥종목'에 사용하지 않은 것을 추천합니다. 야후 파이낸스를 기반으로 데이터를 불러 오는데, 코스닥 종목은 누락된 데이터가 너무 많아 정확한 계산도출이 되지 않습니다. 추후에 한국주식 데이터베이스를 추가하도록 하겠습니다. <br>
 
-- KRX종목 테이블 사용법 : 콘솔창에 KRX_data(save_csv_file=TRUE)로 입력하시면 기본 디렉토리에 'KRX테이블'이라는 엑셀파일이 csv 형식으로 저장됩니다. KRX_data() 혹은 KRX_data(FALSE)로 입력하실 경우, csv파일이 저장되지 않고 테이블로 뜨도록 하였습니다. <br>
+- KRX종목 테이블 사용법 : 콘솔창에 krx_stock_table(save_csv_file=TRUE)로 입력하시면 기본 디렉토리에 'KRX테이블'이라는 엑셀파일이 csv 형식으로 저장됩니다. krx_stock_table() 혹은 krx_stock_table(FALSE)로 입력하실 경우, csv파일이 저장되지 않고 테이블로 뜨도록 하였습니다. <br>
 
 - k-score는 알트만의 z-core를 본 떠 만든 한국형 모델 k-score입니다. 상장되어 있는 전 종목에 이 모델을 적용시키는 코드이며, 한눈에 기업의 부실정도를 측정가능하도록 하는 모델입니다.<br>
 reference: <br>
