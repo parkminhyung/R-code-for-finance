@@ -1,7 +1,5 @@
 library(rvest)
 
-#################get KRX stock table and create data frame ##################
-
 KRX_data = function(save_csv_file = FALSE){
   
   df_kospi ="http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType=stockMkt" %>%
@@ -38,5 +36,5 @@ KRX_data = function(save_csv_file = FALSE){
   }
   
 }
-#############################################################################
+
 
