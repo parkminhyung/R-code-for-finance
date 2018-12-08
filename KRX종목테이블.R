@@ -1,6 +1,6 @@
 library(rvest)
 
-KRX_data = function(save_csv_file = FALSE){
+krx_stock = function(save_csv_file = FALSE){
   
   df_kospi ="http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType=stockMkt" %>%
     read_html() %>%
