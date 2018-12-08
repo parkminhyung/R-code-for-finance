@@ -36,8 +36,8 @@ R code for finance <br>
 
 - KRX종목 테이블 사용법 : 콘솔창에 KRX_data(save_csv_file=TRUE)로 입력하시면 기본 디렉토리에 'KRX테이블'이라는 엑셀파일이 csv 형식으로 저장됩니다. KRX_data() 혹은 KRX_data(FALSE)로 입력하실 경우, csv파일이 저장되지 않고 테이블로 뜨도록 하였습니다. <br>
 
-- k-score는 알트만의 z-core를 본 떠 만든 한국형 모델 k-score입니다. 상장되어 있는 전 종목에 이 모델을 적용시키는 코드이며, 한눈에 기업의 부실정도를 측정가능하도록 하는 모델입니다.
-reference: 
-[1] https://m.blog.naver.com/PostView.nhn?blogId=haan79&logNo=10158008764&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F
+- k-score는 알트만의 z-core를 본 떠 만든 한국형 모델 k-score입니다. 상장되어 있는 전 종목에 이 모델을 적용시키는 코드이며, 한눈에 기업의 부실정도를 측정가능하도록 하는 모델입니다.<br>
+reference: <br>
+[1] https://m.blog.naver.com/PostView.nhn?blogId=haan79&logNo=10158008764&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F<br>
 [2] https://finata.blog.me/221191125946
 
