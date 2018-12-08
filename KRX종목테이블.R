@@ -33,8 +33,7 @@ KRX_data = function(save_csv_file = FALSE){
     print("csv파일로 저장되었습니다.파일명 : KRX테이블.csv")
   } else {
     print("csv파일로 저장하지 않고 바로 테이블을 띄웁니다.")
-  }
-  
+  }  
 }
 
 
