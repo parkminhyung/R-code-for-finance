@@ -3,8 +3,6 @@ library(RSelenium)
 library(plotly)
 
 #################get KRX stock table and create data frame ##################
-library(rvest)
-
 df_kospi ="http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType=stockMkt" %>%
   read_html() %>%
   html_nodes(xpath = '/html/body/table') %>%
