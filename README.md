@@ -32,7 +32,8 @@ R code for finance <br>
 
 - 재무재표는 한국재무재표를 나타냅니다. 이용방법 kr_fs('기업명'), ex) kr_fs('삼성전자')<br>
 
-- KRX종목 테이블 사용법 : 콘솔창에 krx_stock_table(save_csv_file=TRUE)로 입력하시면 기본 디렉토리에 'KRX테이블'이라는 엑셀파일이 csv 형식으로 저장됩니다. krx_stock_table() 혹은 krx_stock_table(FALSE)로 입력하실 경우, csv파일이 저장되지 않고 테이블로 뜨도록 하였습니다. <br>
+- KRX종목 테이블 사용법 : 콘솔창에 krx_stock_table()을 치면 전 종목이 테이블 형태로 띄어 집니다. krx_stock_table(save_csv_file = TRUE)을 입력하실 경우, 전 종목이 띄어짐과 동시에 csv파일로 기본 디렉토리에 저장됩니다(파일명:KRX__테이블.csv)
+krx_stock_table('kospi')를 입력하실 경우, kospi종목만, krx_stock_table('kosdaq')을 입력하실경우 kosdaq종목만, krx_stock_table('konex')를 입력하실 경우, konex종목만 띄우도록 수정하였습니다. 시장 명 뒤에 TRUE를 넣을 경우 csv파일로 저장됩니다, 예) krx_stock_table('kospi',TRUE)
 
 - k-score는 알트만의 z-core를 본 떠 만든 한국형 모델 k-score입니다. 상장되어 있는 전 종목에 이 모델을 적용시키는 코드이며, 한눈에 기업의 부실정도를 측정가능하도록 하는 모델입니다.<br>
 reference: <br>
