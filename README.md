@@ -42,3 +42,5 @@ reference: <br>
 [1] https://m.blog.naver.com/PostView.nhn?blogId=haan79&logNo=10158008764&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F<br>
 [2] https://finata.blog.me/221191125946
 
+- 한국주식 info는 한국 상장기업에 대한 기본 정보를 제공합니다. 코드이용방법 : kr_get_st('6자리코드') 예) kr_get_st('005930')<br>
+
