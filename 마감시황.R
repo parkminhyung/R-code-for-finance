@@ -18,20 +18,20 @@ library(EBImage)
 world_mkt_repo = function() {
   
   DATE = c(Sys.Date()+1,Sys.Date())
-  month = c(paste0(format(Sys.Date(),"%m"),'월',format(Sys.Date(),"%d") %>% as.numeric(),'일'),paste0(format(Sys.Date()-1,"%m"),'월',format(Sys.Date()-1,"%d") %>% as.numeric(),'일'))
+  month = c(paste0(format(Sys.Date(),"%m") %>% as.numeric(),'월',format(Sys.Date(),"%d") %>% as.numeric(),'일'),paste0(format(Sys.Date()-1,"%m")%>% as.numeric(),'월',format(Sys.Date()-1,"%d") %>% as.numeric(),'일'))
   
   if(weekdays(Sys.Date())=="Friday") {
     DATE[1] = Sys.Date()+3
   } else if(weekdays(Sys.Date())=="Saturday"){
     DATE[1] = Sys.Date()+2
     DATE[2] = Sys.Date()-1
-    month = c(paste0(format(Sys.Date()-1,"%m"),'월',format(Sys.Date()-1,"%d")%>% as.numeric(),'일'),paste0(format(Sys.Date()-2,"%m")%>% as.numeric(),'월',format(Sys.Date()-2,"%d")%>% as.numeric(),'일'))
+    month = c(paste0(format(Sys.Date()-1,"%m") %>% as.numeric(),'월',format(Sys.Date()-1,"%d")%>% as.numeric(),'일'),paste0(format(Sys.Date()-2,"%m")%>% as.numeric(),'월',format(Sys.Date()-2,"%d")%>% as.numeric(),'일'))
   } else if(weekdays(Sys.Date())=="Sunday"){
     DATE[1] = Sys.Date()+1
     DATE[2] = Sys.Date()-2
-    month = c(paste0(format(Sys.Date()-2,"%m"),'월',format(Sys.Date()-2,"%d")%>% as.numeric(),'일'),paste0(format(Sys.Date()-3,"%m")%>% as.numeric(),'월',format(Sys.Date()-3,"%d")%>% as.numeric(),'일'))
+    month = c(paste0(format(Sys.Date()-2,"%m") %>% as.numeric(),'월',format(Sys.Date()-2,"%d")%>% as.numeric(),'일'),paste0(format(Sys.Date()-3,"%m")%>% as.numeric(),'월',format(Sys.Date()-3,"%d")%>% as.numeric(),'일'))
   } else if(weekdays(Sys.Date())=='Monday'){
-    month = c(paste0(format(Sys.Date(),"%m"),'월',format(Sys.Date(),"%d")%>% as.numeric(),'일'),paste0(format(Sys.Date()-3,"%m")%>% as.numeric(),'월',format(Sys.Date()-3,"%d")%>% as.numeric(),'일'))
+    month = c(paste0(format(Sys.Date(),"%m") %>% as.numeric(),'월',format(Sys.Date(),"%d")%>% as.numeric(),'일'),paste0(format(Sys.Date()-3,"%m")%>% as.numeric(),'월',format(Sys.Date()-3,"%d")%>% as.numeric(),'일'))
   }
   
   par(mfrow = c(3,3))
