@@ -37,8 +37,6 @@ Minor error was fixed <br>
 
 - 중국주식 이용방법 : cn_fs('코드번호') ex) cn_fs('000002') <br>
 
-- 재무재표는 한국재무재표를 나타냅니다. 이용방법 kr_fs('기업명'), ex) kr_fs('삼성전자')<br>
-
 - KRX종목 테이블 사용법 : 콘솔창에 krx_stock_table()을 치면 전 종목이 테이블 형태로 띄어 집니다. krx_stock_table(save_csv_file = TRUE)을 입력하실 경우, 전 종목이 띄어짐과 동시에 csv파일로 기본 디렉토리에 저장됩니다(파일명:KRX__테이블.csv)
 krx_stock_table('kospi')를 입력하실 경우, kospi종목만, krx_stock_table('kosdaq')을 입력하실경우 kosdaq종목만, krx_stock_table('konex')를 입력하실 경우, konex종목만 띄우도록 수정하였습니다. 시장 명 뒤에 TRUE를 넣을 경우 csv파일로 저장됩니다, 예) krx_stock_table('kospi',TRUE)
 
