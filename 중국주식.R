@@ -49,8 +49,8 @@ View(cngs_table)
 ########################################################################
 ########################################################################
 
-cn_fs <- function(x) {
-  cn_table = paste0('http://quotes.money.163.com/f10/cwbbzy_',x,'.html',collapse = NULL) %>%
+cn_fs = function(ticker) {
+  cn_table = paste0('http://quotes.money.163.com/f10/cwbbzy_',ticker,'.html',collapse = NULL) %>%
     read_html() %>%
     html_nodes(xpath = '//*[@id="scrollTable"]/div[4]/table') %>%
     html_table(fill = TRUE) %>%
@@ -95,6 +95,8 @@ cn_fs <- function(x) {
                y= as.numeric(gsub(',','',x=cn_table[8,])), 
                type = 'bar', name = '주당손익')
   subplot(p1,p2,p3,nrows = 3,shareX = TRUE) %>%
+    layout(title = paste(ticker,":재무현황")) %>%
     print()
-  View(x=cn_table,title = paste0("B/S:",x))
+  View(x=cn_table,title = paste0("B/S:",ticker))
 }
+
