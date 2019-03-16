@@ -31,11 +31,11 @@ Minor error was fixed <br>
 # 코드 이용방법
 - 마감시황은 현재 미국, 중국, 일본, 대만, 한국, WTI, 금/은 시황을 제공하며, 일 거래 그래프도 함께 제공됩니다. 마감시황에서 뜨는 plot과 가격, 가격변동(chg)은 실시간 value를 제공하며, 미국과 WTI를 제외한 나머지 시황은 오후5시에 제공됩니다.(사이트의 사정에 따라 시황이 뜨는 시간이 다를 수 있습니다.) <br>
 
-- 홍콩주식과 중국주식은 홍콩재무제표, 중국재무제표를 나타냅니다. <br>
+- 홍콩상장기업 재무제표와 중국상장기업 제무제표는 홍콩재무제표, 중국재무제표를 나타냅니다. <br>
 
-- 홍콩주식과 중국주식내 주식코드 테이블은 그냥 참고용이지, function과는 독립적이므로 원치 않으신 분들은 function만 import해도 됩니다. <br>
+- 홍콩상장기업 재무제표와 중국상장기업 재무제표 내 주식코드 테이블은 그냥 참고용이지, function과는 독립적이므로 원치 않으신 분들은 function만 import해도 됩니다. <br>
 
-- 중국주식 이용방법 : cn_fs('코드번호') ex) cn_fs('000002') <br>
+- 중국상장기업 재무제표 이용방법 : cn_fs('코드번호') ex) cn_fs('000002') <br>
 
 - KRX종목 테이블 사용법 : 콘솔창에 krx_stock_table()을 치면 전 종목이 테이블 형태로 띄어 집니다. krx_stock_table(save_csv_file = TRUE)을 입력하실 경우, 전 종목이 띄어짐과 동시에 csv파일로 기본 디렉토리에 저장됩니다(파일명:KRX__테이블.csv)
 krx_stock_table('kospi')를 입력하실 경우, kospi종목만, krx_stock_table('kosdaq')을 입력하실경우 kosdaq종목만, krx_stock_table('konex')를 입력하실 경우, konex종목만 띄우도록 수정하였습니다. 시장 명 뒤에 TRUE를 넣을 경우 csv파일로 저장됩니다, 예) krx_stock_table('kospi',TRUE)
@@ -45,5 +45,5 @@ reference: <br>
 [1] https://m.blog.naver.com/PostView.nhn?blogId=haan79&logNo=10158008764&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F<br>
 [2] https://finata.blog.me/221191125946
 
-- 한국주식 info는 한국 상장기업에 대한 기본 정보를 제공합니다. 코드이용방법 : kr_get_st('6자리코드') 예) kr_get_st('005930')<br>
+- 한국상장기업 기업정보는 한국 상장기업에 대한 기본 정보를 제공합니다. 코드이용방법 : kr_get_st('6자리코드') 예) kr_get_st('005930')<br>
 
