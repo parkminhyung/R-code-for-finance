@@ -224,7 +224,7 @@ world_mkt_repo = function() {
       gsub(pattern = '<p>|</p>|<br>','',x=.)
   }
   
-  KOSPI =paste0('http://www.paxnet.co.kr/stock/infoStock/marketView?type=D&market=KS1&sendDate=',DATE[1]) %>%
+  KOSPI =paste0('http://www.paxnet.co.kr/stock/infoStock/marketView?type=D&market=KS1&sendDate=',DATE[2]) %>%
     read_html() %>%
     html_nodes(xpath = '//*[@id="span_article_content"]/p') %>%
     as.character() %>%
@@ -238,7 +238,7 @@ world_mkt_repo = function() {
     KOSPI[length(KOSPI)] = gsub(pattern = '</p>','',x=KOSPI[length(KOSPI)])
   }
   
-  KOSDAQ = paste0('http://www.paxnet.co.kr/stock/infoStock/marketView?type=D&market=KS2&sendDate=',DATE[1]) %>%
+  KOSDAQ = paste0('http://www.paxnet.co.kr/stock/infoStock/marketView?type=D&market=KS2&sendDate=',DATE[2]) %>%
     read_html() %>%
     html_nodes(xpath = '//*[@id="span_article_content"]/p') %>%
     as.character() %>%
