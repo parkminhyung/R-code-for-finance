@@ -302,6 +302,6 @@ world_mkt_repo = function() {
     
   }
   WOD_MKT = list(news[,1],jnews[,1],US,CHINA,JAPAN,TAIWAN,KOSPI,KOSDAQ,CURRENCY,GnS,CRUDEOIL)
-  names(WOD_MKT) = c("WORLD_NEWS","K-NEWS","US","CHINA","JAPAN","TAIWAN","KOSPI","KOSDAQ","CURRENCY","GOLD and SILVER","CRUDEOIL")
+  names(WOD_MKT) = c("WORLD_NEWS","K_NEWS","US","CHINA","JAPAN","TAIWAN","KOSPI","KOSDAQ","CURRENCY","GOLD & SILVER","CRUDEOIL")
   WOD_MKT %>% print()
 }
