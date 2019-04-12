@@ -11,11 +11,9 @@
   } 
 }
 
-library(rvest)
-library(EBImage)
-
-
 world_mkt_repo = function() {
+  library(rvest)
+  library(EBImage)
   
   DATE = c(Sys.Date()+1,Sys.Date())
   month = c(paste0(format(Sys.Date(),"%m") %>% as.numeric(),'월',format(Sys.Date(),"%d") %>% as.numeric(),'일'),paste0(format(Sys.Date()-1,"%m")%>% as.numeric(),'월',format(Sys.Date()-1,"%d") %>% as.numeric(),'일'))
@@ -224,7 +222,7 @@ world_mkt_repo = function() {
       gsub(pattern = '<p>|</p>|<br>','',x=.)
   }
   
-  KOSPI =paste0('http://www.paxnet.co.kr/stock/infoStock/marketView?type=D&market=KS1&sendDate=',DATE[2]) %>%
+  KOSPI =paste0('http://www.paxnet.co.kr/stock/infoStock/marketView?type=D&market=KS1&sendDate=',DATE[1]) %>%
     read_html() %>%
     html_nodes(xpath = '//*[@id="span_article_content"]/p') %>%
     as.character() %>%
@@ -238,7 +236,7 @@ world_mkt_repo = function() {
     KOSPI[length(KOSPI)] = gsub(pattern = '</p>','',x=KOSPI[length(KOSPI)])
   }
   
-  KOSDAQ = paste0('http://www.paxnet.co.kr/stock/infoStock/marketView?type=D&market=KS2&sendDate=',DATE[2]) %>%
+  KOSDAQ = paste0('http://www.paxnet.co.kr/stock/infoStock/marketView?type=D&market=KS2&sendDate=',DATE[1]) %>%
     read_html() %>%
     html_nodes(xpath = '//*[@id="span_article_content"]/p') %>%
     as.character() %>%
@@ -279,7 +277,31 @@ world_mkt_repo = function() {
   gs3 = gs[c(grep(pattern = '금 현물',gs):length(gs))]
   GnS = c(gs1,gs2,gs3)
   
-  WOD_MKT = list(US,CHINA,JAPAN,TAIWAN,KOSPI,KOSDAQ,CURRENCY,GnS,CRUDEOIL)
-  names(WOD_MKT) = c("US","CHINA","JAPAN","TAIWAN","KOSPI","KOSDAQ","CURRENCY","GOLD and SILVER","CRUDEOIL")
+  world_news = 'http://news.moneta.co.kr/Service/stock/ShellSection.asp?LinkID=373&wlog_News=WorldNews' %>%
+    read_html() %>%
+    html_nodes(xpath = '//*[@id="contant2"]') %>%
+    as.character() %>%
+    strsplit("title=",x=.) %>%
+    .[[1]]
+  news = data.frame(headline = NA)
+  for (i in 1:(length(world_news)-1)) {
+    news[i,1] =substr(world_news[i],gregexpr("alt=",world_news[i])[[1]][1]+4,nchar(world_news[i])) %>%
+      gsub('\"',"",x=.) 
+  }
+  
+  junews = "http://news.moneta.co.kr/Service/stock/ShellSection.asp?LinkID=370&wlog_News=JuyoNews" %>%
+    read_html() %>%
+    html_nodes(xpath = '//*[@id="contant2"]') %>% 
+    as.character() %>%
+    strsplit("title=") %>%
+    .[[1]]
+  jnews = data.frame(head_line = NA)
+  for (i in 1:(length(junews)-1)) {
+    jnews[i,1]=substr(junews[i],gregexpr("alt=",junews[i])[[1]][1]+4,nchar(junews[i])) %>%
+      gsub('\"',"",x=.) 
+    
+  }
+  WOD_MKT = list(news[,1],jnews[,1],US,CHINA,JAPAN,TAIWAN,KOSPI,KOSDAQ,CURRENCY,GnS,CRUDEOIL)
+  names(WOD_MKT) = c("WORLD_NEWS","K-NEWS","US","CHINA","JAPAN","TAIWAN","KOSPI","KOSDAQ","CURRENCY","GOLD and SILVER","CRUDEOIL")
   WOD_MKT %>% print()
 }
