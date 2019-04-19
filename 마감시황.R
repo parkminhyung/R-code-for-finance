@@ -269,13 +269,17 @@ world_mkt_repo = function() {
     .[73] %>%
     html_text() %>%
     strsplit('\t|\n|\r') 
-  gs = gs[[1]][127:grep(pattern = '은 현물',gs[[1]])]
+  if(length(grep(pattern = '은 현물',gs[[1]]))!=0){
+    gs = gs[[1]][127:grep(pattern = '은 현물',gs[[1]])]
+    gs1 = gs[c(1:2)]
+    gs2 = gs[c(3:(grep(pattern = '금 현물',gs)-1))] %>%
+      paste(collapse = '')
+    gs3 = gs[c(grep(pattern = '금 현물',gs):length(gs))]
+    GnS = c(gs1,gs2,gs3)
+  } else if(length(grep(pattern = '은 현물',gs[[1]])) ==0) {
+    GnS = "일시적으로 시황을 이용할 수 없습니다."
+  }
   
-  gs1 = gs[c(1:2)]
-  gs2 = gs[c(3:(grep(pattern = '금 현물',gs)-1))] %>%
-    paste(collapse = '')
-  gs3 = gs[c(grep(pattern = '금 현물',gs):length(gs))]
-  GnS = c(gs1,gs2,gs3)
   
   world_news = 'http://news.moneta.co.kr/Service/stock/ShellSection.asp?LinkID=373&wlog_News=WorldNews' %>%
     read_html() %>%
