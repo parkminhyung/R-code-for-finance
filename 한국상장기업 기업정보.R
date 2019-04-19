@@ -1,4 +1,5 @@
 kr_get_st = function(ticker){
+  
   library(rvest)
   library(plotly)
   
@@ -50,6 +51,7 @@ kr_get_st = function(ticker){
   rownames(tb1) = tb1[,1]
   colnames(tb1) = tb1[1,]
   tb1 = tb1[-1,-1]
+  
   url = paste0('http://thinkpool.com/itemanal/i/news/newsView.jsp?code=',ticker) %>%
     read_html("EUC-KR") %>%
     html_nodes(xpath = '//*[@id="content"]/div[2]/ul') %>%
@@ -61,6 +63,8 @@ kr_get_st = function(ticker){
   for (i in 1:5) {
     news[i,1] = substr(url[i],1,gregexpr('</a>',url[i])[[1]][1]-1)
   }
+  news[,1] = gsub('\"',"'",news[,1])
+  news[,1] = gsub('\n',"",news[,1])
   
   cat('=============================',"기본정보",'=============================','\n',
       "[",name,"]",'\n',
@@ -70,12 +74,11 @@ kr_get_st = function(ticker){
       tb[4,1:2] %>% as.character(),"|",tb[4,3:4] %>% as.character(),"|",tb[4,5:6] %>% as.character(),'\n',
       '\n',
       '=============================',"재무정보",'=============================','\n')
-      tb1 %>% print()
+  tb1 %>% print()
   cat('===========================',"뉴스 및 공시",'===========================','\n')
   news[,1] %>% print()
   
   cat('===========================',"PRICE INFO",'===========================','\n')
-      tail(df) %>% print()
+  tail(df) %>% print()
   cat('===================================================================')
 }
-
