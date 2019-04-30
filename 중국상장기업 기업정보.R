@@ -64,22 +64,26 @@ cn_get_st = function(ticker){
       gp = rbind(gp,gpk)
     }
     
-    rownames(gp) = gp[,1]
-    colnames(gp) = c("일","시가","고가","저가","종가","등락","등략률(%)","거래량","거래금액","진폭","거래회전율")
-    gpt = gp[,-c(1,10)] %>% tail() 
-    gp = gp[,-c(1,10)]
-    
-    Date = rownames(gp) %>% as.Date()
-    cd = gp %>%
-      plot_ly(x= Date,
-              type = 'candlestick',
-              open = gp[,1],
-              high = gp[,2],
-              low = gp[,3],
-              close = gp[,4],
-              name = paste0(name,":candle")) %>%
-      layout(title = paste0(name," : Candle Chart"," [","Q",season[1]," ~ ","Q",length(season),"]")) %>%
-      print()
+    if(nrow(gp)== 0){
+      gpt ="조회할 수 없는 종목입니다."
+    } else {
+      rownames(gp) = gp[,1]
+      colnames(gp) = c("일","시가","고가","저가","종가","등락","등략률(%)","거래량","거래금액","진폭","거래회전율")
+      gpt = gp[,-c(1,10)] %>% tail() 
+      gp = gp[,-c(1,10)]
+      
+      Date = rownames(gp) %>% as.Date()
+      cd = gp %>%
+        plot_ly(x= Date,
+                type = 'candlestick',
+                open = gp[,1],
+                high = gp[,2],
+                low = gp[,3],
+                close = gp[,4],
+                name = paste0(name,":candle")) %>%
+        layout(title = paste0(name," : Candle Chart"," [","Q",season[1]," ~ ","Q",length(season),"]")) %>%
+        print()
+    }
     
     ####### 10대주주 
     if(substr(ticker,"1","1")==0){
@@ -104,6 +108,10 @@ cn_get_st = function(ticker){
       gsub("新进","새로진입",x=.) %>%
       gsub("减持","감소:",x=.) %>%
       gsub("增持","증가:",x=.)
+    
+    if(nrow(gd)==1){
+      gd = "10대 주주정보를 조회할 수 없습니다."
+    } 
     
     ##### 뉴스 및 공시
     news= list()
@@ -186,3 +194,4 @@ cn_get_st = function(ticker){
     cat('===================================================================')},
     error = function(e) print("상장폐지종목 혹은 비상장종목이거나 종목코드를 확인해 주시기 바랍니다."))
 }
+
