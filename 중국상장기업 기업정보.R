@@ -1,8 +1,9 @@
 cn_get_st = function(ticker){
+  
   if(substr(ticker,1,1)== '2'){
-    print("B주 상장기업은 조회가 불가입니다. A주로 조회 해 주세요")
+    print("B주 상장기업은 조회가 불가합니다. A주 기업을 조회해 주세요")
   } else if(substr(ticker,1,1)== '9'){
-    print("B주 상장기업은 조회가 불가입니다. A주로 조회 해 주세요")
+    print("B주 상장기업은 조회가 불가합니다. A주 기업을 조회해 주세요")
   } else {
     tryCatch({
       library(rvest)
