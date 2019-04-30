@@ -1,6 +1,7 @@
 cn_get_st = function(ticker){
   
-  tryCatch({library(rvest)
+  tryCatch({
+    library(rvest)
     library(plotly)
     
     ####### 기본정보 
