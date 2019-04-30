@@ -1,5 +1,4 @@
 cn_get_st = function(ticker){
-  
   tryCatch({
     library(rvest)
     library(plotly)
@@ -107,18 +106,33 @@ cn_get_st = function(ticker){
       gsub("增持","증가:",x=.)
     
     ##### 뉴스 및 공시
-    news = data.frame()
+    news= list()
     for (i in 1:2) {
       nurl = c(paste0('http://quotes.money.163.com/f10/gsgg_',ticker,',zjgg.html'),
                paste0('http://quotes.money.163.com/f10/gsxw_',ticker,'.html#01e03'))
-      k= nurl[i] %>%
+      news[[i]]= nurl[i] %>%
         read_html() %>%
         html_nodes(xpath = '//*[@id="newsTabs"]/div/table') %>%
         html_table(fill=TRUE) %>%
         .[[1]] 
-      k[,1] = paste0(k[,2],' ',k[,1])
-      k = k[1:3,1] %>% data.frame()
-      news = rbind(news,k)
+      
+    }
+    gsh  = news[[1]] %>% as.data.frame()
+    xw = news[[2]] %>% as.data.frame()
+    
+    if(nrow(gsh)=="0"){
+      gsh = "새로운 소식이 없습니다"
+    } else {
+      gsh[,1] = paste0(gsh[,2],' ',gsh[,1]) 
+      gsh = gsh[1:3,1]
+    }
+    
+    
+    if(nrow(xw)=="0"){
+      xw = "새로운 소식이 없습니다"
+    } else {
+      xw[,1] = paste0(xw[,2],' ',xw[,1]) 
+      xw = xw[1:3,1]
     }
     
     ##### info
@@ -160,10 +174,10 @@ cn_get_st = function(ticker){
     
     cat('===========================',"뉴스 및 공시",'===========================','\n')
     cat("[공시]",'\n')
-    news[1:3,1] %>% format(.,justify = "left") %>% print()
+    gsh %>% print()
     cat('\n')
     cat("[뉴스]","\n")
-    news[4:6,1] %>% format(.,justify = "left") %>% print()
+    xw %>% print()
     cat("\n")
     cat('=============================',"주주정보",'============================','\n')
     format(gd,justify = 'left') %>% print()
