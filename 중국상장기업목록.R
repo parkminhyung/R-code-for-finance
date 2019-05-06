@@ -33,20 +33,20 @@ SHSZ_table = function(save_csv_file = FALSE){
                      "CPS" = NA)
   
   for (i in 1:nrow(table)) {
-    if(substr(table[i,2],1,2)=='00'){
-      table[i,3] = "SZ-A"
+    if(substr(table[i,2],1,3)=='000'){
+      table[i,3] = "SZ-A" #SZ-A : 심천 A주
     } else if(substr(table[i,2],1,3)=="200") {
-      table[i,3] = "SZ-B"
+      table[i,3] = "SZ-B" #SZ-A : 심천 B주
     } else if(substr(table[i,2],1,3)=="002") {
-      table[i,3] = "SZ-ZXB"
-    } else if(substr(table[i,2],1,2)=="30") {
-      table[i,3] = "SZ-CYB"
+      table[i,3] = "SZ-ZXB" #SZ-A : 심천 종소판주
+    } else if(substr(table[i,2],1,3)=="300") {
+      table[i,3] = "SZ-CYB" #SZ-A : 심천 창업판주
     } else if(substr(table[i,2],1,2)=="60"){
-      table[i,3] = "SH-A"
+      table[i,3] = "SH-A" #SH-A : 상해 A주
     } else if(substr(table[i,2],1,2)=="90"){
-      table[i,3] = "SH-B"
+      table[i,3] = "SH-B" #SH-B : 상해 B주 
     } else if(substr(table[i,2],1,3)=="399"){
-      table[i,3] = "SZ-INDEX"
+      table[i,3] = "SZ-INDEX" #심천 인덱스
     } else if(substr(table[i,2],1,3)=="010"){
       table[i,3] = "BOND"
     } else if(substr(table[i,2],1,3)=="019"){
