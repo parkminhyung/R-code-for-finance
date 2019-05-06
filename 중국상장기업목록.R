@@ -38,7 +38,7 @@ SHSZ_table = function(save_csv_file = FALSE){
     } else if(substr(table[i,2],1,3)=="200") {
       table[i,3] = "SZ-B" #SZ-A : 심천 B주
     } else if(substr(table[i,2],1,3)=="002") {
-      table[i,3] = "SZ-ZXB" #SZ-A : 심천 종소판주
+      table[i,3] = "SZ-ZXB" #SZ-A : 심천 중소판주
     } else if(substr(table[i,2],1,3)=="300") {
       table[i,3] = "SZ-CYB" #SZ-A : 심천 창업판주
     } else if(substr(table[i,2],1,2)=="60"){
