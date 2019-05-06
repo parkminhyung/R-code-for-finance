@@ -2,6 +2,11 @@
 R code for finance <br>
 주식, 재무표, 데이터를 위해 만든 repo입니다. 
 
+
+# 2019.05.06 UPDATE
+1. 중국상장기업목록이 업로드 되었습니다.
+- 전 중국종목의 간략한 기업정보와 종목코드를 제공합니다 <br>
+
 # 2019.04.28 UPDATE
 1. 중국상장기업 기업정보가 업로드 되었습니다.
 - 중국상장기업의 기본재무정보, 뉴스 및 공시, 주가정보를 제공합니다 <br>
@@ -30,6 +35,10 @@ R code for finance <br>
 #현재 홍콩재무제표는 사용이 불가한 상태입니다. 하루 빨리 수정하도록 하겠습니다 <br>
 
 # 코드 이용방법
+- 중국상장기업목록은 중국 본토 내 상장되어 있는 전 기업의 간단한 정보를 제공합니다. <br>
+- function화 시켜 SHSZ_table()로 작동하고, csv파일로 저장하고 싶으면 SHSZ_table(save_csv_file=TRUE)를 입력하시면 됩니다 <br>
+- 시간이 오래걸리므로 sheet만 참고하고 싶으시면 https://docs.google.com/spreadsheets/d/1AxvMtxLIJUWyfXUgM_LLo5XV5Bj7ODqcu6JMEtBelE4/edit?usp=sharing 를 보시면 됩니다.
+
 - 중국상장기업 기업정보는 중국 A주에 상장되어있는 기업의 정보를 제공합니다. 이용방법 : 예)cn_get_st('000002') <br>
 - A주종목을 대상으로 하였으므로 "2" 혹은 "9"로 시작하는 B주 종목코드는 실행이 불가합니다 <br>
 
