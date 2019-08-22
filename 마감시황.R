@@ -71,7 +71,7 @@ world_mkt_repo = function() {
     html_nodes(xpath = '//*[@id="fboardlist"]/div[1]/table') %>%
     html_table(fill = TRUE) %>%
     .[[1]] 
-  num = (num[grep('국내 가격 동향',x=num[,2])[1],1]+2) %>%
+  num = (num[grep('국내 가격 동향',x=num[,2])[1],1]+3) %>%
     as.numeric()
   
   DOW = 'https://ssl.pstatic.net/imgfinance/chart/mobile/world/day/DJI@DJI_search.png' %>%
