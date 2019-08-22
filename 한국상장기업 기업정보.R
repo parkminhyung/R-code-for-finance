@@ -23,10 +23,10 @@ kr_get_st = function(ticker){
   
   DATE = as.Date(rownames(df))
   
-  name = paste0('http://www.thinkpool.com/itemanal/i/index.jsp?mcd=Q0&code=',ticker,'&Gcode=000_002') %>%
+  name ='http://www.thinkpool.com/itemanal/i/index.jsp?mcd=Q0&code=005930&Gcode=000_002%22' %>%
     read_html(encoding = 'EUC-KR') %>%
-    html_nodes(xpath = '//*[@id="wrap"]/div[16]/div[1]/span/a[1]') %>%
-    html_text()
+    html_nodes(xpath = '//*[@id="wrap"]/div[17]/div[1]/span/a[1]') %>%
+    html_text(trim = TRUE)
   
   plot_ly(x = DATE,
           type = "candlestick",
@@ -34,7 +34,7 @@ kr_get_st = function(ticker){
           high = df[,2],
           low = df[,3],
           close = df[,4]) %>%
-    layout(title = paste(name,"주가차트")) %>%
+    layout(title = paste0(name,"[",ticker,"] ","주가차트")) %>%
     print()
   
   tb = paste0('http://www.thinkpool.com/itemanal/i/index.jsp?mcd=Q0&code=',ticker,'&Gcode=000_002') %>%
