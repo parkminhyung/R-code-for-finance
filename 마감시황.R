@@ -1,16 +1,3 @@
-########IMAGE SOURCE : NAVER
-########NEWS SOURCE : PAXNET/INFOSTOCK/SAMSUNGGOLD
-
-{
-  if(!require(rvest)){
-    install.packages('rvest')
-  }
-  if(!require(EBImage)) {
-    install.packages('devtools')
-    devtools::install_github('aoles/EBImage',force = TRUE)
-  } 
-}
-
 world_mkt_repo = function() {
   library(rvest)
   library(EBImage)
@@ -70,8 +57,8 @@ world_mkt_repo = function() {
     read_html() %>%
     html_nodes(xpath = '//*[@id="fboardlist"]/div[1]/table') %>%
     html_table(fill = TRUE) %>%
-    .[[1]] 
-  num = (num[grep('국내 가격 동향',x=num[,2])[1],1]+3) %>%
+    .[[1]] %>%
+    .[grep("국내 가격 동향",x=.[,2])[1],1] %>%
     as.numeric()
   
   DOW = 'https://ssl.pstatic.net/imgfinance/chart/mobile/world/day/DJI@DJI_search.png' %>%
@@ -263,7 +250,7 @@ world_mkt_repo = function() {
       gsub(pattern = '<p>|</p>|<br>','',x=.)
   }
   
-  gs = paste0('http://www.samsunggold.co.kr/bbs/board.php?bo_table=news&wr_id=',num) %>%
+  gs = paste0('http://www.samsunggold.co.kr/bbs/board.php?bo_table=news&wr_id=',(num+3)) %>%
     read_html() %>%
     html_nodes('div') %>%
     .[73] %>%
@@ -279,7 +266,6 @@ world_mkt_repo = function() {
   } else if(length(grep(pattern = '은 현물',gs[[1]])) ==0) {
     GnS = "일시적으로 시황을 이용할 수 없습니다."
   }
-  
   
   world_news = 'http://news.moneta.co.kr/Service/stock/ShellSection.asp?LinkID=373&wlog_News=WorldNews' %>%
     read_html() %>%
