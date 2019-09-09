@@ -38,7 +38,8 @@ R code for finance <br>
 
 #현재 홍콩재무제표는 사용이 불가한 상태입니다. 하루 빨리 수정하도록 하겠습니다 <br>
 
-# 코드 이용방법
+# [코드 이용방법]
+# 시황
 - '시황'코드는 장 마감 시황 및 글로벌뉴스와 국내뉴스 해드라인을 제공합니다. <br>
 - 시황 출처는 인포스탁을 참고하였으며, 이미지출처는 네이버증권, 해드라인 출처는 모네타증권입니다 <br>
 - 올라와 있는 모든 시황을 동시에 보고 싶으시면 콘솔 창에 world_mkt_repo()를 입력하시기 바랍니다 <br>
@@ -46,7 +47,7 @@ R code for finance <br>
 - 예를 들어 미국의 개별 시황을 보고 싶으시면 world_mkt_repo('us')를 입력하시면 되고, 한국의 개별 시황을 보고 싶으시면 world_mkt_repo('ks')를 입력하시면 됩니다. 해당마켓코드는 아래와 같습니다. <br>
 - 미국 : us, 유가 : cl, 골드 : gs, 중국 : cn, 일본 : jp, 대만 : tw, 한국 : ks <br>
 
-
+#중국상장기업목록
 - 중국상장기업목록은 중국 본토 내 상장되어 있는 전 기업의 간단한 정보를 제공합니다. <br>
 - function화 시켜 SHSZ_table()로 작동하고, csv파일로 저장하고 싶으면 SHSZ_table(save_csv_file=TRUE)를 입력하시면 됩니다 <br>
 - 시간이 오래걸리므로 sheet만 참고하고 싶으시면 https://docs.google.com/spreadsheets/d/1AxvMtxLIJUWyfXUgM_LLo5XV5Bj7ODqcu6JMEtBelE4/edit?usp=sharing 를 보시면 됩니다.
@@ -62,9 +63,11 @@ R code for finance <br>
 
 - 중국상장기업 재무제표 이용방법 : cn_fs('코드번호') ex) cn_fs('000002') <br>
 
+# KRX종목테이블
 - KRX종목 테이블 사용법 : 콘솔창에 krx_stock_table()을 치면 전 종목이 테이블 형태로 띄어 집니다. krx_stock_table(save_csv_file = TRUE)을 입력하실 경우, 전 종목이 띄어짐과 동시에 csv파일로 기본 디렉토리에 저장됩니다(파일명:KRX__테이블.csv)
 krx_stock_table('kospi')를 입력하실 경우, kospi종목만, krx_stock_table('kosdaq')을 입력하실경우 kosdaq종목만, krx_stock_table('konex')를 입력하실 경우, konex종목만 띄우도록 수정하였습니다. 시장 명 뒤에 TRUE를 넣을 경우 csv파일로 저장됩니다, 예) krx_stock_table('kospi',TRUE)
 
+# k-score
 - k-score는 알트만의 z-core를 본 떠 만든 한국형 모델 k-score입니다. 상장되어 있는 전 종목에 이 모델을 적용시키는 코드이며, 한눈에 기업의 부실정도를 측정가능하도록 하는 모델입니다.<br>
 reference: <br>
 [1] https://m.blog.naver.com/PostView.nhn?blogId=haan79&logNo=10158008764&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F<br>
