@@ -2,6 +2,10 @@
 R code for finance <br>
 주식, 재무표, 데이터를 위해 만든 repo입니다. 
 
+# 2019.09.09 UPDATE
+1.시황이 업데이트 되었습니다
+- 미국,국제유가,골드시세,중국,일본,대만,한국시장의 시황을 제공합니다 <br>
+- 자세한 이용방법은 아래 '코드이용방법'을 참고하시기 바랍니다 <br>
 
 # 2019.05.06 UPDATE
 1. 중국상장기업목록이 업로드 되었습니다.
@@ -35,6 +39,14 @@ R code for finance <br>
 #현재 홍콩재무제표는 사용이 불가한 상태입니다. 하루 빨리 수정하도록 하겠습니다 <br>
 
 # 코드 이용방법
+- '시황'코드는 장 마감 시황 및 글로벌뉴스와 국내뉴스 해드라인을 제공합니다. <br>
+- 시황 출처는 인포스탁을 참고하였으며, 이미지출처는 네이버증권, 해드라인 출처는 모네타증권입니다 <br>
+- 올라와 있는 모든 시황을 동시에 보고 싶으시면 콘솔 창에 world_mkt_repo()를 입력하시기 바랍니다 <br>
+- 개별 마켓의 시황을 보고 싶으시면 world_mkt_repo(market="해당마켓코드")를 입력하시면 됩니다 <br>
+- 예를 들어 미국의 개별 시황을 보고 싶으시면 world_mkt_repo('us')를 입력하시면 되고, 한국의 개별 시황을 보고 싶으시면 world_mkt_repo('ks')를 입력하시면 됩니다. 해당마켓코드는 아래와 같습니다. <br>
+- 미국 : us, 유가 : cl, 골드 : gs, 중국 : cn, 일본 : jp, 대만 : tw, 한국 : ks <br>
+
+
 - 중국상장기업목록은 중국 본토 내 상장되어 있는 전 기업의 간단한 정보를 제공합니다. <br>
 - function화 시켜 SHSZ_table()로 작동하고, csv파일로 저장하고 싶으면 SHSZ_table(save_csv_file=TRUE)를 입력하시면 됩니다 <br>
 - 시간이 오래걸리므로 sheet만 참고하고 싶으시면 https://docs.google.com/spreadsheets/d/1AxvMtxLIJUWyfXUgM_LLo5XV5Bj7ODqcu6JMEtBelE4/edit?usp=sharing 를 보시면 됩니다.
