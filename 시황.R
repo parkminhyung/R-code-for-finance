@@ -232,6 +232,8 @@ world_mkt_repo = function(market = NULL) {
     if(length(grep("작성일자",CRUDEOIL))==0){
       cat("[국제 유가]","\n",
           CRUDEOIL[1])
+       cat("\n",
+          "\n")
     } else {
       cat("[국제 유가]")
       for (i in 1:(grep("작성일자",CRUDEOIL)[1])-1){cat(" ",CRUDEOIL[i],"\n")}
