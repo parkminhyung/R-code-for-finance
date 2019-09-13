@@ -164,6 +164,7 @@ kr_get_st = function(ticker){
       add_trace(data = df,
                 x= Date,
                 y = df1$y1,
+                type = "scatter",
                 mode = 'lines',
                 line = list(color = "green"),
                 name = "BUY") %>% 
@@ -176,6 +177,7 @@ kr_get_st = function(ticker){
                       arrowsize = .5,
                       ax = 20,
                       ay = -40,
+                      type = 'scatter',
                       mode = 'markers',
                       marker=list(size=10)) %>%
       print()
