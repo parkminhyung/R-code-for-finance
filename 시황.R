@@ -168,17 +168,12 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(US[grep("작성일자",US)[1]],gregexpr("작성일자",US[grep("작성일자",US)[1]])[[1]][1]+7,gregexpr("작성일자",US[grep("작성일자",US)[1]])[[1]][1]+16) != DATE){
-      US[1] = "마감시황을 아직 이용하실 수 없습니다."
-      US[2:grep("작성일자",US)[1]] = ""
-    } else {
-      US = US[1:grep("작성일자",US)[1]]
-    }
-    if(length(grep("작성일자",US))==0){
-      cat("[미국 시황]","\n",
-          US[1])
+      cat("[미국 시황]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
       cat("\n",
           "\n")
     } else {
+      US = US[1:grep("작성일자",US)[1]]
       cat("[미국 시황]")
       for (i in 1:(grep("작성일자",US)[1])-1){cat(" ",US[i],"\n")}
       cat("\n",
@@ -224,17 +219,12 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(CRUDEOIL[grep("작성일자",CRUDEOIL)[1]],gregexpr("작성일자",CRUDEOIL[grep("작성일자",CRUDEOIL)[1]])[[1]][1]+7,gregexpr("작성일자",CRUDEOIL[grep("작성일자",CRUDEOIL)[1]])[[1]][1]+16) != DATE){
-      CRUDEOIL[1] = "마감시황을 아직 이용하실 수 없습니다."
-      CRUDEOIL[2:grep("작성일자",CRUDEOIL)[1]] = ""
-    } else {
-      CRUDEOIL = CRUDEOIL[1:grep("작성일자",CRUDEOIL)[1]]
-    }
-    if(length(grep("작성일자",CRUDEOIL))==0){
-      cat("[국제 유가]","\n",
-          CRUDEOIL[1])
-       cat("\n",
+      cat("[국제 유가]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
+      cat("\n",
           "\n")
     } else {
+      CRUDEOIL = CRUDEOIL[1:grep("작성일자",CRUDEOIL)[1]]
       cat("[국제 유가]")
       for (i in 1:(grep("작성일자",CRUDEOIL)[1])-1){cat(" ",CRUDEOIL[i],"\n")}
       cat("\n",
@@ -253,17 +243,12 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(CN[grep("작성일자",CN)[1]],gregexpr("작성일자",CN[grep("작성일자",CN)[1]])[[1]][1]+7,gregexpr("작성일자",CN[grep("작성일자",CN)[1]])[[1]][1]+16) != DATE){
-      CN[1] = "마감시황을 아직 이용하실 수 없습니다."
-      CN[2:grep("작성일자",CN)[1]] = ""
-    } else {
-      CN = CN[1:grep("작성일자",CN)[1]]
-    }
-    if(length(grep("작성일자",CN))==0){
-      cat("[중국 시황]","\n",
-          CN[1])
+      cat("[중국 시황]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
       cat("\n",
           "\n")
     } else {
+      CN = CN[1:grep("작성일자",CN)[1]]
       cat("[중국 시황]")
       for (i in 1:(grep("작성일자",CN)[1])-1){cat(" ",CN[i],"\n")}
       cat("\n",
@@ -282,17 +267,12 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(JP[grep("작성일자",JP)[1]],gregexpr("작성일자",JP[grep("작성일자",JP)[1]])[[1]][1]+7,gregexpr("작성일자",JP[grep("작성일자",JP)[1]])[[1]][1]+16) != DATE){
-      JP[1] = "마감시황을 아직 이용하실 수 없습니다."
-      JP[2:grep("작성일자",JP)[1]] = ""
-    } else {
-      JP = JP[1:grep("작성일자",JP)[1]]
-    }
-    if(length(grep("작성일자",JP))==0){
-      cat("[일본 시황]","\n",
-          JP[1])
+      cat("[일본 시황]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
       cat("\n",
           "\n")
     } else {
+      JP = JP[1:grep("작성일자",JP)[1]]
       cat("[일본 시황]")
       for (i in 1:(grep("작성일자",JP)[1])-1){cat(" ",JP[i],"\n")}
       cat("\n",
@@ -311,17 +291,12 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(TW[grep("작성일자",TW)[1]],gregexpr("작성일자",TW[grep("작성일자",TW)[1]])[[1]][1]+7,gregexpr("작성일자",TW[grep("작성일자",TW)[1]])[[1]][1]+16) != DATE){
-      TW[1] = "마감시황을 아직 이용하실 수 없습니다."
-      TW[2:grep("작성일자",TW)[1]] = ""
-    } else {
-      TW = TW[1:grep("작성일자",TW)[1]]
-    }
-    if(length(grep("작성일자",TW))==0){
-      cat("[대만 시황]","\n",
-          TW[1])
+      cat("[대만 시황]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
       cat("\n",
           "\n")
     } else {
+      TW = TW[1:grep("작성일자",TW)[1]]
       cat("[대만 시황]")
       for (i in 1:(grep("작성일자",TW)[1])-1){cat(" ",TW[i],"\n")}
       cat("\n",
@@ -340,17 +315,12 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(KS[grep("작성일자",KS)[1]],gregexpr("작성일자",KS[grep("작성일자",KS)[1]])[[1]][1]+7,gregexpr("작성일자",KS[grep("작성일자",KS)[1]])[[1]][1]+16) != DATE){
-      KS[1] = "마감시황을 아직 이용하실 수 없습니다."
-      KS[2:grep("작성일자",KS)[1]] = ""
-    } else {
-      KS = KS[1:grep("작성일자",KS)[1]]
-    }
-    if(length(grep("작성일자",KS))==0){
-      cat("[코스피 시황]","\n",
-          KS[1])
+      cat("[코스피 시황]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
       cat("\n",
           "\n")
     } else {
+      KS = KS[1:grep("작성일자",KS)[1]]
       cat("[코스피 시황]")
       for (i in 1:(grep("작성일자",KS)[1])-1){cat(" ",KS[i],"\n")}
       cat("\n",
@@ -369,22 +339,18 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(KDQ[grep("작성일자",KDQ)[1]],gregexpr("작성일자",KDQ[grep("작성일자",KDQ)[1]])[[1]][1]+7,gregexpr("작성일자",KDQ[grep("작성일자",KDQ)[1]])[[1]][1]+16) != DATE){
-      KDQ[1] = "마감시황을 아직 이용하실 수 없습니다."
-      KDQ[2:grep("작성일자",KDQ)[1]] = ""
-    } else {
-      KDQ = KDQ[1:grep("작성일자",KDQ)[1]]
-    }
-    if(length(grep("작성일자",KDQ))==0){
-      cat("[코스닥 시황]","\n",
-          KDQ[1])
+      cat("[코스닥 시황]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
       cat("\n",
           "\n")
     } else {
+      KDQ = KDQ[1:grep("작성일자",KDQ)[1]]
       cat("[코스닥 시황]")
       for (i in 1:(grep("작성일자",KDQ)[1])-1){cat(" ",KDQ[i],"\n")}
       cat("\n",
           "\n")
     }
+    
   } else if(market == "us"){
     US = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=US' %>%
       read_html(encoding = "EUC-KR") %>%
@@ -398,17 +364,12 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(US[grep("작성일자",US)[1]],gregexpr("작성일자",US[grep("작성일자",US)[1]])[[1]][1]+7,gregexpr("작성일자",US[grep("작성일자",US)[1]])[[1]][1]+16) != DATE){
-      US[1] = "마감시황을 아직 이용하실 수 없습니다."
-      US[2:grep("작성일자",US)[1]] = ""
-    } else {
-      US = US[1:grep("작성일자",US)[1]]
-    }
-    if(length(grep("작성일자",US))==0){
-      cat("[미국 시황]","\n",
-          US[1])
+      cat("[미국 시황]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
       cat("\n",
           "\n")
     } else {
+      US = US[1:grep("작성일자",US)[1]]
       cat("[미국 시황]")
       for (i in 1:(grep("작성일자",US)[1])-1){cat(" ",US[i],"\n")}
       cat("\n",
@@ -437,10 +398,11 @@ world_mkt_repo = function(market = NULL) {
           gs[length(gs)],"\n",
           "\n")
     } else {
-      cat("[상품시황]","\n",
+      cat("[상품 시황]","\n",
           "상품시황을 아직 이용하실 수 없습니다","\n",
           "\n")
     }
+    
   } else if(market == "cl") {
     CRUDEOIL = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=PE' %>%
       read_html(encoding = "EUC-KR") %>%
@@ -454,20 +416,18 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(CRUDEOIL[grep("작성일자",CRUDEOIL)[1]],gregexpr("작성일자",CRUDEOIL[grep("작성일자",CRUDEOIL)[1]])[[1]][1]+7,gregexpr("작성일자",CRUDEOIL[grep("작성일자",CRUDEOIL)[1]])[[1]][1]+16) != DATE){
-      CRUDEOIL[1] = "마감시황을 아직 이용하실 수 없습니다."
-      CRUDEOIL[2:grep("작성일자",CRUDEOIL)[1]] = ""
+      cat("[국제 유가]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
+      cat("\n",
+          "\n")
     } else {
       CRUDEOIL = CRUDEOIL[1:grep("작성일자",CRUDEOIL)[1]]
-    }
-    if(length(grep("작성일자",CRUDEOIL))==0){
-      cat("[국제 유가]","\n",
-          CRUDEOIL[1])
-    } else {
       cat("[국제 유가]")
       for (i in 1:(grep("작성일자",CRUDEOIL)[1])-1){cat(" ",CRUDEOIL[i],"\n")}
       cat("\n",
           "\n")
     }
+    
   } else if(market == "cn") {
     CN = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=CH' %>%
       read_html(encoding = "EUC-KR") %>%
@@ -481,22 +441,18 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(CN[grep("작성일자",CN)[1]],gregexpr("작성일자",CN[grep("작성일자",CN)[1]])[[1]][1]+7,gregexpr("작성일자",CN[grep("작성일자",CN)[1]])[[1]][1]+16) != DATE){
-      CN[1] = "마감시황을 아직 이용하실 수 없습니다."
-      CN[2:grep("작성일자",CN)[1]] = ""
-    } else {
-      CN = CN[1:grep("작성일자",CN)[1]]
-    }
-    if(length(grep("작성일자",CN))==0){
-      cat("[중국 시황]","\n",
-          CN[1])
+      cat("[중국 시황]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
       cat("\n",
           "\n")
     } else {
+      CN = CN[1:grep("작성일자",CN)[1]]
       cat("[중국 시황]")
       for (i in 1:(grep("작성일자",CN)[1])-1){cat(" ",CN[i],"\n")}
       cat("\n",
           "\n")
     }
+    
   } else if(market == "jp") {
     JP = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=JP' %>%
       read_html(encoding = "EUC-KR") %>%
@@ -510,22 +466,18 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(JP[grep("작성일자",JP)[1]],gregexpr("작성일자",JP[grep("작성일자",JP)[1]])[[1]][1]+7,gregexpr("작성일자",JP[grep("작성일자",JP)[1]])[[1]][1]+16) != DATE){
-      JP[1] = "마감시황을 아직 이용하실 수 없습니다."
-      JP[2:grep("작성일자",JP)[1]] = ""
-    } else {
-      JP = JP[1:grep("작성일자",JP)[1]]
-    }
-    if(length(grep("작성일자",JP))==0){
-      cat("[일본 시황]","\n",
-          JP[1])
+      cat("[일본 시황]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
       cat("\n",
           "\n")
     } else {
+      JP = JP[1:grep("작성일자",JP)[1]]
       cat("[일본 시황]")
       for (i in 1:(grep("작성일자",JP)[1])-1){cat(" ",JP[i],"\n")}
       cat("\n",
           "\n")
     }
+    
   } else if(market == "tw") {
     TW = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=TW' %>%
       read_html(encoding = "EUC-KR") %>%
@@ -539,22 +491,18 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(TW[grep("작성일자",TW)[1]],gregexpr("작성일자",TW[grep("작성일자",TW)[1]])[[1]][1]+7,gregexpr("작성일자",TW[grep("작성일자",TW)[1]])[[1]][1]+16) != DATE){
-      TW[1] = "마감시황을 아직 이용하실 수 없습니다."
-      TW[2:grep("작성일자",TW)[1]] = ""
-    } else {
-      TW = TW[1:grep("작성일자",TW)[1]]
-    }
-    if(length(grep("작성일자",TW))==0){
-      cat("[대만 시황]","\n",
-          TW[1])
+      cat("[대만 시황]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
       cat("\n",
           "\n")
     } else {
+      TW = TW[1:grep("작성일자",TW)[1]]
       cat("[대만 시황]")
       for (i in 1:(grep("작성일자",TW)[1])-1){cat(" ",TW[i],"\n")}
       cat("\n",
           "\n")
     }
+    
   } else if(market == "ks") {
     KS = 'http://m.infostock.co.kr/daily/koreaIndex.asp?mode=w&STYPE=KS1' %>%
       read_html(encoding = "EUC-KR") %>%
@@ -568,22 +516,18 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(KS[grep("작성일자",KS)[1]],gregexpr("작성일자",KS[grep("작성일자",KS)[1]])[[1]][1]+7,gregexpr("작성일자",KS[grep("작성일자",KS)[1]])[[1]][1]+16) != DATE){
-      KS[1] = "마감시황을 아직 이용하실 수 없습니다."
-      KS[2:grep("작성일자",KS)[1]] = ""
-    } else {
-      KS = KS[1:grep("작성일자",KS)[1]]
-    }
-    if(length(grep("작성일자",KS))==0){
-      cat("[코스피 시황]","\n",
-          KS[1])
+      cat("[코스피 시황]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
       cat("\n",
           "\n")
     } else {
+      KS = KS[1:grep("작성일자",KS)[1]]
       cat("[코스피 시황]")
       for (i in 1:(grep("작성일자",KS)[1])-1){cat(" ",KS[i],"\n")}
       cat("\n",
           "\n")
     }
+    
     KDQ = 'http://m.infostock.co.kr/daily/koreaIndex.asp?mode=w&STYPE=KS2' %>%
       read_html(encoding = "EUC-KR") %>%
       html_nodes(.,xpath = '//*[@id="data"]') %>%
@@ -596,17 +540,12 @@ world_mkt_repo = function(market = NULL) {
       .[[1]] %>%
       .[3]
     if(substr(KDQ[grep("작성일자",KDQ)[1]],gregexpr("작성일자",KDQ[grep("작성일자",KDQ)[1]])[[1]][1]+7,gregexpr("작성일자",KDQ[grep("작성일자",KDQ)[1]])[[1]][1]+16) != DATE){
-      KDQ[1] = "마감시황을 아직 이용하실 수 없습니다."
-      KDQ[2:grep("작성일자",KDQ)[1]] = ""
-    } else {
-      KDQ = KDQ[1:grep("작성일자",KDQ)[1]]
-    }
-    if(length(grep("작성일자",KDQ))==0){
-      cat("[코스닥 시황]","\n",
-          KDQ[1])
+      cat("[코스닥 시황]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
       cat("\n",
           "\n")
     } else {
+      KDQ = KDQ[1:grep("작성일자",KDQ)[1]]
       cat("[코스닥 시황]")
       for (i in 1:(grep("작성일자",KDQ)[1])-1){cat(" ",KDQ[i],"\n")}
       cat("\n",
