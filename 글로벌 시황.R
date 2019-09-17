@@ -351,6 +351,34 @@ world_mkt_repo = function(market = NULL) {
           "\n")
     }
     
+    KST = 'http://m.infostock.co.kr/daily/koreaIndex.asp?mode=w&STYPE=KST' %>%
+      read_html(encoding = "EUC-KR") %>%
+      html_nodes(.,xpath = '//*[@id="data"]') %>%
+      as.character() %>%
+      strsplit("<br><br>") %>%
+      .[[1]] %>%
+      .[1:grep("작성일자",.)[1]]
+    
+    KST[1] = KST[1] %>% 
+      strsplit("\r\n\t") %>% 
+      .[[1]] %>%
+      .[3] 
+    
+    
+    if(substr(KST[grep("작성일자",KST)[1]],gregexpr("작성일자",KST[grep("작성일자",KST)[1]])[[1]][1]+7,gregexpr("작성일자",KST[grep("작성일자",KST)[1]])[[1]][1]+16) != DATE){
+      cat("[섹터]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
+      cat("\n",
+          "\n")
+    } else {
+      KDQ = KST[1:grep("작성일자",KST)[1]]
+      cat("[섹터]")
+      for (i in 1:(grep("작성일자",KST)[1])-1){cat(" ",KST[i],"\n")}
+      cat("\n",
+          "\n")
+    }
+    par(mfrow=c(1,1))
+    
   } else if(market == "us"){
     US = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=US' %>%
       read_html(encoding = "EUC-KR") %>%
@@ -551,6 +579,32 @@ world_mkt_repo = function(market = NULL) {
       cat("\n",
           "\n")
     }
+    
+    KST = 'http://m.infostock.co.kr/daily/koreaIndex.asp?mode=w&STYPE=KST' %>%
+      read_html(encoding = "EUC-KR") %>%
+      html_nodes(.,xpath = '//*[@id="data"]') %>%
+      as.character() %>%
+      strsplit("<br><br>") %>%
+      .[[1]] %>%
+      .[1:grep("작성일자",.)[1]]
+    
+    KST[1] = KST[1] %>% 
+      strsplit("\r\n\t") %>% 
+      .[[1]] %>%
+      .[3] 
+    if(substr(KST[grep("작성일자",KST)[1]],gregexpr("작성일자",KST[grep("작성일자",KST)[1]])[[1]][1]+7,gregexpr("작성일자",KST[grep("작성일자",KST)[1]])[[1]][1]+16) != DATE){
+      cat("[섹터]",'\n')
+      cat(' 마감시황을 아직 이용하실 수 없습니다.','\n')
+      cat("\n",
+          "\n")
+    } else {
+      KDQ = KST[1:grep("작성일자",KST)[1]]
+      cat("[섹터]")
+      for (i in 1:(grep("작성일자",KST)[1])-1){cat(" ",KST[i],"\n")}
+      cat("\n",
+          "\n")
+    }
+    
   } else {
     cat("시장 코드를 다시 확인해주세요","\n",
         "미국 : us","\n",
