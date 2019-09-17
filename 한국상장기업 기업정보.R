@@ -214,13 +214,19 @@ kr_get_st = function(ticker){
     html_nodes(xpath = paste0('//*[@id="content"]/div[2]/ul/li[',i,']/div/a')) %>%
     html_text(trim = TRUE)
   
-  if(length(news)==0){
-    cat("뉴스가 없습니다.","\n")
-  } else {
-    for (i in 1:5) {
-      cat(paste0('[',i,']',' ',
-                 news),'\n')
+  news = list()
+  for (i in 1:5) {
+    news[[i]] = paste0('http://thinkpool.com/itemanal/i/news/newsView.jsp?code=',ticker) %>%
+      read_html("EUC-KR") %>%
+      html_nodes(xpath = paste0('//*[@id="content"]/div[2]/ul/li[',i,']/div/a')) %>%
+      html_text(trim = TRUE)
+    if((length(news[[i]]) !=0)){
+      cat(paste0("[",i,"]"," ",news[[i]]),'\n')
     }
+  }
+  
+  if(length(unlist(news))==0){
+    cat("뉴스가 없습니다.","\n")
   }
   cat('\n')
   cat("[공시]",'\n')
