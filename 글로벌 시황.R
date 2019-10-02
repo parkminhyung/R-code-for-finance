@@ -665,7 +665,6 @@ world_mkt_repo = function(market = NULL) {
     cat("시장 코드를 다시 확인해주세요","\n",
         "미국 : us","\n",
         "유가 : cl","\n",
-        "골드 : gs","\n",
         "중국 : cn","\n",
         "일본 : jp","\n",
         "대만 : tw","\n",
