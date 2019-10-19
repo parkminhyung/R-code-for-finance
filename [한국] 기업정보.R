@@ -1,5 +1,6 @@
 kr_get_st = function(ticker){
   
+  options(warn = -1)
   library(rvest)
   library(plotly)
   library(quantmod)
@@ -11,71 +12,90 @@ kr_get_st = function(ticker){
   
   n = 10
   Multiplier = 1
-  ticker = ticker
+  
   df = paste0('http://www.thinkpool.com/itemanal/i/pop_6week.jsp?code=',ticker) %>%
     read_html() %>%
     html_nodes(xpath = '/html/body/table[2]') %>%
     html_table() %>%
     .[[1]]
+  
   colnames(df) = df[1,] 
   rownames(df) = df[,1]
   df = df[-1,] %>%
-    .[,c(5:7,2)] %>%
+    .[,c(5:7,2,8,4)] %>%
     .[sort(rownames(df),decreasing = FALSE),] %>%
     .[-nrow(.),]
-  for(i in 1:4){
+  
+  
+  for(i in 1:5){
     df[,i] = gsub(',','',x=df[,i]) %>%
       as.numeric()
   }
-  df = data.frame(df[,1:4])
-  url = paste0('http://thinkpool.com/itemanal/i/index.jsp?code=',ticker) %>%
-    read_html(encoding = 'EUC-KR') %>%
-    html_nodes(xpath = '//*[@id="itemcontainer"]/div/div[2]/div[2]/table') %>%
-    html_table() %>%
-    .[[1]] %>%
-    .[,2] %>%
-    .[-1] %>%
-    gsub(',','',x=.) %>% strsplit(" ") 
   
-  price = paste0('http://thinkpool.com/itemanal/i/index.jsp?code=',ticker) %>%
-    read_html(encoding = 'EUC-KR') %>%
-    html_nodes(xpath = '//*[@id="itemcontainer"]/div/div[1]/span[1]/strong') %>%
-    html_text() %>%
-    gsub(',','',x=.) %>%
-    as.numeric()
-  
-  cdf = data.frame("시가"=NA,
-                   "고가"=NA,
-                   "저가"=NA,
-                   "종가"=NA)
-  for (i in 1:3) {
-    cdf[1,i] = url[[i]][1] %>% as.numeric()
-    cdf[1,4] = price %>% as.numeric()
+  if(("00:00:00" < format(Sys.time(), "%X") & format(Sys.time(), "%X") < "09:00:00") == TRUE ){
+    Date.time = format(Sys.Date()-1,"%Y/%m/%d")
+  } else if(weekdays(Sys.Date())=="Saturday"){
+    Date.time = format(Sys.Date()-1,"%Y/%m/%d")
+  } else if(weekdays(Sys.Date())=="Sunday"){
+    Date.time = format(Sys.Date()-2,"%Y/%m/%d")
+  } else {
+    Date.time = format(Sys.Date(),"%Y/%m/%d")
   }
   
-  rownames(cdf) = format(Sys.Date(),"%Y/%m/%d")
-  if(rownames(df)[nrow(df)] == rownames(cdf)){
+  if(rownames(df)[nrow(df)] == Date.time){
     df = df
   } else {
-    df[(nrow(df)+1),] = cdf
+    df[nrow(df)+1,] = NA
+    
+    rownames(df)[length(rownames(df))] =format(Sys.Date(),"%Y/%m/%d")
+    
+    url = paste0('http://thinkpool.com/itemanal/i/index.jsp?code=',ticker) %>%
+      read_html(encoding = 'EUC-KR') %>%
+      html_nodes(xpath = '//*[@id="itemcontainer"]/div/div[2]/div[2]/table') %>%
+      html_table() %>%
+      .[[1]] 
+    url[5,] = url[1,6]
+    url = url[,2]%>%
+      .[-1] %>%
+      gsub(',','',x=.) %>% strsplit(" ") 
+    
+    for (i in 1:3) {
+      df[nrow(df),i] = url[[i]][1] %>% as.numeric()
+    }
+    
+    df[nrow(df),4] =  paste0('http://thinkpool.com/itemanal/i/index.jsp?code=',ticker) %>%
+      read_html(encoding = 'EUC-KR') %>%
+      html_nodes(xpath = '//*[@id="itemcontainer"]/div/div[1]/span[1]/strong') %>%
+      html_text() %>%
+      gsub(',','',x=.) %>%
+      as.numeric()
+    
+    df[nrow(df),5] = url[[4]][1] %>% 
+      substr(.,1,gregexpr("\\(",.)[[1]][1]-1) %>%
+      as.numeric()
+    
+    df[nrow(df),6] = paste0(round(((df[nrow(df),4]-df[nrow(df)-1,4])/df[nrow(df)-1,4])*100,digits = 2),"%")
   }
   
   df$TR = NA
   
   for (i in 1:(nrow(df)-1)) {
     k = cbind(abs(df[i+1,2]-df[i+1,3]),abs(df[i+1,2]-df[i,4]),abs(df[i+1,3]-df[i,4]))
-    df[i+1,5] = apply(k,1,max) %>%
+    df[i+1,7] = apply(k,1,max) %>%
       round(digits = 2)
   }
   
   df$ATR = SMA(df$TR,n=n) %>%
     round(digits = 2)
-  df[n,6] = NA
+  df[n,8] = NA
   df$UPPER_ATR_CLOSE = df[,4] + Multiplier*df$ATR
   df$LOWER_ATR_CLOSE = df[,4] - Multiplier*df$ATR
   df$UPPER_ATR_HIGH = df[,3] + Multiplier*df$ATR
   df$LOWER_ATR_HIGH = df[,2] - Multiplier*df$ATR
-  
+  df$UPPER_ATR_CLOSE = df[,4] + Multiplier*df$ATR
+  df$LOWER_ATR_CLOSE = df[,4] - Multiplier*df$ATR
+  df$UPPER_ATR_HIGH = df[,3] + Multiplier*df$ATR
+  df$LOWER_ATR_HIGH = df[,2] - Multiplier*df$ATR
   df$UPPER_SUPERTREND = ((df[,2]+df[,3])/2 + Multiplier*df$ATR) %>%
     round(digits = 2)
   
@@ -87,45 +107,45 @@ kr_get_st = function(ticker){
   df$SUPER_TREND = NA
   df$SIGNAL = NA
   
-  df[n+1,13] = df[n+1,11]
-  df[n+1,14] = df[n+1,12]
+  df[n+1,15] = df[n+1,13]
+  df[n+1,16] = df[n+1,14]
   
-  if(df[n+1,4] <= df[n+1,13]) {
-    df[n+1,15] = df[n+1,13]
+  if(df[n+1,4] <= df[n+1,15]) {
+    df[n+1,17] = df[n+1,15]
   } else {
-    df[n+1,15] = df[n+1,14]
+    df[n+1,17] = df[n+1,16]
   }
-  
+  ##+2
   for (i in n:(nrow(df)-2)) {
-    if(df[i+2,11] < df[i+1,13] | df[i+1,4] > df[i+1,13]) {
-      df[i+2,13] = df[i+2,11]
+    if(df[i+2,13] < df[i+1,15] | df[i+1,4] > df[i+1,15]) {
+      df[i+2,15] = df[i+2,13]
     } else {
-      df[i+2,13] = df[i+1,13]
+      df[i+2,15] = df[i+1,15]
     } 
-    if(df[i+2,12] > df[i+1,14] | df[i+1,4] < df[i+1,14]) {
-      df[i+2,14] = df[i+2,12]
+    if(df[i+2,14] > df[i+1,12] | df[i+1,4] < df[i+1,16]) {
+      df[i+2,16] = df[i+2,14]
     } else {
-      df[i+2,14] = df[i+1,14]
+      df[i+2,16] = df[i+1,16]
     }
   }
   
   for (i in n:(nrow(df)-2)) {
-    if(df[i+1,13] == df[i+1,15] & df[i+2,4] <= df[i+2,13]) {
-      df[i+2,15] = df[i+2,13]
-    } else if(df[i+1,13] == df[i+1,15] & df[i+2,4] >= df[i+2,13]) {
-      df[i+2,15] = df[i+2,14]
-    } else if(df[i+1,14] == df[i+1,15] & df[i+2,4] <= df[i+2,14]) {
-      df[i+2,15] = df[i+2,13]
-    } else if(df[i+1,14] == df[i+1,15] & df[i+2,4] >= df[i+2,14]) {
-      df[i+2,15] = df[i+2,14]
+    if(df[i+1,15] == df[i+1,17] & df[i+2,4] <= df[i+2,15]) {
+      df[i+2,17] = df[i+2,15]
+    } else if(df[i+1,15] == df[i+1,17] & df[i+2,4] >= df[i+2,15]) {
+      df[i+2,17] = df[i+2,16]
+    } else if(df[i+1,16] == df[i+1,17] & df[i+2,4] <= df[i+2,16]) {
+      df[i+2,17] = df[i+2,15]
+    } else if(df[i+1,16] == df[i+1,17] & df[i+2,4] >= df[i+2,16]) {
+      df[i+2,17] = df[i+2,16]
     }
   }
   
   for (i in n:(nrow(df)-1)) {
-    if(df[i+1,4] <= df[i+1,15]) {
-      df[i+1,16] = "SELL"
+    if(df[i+1,4] <= df[i+1,17]) {
+      df[i+1,18] = "SELL"
     } else {
-      df[i+1,16] = "BUY"
+      df[i+1,18] = "BUY"
     }
   }
   
@@ -133,55 +153,122 @@ kr_get_st = function(ticker){
   df1 = data.frame(row.names = Date)
   df1$y1 = NA
   df1$y2 = NA
-  df1[grep(pattern = "BUY", x= df[,16]),1] = df[grep(pattern = "BUY", x= df[,16]),15]
+  df1[grep(pattern = "BUY", x= df[,18]),1] = df[grep(pattern = "BUY", x= df[,18]),17]
   
   for (i in (n+1):(nrow(df1)-1)) {
-    if(df[i,16] == df[i+1,16]) {
+    if(df[i,18] == df[i+1,18]) {
       df1[i+1,2] = NA
-    } else if(df[i,16]=="SELL" & df[i+1,16] == "BUY"){
+    } else if(df[i,18]=="SELL" & df[i+1,18] == "BUY"){
       df1[i+1,2] = "BUY signal"
-    } else if(df[i,16]=="BUY" & df[i+1,16] == "SELL"){
+    } else if(df[i,18]=="BUY" & df[i+1,18] == "SELL"){
       df1[i+1,2] = "SELL signal"
     }
   }
   
-  try({
-    plot_ly(x = Date,
-            type = "candlestick",
-            open = df[,1],
-            high = df[,2],
-            low = df[,3],
-            close = df[,4],
-            name = paste0(ticker,":CHART"))  %>%
-      layout(title = paste0(name,"[",ticker,"]"," : 주가차트")) %>%
-      add_trace(data = df,
-                x= Date,
-                y= df[,15],
-                type = "scatter",
-                mode = "lines",
-                line = list(color = "red"),
-                name = "SELL") %>%
-      add_trace(data = df,
-                x= Date,
-                y = df1$y1,
-                type = "scatter",
-                mode = 'lines',
-                line = list(color = "green"),
-                name = "BUY") %>% 
-      add_annotations(x=Date[grep(pattern = "BUY signal|SELL signal",x=df1[,2])],
-                      y=df[grep(pattern = "BUY signal|SELL signal",x=df1[,2]),15],
-                      text = df1[grep(pattern = "BUY signal|SELL signal",x=df1[,2]),2],
-                      xref = "x",
-                      yref = "y",
-                      showarrow=TRUE,
-                      arrowsize = .5,
-                      ax = 20,
-                      ay = -40,
-                      type = 'scatter',
-                      mode = 'markers',
-                      marker=list(size=10)) %>%
-      print()
-  },silent = T)
+  
+  n.n = 14
+  df$SMA = SMA(df[,4],n=n.n)
+  df[,20:21]=NA
+  
+  for (i in n.n:nrow(df)) {
+    df[i,20] = df[i,19] + sd(df[(i-(n.n-1)):i,4])*2
+    df[i,21] = df[i,19] - sd(df[(i-(n.n-1)):i,4])*2
+  }
+  
+  ### Vol.Pro
+  df2 = df[nrow(df):1,1:5]
+  end = nrow(df2)-13
+  
+  
+  tick_size = round((max(df2[1:end,4]) - min(df2[1:end,4]))/n,digits = 0)
+  
+  for (i in 1:nrow(df2)) {
+    df2[i,6] = df2[i,5]/(df2[i,2]-df2[i,3]+tick_size)*tick_size 
+  }
+  df2[,6] = df2[,6] %>% round(.,digits = 2)
+  
+  df2$value_length = NA
+  
+  for (i in 1:end) {
+    df2[i,7] = (max(df2[1:end,2])-tick_size*(i-1))
+    if(df2[i,7] < 0){
+      df2[i,7] = 0
+    }
+  }
+  
+  df2[,7] = round(df2[,7],digits = 2)
+  
+  df2$value = NA
+  
+  for (i in 1:nrow(df2)) {
+    df2[i,8] = sum(df2[which(df2[1:end,2]>=df2[i,7]),6]) - 
+      sum(df2[which(df2[1:end,3]>df2[i,7]),6])
+  }
+  
+  #plot
+  Date = as.Date(rownames(df))
+  p = plot_ly(x=Date,
+              open = df[,1],
+              high = df[,2],
+              low = df[,3],
+              close = df[,4],
+              type = "candlestick")  %>%
+    add_trace(x=df2[1:(which(df2[,8]==0)[1]-1),8],
+              y=df2[1:(which(df2[,8]==0)[1]-1),7],
+              type = 'bar',
+              orientation = 'h',xaxis = "x2",
+              name = "Vol.p",
+              marker = list(color = 'rgba(234,104,61,0.3)',
+                            line = list(color = 'rgb(8,48,107)'))) %>%
+    layout(title = paste0(name,"[",ticker,"]"," : 현재가 ",df[nrow(df),4],"(",df[nrow(df),6],")"),
+           xaxis = list(rangeslider = list(visible = F), 
+                        side = "bottom",
+                        showgrid = TRUE),
+           xaxis2 = list(overlaying = "x",
+                         side= "top",
+                         autotick = FALSE,
+                         tickmode = "array")) %>% 
+    add_ribbons(ymax = df[,20],
+                ymin = df[,21],
+                line = list(color = 'rgba(7, 164, 181, 0.05)'),
+                fillcolor = 'rgba(100, 110, 210, 0.2)',
+                name = "BBand") %>%
+    add_lines(y=df[,19],line = list(color = 'rgb(199, 99, 125)',width = 1),
+              name = paste0(n.n,"-SMA")) %>%
+    add_trace(data = df,
+              x= Date,
+              y= df[,17],
+              type = "scatter",
+              mode = "lines",
+              line = list(color = "red"),
+              name = "SELL") %>%
+    add_trace(data = df,
+              x= Date,
+              y = df1$y1,
+              type = "scatter",
+              mode = 'lines',
+              line = list(color = "green"),
+              name = "BUY") %>% 
+    add_annotations(x=Date[grep(pattern = "BUY signal|SELL signal",x=df1[,2])],
+                    y=df[grep(pattern = "BUY signal|SELL signal",x=df1[,2]),17],
+                    text = df1[grep(pattern = "BUY signal|SELL signal",x=df1[,2]),2],
+                    xref = "x",
+                    yref = "y",
+                    showarrow=TRUE,
+                    arrowsize = .5,
+                    ax = 20,
+                    ay = -40,
+                    type = 'scatter',
+                    mode = 'markers',
+                    marker=list(size=10))
+  
+  pp = plot_ly(x=Date,
+               y=df[,5],
+               name = "Vol",
+               marker = list(color = 'rgb(49, 193, 160)'),type = 'bar') %>%
+    layout(yaxis = list(title = "Vol"))
+  
+  subplot(p,pp,shareX = TRUE,nrows = 2,heights = c(0.8,0.2)) %>% print()
   
   tb = paste0('http://www.thinkpool.com/itemanal/i/index.jsp?mcd=Q0&code=',ticker,'&Gcode=000_002') %>%
     read_html(encoding = 'EUC-KR') %>%
@@ -240,7 +327,7 @@ kr_get_st = function(ticker){
   }
   cat('\n')
   cat('===========================',"PRICE INFO",'===========================','\n')
-  tail(df[,1:4]) %>% print()
+  tail(df[,c(1:4,6,5)]) %>% print()
   cat('===================================================================')
   
 }
