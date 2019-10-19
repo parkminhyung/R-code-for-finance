@@ -32,12 +32,16 @@ kr_get_st = function(ticker){
       as.numeric()
   }
   
-  if(("00:00:00" < format(Sys.time(), "%X") & format(Sys.time(), "%X") < "09:00:00") == TRUE ){
+  '%ni%' = Negate('%in%')
+  
+  if(weekdays(Sys.Date()) %ni% c("Saturday", "Sunday") & ("00:00:00" < format(Sys.time(), "%X")) & (format(Sys.time(), "%X") < "09:00:00")==TRUE) {
     Date.time = format(Sys.Date()-1,"%Y/%m/%d")
   } else if(weekdays(Sys.Date())=="Saturday"){
     Date.time = format(Sys.Date()-1,"%Y/%m/%d")
   } else if(weekdays(Sys.Date())=="Sunday"){
     Date.time = format(Sys.Date()-2,"%Y/%m/%d")
+  } else if(weekdays(Sys.Date()) == "Monday" & ("00:00:00" < format(Sys.time(), "%X")) & (format(Sys.time(), "%X") < "09:00:00") == TRUE){
+    Date.time = format(Sys.Date()-3,"%Y/%m/%d")
   } else {
     Date.time = format(Sys.Date(),"%Y/%m/%d")
   }
