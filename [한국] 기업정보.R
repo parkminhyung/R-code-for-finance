@@ -212,7 +212,8 @@ kr_get_st = function(ticker){
               high = df[,2],
               low = df[,3],
               close = df[,4],
-              type = "candlestick")  %>%
+              type = "candlestick",
+              name = "CandleStick")  %>%
     add_trace(x=df2[1:(which(df2[,8]==0)[1]-1),8],
               y=df2[1:(which(df2[,8]==0)[1]-1),7],
               type = 'bar',
