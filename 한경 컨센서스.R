@@ -82,9 +82,9 @@ hk_consensus = function(categ,start_date=NULL,end_date=NULL){
     i = readline("열람하고 싶은 리포트 number을 기입 해 주세요 num : ")
     browseURL(pdf[as.integer(i)])
   }
-  print(number())
+  cat(number())
   
   while(askYesNo("계속 열람하시겠습니까?") == TRUE){
-    print(number())
+    cat(number())
   }
 }
