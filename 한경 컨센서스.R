@@ -1,9 +1,14 @@
 hk_consensus = function(categ,start_date=NULL,end_date=NULL){
+  
   library(rvest)
   
-  if(is.null(start_date)){
+  if(weekdays(Sys.Date())=="Sunday"& is.null(start_date)){
     start_date = Sys.Date()-2
-  } 
+  } else if(weekdays(Sys.Date()) == "Monday" & is.null(start_date) & ("00:00:00" < format(Sys.time(), "%X")) & (format(Sys.time(), "%X") < "09:00:00") == TRUE){
+    start_date = Sys.Date()-3
+  } else if(is.null(start_date)){
+    start_date = Sys.Date()-1
+  }
   
   if(is.null(end_date)){
     end_date = Sys.Date()
@@ -20,7 +25,6 @@ hk_consensus = function(categ,start_date=NULL,end_date=NULL){
   } else if (categ == "b"){
     categ = "business"
   } else {
-    
     cat("잘못입력하셨습니다. 리포트를 보시려면 categ를 다음과 같이 설정해주세요","\n",
         "\n",
         "파생상품: d","\n",
