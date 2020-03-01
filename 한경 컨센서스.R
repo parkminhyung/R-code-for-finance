@@ -1,7 +1,14 @@
-
-hk_consensus = function(categ){
+hk_consensus = function(categ,start_date=NULL,end_date=NULL){
   
   library(rvest)
+  
+  if(is.null(start_date)){
+    start_date = Sys.Date()-2
+  } 
+  
+  if(is.null(end_date)){
+    end_date = Sys.Date()
+  } 
   
   if(categ == "d") {
     categ = "derivative"
@@ -24,22 +31,53 @@ hk_consensus = function(categ){
         "기업 : b","\n")
   }
   
-  url = paste0('http://consensus.hankyung.com/apps.analysis/analysis.list?skinType=',categ) %>%
-    read_html(encoding = "EUC-KR") 
+  num = 1
   
-  url %>%
-    html_nodes(xpath = '//*[@id="contents"]/div[2]/table') %>%
-    html_table(fill = TRUE) %>%
-    .[[1]] %>%
-    .[,1:5] %>%
-    View(title = "Contents")
+  url = paste0('http://consensus.hankyung.com/apps.analysis/analysis.list?skinType=',categ,
+               '&sdate=',
+               start_date,'&edate=',
+               end_date,'&order_type=&now_page=',num)
   
-  pdf = url %>%
+  num = url %>% 
+    read_html(encoding = "EUC-KR") %>%
     html_nodes('div') %>%
     html_nodes('a') %>%
     html_attr('href') %>%
-    .[grep("downpdf",.)] %>%
-    paste0("http://consensus.hankyung.com",.)
+    tail(.,2) %>%
+    .[1] %>% 
+    substr(gregexpr('page=',.)[[1]][1]+5,nchar(.))
+  
+  tb = data.frame()
+  pdf = c()
+  
+  for (i in 1:num) {
+    
+    url = paste0('http://consensus.hankyung.com/apps.analysis/analysis.list?skinType=',categ,
+                 '&sdate=',
+                 start_date,'&edate=',
+                 end_date,'&order_type=&now_page=',i)
+    
+    df = url %>% 
+      read_html(encoding = "EUC-KR") %>%
+      html_nodes(xpath = '//*[@id="contents"]/div[2]/table') %>%
+      html_table(fill = TRUE) %>%
+      .[[1]] %>%
+      .[,1:5] 
+    
+    pdf1 = url %>%
+      read_html(encoding = "EUC-KR") %>%
+      html_nodes('div') %>%
+      html_nodes('a') %>%
+      html_attr('href') %>%
+      .[grep("downpdf",.)] %>%
+      paste0("http://consensus.hankyung.com",.)
+    
+    tb = rbind(tb,df) 
+    pdf = c(pdf,pdf1)
+  }
+  
+  tb %>%
+    View(title = "Contents")
   
   number = function() {
     i = readline("열람하고 싶은 리포트 number을 기입 해 주세요 num : ")
@@ -47,9 +85,3 @@ hk_consensus = function(categ){
   }
   print(number())
 }
-
-
-
-
-
-
