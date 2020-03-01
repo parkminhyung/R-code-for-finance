@@ -1,5 +1,4 @@
 hk_consensus = function(categ,start_date=NULL,end_date=NULL){
-  
   library(rvest)
   
   if(is.null(start_date)){
@@ -84,4 +83,8 @@ hk_consensus = function(categ,start_date=NULL,end_date=NULL){
     browseURL(pdf[as.integer(i)])
   }
   print(number())
+  
+  while(askYesNo("계속 열람하시겠습니까?") == TRUE){
+    print(number())
+  }
 }
