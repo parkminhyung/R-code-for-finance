@@ -1,6 +1,7 @@
 hk_consensus = function(categ,start_date=NULL,end_date=NULL){
   
   library(rvest)
+  options(warn = -1)
   
   if(weekdays(Sys.Date())=="Sunday"& is.null(start_date)){
     start_date = Sys.Date()-2
