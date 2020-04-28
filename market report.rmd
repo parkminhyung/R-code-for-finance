@@ -1,0 +1,646 @@
+---
+title: "R+port"
+output:
+  flexdashboard::flex_dashboard:
+    theme: flatly
+author: Allen park
+---
+##### ***Date: `r format(Sys.Date(),"%Y.%m.%d")`***
+
+<br>
+
+> 미국 시황
+
+---
+
+```{r setup, echo = F, message = F}
+library(rvest); library(knitr); library(flexdashboard); library(plotly)
+
+'%ni%' = Negate('%in%')
+
+if(weekdays(Sys.Date()) %ni% c("Saturday", "Sunday","Monday") & ("00:00:00" < format(Sys.time(), "%X")) & (format(Sys.time(), "%X") < "09:00:00")==TRUE) {
+    DATE = format(Sys.Date()-1,"%Y/%m/%d")
+  } else if(weekdays(Sys.Date())=="Saturday"){
+    DATE = format(Sys.Date()-1,"%Y/%m/%d")
+  } else if(weekdays(Sys.Date())=="Sunday"){
+    DATE = format(Sys.Date()-2,"%Y/%m/%d")
+  } else if(weekdays(Sys.Date()) == "Monday" & ("00:00:00" < format(Sys.time(), "%X")) & (format(Sys.time(), "%X") < "09:00:00") == TRUE){
+    DATE = format(Sys.Date()-3,"%Y/%m/%d")
+  } else {
+    DATE = format(Sys.Date(),"%Y/%m/%d")
+  }
+options(warn = -1)
+
+red = 'rgb(241, 52, 10)'
+blue = 'rgb(44, 63, 204)'
+
+us= c(".dji",".IXIC",".INX")
+usname = c("DOW","NASDAQ","S&P500")
+
+eu = c("UKX","CAC","DAX")
+euname = c("FTSE","CAC40","DAX30")
+
+cmm = c("CL","GC")
+cmmname = c("WTI","GOLD")
+
+cn = c("1.000001","0.399001","0.399006")
+cnname = c("상해종합","심천성분","창업판")
+
+as = c("TWJQ","NKY")
+asname = c("가권지수","NIKKEI225")
+
+market_intra = function (market){
+  if((market %in% us)|(market %in% cn)) {
+    if(market %in% us){
+      dd= paste0('https://stock.finance.sina.com.cn/usstock/api/jsonp_v2.php/var%20t1$dji=/US_MinlineNService.getMinline?symbol=',market) %>%
+        read_html() %>%
+        html_nodes('body') %>%
+        html_text(trim = TRUE) %>%
+        strsplit(x=.,split = ';') %>% .[[1]] %>% .[3:length(.)]
+      pp = paste0('https://hq.sinajs.cn/?_=0.5857868646128803&list=gb_$',substr(tolower(market),2,nchar(market))) %>%
+        read_html() %>%
+        html_nodes('body') %>%
+        html_text(trim = TRUE) %>%
+        strsplit(x=.,split = ",") %>% .[[1]] %>% .[c(2,27)] %>% as.numeric() %>% .[2]
+
+        df = data.frame()
+      for (i in 1:length(dd)){
+        df[i,1:4] = dd[i] %>% strsplit(x=.,',') %>% .[[1]] %>% .[1:4]
+        df[nrow(df),4] = df[nrow(df),4] %>% gsub(x=.,pattern = '")',replacement = '')
+      }
+    } else if (market %in% cn){
+      str = paste0('http://push2his.eastmoney.com/api/qt/stock/trends2/get?cb=jQuery112408673178994775943_1588072412033&secid=',market,'&ut=fa5fd1943c7b386f172d6893dbfba10b&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6%2Cf7%2Cf8%2Cf9%2Cf10%2Cf11&fields2=f51%2Cf53%2Cf56%2Cf58&iscr=0&ndays=1') %>%
+        read_html() %>%
+        html_nodes('body')%>% html_text(trim=TRUE) %>%
+        strsplit(x=.,split = '\\[|]') %>% .[[1]]
+      pp = str[1] %>% strsplit(x=.,":|\\,") %>% .[[1]] %>% .[27] %>% as.numeric()
+      d = str[2] %>% strsplit(x=.,split = "\\,\"") %>% .[[1]]
+      df = data.frame()
+      for (i in 1:length(d)){
+        df[i,1:2] = d[i] %>% strsplit(x=.,split = " |,") %>% .[[1]] %>% .[c(2,4)]
+        df[i,3] = 0
+        df[i,4] = d[i] %>% strsplit(x=.,split = " |,") %>% .[[1]] %>% .[3]
+      }
+    }
+    df[2] = df[2] %>% lapply(as.numeric)
+    df[4] = df[4] %>% lapply(as.numeric)
+    df$"BLUE" = NA
+    df$"RED" = NA
+    df$"prep" = pp
+    for (i in 1:nrow(df)) {
+      df[i,5] = ifelse(df[i,4] <pp,df[i,4],NA)
+      df[i,6] = ifelse(df[i,4] >= pp,df[i,4],NA)
+    }
+    df[c(1,2,4:7)]
+  } else {
+    if((market %in% eu)|(market %in% as)){
+      str = paste0('https://stock.finance.sina.com.cn/usstock/api/jsonp.php/var%20t1znb_',market,'=/Global_IndexService.getTimeLine?symbol=',market) %>%
+        read_html() %>%
+        html_nodes('body') %>% html_text(trim = TRUE) %>% gsub(x=.,pattern = '\\"',replacement = "") %>%
+        strsplit(x=.,split="\\],\\[") %>% .[[1]]
+      pp = str[1] %>% strsplit(x=.,",") %>% .[[1]] %>% .[2] %>% as.numeric()
+    } else if (market %in% cmm){
+      str= paste0('https://stock2.finance.sina.com.cn/futures/api/openapi.php/GlobalFuturesService.getGlobalFuturesMinLine?symbol=',market,'&callback=var%20t1hf_',market) %>%
+        read_html() %>%
+        html_nodes('body') %>% html_text(trim = TRUE) %>% gsub(x=.,pattern = '\\"',replacement = "") %>%
+        strsplit(x=.,split="\\],\\[") %>% .[[1]]
+      pp = str[1] %>% strsplit(x=.,",") %>% .[[1]] %>% .[3] %>% as.numeric()
+    }
+    df = data.frame()
+    for (i in 2:length(str)) df[i,1:2] = str[i] %>% strsplit(',') %>% unlist() %>% .[1:2]
+    df[2] = df[2] %>% lapply(as.numeric)
+    df$"RED" = NA
+    df$"BLUE"= NA
+    df$"PREP" = pp
+    for (i in 1:nrow(df)){
+      df[i,3]= ifelse(df[i,2] >= pp, df[i,2], NA)
+      df[i,4] = ifelse(df[i,2] < pp, df[i,2], NA)
+    }
+  }
+  df
+}
+
+i = 1:length(us)
+i %>% lapply(function (i){
+  market = us[i]
+  name = usname[i]
+  x = market_intra(market)[[1]]
+  yb = market_intra(market)[[5]]
+  yr = market_intra(market)[[6]]
+  v = market_intra(market)[[2]]
+  p = tail(market_intra(market)[[4]],n=1)
+  pp = tail(market_intra(market)[[7]],n=1)
+
+  p1 = plot_ly(x=x,y=yr,type = 'scatter',mode = 'lines',line = list(color = red)) %>%
+  add_trace(y=yb,line = list(color= blue)) %>%
+  layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = 1,showarrow = FALSE)) %>%
+    add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
+    layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
+  p2 = plot_ly(x=x,y=v,mode = 'bar')
+  subplot(p1,p2,nrows = 2,heights = c(.8,.2),shareX = TRUE)
+}) %>% subplot() %>% layout(showlegend = FALSE)
+
+Date.time = format(as.Date(DATE),"%Y%m%d")
+## images
+
+url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%eb%89%b4%ec%9a%95-%ec%a6%9d%ec%8b%9c/' %>%
+  read_html() %>%
+  html_nodes(xpath = '//div[@class="headline_highlighted_column_block"]') %>% .[1] %>%
+  html_nodes('a') %>%
+  html_attr('href')
+
+tex = url %>%
+  read_html() %>%
+  html_nodes(xpath = '//div[@class="single_full_news_element fullwidth"]') %>%
+  html_text(trim = TRUE) %>%
+  strsplit(x=.,split = '\n \n') %>% .[[1]]
+
+if(length(tex) == 2){
+  tex = tex[1] %>%
+  strsplit(x=.,split = "\n") %>%
+  .[[1]] %>% .[12:length(.)]
+} else {
+  tex = tex[3] %>%
+    strsplit(x=.,split = "\n") %>%
+    .[[1]]
+}
+
+i = 1:length(tex) %>% lapply(function (i){
+    cat(" ",tex[i],"\n")
+    cat("\n")
+  })
+
+```
+<br>
+
+>골드 시황
+
+---
+
+```{r}
+i = 2
+i %>% lapply(function (i){
+  market = cmm[i]
+  name = cmmname[i]
+  x = market_intra(market)[[1]]
+  yb = market_intra(market)[[4]]
+  yr = market_intra(market)[[3]]
+  p = tail(market_intra(market)[[2]],n=1)
+  pp = tail(market_intra(market)[[5]],n=1)
+
+   p1 = plot_ly(x=x,y=yr,type = 'scatter',mode = 'lines',line = list(color = red)) %>%
+  add_trace(y=yb,line = list(color= blue)) %>%
+  layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = 1,showarrow = FALSE)) %>%
+    add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
+    layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
+}) %>% subplot() %>% layout(showlegend = FALSE)
+
+#############
+#############
+
+url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%ec%a3%bc%ec%9a%94-%ea%b2%bd%ec%a0%9c-%eb%89%b4%ec%8a%a4/' %>%
+  read_html() %>%
+  html_nodes(xpath = '//div[@class="headline_highlighted_column_block"]')
+
+url = url[url %>% grep(x=.,pattern = '금값') %>% .[1]] %>%
+  html_nodes('a') %>%
+  html_attr('href')
+
+tex = url %>%
+  read_html() %>%
+  html_nodes(xpath = '//div[@class="single_full_news_element fullwidth"]') %>%
+  html_text(trim = TRUE) %>%
+  strsplit(x=.,split = '\n\n') %>% .[[1]] %>% .[3] %>%
+  strsplit(x=.,split = "\n") %>% .[[1]]
+
+i = (1:(length(tex)-3)) %>% lapply(function (i){
+  cat(" ",tex[i],"\n")
+  cat("\n")
+})
+```
+<br>
+
+> 국제 유가
+
+---
+
+```{r}
+i = 1
+i %>% lapply(function (i){
+  market = cmm[i]
+  name = cmmname[i]
+  x = market_intra(market)[[1]]
+  yb = market_intra(market)[[4]]
+  yr = market_intra(market)[[3]]
+  p = tail(market_intra(market)[[2]],n=1)
+  pp = tail(market_intra(market)[[5]],n=1)
+
+   p1 = plot_ly(x=x,y=yr,type = 'scatter',mode = 'lines',line = list(color = red)) %>%
+  add_trace(y=yb,line = list(color= blue)) %>%
+  layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = 1,showarrow = FALSE)) %>%
+    add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
+    layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
+}) %>% subplot() %>% layout(showlegend = FALSE)
+
+#############################################################################
+#############################################################################
+
+url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%ec%a3%bc%ec%9a%94-%ea%b2%bd%ec%a0%9c-%eb%89%b4%ec%8a%a4/' %>%
+  read_html() %>%
+  html_nodes(xpath = '//div[@class="headline_highlighted_column_block"]')
+
+url = url[url %>% grep(x=.,pattern = '국제유가') %>% .[1]] %>%
+  html_nodes('a') %>%
+  html_attr('href')
+
+tex = url %>%
+  read_html() %>%
+  html_nodes(xpath = '//div[@class="single_full_news_element fullwidth"]') %>%
+  html_text(trim = TRUE) %>%
+  strsplit(x=.,split = '\n\n') %>% .[[1]] %>% .[3] %>%
+  strsplit(x=.,split = "\n") %>% .[[1]]
+
+i = (1:(length(tex)-3)) %>% lapply(function (i){
+  cat(" ",tex[i],"\n")
+  cat("\n")
+})
+
+```
+
+<br>
+
+> 유럽시황
+
+---
+
+```{r}
+
+i = 1:length(eu)
+i %>% lapply(function (i){
+  market = eu[i]
+  name = euname[i]
+  x = market_intra(market)[[1]]
+  yb = market_intra(market)[[4]]
+  yr = market_intra(market)[[3]]
+  p = tail(market_intra(market)[[2]],n=1)
+  pp = tail(market_intra(market)[[5]],n=1)
+
+   p1 = plot_ly(x=x,y=yr,type = 'scatter',mode = 'lines',line = list(color = red)) %>%
+  add_trace(y=yb,line = list(color= blue)) %>%
+  layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = 1,showarrow = FALSE)) %>%
+    add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
+    layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
+}) %>% subplot() %>% layout(showlegend = FALSE)
+
+############################
+############################
+url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%ec%9c%a0%eb%9f%bd-%ec%a6%9d%ec%8b%9c/' %>%
+  read_html() %>%
+  html_nodes(xpath = '//div[@class="headline_highlighted_column_block"]') %>% .[1] %>%
+  html_nodes('a') %>%
+  html_attr('href')
+
+tex = url %>%
+  read_html() %>%
+  html_nodes(xpath = '//div[@class="single_full_news_element fullwidth"]') %>%
+  html_text(trim = TRUE) %>%
+  strsplit(x=.,split = '\n \n') %>% .[[1]] %>% .[3] %>%
+  strsplit(x=.,split = "\n") %>%
+  .[[1]]
+
+i = 1:length(tex) %>% lapply(function (i){
+    cat(" ",tex[i],"\n")
+    cat("\n")
+  })
+
+```
+<br>
+
+> 중국 시황
+
+---
+
+```{r}
+
+i = 1:length(cn)
+i %>% lapply(function (i){
+  market = cn[i]
+  name = cnname[i]
+  x = market_intra(market)[[1]]
+  yb = market_intra(market)[[5]]
+  yr = market_intra(market)[[6]]
+  v = market_intra(market)[[2]]
+  p = tail(market_intra(market)[[4]],n=1)
+  pp = tail(market_intra(market)[[7]],n=1)
+
+  p1 = plot_ly(x=x,y=yr,type = 'scatter',mode = 'lines',line = list(color = red)) %>%
+  add_trace(y=yb,line = list(color= blue)) %>%
+  layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = 1,showarrow = FALSE)) %>%
+    add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
+    layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
+  p2 = plot_ly(x=x,y=v,mode = 'bar')
+  subplot(p1,p2,nrows = 2,heights = c(.8,.2),shareX = TRUE)
+}) %>% subplot() %>% layout(showlegend = FALSE)
+
+###########################################################################
+###########################################################################
+
+tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=CH' %>%
+  read_html(encoding = "EUC-KR") %>%
+  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
+  strsplit(x=.,split = '<br><br>') %>% .[[1]]
+d = tex[grep("작성일자",tex)] %>%
+  substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-10) %>% .[1]
+if(DATE == d) {
+  i = (2:(grep("작성일자",tex)[1]-1)) %>% lapply(function (i){
+  tex[i] %>% cat(" ",., '\n')
+  cat('\n')
+  })
+} else {
+  cat("마감시황을 준비하고 있습니다.","\n")
+  cat("\n")
+}
+
+```
+<br>
+
+> 일본 시황
+
+---
+
+```{r}
+i = 2
+i %>% lapply(function (i){
+  market = as[i]
+  name = asname[i]
+  x = market_intra(market)[[1]]
+  yb = market_intra(market)[[4]]
+  yr = market_intra(market)[[3]]
+  p = tail(market_intra(market)[[2]],n=1)
+  pp = tail(market_intra(market)[[5]],n=1)
+
+   p1 = plot_ly(x=x,y=yr,type = 'scatter',mode = 'lines',line = list(color = red)) %>%
+  add_trace(y=yb,line = list(color= blue)) %>%
+  layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = 1,showarrow = FALSE)) %>%
+    add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
+    layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
+}) %>% subplot() %>% layout(showlegend = FALSE)
+
+###################
+##################
+tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=JP' %>%
+  read_html(encoding = "EUC-KR") %>%
+  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
+  strsplit(x=.,split = '<br><br>') %>% .[[1]]
+d = tex[grep("작성일자",tex)] %>%
+  substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-10) %>% .[1]
+if(DATE == d) {
+  i = (2:(grep("작성일자",tex)[1]-1)) %>% lapply(function (i){
+  tex[i] %>% cat(" ",., '\n')
+  cat('\n')
+  })
+} else {
+  cat("마감시황을 준비하고 있습니다.","\n")
+  cat("\n")
+}
+```
+<br>
+
+> 대만 시황
+
+---
+
+```{r}
+
+i = 1
+i %>% lapply(function (i){
+  market = as[i]
+  name = asname[i]
+  x = market_intra(market)[[1]]
+  yb = market_intra(market)[[4]]
+  yr = market_intra(market)[[3]]
+  p = tail(market_intra(market)[[2]],n=1)
+  pp = tail(market_intra(market)[[5]],n=1)
+
+   p1 = plot_ly(x=x,y=yr,type = 'scatter',mode = 'lines',line = list(color = red)) %>%
+  add_trace(y=yb,line = list(color= blue)) %>%
+  layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = 1,showarrow = FALSE)) %>%
+    add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
+    layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
+                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
+}) %>% subplot() %>% layout(showlegend = FALSE)
+######################
+######################
+tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=TW' %>%
+  read_html(encoding = "EUC-KR") %>%
+  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
+  strsplit(x=.,split = '<br><br>') %>% .[[1]]
+d = tex[grep("작성일자",tex)] %>%
+  substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-10) %>% .[1]
+if(DATE == d) {
+  i = (2:(grep("작성일자",tex)[1]-1)) %>% lapply(function (i){
+  tex[i] %>% cat(" ",., '\n')
+  cat('\n')
+  })
+} else {
+  cat("마감시황을 준비하고 있습니다.","\n")
+  cat("\n")
+}
+```
+<br>
+
+> 코스피 시황
+
+---
+
+```{r}
+market = 'KOSPI'
+
+num = paste0('https://finance.naver.com/sise/sise_index_time.nhn?code=',market,'&thistime=',Date.time,'1600&page=1') %>%
+  read_html() %>%
+  html_nodes('a') %>%
+  html_attr('href') %>%
+  tail(.,n=1) %>%
+  substr(.,gregexpr(text=.,"page=")[[1]][1]+5,nchar(.))
+
+df1 = data.frame()
+
+for (i in 1:num){
+  df = paste0('https://finance.naver.com/sise/sise_index_time.nhn?code=',market,'&thistime=',Date.time,'1600&page=',i) %>%
+  read_html() %>%
+  html_nodes(xpath = '/html/body/div/table[1]') %>%
+  html_table(fill = TRUE) %>%
+  .[[1]] %>%
+    .[nrow(.):1,]
+
+  df1 = rbind(df,df1)
+
+  df1 = df1%>%
+    .[-which(is.na(df1[,3])==TRUE),]
+  rownames(df1) = df1[,1]
+}
+
+if(nrow(df1) !=0){
+  df1 = df1 %>% .[,-1]
+  df1[1] = df1[,1] %>% gsub(x=.,pattern = ',',replacement = '') %>% as.numeric()
+  df1$"RED"  = NA
+  df1$"BLUE" = NA
+
+  preprice = paste0('https://finance.naver.com/sise/sise_index_day.nhn?code=',market) %>%
+          read_html() %>%
+          html_nodes(xpath = '/html/body/div/table[1]') %>%
+          html_table(fill = TRUE) %>%
+          .[[1]] %>%
+          .[3,2] %>%
+          gsub(x=.,pattern = ',',replacement = '') %>%
+          as.numeric()
+
+  for (i in 1:nrow(df1)){
+    df1[i,6] = ifelse(df1[i,1]>=preprice,df1[i,1],NA)
+    df1[i,7] = ifelse(df1[i,1]<preprice,df1[i,1],NA)
+  }
+
+  p1 = df1 %>% plot_ly(x=rownames(df1),
+                y= df1[,6],
+                type = 'scatter',mode = 'lines',line = list(color=red)) %>%
+  add_trace(y=df1[,7],line = list(color=blue)) %>%
+  layout(annotations = list(x=nrow(df1)-5,y = df1[nrow(df1),1]+1.5, text = paste0("금일가: ",df1[nrow(df1),1]),showarrow = FALSE)) %>%
+  add_trace(y=preprice,line = list(dash= 'dash',color = 'rgb(18, 16, 100)')) %>%
+  layout(annotations = list(x=nrow(df1)-5,y = preprice+1.5, text =paste0("전일종가: ",preprice),showarrow = FALSE)) %>%
+  layout(title = paste0(market," : "," ",df1[nrow(df1),1],"pt "," ","(",paste0(round(((df1[nrow(df1),1]-preprice)/preprice)*100,digits = 2),"%"),")"),showlegend=FALSE)
+
+  p2 = plot_ly(x=rownames(df1),
+                y= df1[,3] %>% gsub(x=.,pattern = ',',replacement = '') %>% as.numeric(),
+                type = 'bar',name = 'Vol',marker = list(color='rgb(33, 211, 170)')) %>%
+    layout(showlegend = FALSE)
+  subplot(p1,p2,nrows = 2,shareX = TRUE,heights = c(.75,.25))
+}
+
+tex = 'http://m.infostock.co.kr/daily/koreaIndex.asp?mode=w&STYPE=KS1' %>%
+  read_html(encoding = "EUC-KR") %>%
+  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
+  strsplit(x=.,split = '<br><br>') %>% .[[1]]
+d = tex[grep("작성일자",tex)] %>%
+  substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-10)
+if(DATE == d) {
+  i = (2:(grep("작성일자",tex)-1)) %>% lapply(function (i){
+    tex[i] %>% cat(" ",., '\n')
+    cat('\n')
+  })
+} else {
+  cat("마감시황을 준비하고 있습니다.","\n")
+  cat("\n")
+}
+```
+
+<br>
+
+> 코스닥 시황
+
+---
+
+```{r}
+market = 'KOSDAQ'
+num = paste0('https://finance.naver.com/sise/sise_index_time.nhn?code=',market,'&thistime=',Date.time,'1600&page=1') %>%
+  read_html() %>%
+  html_nodes('a') %>%
+  html_attr('href') %>%
+  tail(.,n=1) %>%
+  substr(.,gregexpr(text=.,"page=")[[1]][1]+5,nchar(.))
+
+df1 = data.frame()
+
+for (i in 1:num){
+  df = paste0('https://finance.naver.com/sise/sise_index_time.nhn?code=',market,'&thistime=',Date.time,'1600&page=',i) %>%
+  read_html() %>%
+  html_nodes(xpath = '/html/body/div/table[1]') %>%
+  html_table(fill = TRUE) %>%
+  .[[1]] %>%
+    .[nrow(.):1,]
+
+  df1 = rbind(df,df1)
+
+  df1 = df1%>%
+    .[-which(is.na(df1[,3])==TRUE),]
+
+  rownames(df1) = df1[,1]
+}
+
+if(nrow(df1) !=0){
+  df1 = df1 %>% .[,-1]
+  df1[1] = df1[,1] %>% gsub(x=.,pattern = ',',replacement = '') %>% as.numeric()
+  df1$"RED"  = NA
+  df1$"BLUE" = NA
+
+  preprice = paste0('https://finance.naver.com/sise/sise_index_day.nhn?code=',market) %>%
+          read_html() %>%
+          html_nodes(xpath = '/html/body/div/table[1]') %>%
+          html_table(fill = TRUE) %>%
+          .[[1]] %>%
+          .[3,2] %>%
+          gsub(x=.,pattern = ',',replacement = '') %>%
+          as.numeric()
+
+  for (i in 1:nrow(df1)){
+  df1[i,6] = ifelse(df1[i,1]>=preprice,df1[i,1],NA)
+  df1[i,7] = ifelse(df1[i,1]<preprice,df1[i,1],NA)
+  }
+  p1 = df1 %>% plot_ly(x=rownames(df1),
+                y= df1[,6],
+                type = 'scatter',mode = 'lines',line = list(color=red)) %>%
+  add_trace(y=df1[,7],line = list(color=blue)) %>%
+  layout(annotations = list(x=nrow(df1)-5,y = df1[nrow(df1),1]+1.5, text = paste0("금일가: ",df1[nrow(df1),1]),showarrow = FALSE)) %>%
+  add_trace(y=preprice,line = list(dash= 'dash',color = 'rgb(18, 16, 100)')) %>%
+  layout(annotations = list(x=nrow(df1)-5,y = preprice+1.5, text =paste0("전일종가: ",preprice),showarrow = FALSE)) %>%
+  layout(title = paste0(market," : "," ",df1[nrow(df1),1],"pt "," ","(",paste0(round(((df1[nrow(df1),1]-preprice)/preprice)*100,digits = 2),"%"),")"),showlegend=FALSE)
+
+  p2 = plot_ly(x=rownames(df1),
+                y= df1[,3] %>% gsub(x=.,pattern = ',',replacement = '') %>% as.numeric(),
+                type = 'bar',name = 'Vol',marker = list(color='rgb(33, 211, 170)')) %>%
+    layout(showlegend = FALSE)
+  subplot(p1,p2,nrows = 2,shareX = TRUE,heights = c(.75,.25))
+}
+tex = 'http://m.infostock.co.kr/daily/koreaIndex.asp?mode=w&STYPE=KS2' %>%
+  read_html(encoding = "EUC-KR") %>%
+  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
+  strsplit(x=.,split = '<br><br>') %>% .[[1]]
+d = tex[grep("작성일자",tex)] %>%
+  substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-10)
+if(DATE == d) {
+  i = (2:(grep("작성일자",tex)-1)) %>% lapply(function (i){
+    tex[i] %>% cat(" ",., '\n')
+    cat('\n')
+  })
+} else {
+  cat("마감시황을 준비하고 있습니다.","\n")
+  cat("\n")
+}
+```
+
+<br>
+<br>
+
+**REFERENCE**
+
+<br>
+
+- ["인포스탁"](http://infostock.co.kr/) </n>
+
+- ["네이버금융"](http://finance.naver.com) <br>
+
+- ["NANUM 트레이딩"](http://www.nanumtrading.com/) <br>
+
+<br>
