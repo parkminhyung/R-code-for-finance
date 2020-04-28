@@ -266,7 +266,7 @@ tex = url %>%
   strsplit(x=.,split = '\n\n') %>% .[[1]] %>% .[3] %>%
   strsplit(x=.,split = "\n") %>% .[[1]]
 
-i = (1:(length(tex)-3)) %>% lapply(function (i){
+i = (1:(length(tex)-1)) %>% lapply(function (i){
   cat(" ",tex[i],"\n")
   cat("\n")
 })
@@ -642,5 +642,7 @@ if(DATE == d) {
 - ["네이버금융"](http://finance.naver.com) <br>
 
 - ["NANUM 트레이딩"](http://www.nanumtrading.com/) <br>
+
+- ["新浪财经"](https://finance.sina.com.cn/) <br>
 
 <br>
