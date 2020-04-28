@@ -139,7 +139,7 @@ i %>% lapply(function (i){
           add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
           layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
                                     yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
-  p2 = plot_ly(x=x,y=v,mode = 'bar')
+  p2 = plot_ly(x=x,y=v,type = 'bar')
   subplot(p1,p2,nrows = 2,heights = c(.8,.2),shareX = TRUE)
 }) %>% subplot() %>% layout(showlegend = FALSE)
 
@@ -351,7 +351,7 @@ i %>% lapply(function (i){
     add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
     layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
                             yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
-  p2 = plot_ly(x=x,y=v,mode = 'bar')
+  p2 = plot_ly(x=x,y=v,type = 'bar')
   subplot(p1,p2,nrows = 2,heights = c(.8,.2),shareX = TRUE)
 }) %>% subplot() %>% layout(showlegend = FALSE)
 ###########################################################################
