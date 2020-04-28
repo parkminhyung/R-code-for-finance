@@ -132,12 +132,13 @@ i %>% lapply(function (i){
   pp = tail(market_intra(market)[[7]],n=1)
 
   p1 = plot_ly(x=x,y=yr,type = 'scatter',mode = 'lines',line = list(color = red)) %>%
-  add_trace(y=yb,line = list(color= blue)) %>%
-  layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
-                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = 1,showarrow = FALSE)) %>%
-    add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
-    layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
-                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
+          add_trace(y=yb,line = list(color= blue)) %>%
+          layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
+                                    yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = 1,showarrow = FALSE)) %>%
+          layout(xaxis = list(categoryorder = "array",categoryarray = x)) %>%
+          add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
+          layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
+                                    yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
   p2 = plot_ly(x=x,y=v,mode = 'bar')
   subplot(p1,p2,nrows = 2,heights = c(.8,.2),shareX = TRUE)
 }) %>% subplot() %>% layout(showlegend = FALSE)
@@ -191,12 +192,13 @@ i %>% lapply(function (i){
   pp = tail(market_intra(market)[[5]],n=1)
 
    p1 = plot_ly(x=x,y=yr,type = 'scatter',mode = 'lines',line = list(color = red)) %>%
-  add_trace(y=yb,line = list(color= blue)) %>%
-  layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
+           add_trace(y=yb,line = list(color= blue)) %>%
+           layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
                             yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = 1,showarrow = FALSE)) %>%
-    add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
-    layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
-                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
+           layout(xaxis = list(categoryorder = "array",categoryarray = x)) %>%
+           add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
+           layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
+                                     yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
 }) %>% subplot() %>% layout(showlegend = FALSE)
 
 #############
@@ -240,12 +242,13 @@ i %>% lapply(function (i){
   pp = tail(market_intra(market)[[5]],n=1)
 
    p1 = plot_ly(x=x,y=yr,type = 'scatter',mode = 'lines',line = list(color = red)) %>%
-  add_trace(y=yb,line = list(color= blue)) %>%
-  layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
+           add_trace(y=yb,line = list(color= blue)) %>%
+           layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
                             yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = 1,showarrow = FALSE)) %>%
-    add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
-    layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
-                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
+           layout(xaxis = list(categoryorder = "array",categoryarray = x)) %>%
+           add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
+           layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
+                                     yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
 }) %>% subplot() %>% layout(showlegend = FALSE)
 
 #############################################################################
@@ -351,7 +354,6 @@ i %>% lapply(function (i){
   p2 = plot_ly(x=x,y=v,mode = 'bar')
   subplot(p1,p2,nrows = 2,heights = c(.8,.2),shareX = TRUE)
 }) %>% subplot() %>% layout(showlegend = FALSE)
-
 ###########################################################################
 ###########################################################################
 
@@ -390,12 +392,13 @@ i %>% lapply(function (i){
   pp = tail(market_intra(market)[[5]],n=1)
 
    p1 = plot_ly(x=x,y=yr,type = 'scatter',mode = 'lines',line = list(color = red)) %>%
-  add_trace(y=yb,line = list(color= blue)) %>%
-  layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
-                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = 1,showarrow = FALSE)) %>%
-    add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
-    layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
-                            yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
+           add_trace(y=yb,line = list(color= blue)) %>%
+           layout(annotations = list(text = paste0(name," : ",p," (",paste(round(((p - pp)/pp),digits=4)*100,"%"),")"), xref = "paper",
+                                     yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = 1,showarrow = FALSE)) %>%
+           layout(xaxis = list(categoryorder = "array",categoryarray = x)) %>%
+           add_trace(y=pp,line= list(dash = "dash",color = 'rgb(18, 16, 100)')) %>%
+           layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
+                                     yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
 }) %>% subplot() %>% layout(showlegend = FALSE)
 
 ###################
@@ -442,6 +445,7 @@ i %>% lapply(function (i){
     layout(annotations = list(text = paste0("전일종가:", pp),xref = "paper",
                             yref = "paper",yanchor = "bottom",xanchor = "center",align = "center",x = 0.5,y = .95,showarrow=FALSE))
 }) %>% subplot() %>% layout(showlegend = FALSE)
+
 ######################
 ######################
 tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=TW' %>%
