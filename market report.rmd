@@ -356,20 +356,27 @@ i %>% lapply(function (i){
 
 tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=CH' %>%
   read_html(encoding = "EUC-KR") %>%
-  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
-  strsplit(x=.,split = '<br><br>') %>% .[[1]]
-d = tex[grep("작성일자",tex)] %>%
+  html_nodes(xpath = '//div[@class="txtContent"]') %>% .[1] %>% as.character() %>%
+  strsplit(x=.,split = "<br><br>") %>% .[[1]] %>%
+  .[1:(grep(x=.,"국내증시")[1]-1)]
+dat = tex[grep("작성일자",tex)] %>%
   substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-10) %>% .[1]
-if(DATE == d) {
-  i = (2:(grep("작성일자",tex)[1]-1)) %>% lapply(function (i){
-  tex[i] %>% cat(" ",., '\n')
-  cat('\n')
-  })
-} else {
-  cat("마감시황을 준비하고 있습니다.","\n")
-  cat("\n")
-}
+dd = paste0(format(as.Date(dat),"%d"),"일")
 
+tex[1] = tex[1] %>% substr(gregexpr(pattern = dd,text = .)[[1]][1],nchar(.))
+if(length(grep(pattern = "<br>",tex[1])) !=0) {
+  tex %>% strsplit(x=.,split = '<br>') %>% .[[1]] %>% .[1] %>% cat()
+} else {
+  if(DATE == dat) {
+    i = (1:(length(tex)-1)) %>% lapply(function (i){
+      tex[i] %>% cat(" ",., '\n')
+      cat('\n')
+    })
+  } else {
+    cat("마감시황을 준비하고 있습니다.","\n")
+    cat("\n")
+  }
+}
 ```
 <br>
 
@@ -402,18 +409,26 @@ i %>% lapply(function (i){
 ##################
 tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=JP' %>%
   read_html(encoding = "EUC-KR") %>%
-  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
-  strsplit(x=.,split = '<br><br>') %>% .[[1]]
-d = tex[grep("작성일자",tex)] %>%
+  html_nodes(xpath = '//div[@class="txtContent"]') %>% .[1] %>% as.character() %>%
+  strsplit(x=.,split = "<br><br>") %>% .[[1]] %>%
+  .[1:(grep(x=.,"국내증시")[1]-1)]
+dat = tex[grep("작성일자",tex)] %>%
   substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-10) %>% .[1]
-if(DATE == d) {
-  i = (2:(grep("작성일자",tex)[1]-1)) %>% lapply(function (i){
-  tex[i] %>% cat(" ",., '\n')
-  cat('\n')
-  })
+dd = paste0(format(as.Date(dat),"%d"),"일")
+
+tex[1] = tex[1] %>% substr(gregexpr(pattern = dd,text = .)[[1]][1],nchar(.))
+if(length(grep(pattern = "<br>",tex[1])) !=0) {
+  tex %>% strsplit(x=.,split = '<br>') %>% .[[1]] %>% .[1] %>% cat()
 } else {
-  cat("마감시황을 준비하고 있습니다.","\n")
-  cat("\n")
+  if(DATE == dat) {
+    i = (1:(length(tex)-1)) %>% lapply(function (i){
+      tex[i] %>% cat(" ",., '\n')
+      cat('\n')
+    })
+  } else {
+    cat("마감시황을 준비하고 있습니다.","\n")
+    cat("\n")
+  }
 }
 ```
 <br>
@@ -445,21 +460,31 @@ i %>% lapply(function (i){
 
 ######################
 ######################
+
 tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=TW' %>%
   read_html(encoding = "EUC-KR") %>%
-  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
-  strsplit(x=.,split = '<br><br>') %>% .[[1]]
-d = tex[grep("작성일자",tex)] %>%
+  html_nodes(xpath = '//div[@class="txtContent"]') %>% .[1] %>% as.character() %>%
+  strsplit(x=.,split = "<br><br>") %>% .[[1]] %>%
+  .[1:(grep(x=.,"국내증시")[1]-1)]
+dat = tex[grep("작성일자",tex)] %>%
   substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-10) %>% .[1]
-if(DATE == d) {
-  i = (2:(grep("작성일자",tex)[1]-1)) %>% lapply(function (i){
-  tex[i] %>% cat(" ",., '\n')
-  cat('\n')
-  })
+dd = paste0(format(as.Date(dat),"%d"),"일")
+
+tex[1] = tex[1] %>% substr(gregexpr(pattern = dd,text = .)[[1]][1],nchar(.))
+if(length(grep(pattern = "<br>",tex[1])) !=0) {
+  tex %>% strsplit(x=.,split = '<br>') %>% .[[1]] %>% .[1] %>% cat()
 } else {
-  cat("마감시황을 준비하고 있습니다.","\n")
-  cat("\n")
+  if(DATE == dat) {
+    i = (1:(length(tex)-1)) %>% lapply(function (i){
+      tex[i] %>% cat(" ",., '\n')
+      cat('\n')
+    })
+  } else {
+    cat("마감시황을 준비하고 있습니다.","\n")
+    cat("\n")
+  }
 }
+
 ```
 <br>
 
@@ -532,9 +557,9 @@ tex = 'http://m.infostock.co.kr/daily/koreaIndex.asp?mode=w&STYPE=KS1' %>%
   read_html(encoding = "EUC-KR") %>%
   html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
   strsplit(x=.,split = '<br><br>') %>% .[[1]]
-d = tex[grep("작성일자",tex)] %>%
-  substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-10)
-if(DATE == d) {
+dat = tex[grep("작성일자",tex)] %>%
+  substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-10) %>% .[1]
+if(DATE == dat) {
   i = (2:(grep("작성일자",tex)-1)) %>% lapply(function (i){
     tex[i] %>% cat(" ",., '\n')
     cat('\n')
@@ -616,9 +641,9 @@ tex = 'http://m.infostock.co.kr/daily/koreaIndex.asp?mode=w&STYPE=KS2' %>%
   read_html(encoding = "EUC-KR") %>%
   html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
   strsplit(x=.,split = '<br><br>') %>% .[[1]]
-d = tex[grep("작성일자",tex)] %>%
-  substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-10)
-if(DATE == d) {
+dat = tex[grep("작성일자",tex)] %>%
+  substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-10) %>% .[1]
+if(DATE == dat) {
   i = (2:(grep("작성일자",tex)-1)) %>% lapply(function (i){
     tex[i] %>% cat(" ",., '\n')
     cat('\n')
