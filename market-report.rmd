@@ -162,7 +162,7 @@ tex = url %>%
   html_text(trim = TRUE) %>%
   strsplit(x=.,split = '\n \n') %>% .[[1]] %>% .[1] %>%
   strsplit(x=.,split = "\n") %>%
-  .[[1]] %>% .[grep(x=.,"현지시간"):length(.)] %>% .[grep(x=.," ")] %>% .[1:(length(.)-1)]
+  .[[1]] %>% .[grep(x=.,"현지시간"):length(.)] %>% .[grep(x=.," ")] %>% .[1:(length(.)-2)]
 
 i = 1:length(tex) %>% lapply(function (i){
     cat(" ",tex[i],"\n")
