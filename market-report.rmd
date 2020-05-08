@@ -152,9 +152,8 @@ Date.time = format(as.Date(DATE),"%Y%m%d")
 
 url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%eb%89%b4%ec%9a%95-%ec%a6%9d%ec%8b%9c/' %>%
   read_html() %>%
-  html_nodes(xpath = '//div[@class="headline_highlighted_column_block"]') %>% .[1] %>%
-  html_nodes('a') %>%
-  html_attr('href')
+  html_nodes(xpath = '//div[@class="fbuilder_column fbuilder_column-1-4"]') %>%
+  .[grep(x=.,pattern = '뉴욕마감')] %>% .[1] %>% html_nodes('a') %>% html_attr('href')
 
 tex = url %>%
   read_html() %>%
