@@ -9,6 +9,8 @@ output:
     highlight: tango
 ---
 
+# 글로벌 시황
+
 ```{r echo = FALSE, message = F, comment = NA, results = 'markup'}
 options(warn = -1)
 
@@ -205,11 +207,9 @@ for (i in 1:2) {
 
 ```
 
-### 글로벌시황
-
 <br>
 
-> 미국 시황
+## 미국 시황
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
@@ -247,7 +247,7 @@ for (i in 1:length(tex)){
 
 <br>
 
-> 유럽 시황
+## 유럽 시황
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
@@ -286,7 +286,7 @@ for (i in 1:length(tex)){
 
 <br>
 
-> 골드 시황
+## 골드 시황
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
@@ -327,7 +327,7 @@ for (i in 1:length(tex)){
 
 <br>
 
-> 국제 유가
+## 국제 유가
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
@@ -368,7 +368,7 @@ for (i in 1:length(tex)){
 
 <br>
 
-> 중국시황
+## 중국 시황
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
@@ -405,7 +405,7 @@ if(DATE == dat) {
 
 <br>
 
-> 일본시황
+## 일본 시황
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
@@ -442,7 +442,7 @@ if(DATE == dat) {
 
 <br>
 
-> 대만시황
+## 대만 시황
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
@@ -479,7 +479,7 @@ if(DATE == dat) {
 
 <br>
 
-> 코스피 시황
+## 코스피 시황
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
