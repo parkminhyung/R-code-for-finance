@@ -146,15 +146,32 @@ dfw$"Vol" = NA
 dfw$"Vol_Bar" = NA
 dfw$"Intraday Chart" = NA
 row.names(dfw) = NULL
+  dfw$"MARKET" = NA
 
-dfw = formattable(dfw, align = c("l","r","c","c","r","c","c"), list(
+  for (i in 1:3) dfw[i,8] = ifelse(length(market_intra(us[1])[[1]]) %in% c("389","390"),"CLOSE","OPEN")
+dfw[4,8] = ifelse(length(market_intra(eu[1])[[1]]) %in% c("515","516"),"CLOSE","OPEN")
+  for (i in 5:6) dfw[i,8] = ifelse(length(market_intra(eu[i-3])[[1]]) %in% c("510","511"),"CLOSE","OPEN")
+  for (i in 7:8) dfw[i,8] = ifelse(length(market_intra(cn[i-6])[[1]]) %in% c("240","241"),"CLOSE","OPEN")
+  dfw[9,8] = ifelse(length(market_intra(as[1])[[1]]) %in% c("355","356"),"CLOSE","OPEN")
+  dfw[10,8] = ifelse(length(market_intra(as[2])[[1]]) %in% c("269","270"),"CLOSE","OPEN")
+  dfw[11,8] = ifelse(length(market_intra(ks[1])[[1]]) %in% c("389","390"),"CLOSE","OPEN")
+
+
+
+dfw = formattable(dfw, align = c("l","r","c","c","r","c","c","c"), list(
   Name = formatter("span",style = x~style(font.weight = "bold")),
   Change = formatter("span", style = x ~ style(
     font.weight = "bold",
     color = ifelse(x > 0,"#2a9688", ifelse(x < 0, "#e35d5d", "black")))),
   `% Change` = formatter("span",
                          style = x ~ style(color = ifelse(x < 0 , "red", "green")),
-                         x ~ icontext(ifelse(x < 0, "arrow-down", "arrow-up"), x))))
+                         x ~ icontext(ifelse(x < 0, "arrow-down", "arrow-up"), x)),
+  MARKET = formatter("span",
+                     style = x ~ style(font.weight ="bold",
+                                       color = ifelse(x == "OPEN","green","red")))
+))
+
+
 for(i in 1:3){
     dfw[i,5] = market_intra(us[i])[[2]] %>% tail(.,n=1)
     dfw[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(us[i])[[2]],type = 'bar',width = 100)))
@@ -188,20 +205,28 @@ dfc = 'https://finance.yahoo.com/commodities' %>%
   .[grep('GC=F|CL=F',.[,1]),] %>% .[-2,] %>% .[,-1] %>% .[,c(1,2,4,5,6)]
 
 dfc$"Intraday Chart" = NA
+dfc$"MARKET" = NA
 row.names(dfc) = NULL
 dfc[4] = (dfc[,4] %>% percent(format = "f",digits = 2))*.01
 
-dfc = formattable(dfc,align = c("l","r","c","c","r","c"), list(
+dfc[1,7] = ifelse(length(market_intra(cmm[1])[[1]]) %in% c("1379","1380"),"CLOSE","OPEN")
+dfc[2,7] = ifelse(length(market_intra(cmm[2])[[1]]) %in% c("1375","1376"),"CLOSE","OPEN")
+
+dfc = formattable(dfc,align = c("l","r","c","c","r","c","c"), list(
   Name = formatter("span",style = x~style(font.weight = "bold")),
   Change = formatter("span", style = x ~ style(
     font.weight = "bold",
     color = ifelse(x > 0,"#2a9688", ifelse(x < 0, "#e35d5d", "black")))),
 `% Change` = formatter("span",
                          style = x ~ style(color = ifelse(x < 0 , "red", "green")),
-                         x ~ icontext(ifelse(x < 0, "arrow-down", "arrow-up"), x))))
+                         x ~ icontext(ifelse(x < 0, "arrow-down", "arrow-up"), x)),
+MARKET = formatter("span",
+                   style = x~style(font.weight = "bold",
+                                   color = ifelse(x == "OPEN","green","red")))
+))
 
 for (i in 1:2) {
-  dfc[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(cmm[i])[[2]],type = 'line',width = 100)))
+dfc[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(cmm[i])[[2]],type = 'line',width = 100)))
 }
 
 
@@ -222,7 +247,7 @@ out
 ####################################################################################
 ####################################################################################
 
-content = "<br>%s<br>"
+content = "%s<br><br> "
 
 url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%eb%89%b4%ec%9a%95-%ec%a6%9d%ec%8b%9c/' %>%
   read_html() %>%
@@ -235,13 +260,14 @@ tex = url %>%
   html_text(trim = TRUE) %>%
   strsplit(x=.,split = '\n \n') %>% .[[1]] %>% .[1] %>%
   strsplit(x=.,split = "\n") %>%
-  .[[1]] %>% .[grep(x=.,"현지시간"):length(.)] %>% .[grep(x=.," ")] %>% .[1:(grep("PREVIOUS ARTICLE | NEXT ARTICLE",x=.)-1)]
+  .[[1]] %>% .[grep(x=.,"현지시간"):length(.)] %>% .[grep(x=.," ")] %>% .[1:(grep("PREVIOUS ARTICLE",x=.)-1)]
 
 for (i in 1:length(tex)){
   cat(sprintf(content,tex[i]))
 }
 
 ```
+
 
 ---
 
@@ -260,7 +286,7 @@ out
 ####################################################################################
 ####################################################################################
 
-content = "<br>%s<br>"
+content = "%s<br><br>"
 
 url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%ec%9c%a0%eb%9f%bd-%ec%a6%9d%ec%8b%9c/' %>%
   read_html() %>%
@@ -383,7 +409,7 @@ out
 ####################################################################################
 ####################################################################################
 
-content = "<br>%s<br>"
+content = "%s<br><br>"
 
 tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=CH' %>%
     read_html(encoding = 'euc-kr') %>%
@@ -420,7 +446,7 @@ out
 ####################################################################################
 ####################################################################################
 
-content = "<br>%s<br>"
+content = "%s<br><br>"
 
 tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=JP' %>%
     read_html(encoding = 'euc-kr') %>%
@@ -457,7 +483,7 @@ out
 ####################################################################################
 ####################################################################################
 
-content = "<br>%s<br>"
+content = "%s<br><br>"
 
 tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=TW' %>%
     read_html(encoding = 'euc-kr') %>%
@@ -494,7 +520,7 @@ out
 ####################################################################################
 ####################################################################################
 
-content = "<br>%s<br>"
+content = "%s<br><br>"
 
 tex = 'http://m.infostock.co.kr/daily/koreaIndex.asp?mode=w&STYPE=KS1' %>%
     read_html(encoding = 'euc-kr') %>%
