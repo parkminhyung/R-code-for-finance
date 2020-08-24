@@ -136,65 +136,72 @@ market_intra = function (market){
   .[,-1] %>%
   .[,c(1:4)] %>%
   .[c(1:6,8,9,7,11,10),]
-
-dfw[3] = dfw[,3] %>% as.numeric()
-dfw[4] = dfw[,4] %>% gsub(pattern = '%',replacement = "",x=.) %>%
+  
+  dfw[3] = dfw[,3] %>% as.numeric()
+  dfw[4] = dfw[,4] %>% gsub(pattern = '%',replacement = "",x=.) %>%
   as.numeric()
-dfw[4] = (dfw[,4] %>% percent(format = "f",digits = 2))*.01
-
-dfw$"Vol" = NA
-dfw$"Vol_Bar" = NA
-dfw$"Intraday Chart" = NA
-row.names(dfw) = NULL
+  dfw[4] = (dfw[,4] %>% percent(format = "f",digits = 2))*.01
+  
+  dfw$"Vol" = NA
+  dfw$"Vol_Bar" = NA
+  dfw$"Intraday Chart" = NA
+  row.names(dfw) = NULL
   dfw$"MARKET" = NA
-
-  for (i in 1:3) dfw[i,8] = ifelse(tail(market_intra(us[i])[[1]],n=1) >= "15:59:00","CLOSE","OPEN")
-dfw[4,8] = ifelse(length(market_intra(eu[1])[[1]]) %in% c("515","516"),"CLOSE","OPEN")
-  for (i in 5:6) dfw[i,8] = ifelse(length(market_intra(eu[i-3])[[1]]) %in% c("510","511"),"CLOSE","OPEN")
-  for (i in 7:8) dfw[i,8] = ifelse(tail(market_intra(cn[i-6])[[1]],n=1) >= "14:59","CLOSE","OPEN")
+  
+  for (i in 1:3) dfw[i,8] = ifelse(tail(market_intra(us[i])[[1]],n=1) >=
+                                     "15:59:00","CLOSE","OPEN")
+  dfw[4,8] = ifelse(length(market_intra(eu[1])[[1]]) %in% c("515","516"),"CLOSE","OPEN")
+  for (i in 5:6) dfw[i,8] = ifelse(length(market_intra(eu[i-3])[[1]]) %in%
+                                     c("510","511"),"CLOSE","OPEN")
+  for (i in 7:8) dfw[i,8] = ifelse(tail(market_intra(cn[i-6])[[1]],n=1) >=
+                                     "14:59","CLOSE","OPEN")
   dfw[9,8] = ifelse(tail(market_intra(as[1])[[1]],n=1)  >= "13:59","CLOSE","OPEN")
   dfw[10,8] = ifelse(tail(market_intra(as[2])[[1]],n=1) >= "13:29","CLOSE","OPEN")
   dfw[11,8] = ifelse(tail(market_intra(ks[1])[[1]],n=1) >= "15:29","CLOSE","OPEN")
-
-
-
-dfw = formattable(dfw, align = c("l","r","c","c","r","c","c","c"), list(
-  Name = formatter("span",style = x~style(font.weight = "bold")),
-  Change = formatter("span", style = x ~ style(
-    font.weight = "bold",
-    color = ifelse(x > 0,"#2a9688", ifelse(x < 0, "#e35d5d", "black")))),
-  `% Change` = formatter("span",
-                         style = x ~ style(color = ifelse(x < 0 , "red", "green")),
-                         x ~ icontext(ifelse(x < 0, "arrow-down", "arrow-up"), x)),
-  MARKET = formatter("span",
-                     style = x ~ style(font.weight ="bold",
-                                       color = ifelse(x == "OPEN","green","red")))
-))
-
-
-for(i in 1:3){
+  
+  dfw = formattable(dfw, align = c("l","r","c","c","r","c","c","c"), list(
+    Name = formatter("span",style = x~style(font.weight = "bold")),
+    Change = formatter("span", style = x ~ style(
+      font.weight = "bold",
+      color = ifelse(x > 0,"#2a9688", ifelse(x < 0, "#e35d5d", "black")))),
+    `% Change` = formatter("span",
+                           style = x ~ style(color = ifelse(x < 0 , "red", "green")),
+                           x ~ icontext(ifelse(x < 0, "arrow-down", "arrow-up"), x)),
+    MARKET = formatter("span",
+                       style = x ~ style(font.weight ="bold",
+                                         color = ifelse(x == "OPEN","green","red")))
+    ))
+  
+  for(i in 1:3){
     dfw[i,5] = market_intra(us[i])[[2]] %>% tail(.,n=1)
-    dfw[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(us[i])[[2]],type = 'bar',width = 100)))
-    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(us[i])[[4]],type = 'line',width = 100)))
-  }
-
+    dfw[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(us[i])[[2]],type =
+                                                           'bar',width = 100)))
+    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(us[i])[[4]],type =
+                                                           'line',width = 100)))
+    }
+  
   for (i in 4:6) {
-    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(eu[i-3])[[2]],type = 'line',width = 100)))
-  }
-
+    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(eu[i-3])[[2]],type =
+                                                           'line',width = 100)))
+    }
   for (i in 7:8) {
     dfw[i,5] = market_intra(cn[i-6])[[2]] %>% tail(.,n=1)
-    dfw[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(cn[i-6])[[2]],type = 'bar',width = 100)))
-    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(cn[i-6])[[4]],type = 'line',width = 100)))
-  }
-
+    dfw[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(cn[i-6])[[2]],type =
+                                                           'bar',width = 100)))
+    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(cn[i-6])[[4]],type =
+                                                           'line',width = 100)))
+    }
+  
   for (i in 9:10) {
-    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(as[i-8])[[2]],type = 'line',width = 100)))
+    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(as[i-8])[[2]],type =
+                                                           'line',width = 100)))
   }
   dfw[11,5] = (market_intra('ks')[[3]] %>% tail(.,n=1))*1000
-  dfw[11,6] = as.character(htmltools::as.tags(sparkline(market_intra('ks')[[3]],type = 'bar',width = 100)))
-  dfw[11,7] = as.character(htmltools::as.tags(sparkline(market_intra('ks')[[2]],type = 'line',width = 100)))
-
+  dfw[11,6] = as.character(htmltools::as.tags(sparkline(market_intra('ks')[[3]],type =
+                                                          'bar',width = 100)))
+  dfw[11,7] = as.character(htmltools::as.tags(sparkline(market_intra('ks')[[2]],type =
+                                                          'line',width = 100)))
+  
 }
 
 dfc = 'https://finance.yahoo.com/commodities' %>%
@@ -217,16 +224,17 @@ dfc = formattable(dfc,align = c("l","r","c","c","r","c","c"), list(
   Change = formatter("span", style = x ~ style(
     font.weight = "bold",
     color = ifelse(x > 0,"#2a9688", ifelse(x < 0, "#e35d5d", "black")))),
-`% Change` = formatter("span",
+  `% Change` = formatter("span",
                          style = x ~ style(color = ifelse(x < 0 , "red", "green")),
                          x ~ icontext(ifelse(x < 0, "arrow-down", "arrow-up"), x)),
-MARKET = formatter("span",
-                   style = x~style(font.weight = "bold",
-                                   color = ifelse(x == "OPEN","green","red")))
-))
+  MARKET = formatter("span",
+                     style = x~style(font.weight = "bold",
+                                     color = ifelse(x == "OPEN","green","red")))
+  ))
 
 for (i in 1:2) {
-dfc[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(cmm[i])[[2]],type = 'line',width = 100)))
+  dfc[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(cmm[i])[[2]],type =
+                                                         'line',width = 100)))
 }
 
 
@@ -340,9 +348,10 @@ tex = url %>%
   read_html() %>%
   html_nodes(xpath = '//div[@class="single_full_news_element fullwidth"]') %>%
   html_text(trim = TRUE) %>%
-  strsplit(x=.,split = '\n\n') %>% .[[1]] %>% .[3] %>%
-  strsplit(x=.,split = "\n") %>% .[[1]] %>%
-  .[-which(.==" ")]
+  strsplit(x=.,split = '\n \n') %>% .[[1]] %>% .[1] %>%
+  strsplit(x=.,split = "\n") %>%
+  .[[1]] %>% .[grep(x=.,"현지시간"):length(.)] %>% .[grep(x=.," ")] %>%
+  .[1:(grep("PREVIOUS ARTICLE | NEXT ARTICLE",x=.)[1]-1)]
 
 for (i in 1:length(tex)){
   cat(sprintf(content,tex[i]))
