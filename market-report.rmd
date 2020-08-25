@@ -1,6 +1,6 @@
 ---
 title: "R+port"
-date: '`r paste0("(GMT+9) ",format(Sys.Date(),tz = "Asia/Seoul",usetz = TRUE))`'
+date: '`r paste0("(GMT+9) ",format(Sys.Date(),tz = "Asia/Seoul"))`'
 author: Allen park
 output:
    rmdformats::readthedown:
@@ -17,15 +17,15 @@ options(warn = -1)
 '%ni%' = Negate('%in%')
 
 if(weekdays(Sys.Date()) %ni% c("Saturday", "Sunday","Monday") & ("00:00:00" < format(Sys.time(), "%X")) & (format(Sys.time(), "%X") < "09:00:00")==TRUE) {
-    DATE = format(Sys.Date()-1,"%Y/%m/%d",tz = "Asia/Seoul",usetz = TRUE)
+    DATE = format(Sys.Date()-1,"%Y/%m/%d",tz = "Asia/Seoul")
   } else if(weekdays(Sys.Date())=="Saturday"){
-    DATE = format(Sys.Date()-1,"%Y/%m/%d",tz = "Asia/Seoul",usetz = TRUE)
+    DATE = format(Sys.Date()-1,"%Y/%m/%d",tz = "Asia/Seoul")
   } else if(weekdays(Sys.Date())=="Sunday"){
-    DATE = format(Sys.Date()-2,"%Y/%m/%d",tz = "Asia/Seoul",usetz = TRUE)
+    DATE = format(Sys.Date()-2,"%Y/%m/%d",tz = "Asia/Seoul")
   } else if(weekdays(Sys.Date()) == "Monday" & ("00:00:00" < format(Sys.time(), "%X")) & (format(Sys.time(), "%X") < "09:00:00") == TRUE){
-    DATE = format(Sys.Date()-3,"%Y/%m/%d",tz = "Asia/Seoul",usetz = TRUE)
+    DATE = format(Sys.Date()-3,"%Y/%m/%d",tz = "Asia/Seoul")
   } else {
-    DATE = format(Sys.Date(),"%Y/%m/%d",tz = "Asia/Seoul",usetz = TRUE)
+    DATE = format(Sys.Date(),"%Y/%m/%d",tz = "Asia/Seoul")
   }
 
 {
@@ -152,7 +152,7 @@ market_intra = function (market){
   for (i in 1:3) dfw[i,8] = ifelse(tail(market_intra(us[i])[[1]],n=1) >=
                                      "15:59:00","CLOSE","OPEN")
   dfw[4,8] = ifelse(tail(market_intra(eu[1])[[1]],n=1) >= "23:34","CLOSE","OPEN")
-for (i in 5:6) dfw[i,8] = ifelse(tail(market_intra(eu[i-3])[[1]],n=1) >= "23:29","CLOSE","OPEN")
+  for (i in 5:6) dfw[i,8] = ifelse(tail(market_intra(eu[i-3])[[1]],n=1) >= "23:29","CLOSE","OPEN")
   for (i in 7:8) dfw[i,8] = ifelse(tail(market_intra(cn[i-6])[[1]],n=1) >=
                                      "14:59","CLOSE","OPEN")
   dfw[9,8] = ifelse(tail(market_intra(as[1])[[1]],n=1)  >= "13:59","CLOSE","OPEN")
@@ -433,7 +433,7 @@ if(DATE == dat) {
    cat(sprintf(content,tex[i]))
   }
 } else {
-  cat(sprintf(content,"마감시황을 준비하고 있습니다."))
+  cat(sprintf(content,"마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
 }
 
 ```
@@ -470,7 +470,7 @@ if(DATE == dat) {
    cat(sprintf(content,tex[i]))
   }
 } else {
-  cat(sprintf(content,"마감시황을 준비하고 있습니다."))
+  cat(sprintf(content,"마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
 }
 
 ```
@@ -507,7 +507,7 @@ if(DATE == dat) {
    cat(sprintf(content,tex[i]))
   }
 } else {
-  cat(sprintf(content,"마감시황을 준비하고 있습니다."))
+  cat(sprintf(content,"마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
 }
 
 ```
@@ -544,7 +544,7 @@ if(DATE == dat) {
    cat(sprintf(content,tex[i]))
   }
 } else {
-  cat(sprintf(content,"마감시황을 준비하고 있습니다."))
+  cat(sprintf(content,"마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
 }
 
 ```
