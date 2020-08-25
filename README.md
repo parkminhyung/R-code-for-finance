@@ -1,6 +1,7 @@
 # R-code-for-finance
 R code for finance <br>
-주식, 재무표, 데이터를 위해 만든 repo입니다. 
+주식, 재무표, 데이터를 위해 만든 repo입니다. <br>
+https://bookdown.org/allenpark88/rport 사이트에 접속하시면 세계 마감시황을 열람하실 수 있습니다. source : market-report.rmd <br>
 
 # 2020.08.25 UPDATE
 1.시황이 업데이트되었습니다.
@@ -13,7 +14,7 @@ R code for finance <br>
 - 기존 차트 형식으로 제공되었던 마감형식이 데이터프레임 형식으로 변환되었습니다. <br>
 - result를 markup 형식이 아닌 asis형식으로 바꾸어 가독성을 늘렸습니다 <br>
 - 깃 허브에 업로드한 rmd 파일을 rsconnect를 이용, 웹사이트 형식으로도 시황을 볼 수 있게 하였습니다. <br>
-- https://bookdown.org/allenpark88/rport . 15분마다 업데이트 되며 아시아 시황은 한국기준 오후 5시 이후에 당일 마감시황을 열람하실 수 있습니다 <br>
+- 15분마다 업데이트 되며 아시아 시황은 한국기준 오후 5시 이후에 당일 마감시황을 열람하실 수 있습니다 <br>
 - 추후에 지속적인 업데이트를 통해 pdf버전도 업로드 하겠습니다. <br>
 
 # 2020.04.28 UPDATE
