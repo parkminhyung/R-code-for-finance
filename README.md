@@ -2,9 +2,10 @@
 R code for finance <br>
 주식, 재무표, 데이터를 위해 만든 repo입니다. 
 
-# 2020.08.17 UPDATE
+# 2020.08.25 UPDATE
 1.시황이 업데이트되었습니다.
 - 나라별 개장/마감 을 표시하도록 수정하였습니다 <br>
+- 기준 timezone을 아시아/서울(GMT+9)로 수정하였습니다.
 - fixed minor error 
 
 # 2020.08.17 UPDATE
