@@ -1,6 +1,6 @@
 ---
 title: "R+port"
-date: '`r paste0("(GMT+9) ",format(Sys.Date(),tz = "Asia/Seoul"))`'
+date: '`r paste0("(GMT+9) ",format(Sys.Date(),tz = "Asia/Seoul",usetz = TRUE))`'
 author: Allen park
 output:
    rmdformats::readthedown:
@@ -13,6 +13,7 @@ output:
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'markup'}
 options(warn = -1)
+Sys.setenv(TZ = "Asia/Seoul")
 
 '%ni%' = Negate('%in%')
 
