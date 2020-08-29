@@ -1,28 +1,23 @@
 library(rvest)
 
-df_kospi ="http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType=stockMkt" %>%
-  read_html() %>%
-  html_nodes(xpath = '/html/body/table') %>%
-  html_table() %>%
-  .[[1]]
-df_kospi$시장구분 = 'KOSPI'
+list  = c("konexMkt","kosdaqMkt","stockMkt")
+url = "http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType="
 
-df_kosdaq = "http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType=kosdaqMkt" %>%
-  read_html() %>%
-  html_nodes(xpath = '/html/body/table') %>%
-  html_table() %>%
-  .[[1]]
-df_kosdaq$시장구분 = 'KOSDAQ'
+stock_table = data.frame()
+for (i in 1:length(list)) {
+  dfk = paste0(url,list[i]) %>%
+    read_html() %>%
+    html_nodes(xpath = "/html/body/table") %>%
+    html_table() %>%
+    .[[1]]
+  
+  if(i==1) dfk$"시장구분" = "KONEX"
+  if(i==2) dfk$"시장구분" = "KOSDAQ"
+  if(i==3) dfk$"시장구분" = "KOSPI"
+  stock_table = rbind(dfk,stock_table)
+}
 
-df_konex = "http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType=konexMkt" %>%
-  read_html() %>%
-  html_nodes(xpath = '/html/body/table') %>%
-  html_table() %>%
-  .[[1]]
-df_konex$시장구분 = 'KONEX'
-
-stock_table = rbind(df_kospi,df_kosdaq,df_konex)
-stock_table[[2]] = sprintf("%06d",stock_table[[2]]) 
+stock_table[[2]] = sprintf("%06d",stock_table[[2]])
 stock_table = stock_table[,c(1,2,10)]
 View(stock_table)
 stock_table[,4:20] = NA
@@ -55,7 +50,7 @@ for (i in 1:nrow(stock_table)) {
       read_html() %>%
       html_nodes(xpath = '//*[@id="divSonikY"]/table') %>%
       html_table(fill = TRUE) %>%
-      .[[1]] 
+      .[[1]]
     
     col = grep("전년동기",colnames(tb))[1]
     
@@ -91,7 +86,7 @@ for (i in 1:nrow(stock_table)) {
       read_html() %>%
       html_nodes(xpath = '//*[@id="divDaechaY"]/table') %>%
       html_table(fill = TRUE) %>%
-      .[[1]] 
+      .[[1]]
     
     #총자산
     stock_table[i,10] = tb2[grep("자산",tb2[,1])[1],(col-1)] %>% paste0(.,"억원")
@@ -131,7 +126,7 @@ for (i in 1:nrow(stock_table)) {
     stock_table[i,17] = paste0('http://media.kisline.com/investinfo/mainInvestinfo.nice?paper_stock=',stock_table[i,2],'&nav=3') %>%
       read_html() %>%
       html_node(xpath = '//*[@id="i1701"]/table/tbody/tr[1]/td[9]') %>%
-      html_text() 
+      html_text()
     
     #WACC
     stock_table[i,18] = paste0('http://media.kisline.com/investinfo/mainInvestinfo.nice?paper_stock=',stock_table[i,2],'&nav=3') %>%
