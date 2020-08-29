@@ -1,6 +1,6 @@
 ---
 title: "R+port"
-date: '`r paste0("(GMT+9) ",format(Sys.Date(),tz = "Asia/Seoul",usetz = TRUE))`'
+date: '`r paste0("(GMT+9) ",format(Sys.Date(),tz = "Asia/Seoul"))`'
 author: Allen park
 output:
    rmdformats::readthedown:
@@ -217,8 +217,8 @@ dfc$"MARKET" = NA
 row.names(dfc) = NULL
 dfc[4] = (dfc[,4] %>% percent(format = "f",digits = 2))*.01
 
-dfc[1,7] = ifelse(length(market_intra(cmm[1])[[1]]) %in% c("1379","1380"),"CLOSE","OPEN")
-dfc[2,7] = ifelse(length(market_intra(cmm[2])[[1]]) %in% c("1375","1376"),"CLOSE","OPEN")
+dfc[1,7] = ifelse(tail(market_intra(cmm[1])[[1]],n=1) >= "04:59","CLOSE","OPEN")
+dfc[2,7] = ifelse(tail(market_intra(cmm[2])[[1]],n=1) >= "04:59","CLOSE","OPEN")
 
 dfc = formattable(dfc,align = c("l","r","c","c","r","c","c"), list(
   Name = formatter("span",style = x~style(font.weight = "bold")),
