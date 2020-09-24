@@ -3,19 +3,16 @@ R code for finance <br>
 주식, 재무표, 데이터를 위해 만든 repo입니다. <br>
 https://bookdown.org/allenpark88/rport 사이트에 접속하시면 세계 마감시황을 열람하실 수 있습니다. source : market-report.rmd <br>
 
+# 2020.09.24 UPDATE
+1.마켓의 OPEN/CLSOE 방식이 변경되었습니다.
+- dataframe의 양식에 따라 개장/마감 방식이 크롤링으로 변경되어 보다 정확성을 높였습니다. <br>
+- fixed minor error
+
 # 2020.08.25 UPDATE
 1.시황이 업데이트되었습니다.
 - 나라별 개장/마감 을 표시하도록 수정하였습니다 <br>
 - 기준 timezone을 아시아/서울(GMT+9)로 수정하였습니다.
-- fixed minor error 
-
-# 2020.08.17 UPDATE
-1.시황이 업데이트되었습니다.
-- 기존 차트 형식으로 제공되었던 마감형식이 데이터프레임 형식으로 변환되었습니다. <br>
-- result를 markup 형식이 아닌 asis형식으로 바꾸어 가독성을 늘렸습니다 <br>
-- 깃 허브에 업로드한 rmd 파일을 rsconnect를 이용, 웹사이트 형식으로도 시황을 볼 수 있게 하였습니다. <br>
-- 15분마다 업데이트 되며 아시아 시황은 한국기준 오후 5시 이후에 당일 마감시황을 열람하실 수 있습니다 <br>
-- 추후에 지속적인 업데이트를 통해 pdf버전도 업로드 하겠습니다. <br>
+- fixed minor error
 
 # 2020.04.28 UPDATE
 1.시황이 업데이트되었습니다.
