@@ -1,6 +1,6 @@
 ---
 title: "R+port"
-date: '`r paste0("(GMT+9) ",format(Sys.Date(),tz = "Asia/Seoul"))`'
+date: '`r paste0("LATEST UPDATE : (GMT+9) ",format(Sys.time(),tz = "Asia/Seoul"))`'
 author: Allen park
 always_allow_html: true
 output:
@@ -149,17 +149,19 @@ market_intra = function (market){
   dfw$"Intraday Chart" = NA
   row.names(dfw) = NULL
   dfw$"MARKET" = NA
+}
+tk = c('GSPC','DJI','IXIC','FTSE','GDAXI','FCHI','SSEC','SSEC','N225','TWII','KS11')
 
-
-  for (i in 1:3) dfw[i,8] = ifelse(tail(market_intra(us[i])[[1]],n=1) >=
-                                     "15:59:00","CLOSE","OPEN")
-  dfw[4,8] = ifelse(tail(market_intra(eu[1])[[1]],n=1) >= "23:34","CLOSE","OPEN")
-  for (i in 5:6) dfw[i,8] = ifelse(tail(market_intra(eu[i-3])[[1]],n=1) >= "23:29","CLOSE","OPEN")
-  for (i in 7:8) dfw[i,8] = ifelse(tail(market_intra(cn[i-6])[[1]],n=1) >=
-                                     "14:59","CLOSE","OPEN")
-  dfw[9,8] = ifelse(tail(market_intra(as[1])[[1]],n=1)  >= "13:59","CLOSE","OPEN")
-  dfw[10,8] = ifelse(tail(market_intra(as[2])[[1]],n=1) >= "13:29","CLOSE","OPEN")
-  dfw[11,8] = ifelse(tail(market_intra(ks[1])[[1]],n=1) >= "15:29","CLOSE","OPEN")
+try({
+  
+  for(i in 1:length(tk)){
+  tex = paste0('https://finance.yahoo.com/quote/%5E',tk[i],'?p=^',tk[i])%>%
+    read_html() %>%
+    html_nodes(xpath = '//*[@id="quote-market-notice"]/span') %>%
+    html_text()
+  
+  dfw[i,8] = ifelse(grepl(pattern = "close",x=tex)==TRUE,"CLOSE","OPEN")
+  }
 
   dfw = formattable(dfw, align = c("l","r","c","c","r","c","c","c"), list(
     Name = formatter("span",style = x~style(font.weight = "bold")),
@@ -203,9 +205,9 @@ market_intra = function (market){
                                                           'bar',width = 100)))
   dfw[11,7] = as.character(htmltools::as.tags(sparkline(market_intra('ks')[[2]],type =
                                                           'line',width = 100)))
+  },silent = T)
 
-}
-
+ 
 dfc = 'https://finance.yahoo.com/commodities' %>%
   read_html() %>%
   html_nodes(xpath = '//*[@id="yfin-list"]/div[2]/div/div/table') %>%
@@ -218,9 +220,15 @@ dfc$"MARKET" = NA
 row.names(dfc) = NULL
 dfc[4] = (dfc[,4] %>% percent(format = "f",digits = 2))*.01
 
-dfc[1,7] = ifelse((length(market_intra(cmm[1])[[1]]) >= 1350) & (tail(market_intra(cmm[1])[[1]],n=1) >= "04:59"),"CLOSE","OPEN")
+tk = c('GC=F',"CL=F")
 
-dfc[2,7] = ifelse((length(market_intra(cmm[2])[[1]]) >= 1350) & (tail(market_intra(cmm[2])[[1]],n=1) >= "04:59"),"CLOSE","OPEN")
+for (i in 1:length(tk)) {
+  tex = paste0('https://finance.yahoo.com/quote/',tk[1],'?p=',tk[1],'&.tsrc=fin-srch') %>%
+  read_html() %>%
+  html_nodes(xpath = '//*[@id="quote-market-notice"]/span') %>%
+  html_text()
+  dfc[i,7] = ifelse(grepl(pattern = "close",x=tex)==TRUE,"CLOSE","OPEN")
+}
 
 dfc = formattable(dfc,align = c("l","r","c","c","r","c","c"), list(
   Name = formatter("span",style = x~style(font.weight = "bold")),
