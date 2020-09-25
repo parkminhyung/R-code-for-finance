@@ -5,7 +5,7 @@ https://bookdown.org/allenpark88/rport 사이트에 접속하시면 세계 마�
 
 # 2020.09.24 UPDATE
 1.마켓의 OPEN/CLOSE 방식이 변경되었습니다.
-- dataframe의 양식에 따라 개장/마감 방식이 크롤링으로 변경되어 보다 정확성을 높였습니다. <br>
+- dataframe의 양식을 따르던 개장/마감 방식이 크롤링으로 변경되어 보다 정확성을 높였습니다. <br>
 - fixed minor error
 
 # 2020.08.25 UPDATE
