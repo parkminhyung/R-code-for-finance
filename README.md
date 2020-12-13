@@ -1,7 +1,7 @@
 # R-code-for-finance
 R code for finance <br>
 주식, 재무표, 데이터를 위해 만든 repo입니다. <br>
-https://bookdown.org/allenpark88/rport 사이트에 접속하시면 세계 마감시황을 열람하실 수 있습니다. source : market-report.rmd <br>
+https://bookdown.org/allenpark88/rport2/ 사이트에 접속하시면 세계 마감시황을 열람하실 수 있습니다. source : market-report.rmd <br>
 
 # 2020.09.24 UPDATE
 1.마켓의 OPEN/CLOSE 방식이 변경되었습니다.
