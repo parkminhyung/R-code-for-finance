@@ -1,5 +1,3 @@
-
-
 black_scholes = function(s,x,rf,std,t,y=NULL,D=NULL,r=NULL){
   if(!is.null(y) & is.null(D)){
     ### dividend rate is y    
