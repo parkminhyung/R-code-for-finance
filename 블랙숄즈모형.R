@@ -1,5 +1,3 @@
-
-
 black_scholes = function(s,x,rf,std,t,y=NULL,D=NULL,r=NULL){
   if(!is.null(y) & is.null(D)){
     ### dividend rate is y
@@ -15,7 +13,9 @@ black_scholes = function(s,x,rf,std,t,y=NULL,D=NULL,r=NULL){
     
     ### dividends is D
     
-    s.d = s - D/(1+r)^t
+    k = ifelse(is.null(r),1,(1+r)^t)
+    
+    s.d = s - D/k
     
     d1 = (log(s/x)+(rf+std/2)*t)/(std*sqrt(t)) 
     d2 = d1-(std*sqrt(t)) 
@@ -42,4 +42,3 @@ black_scholes = function(s,x,rf,std,t,y=NULL,D=NULL,r=NULL){
   
   c(call.price,put.price)
 }
-
