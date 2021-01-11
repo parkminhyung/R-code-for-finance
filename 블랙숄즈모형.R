@@ -17,7 +17,7 @@ black_scholes = function(s,x,rf,std,t,y=NULL,D=NULL,r=NULL){
     
     s.d = s - D/k
     
-    d1 = (log(s/x)+(rf+std/2)*t)/(std*sqrt(t)) 
+    d1 = (log(s.d/x)+(rf+std/2)*t)/(std*sqrt(t)) 
     d2 = d1-(std*sqrt(t)) 
     pnorm(d1)
     pnorm(d2)
