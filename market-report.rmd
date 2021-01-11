@@ -40,94 +40,79 @@ if(weekdays(Sys.Date()) %ni% c("Saturday", "Sunday","Monday") & ("00:00:00" < fo
 
 library(sparkline); library(rvest); library(formattable)
 
-{
-  us= c(".INX",".dji",".IXIC")
-  eu = c("UKX","DAX","CAC")
-  cmm = c("GC","CL")
-  cn = c("1.000001","0.399001")
-  as = c("NKY","TWJQ")
-  ks = "ks"
-}
+ticker = c('^GSPC','^DJI','^IXIC',"^FTSE",'^GDAXI','^FCHI','000001.SS','399001.SZ','^N225','^TWII','^KS11','GC=F','CL=F')
 
-market_intra = function (market){
-  if((market %in% us)|(market %in% cn)) {
-    if(market %in% us){
-      dd= paste0('https://stock.finance.sina.com.cn/usstock/api/jsonp_v2.php/var%20t1$dji=/US_MinlineNService.getMinline?symbol=',market) %>%
-        read_html() %>%
-        html_nodes('body') %>%
-        html_text(trim = TRUE) %>%
-        strsplit(x=.,split = ';') %>% .[[1]] %>% .[3:length(.)]
-      df = data.frame()
-      for (i in 1:length(dd)){
-        df[i,1:4] = dd[i] %>% strsplit(x=.,',') %>% .[[1]] %>% .[1:4]
-        df[nrow(df),4] = df[nrow(df),4] %>% gsub(x=.,pattern = '")',replacement = '')
-      }
-    } else if (market %in% cn){
-      str = paste0('http://push2his.eastmoney.com/api/qt/stock/trends2/get?cb=jQuery112408673178994775943_1588072412033&secid=',market,'&ut=fa5fd1943c7b386f172d6893dbfba10b&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6%2Cf7%2Cf8%2Cf9%2Cf10%2Cf11&fields2=f51%2Cf53%2Cf56%2Cf58&iscr=0&ndays=1') %>%
-        read_html() %>%
-        html_nodes('body')%>% html_text(trim=TRUE) %>%
-        strsplit(x=.,split = '\\[|]') %>% .[[1]]
-      d = str[2] %>% strsplit(x=.,split = "\\,\"") %>% .[[1]]
-      df = data.frame()
-      for (i in 1:length(d)){
-        df[i,1:2] = d[i] %>% strsplit(x=.,split = " |,") %>% .[[1]] %>% .[c(2,4)]
-        df[i,3] = 0
-        df[i,4] = d[i] %>% strsplit(x=.,split = " |,") %>% .[[1]] %>% .[3]
-      }
-    }
-    df[2] = df[2] %>% lapply(as.numeric)
-    df[4] = df[4] %>% lapply(as.numeric)
-    df[c(1,2,4)]
-  } else if(market == "ks"){
-    if(weekdays(Sys.Date()) == "Saturday"){
-      date = paste0(format(Sys.Date()-1,"%Y%m%d"),1800)
-    } else if(weekdays(Sys.Date()) == "Sunday"){
-      date = paste0(format(Sys.Date()-2,"%Y%m%d"),1800)
-    } else {
-      date =  paste0(format(Sys.Date(),"%Y%m%d"),1800)
-    }
+############################## FNCT ##############################
+
+market_intra = function(wticker){
+  tex = paste0('https://query1.finance.yahoo.com/v8/finance/chart/',wticker,'?region=US&lang=en-US&includePrePost=false&interval=1m&range=1d&corsDomain=finance.yahoo.com&.tsrc=finance') %>%
+    read_html() %>%
+    html_node('body') %>%
+    html_text(trim = TRUE)
+  
+  a = strsplit(tex,'\\[*\\=?]')[[1]]
+  
+  indi = c("timestamp","open","high","low","close","volume")
+  
+  df = a[grep(indi[1],x=a)] %>% strsplit(.,",") %>% .[[1]] %>%
+    gsub(pattern = "[a-z]|[\":{}[]",replacement ="",x=.) %>%
+    .[-which(.[1]=="")] %>% as.data.frame()
+  
+  for (i in 2:length(indi)) {
     
-    num = paste0('https://finance.naver.com/sise/sise_index_time.nhn?code=KOSPI&thistime=',date,"&page=1") %>%
-      read_html() %>%
-      html_nodes('a') %>%
-      html_attr('href') %>%
-      tail(.,n=1) %>%
-      substr(.,gregexpr(pattern = "page=",text=.)[[1]][1]+5,nchar(.))
+    df1 = a[grep(indi[i],x=a)] %>% strsplit(.,",") %>% .[[1]] %>%
+      gsub(pattern = "[a-z]|[\":{}[]",replacement ="",x=.) %>%
+      .[-which(.[1]=="")] %>% as.numeric() %>% as.data.frame()
     
-    df = data.frame()
-    for (i in 1:num){
-      dk = paste0('https://finance.naver.com/sise/sise_index_time.nhn?code=KOSPI&thistime=',date,"&page=",i) %>%
-        read_html() %>%
-        html_nodes(xpath = '/html/body/div/table[1]') %>%
-        html_table(fill = TRUE) %>%
-        .[[1]] %>%
-        .[-which(.[,1]==""),]%>%
-        .[-which(is.na(.[,3])),]
-      df = rbind(df,dk)
-    }
-    df = df %>% .[nrow(df):1,] %>% .[c(1,2,4)]
-    df[2] = df[,2] %>% gsub(x=.,pattern = ',',replacement = "") %>% as.numeric()
-    df[3] = df[,3] %>% gsub(x=.,pattern = ',',replacement = "") %>% as.numeric()
-    
-  } else {
-    if((market %in% eu)|(market %in% as)){
-      str = paste0('https://stock.finance.sina.com.cn/usstock/api/jsonp.php/var%20t1znb_',market,'=/Global_IndexService.getTimeLine?symbol=',market) %>%
-        read_html() %>%
-        html_nodes('body') %>% html_text(trim = TRUE) %>% gsub(x=.,pattern = '\\"',replacement = "") %>%
-        strsplit(x=.,split="\\],\\[") %>% .[[1]]
-      
-    } else if (market %in% cmm){
-      str= paste0('https://stock2.finance.sina.com.cn/futures/api/openapi.php/GlobalFuturesService.getGlobalFuturesMinLine?symbol=',market,'&callback=var%20t1hf_',market) %>%
-        read_html() %>%
-        html_nodes('body') %>% html_text(trim = TRUE) %>% gsub(x=.,pattern = '\\"',replacement = "") %>%
-        strsplit(x=.,split="\\],\\[") %>% .[[1]]
-    }
-    df = data.frame()
-    for (i in 2:length(str)) df[i,1:2] = str[i] %>% strsplit(',') %>% unlist() %>% .[1:2]
-    df[2] = df[2] %>% lapply(as.numeric)
+    df = cbind(df,df1)
   }
+  
+  colnames(df) = indi
+  
+  if(wticker %in% ticker[c(1:3,12,13)]){
+    tzone = "EST"
+  } else if(wticker %in% ticker[c(4:6)]){
+    tzone = "CET"
+  } else if(wticker %in% ticker[c(7,8,10)]){
+    tzone = "Asia/Shanghai"
+  } else {
+    tzone = "Asia/Seoul"
+  }
+  
+  for (i in 1:nrow(df)) df[i,1] = format(as.POSIXct(as.numeric(df[i,1]),origin = "1970-01-01",tz=tzone),"%H:%M") 
+  
   df
 }
+w_news = function(market){
+  url = c()
+  for (i in 1:4) {
+    url[i] = paste0('http://www.newspim.com/news/lists/?category_cd=105050&page=',i*20-20)
+    rurl = url[i] %>% read_html() %>%
+      html_nodes(xpath = '//article[@class="thumbgroup"]') %>% 
+      .[grep(pattern = market,x=.)] %>% html_node('a') %>% html_attr('href')
+    
+    if(length(rurl)!=0){
+      url[i] = rurl %>% paste0('https://newspim.com',.)
+    } else {
+      url[i] = NA
+    }
+  }
+  
+  tex = url[which(!is.na(url))[1]] %>%
+    read_html() %>%
+    html_nodes('p') %>%
+    html_text(trim = TRUE) %>%
+    .[grep("특파원",x=.):tail(grep("newspim.com",x=.)-1,n=1)] 
+  
+  tex[1] = substr(x=tex[1],gregexpr(pattern = '특파원',text=tex[1])[[1]][1]+6,nchar(tex[1]))
+  
+  for (i in 1:length(tex)) {
+    cat(tex[i],"\n")
+    cat("\n")
+  }
+}
+
+################################################################
 
 {
   dfw = 'https://finance.yahoo.com/world-indices' %>%
@@ -135,7 +120,7 @@ market_intra = function (market){
     html_nodes(xpath = '//*[@id="yfin-list"]/div[2]/div/div/table') %>%
     html_table() %>%
     .[[1]] %>%
-    .[grep("GSPC|DJI|IXIC|FTSE|GDAXI|FCHI|N225|000001.SS|399001.SZ|TWII|KS11",.[,1]),] %>%
+    .[grep("GSPC|DJI|IXIC|FTSE|GDAXI|FCHI|000001.SS|399001.SZ|N225|TWII|KS11",.[,1]),] %>%
     .[,-1] %>%
     .[,c(1:4)] %>%
     .[c(1:6,8,9,7,11,10),]
@@ -151,12 +136,18 @@ market_intra = function (market){
   row.names(dfw) = NULL
   dfw$"MARKET" = NA
 }
-tk = c('GSPC','DJI','IXIC','FTSE','GDAXI','FCHI','000001.SS','399001.SZ','N225','TWII','KS11')
+
 
 try({
-  for(i in 1:length(tk)){
-    url = ifelse(i %in% c(7,8),paste0("https://finance.yahoo.com/quote/",tk[i],"?p=",tk[i]),
-                 paste0('https://finance.yahoo.com/quote/%5E',tk[i],'?p=^',tk[i]))
+  for (i in 1:11) {
+    
+    dfw[i,5] = market_intra(ticker[i])[[6]] %>% tail(.,n=1)
+    dfw[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(ticker[i])[[6]],type =
+                                                           'bar',width = 100)))
+    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(ticker[i])[[5]],type =
+                                                           'line',width = 100)))
+    
+    url = paste0("https://finance.yahoo.com/quote/",ticker[i],"?p=",ticker[i])
     tex = url %>%
       read_html() %>%
       html_nodes(xpath = '//*[@id="quote-market-notice"]/span') %>%
@@ -175,39 +166,7 @@ try({
                            x ~ icontext(ifelse(x < 0, "arrow-down", "arrow-up"), x)),
     MARKET = formatter("span",
                        style = x ~ style(font.weight ="bold",
-                                         color = ifelse(x == "OPEN","green","red")))
-  ))
-  
-  for(i in 1:3){
-    dfw[i,5] = market_intra(us[i])[[2]] %>% tail(.,n=1)
-    dfw[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(us[i])[[2]],type =
-                                                           'bar',width = 100)))
-    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(us[i])[[4]],type =
-                                                           'line',width = 100)))
-  }
-  
-  for (i in 4:6) {
-    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(eu[i-3])[[2]],type =
-                                                           'line',width = 100)))
-  }
-  for (i in 7:8) {
-    dfw[i,5] = market_intra(cn[i-6])[[2]] %>% tail(.,n=1)
-    dfw[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(cn[i-6])[[2]],type =
-                                                           'bar',width = 100)))
-    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(cn[i-6])[[4]],type =
-                                                           'line',width = 100)))
-  }
-  
-  for (i in 9:10) {
-    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(as[i-8])[[2]],type =
-                                                           'line',width = 100)))
-  }
-  dfw[11,5] = (market_intra('ks')[[3]] %>% tail(.,n=1))*1000
-  dfw[11,6] = as.character(htmltools::as.tags(sparkline(market_intra('ks')[[3]],type =
-                                                          'bar',width = 100)))
-  dfw[11,7] = as.character(htmltools::as.tags(sparkline(market_intra('ks')[[2]],type =
-                                                          'line',width = 100)))
-  
+                                         color = ifelse(x == "OPEN","green","red")))))
 },silent = T)
 
 dfc = 'https://finance.yahoo.com/commodities' %>%
@@ -222,14 +181,13 @@ dfc$"MARKET" = NA
 row.names(dfc) = NULL
 dfc[4] = (dfc[,4] %>% percent(format = "f",digits = 2))*.01
 
-tk = c('GC=F',"CL=F")
 
-for (i in 1:length(tk)) {
-  tex = paste0('https://finance.yahoo.com/quote/',tk[1],'?p=',tk[1],'&.tsrc=fin-srch') %>%
-  read_html() %>%
-  html_nodes(xpath = '//*[@id="quote-market-notice"]/span') %>%
-  html_text()
-  dfc[i,7] = ifelse(grepl(pattern = "close",x=tex)==TRUE,"CLOSE","OPEN")
+for (i in c(12,13)) {
+  tex = paste0('https://finance.yahoo.com/quote/',ticker[12],'?p=',ticker[12],'&.tsrc=fin-srch') %>%
+    read_html() %>%
+    html_nodes(xpath = '//*[@id="quote-market-notice"]/span') %>%
+    html_text()
+  dfc[i-11,7] = ifelse(grepl(pattern = "close",x=tex)==TRUE,"CLOSE","OPEN")
 }
 
 dfc = formattable(dfc,align = c("l","r","c","c","r","c","c"), list(
@@ -243,11 +201,11 @@ dfc = formattable(dfc,align = c("l","r","c","c","r","c","c"), list(
   MARKET = formatter("span",
                      style = x~style(font.weight = "bold",
                                      color = ifelse(x == "OPEN","green","red")))
-  ))
+))
 
-for (i in 1:2) {
-  dfc[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(cmm[i])[[2]],type =
-                                                         'line',width = 100)))
+for (i in c(12,13)) {
+  dfc[i-11,6] = as.character(htmltools::as.tags(sparkline(market_intra(ticker[i])[[5]],type =
+                                                            'line',width = 100)))
 }
 
 ```
@@ -267,24 +225,7 @@ out
 ####################################################################################
 ####################################################################################
 
-content = "%s<br><br> "
-
-url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%eb%89%b4%ec%9a%95-%ec%a6%9d%ec%8b%9c/' %>%
-  read_html() %>%
-  html_nodes(xpath = '//div[@class="fbuilder_column fbuilder_column-1-4"]') %>%
-  .[grep(x=.,pattern = '뉴욕마감')] %>% .[1] %>% html_nodes('a') %>% html_attr('href')
-
-tex = url %>%
-  read_html() %>%
-  html_nodes(xpath = '//div[@class="single_full_news_element fullwidth"]') %>%
-  html_text(trim = TRUE) %>%
-  strsplit(x=.,split = '\n \n') %>% .[[1]] %>% .[1] %>%
-  strsplit(x=.,split = "\n") %>%
-  .[[1]] %>% .[grep(x=.,"현지시간"):length(.)] %>% .[grep(x=.," ")] %>% .[1:(grep("PREVIOUS ARTICLE | NEXT ARTICLE",x=.)[1]-1)]
-
-for (i in 1:length(tex)){
-  cat(sprintf(content,tex[i]))
-}
+w_news("뉴욕증시")
 
 ```
 
@@ -306,26 +247,7 @@ out
 ####################################################################################
 ####################################################################################
 
-content = "%s<br><br>"
-
-url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%ec%9c%a0%eb%9f%bd-%ec%a6%9d%ec%8b%9c/' %>%
-  read_html() %>%
-  html_nodes(xpath = '//div[@class="headline_highlighted_column_block"]') %>% .[1] %>%
-  html_nodes('a') %>%
-  html_attr('href')
-
-tex = url %>%
-  read_html() %>%
-  html_nodes(xpath = '//div[@class="single_full_news_element fullwidth"]') %>%
-  html_text(trim = TRUE) %>%
-  strsplit(x=.,split = '\n \n') %>% .[[1]] %>% .[1] %>%
-  strsplit(x=.,split = "\n") %>%
-  .[[1]] %>% .[grep(x=.,"현지시간"):length(.)] %>% .[grep(x=.," ")]%>%
-  .[1:(grep("PREVIOUS ARTICLE | NEXT ARTICLE",x=.)[1]-1)]
-
-for (i in 1:length(tex)){
-  cat(sprintf(content,tex[i]))
-}
+w_news("유럽증시")
 
 ```
 
@@ -345,32 +267,26 @@ out
 ####################################################################################
 ####################################################################################
 
-content = "<br>%s<br>"
-
-url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%ec%a3%bc%ec%9a%94-%ea%b2%bd%ec%a0%9c-%eb%89%b4%ec%8a%a4/' %>%
+url = 'https://news.einfomax.co.kr/news/articleList.html?sc_area=A&view_type=sm&sc_word=%EA%B8%88%EA%B0%92' %>%
   read_html() %>%
-  html_nodes(xpath = '//div[@class="headline_highlighted_column_block"]')
+  html_nodes(xpath = "//div[@class='list-block']") %>%
+  html_nodes('a') %>% 
+  html_attr('href') %>% .[1] %>% 
+  paste0("https://news.einfomax.co.kr",.)
 
-url = url[url %>% grep(x=.,pattern = '금값') %>% .[1]] %>%
-  html_nodes('a') %>%
-  html_attr('href')
+text = url %>% read_html() %>%
+  html_nodes(xpath = '//*[@id="article-view-content-div"]') %>%
+  html_text(trim = TRUE) %>% 
+  strsplit("\n",x=.) %>% .[[1]]
 
-tex = url %>%
-  read_html() %>%
-  html_nodes(xpath = '//div[@class="single_full_news_element fullwidth"]') %>%
-  html_text(trim = TRUE) %>%
-  strsplit(x=.,split = '\n \n') %>% .[[1]] %>% .[1] %>%
-  strsplit(x=.,split = "\n") %>%
-  .[[1]] %>% .[grep(x=.,"현지시간"):length(.)] %>% .[grep(x=.," ")]
+text[1] = text[1] %>% 
+  substr(x=.,gregexpr("통신원 =",.)[[1]][1]+5,nchar(.))
 
-if(grepl(pattern = "PREVIOUS ARTICLE | NEXT ARTICLE",x=tex[length(tex)]) == TRUE){
-  tex = tex[1:(grep("PREVIOUS ARTICLE | NEXT ARTICLE",x=tex)[1]-1)]
-} else {
-  tex = tex
-}
+text = text %>% .[1:(grep("yna.co.kr",.)-1)]
 
-for (i in 1:length(tex)){
-  cat(sprintf(content,tex[i]))
+for (i in 1:length(text)) {
+  cat(text[i],"\n")
+  cat("\n")
 }
 
 ```
@@ -392,28 +308,7 @@ out
 ####################################################################################
 ####################################################################################
 
-content = "<br>%s<br>"
-
-url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%ec%a3%bc%ec%9a%94-%ea%b2%bd%ec%a0%9c-%eb%89%b4%ec%8a%a4/' %>%
-  read_html() %>%
-  html_nodes(xpath = '//div[@class="headline_highlighted_column_block"]')
-
-url = url[url %>% grep(x=.,pattern = '국제유가') %>% .[1]] %>%
-  html_nodes('a') %>%
-  html_attr('href')
-
-tex = url %>%
-  read_html() %>%
-  html_nodes(xpath = '//div[@class="single_full_news_element fullwidth"]') %>%
-  html_text(trim = TRUE) %>%
-  strsplit(x=.,split = '\n \n') %>% .[[1]] %>% .[1] %>%
-  strsplit(x=.,split = "\n") %>%
-  .[[1]] %>% .[grep(x=.,"현지시간"):length(.)] %>% .[grep(x=.," ")] %>%
-  .[1:(grep("PREVIOUS ARTICLE | NEXT ARTICLE",x=.)[1]-1)]
-
-for (i in 1:length(tex)){
-  cat(sprintf(content,tex[i]))
-}
+w_news("국제유가")
 
 ```
 
@@ -434,27 +329,30 @@ out
 ####################################################################################
 ####################################################################################
 
-content = "%s<br><br>"
-
-tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=CH' %>%
-    read_html(encoding = 'euc-kr') %>%
-    html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
-    strsplit(x=.,split = '\r\n\t') %>% .[[1]] %>% .[3] %>% strsplit(x=.,split = "<br>") %>% .[[1]]
-
-if(length(which(tex==""))==0){
-  tex = tex
-} else {
-  tex = tex[-which(tex=="")]
-}
-dat = ifelse(length(grep("작성일자",tex)) == 0,DATE,
-             tex[length(tex)] %>% substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-7) %>% .[1])
-
-if(DATE == dat) {
-  for (i in 1:(length(tex)-2)){
-   cat(sprintf(content,tex[i]))
+for (i in 1:4) {
+  url[i] = paste0('http://www.newspim.com/news/lists/?category_cd=120040&page=',i*20-20)
+  rurl = url[i] %>% read_html() %>%
+    html_nodes(xpath = '//article[@class="thumbgroup"]') %>% 
+    .[grep(pattern = "중국증시",x=.)] %>% html_node('a') %>% html_attr('href')
+  
+  if(length(rurl)!=0){
+    url[i] = rurl %>% paste0('https://newspim.com',.)
+  } else {
+    url[i] = NA
   }
-} else {
-  cat(sprintf(content,"마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
+}
+
+tex = url[which(!is.na(url))[1]] %>%
+  read_html() %>%
+  html_nodes('p') %>%
+  html_text(trim = TRUE) %>%
+  .[grep("=뉴스핌",x=.):tail(grep("newspim.com",x=.)-1,n=1)] 
+
+tex[1] = substr(x=tex[1],gregexpr(pattern = '=뉴스핌',text=tex[1])[[1]][1]+14,nchar(tex[1]))
+
+for (i in 1:length(tex)) {
+  cat(tex[i],"\n")
+  cat("\n")
 }
 
 ```
@@ -587,12 +485,10 @@ if(DATE == dat) {
 
 **REFERENCE**
 
+- ["뉴스핌"](http://newspim.com){target='blank'} <br>
+
 - ["인포스탁"](http://infostock.co.kr/){target='blank'} <br>
 
 - ["네이버금융"](http://finance.naver.com){target='blank'} <br>
-
-- ["NANUM 트레이딩"](http://www.nanumtrading.com/){target="blank"} <br>
-
-- ["新浪财经"](https://finance.sina.com.cn/){target='blank'} <br>
 
 - ["Finance Yahoo"](https://finance.yahoo.com/){target='blank'} <br>
