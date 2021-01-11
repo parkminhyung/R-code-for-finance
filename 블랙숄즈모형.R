@@ -6,8 +6,7 @@ black_scholes = function(s,x,rf,std,t,y=NULL,D=NULL,r=NULL){
     call.price = s*exp(-y*t)*pnorm(d1)-x*exp(-rf*t)*pnorm(d2)
     put.price = x*exp(-rf*t)*pnorm(-d2) - s*exp(-y*t)*pnorm(-d1)
     
-  } else if(is.null(y) & !is.null(D)){
-    
+  } else if(is.null(y) & !is.null(D)){    
     ### dividends is D    
     k = ifelse(is.null(r),1,(1+r)^t)    
     s.d = s - D/k
