@@ -86,10 +86,14 @@ market_intra = function(wticker){
 w_news = function(market){
   url = c()
   for (i in 1:4) {
-    url[i] = paste0('http://www.newspim.com/news/lists/?category_cd=105050&page=',i*20-20)
+    url[i] = paste0('http://www.newspim.com/news/lists/?category_cd=107030&page=',i*20-20)
+    num = url[i] %>% read_html() %>%
+      html_nodes(xpath = '//strong[@class="subject_h"]') %>% grep(pattern = market,x=.)
+    
     rurl = url[i] %>% read_html() %>%
-      html_nodes(xpath = '//article[@class="thumbgroup"]') %>% 
-      .[grep(pattern = market,x=.)] %>% html_node('a') %>% html_attr('href')
+      html_nodes(xpath = '//article[@class="thumbgroup"]') %>% .[num] %>%
+      html_nodes('a') %>% html_attr('href') %>% .[1]
+    
     
     if(length(rurl)!=0){
       url[i] = rurl %>% paste0('https://newspim.com',.)
@@ -104,7 +108,7 @@ w_news = function(market){
     html_text(trim = TRUE) %>%
     .[grep("특파원",x=.):tail(grep("newspim.com",x=.)-1,n=1)] 
   
-  tex[1] = substr(x=tex[1],gregexpr(pattern = '특파원',text=tex[1])[[1]][1]+6,nchar(tex[1]))
+  tex[1] = substr(x=tex[1],gregexpr(pattern = '특파원=',text=tex[1])[[1]][1]+4,nchar(tex[1]))
   
   for (i in 1:length(tex)) {
     cat(tex[i],"\n")
