@@ -3,7 +3,7 @@ R code for finance <br>
 주식, 재무표, 데이터를 위해 만든 repo입니다. <br>
 https://bookdown.org/allenpark88/rport2/ 사이트에 접속하시면 세계 마감시황을 열람하실 수 있습니다. source : market-report.rmd <br>
 
-# 2021.01.11 UPDATE
+# 2021.02.04 UPDATE
 1.옵션민감도 측정도구를 추가하였습니다..
 - 콜옵션과 풋옵션에 대한 델타, 감마, 쎄타, 베가, 로 의 값을 도출합니다.<br>
 
