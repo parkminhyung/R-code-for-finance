@@ -5,7 +5,6 @@ option_sens = function(s,x,r,std,t,y=NULL){
   
   d1 = (log(s/x)+(r-y+std^2/2)*t)/(std*sqrt(t))
   d2 = d1-(std*sqrt(t)) 
-  d3 = (log(s/x)+(r-std/2)*t)/(std*sqrt(t)) 
   
   nd1 = (1/(sqrt(2*pi)))*exp(-(d1^2/2))
   
@@ -21,8 +20,8 @@ option_sens = function(s,x,r,std,t,y=NULL){
   put.Th = -((s*std)/(2*sqrt(t)))*nd1-x*exp(-r*t)*r*(pnorm(d2)-1)
   
   #rho
-  call.rh = x*t*exp(-r*t)*pnorm(d3)
-  put.rh = x*t*exp(-r*t)*(pnorm(d3)-1)
+  call.rh = x*t*exp(-r*t)*pnorm(d2)
+  put.rh = x*t*exp(-r*t)*(pnorm(d2)-1)
   
   #Vega
   Vega = s*sqrt(t)*nd1
