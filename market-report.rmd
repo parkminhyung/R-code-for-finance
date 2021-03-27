@@ -83,39 +83,7 @@ market_intra = function(wticker){
   
   df
 }
-w_news = function(market){
-  url = c()
-  for (i in 1:4) {
-    
-    url[i] = paste0('http://www.newspim.com/news/lists/?category_cd=107030&page=',i*20-20)
-    num = url[i] %>% read_html() %>%
-      html_nodes(xpath = '//strong[@class="subject_h"]') %>% grep(pattern = market,x=.)
-    
-    rurl = url[i] %>% read_html() %>%
-      html_nodes(xpath = '//article[@class="thumbgroup"]') %>% .[num] %>%
-      html_nodes('a') %>% html_attr('href') %>% .[1]
-    
-    
-    if(length(rurl)!=0 && is.na(rurl)==FALSE){
-      url[i] = rurl %>% paste0('https://newspim.com',.)
-    } else {
-      url[i] = NA
-    }
-  }
-  
-  tex = url[which(!is.na(url))[1]] %>%
-    read_html() %>%
-    html_nodes('p') %>%
-    html_text(trim = TRUE) %>%
-    .[grep("특파원",x=.):tail(grep("newspim.com",x=.)-1,n=1)] 
-  
-  tex[1] = substr(x=tex[1],gregexpr(pattern = '특파원=',text=tex[1])[[1]][1]+4,nchar(tex[1]))
-  
-  for (i in 1:length(tex)) {
-    cat(tex[i],"\n")
-    cat("\n")
-  }
-}
+
 
 ################################################################
 
@@ -230,7 +198,30 @@ out
 ####################################################################################
 ####################################################################################
 
-w_news("뉴욕증시")
+library(rvest)
+
+url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%eb%89%b4%ec%9a%95-%ec%a6%9d%ec%8b%9c/' %>%
+  read_html() %>%
+  html_nodes('a') %>%
+  html_attr('href') %>%
+  .[78]
+
+
+tex = url %>% 
+  read_html() %>%
+  html_nodes(xpath = '//*[@id="content"]/div[1]') %>%
+  html_text(trim = TRUE) %>% 
+  strsplit(x=.,"\n") %>% .[[1]] %>%
+  .[-which(.=="")] %>%
+  .[-which(nchar(.)==0|nchar(.)==1)] %>%
+  .[c(1,grep(pattern = "현지시간",x=.):(grep(pattern = "NEXT|PREVIOUS",x=.)[1]-1))]
+
+
+cat(sprintf("**%s**<br><br>",tex[1]))
+
+for (i in 2:(length(tex)-2)){
+  cat(sprintf("%s<br><br>",tex[i]))
+}
 
 ```
 
@@ -252,7 +243,27 @@ out
 ####################################################################################
 ####################################################################################
 
-w_news("유럽증시")
+url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%ec%9c%a0%eb%9f%bd-%ec%a6%9d%ec%8b%9c/' %>%
+  read_html() %>%
+  html_nodes('a') %>%
+  html_attr('href') %>%
+  .[78]
+
+tex = url %>% 
+  read_html() %>%
+  html_nodes(xpath = '//*[@id="content"]/div[1]') %>%
+  html_text(trim = TRUE) %>% 
+  strsplit(x=.,"\n") %>% .[[1]] %>%
+  .[-which(.=="")] %>%
+  .[-which(nchar(.)==0|nchar(.)==1)] %>%
+  .[c(1,grep(pattern = "현지시간",x=.):(grep(pattern = "NEXT|PREVIOUS",x=.)[1]-1))]
+
+
+cat(sprintf("**%s**<br><br>",tex[1]))
+
+for (i in 2:(length(tex)-2)){
+  cat(sprintf("%s<br><br>",tex[i]))
+}
 
 ```
 
@@ -272,26 +283,26 @@ out
 ####################################################################################
 ####################################################################################
 
-url = 'https://news.einfomax.co.kr/news/articleList.html?sc_area=A&view_type=sm&sc_word=%EA%B8%88%EA%B0%92' %>%
+url ='http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%ec%a3%bc%ec%9a%94-%ea%b2%bd%ec%a0%9c-%eb%89%b4%ec%8a%a4/' %>%
   read_html() %>%
-  html_nodes(xpath = "//div[@class='list-block']") %>%
-  html_nodes('a') %>% 
-  html_attr('href') %>% .[1] %>% 
-  paste0("https://news.einfomax.co.kr",.)
+  html_nodes('h4') %>%
+  .[grep(pattern = "금값",x=.)[1]] %>%
+  html_nodes("a") %>%
+  html_attr("href")
 
-text = url %>% read_html() %>%
-  html_nodes(xpath = '//*[@id="article-view-content-div"]') %>%
+tex = url %>% 
+  read_html() %>%
+  html_nodes(xpath = '//*[@id="content"]/div[1]') %>%
   html_text(trim = TRUE) %>% 
-  strsplit("\n",x=.) %>% .[[1]]
+  strsplit(x=.,"\n") %>% .[[1]] %>%
+  .[-which(.=="")] %>%
+  .[-which(nchar(.)==0|nchar(.)==1)] %>%
+  .[c(1,grep(pattern = "현지시간",x=.):(grep(pattern = "NEXT|PREVIOUS",x=.)[1]-1))]
 
-text[1] = text[1] %>% 
-  substr(x=.,gregexpr("통신원 =",.)[[1]][1]+5,nchar(.))
+cat(sprintf("**%s**<br><br>",tex[1]))
 
-text = text %>% .[1:(grep("yna.co.kr",.)-1)]
-
-for (i in 1:length(text)) {
-  cat(text[i],"\n")
-  cat("\n")
+for (i in 2:(length(tex)-2)){
+  cat(sprintf("%s<br><br>",tex[i]))
 }
 
 ```
@@ -313,7 +324,27 @@ out
 ####################################################################################
 ####################################################################################
 
-w_news("국제유가")
+url ='http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%ec%a3%bc%ec%9a%94-%ea%b2%bd%ec%a0%9c-%eb%89%b4%ec%8a%a4/' %>%
+  read_html() %>%
+  html_nodes('h4') %>%
+  .[grep(pattern = "국제유가",x=.)[1]] %>%
+  html_nodes("a") %>%
+  html_attr("href")
+
+tex = url %>% 
+  read_html() %>%
+  html_nodes(xpath = '//*[@id="content"]/div[1]') %>%
+  html_text(trim = TRUE) %>% 
+  strsplit(x=.,"\n") %>% .[[1]] %>%
+  .[-which(.=="")] %>%
+  .[-which(nchar(.)==0|nchar(.)==1)] %>%
+  .[c(1,grep(pattern = "현지시간",x=.):(grep(pattern = "NEXT|PREVIOUS",x=.)[1]-1))]
+
+cat(sprintf("**%s**<br><br>",tex[1]))
+
+for (i in 2:(length(tex)-2)){
+  cat(sprintf("%s<br><br>",tex[i]))
+}
 
 ```
 
@@ -355,9 +386,10 @@ tex = url[which(!is.na(url))[1]] %>%
 
 tex[1] = substr(x=tex[1],gregexpr(pattern = '=뉴스핌',text=tex[1])[[1]][1]+14,nchar(tex[1]))
 
-for (i in 1:length(tex)) {
-  cat(tex[i],"\n")
-  cat("\n")
+cat(sprintf("**%s**<br><br>",tex[1]))
+
+for (i in 2:(length(tex)-2)){
+  cat(sprintf("%s<br><br>",tex[i]))
 }
 
 ```
@@ -379,26 +411,30 @@ out
 ####################################################################################
 ####################################################################################
 
-content = "%s<br><br>"
-
 tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=JP' %>%
-    read_html(encoding = 'euc-kr') %>%
-    html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
-    strsplit(x=.,split = '\r\n\t') %>% .[[1]] %>% .[3] %>% strsplit(x=.,split = "<br>") %>% .[[1]]
+  read_html(encoding = 'euc-kr') %>%
+  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
+  strsplit(x=.,split = '\r\n\t') %>% .[[1]] %>% .[3] %>% strsplit(x=.,split = "<br>") %>% .[[1]]
+
 if(length(which(tex==""))==0){
   tex = tex
 } else {
   tex = tex[-which(tex=="")]
 }
+
 dat = ifelse(length(grep("작성일자",tex)) == 0,DATE,
              tex[length(tex)] %>% substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-7) %>% .[1])
+
 if(DATE == dat) {
-  for (i in 1:(length(tex)-2)){
-   cat(sprintf(content,tex[i]))
+  cat(sprintf("**%s**<br><br>",tex[1]))
+  
+  for (i in 2:(length(tex)-2)){
+    cat(sprintf("%s<br><br>",tex[i]))
   }
 } else {
-  cat(sprintf(content,"마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
+  cat(sprintf("%s<br><br>","마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
 }
+
 
 ```
 
@@ -418,13 +454,11 @@ out
 
 ####################################################################################
 ####################################################################################
-
-content = "%s<br><br>"
-
 tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=TW' %>%
-    read_html(encoding = 'euc-kr') %>%
-    html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
-    strsplit(x=.,split = '\r\n\t') %>% .[[1]] %>% .[3] %>% strsplit(x=.,split = "<br>") %>% .[[1]]
+  read_html(encoding = 'euc-kr') %>%
+  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
+  strsplit(x=.,split = '\r\n\t') %>% .[[1]] %>% .[3] %>% strsplit(x=.,split = "<br>") %>% .[[1]]
+
 if(length(which(tex==""))==0){
   tex = tex
 } else {
@@ -434,11 +468,13 @@ dat = ifelse(length(grep("작성일자",tex)) == 0,DATE,
              tex[length(tex)] %>% substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-7) %>% .[1])
 
 if(DATE == dat) {
-  for (i in 1:(length(tex)-2)){
-   cat(sprintf(content,tex[i]))
+  cat(sprintf("**%s**<br><br>",tex[1]))
+  
+  for (i in 2:(length(tex)-2)){
+    cat(sprintf("%s<br><br>",tex[i]))
   }
 } else {
-  cat(sprintf(content,"마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
+  cat(sprintf("%s<br><br>","마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
 }
 
 ```
@@ -459,13 +495,11 @@ out
 
 ####################################################################################
 ####################################################################################
-
-content = "%s<br><br>"
-
 tex = 'http://m.infostock.co.kr/daily/koreaIndex.asp?mode=w&STYPE=KS1' %>%
-    read_html(encoding = 'euc-kr') %>%
-    html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
-    strsplit(x=.,split = '\r\n\t') %>% .[[1]] %>% .[3] %>% strsplit(x=.,split = "<br>") %>% .[[1]]
+  read_html(encoding = 'euc-kr') %>%
+  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
+  strsplit(x=.,split = '\r\n\t') %>% .[[1]] %>% .[3] %>% strsplit(x=.,split = "<br>") %>% .[[1]]
+
 if(length(which(tex==""))==0){
   tex = tex
 } else {
@@ -475,11 +509,13 @@ dat = ifelse(length(grep("작성일자",tex)) == 0,DATE,
              tex[length(tex)] %>% substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-7) %>% .[1])
 
 if(DATE == dat) {
-  for (i in 1:(length(tex)-2)){
-   cat(sprintf(content,tex[i]))
+  cat(sprintf("**%s**<br><br>",tex[1]))
+  
+  for (i in 2:(length(tex)-2)){
+    cat(sprintf("%s<br><br>",tex[i]))
   }
 } else {
-  cat(sprintf(content,"마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
+  cat(sprintf("%s<br><br>","마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
 }
 
 ```
@@ -490,10 +526,10 @@ if(DATE == dat) {
 
 **REFERENCE**
 
-- ["뉴스핌"](http://newspim.com){target='blank'} <br>
+- ["나눔트레이딩"](http://www.nanumtrading.com/){target='blank'} <br>
+
+- ["뉴스핌"](http://www.newspim.com/){target='blank'} <br>
 
 - ["인포스탁"](http://infostock.co.kr/){target='blank'} <br>
-
-- ["네이버금융"](http://finance.naver.com){target='blank'} <br>
 
 - ["Finance Yahoo"](https://finance.yahoo.com/){target='blank'} <br>
