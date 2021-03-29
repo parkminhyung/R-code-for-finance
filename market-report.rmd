@@ -156,7 +156,7 @@ dfc[4] = (dfc[,4] %>% percent(format = "f",digits = 2))*.01
 
 
 for (i in c(12,13)) {
-  tex = paste0('https://finance.yahoo.com/quote/',ticker[12],'?p=',ticker[12],'&.tsrc=fin-srch') %>%
+  tex = paste0('https://finance.yahoo.com/quote/',ticker[i],'?p=',ticker[i],'&.tsrc=fin-srch') %>%
     read_html() %>%
     html_nodes(xpath = '//*[@id="quote-market-notice"]/span') %>%
     html_text()
