@@ -40,7 +40,7 @@ if(weekdays(Sys.Date()) %ni% c("Saturday", "Sunday","Monday") & ("00:00:00" < fo
 
 library(sparkline); library(rvest); library(formattable)
 
-ticker = c('^GSPC','^DJI','^IXIC',"^FTSE",'^GDAXI','^FCHI','000001.SS','399001.SZ','^N225','^TWII','^KS11','GC=F','CL=F')
+ticker = c('%5EGSPC','%5EDJI','%5EIXIC',"%5EFTSE",'%5EGDAXI','%5EFCHI','000001.SS','399001.SZ','%5EN225','%5ETWII','%5EKS11','GC=F','CL=F')
 
 ############################## FNCT ##############################
 
@@ -84,25 +84,28 @@ market_intra = function(wticker){
   df
 }
 
-
 ################################################################
 
+dfw = data.frame()
+
 {
-  dfw = 'https://finance.yahoo.com/world-indices' %>%
-    read_html() %>%
-    html_nodes(xpath = '//*[@id="yfin-list"]/div[2]/div/div/table') %>%
-    html_table() %>%
-    .[[1]] %>%
-    .[grep("GSPC|DJI|IXIC|FTSE|GDAXI|FCHI|000001.SS|399001.SZ|N225|TWII|KS11",.[,1]),] %>%
-    .[,-1] %>%
-    .[,c(1:4)] %>%
-    .[c(1:6,8,9,7,11,10),]
-  
-  dfw[3] = dfw[,3] %>% as.numeric()
-  dfw[4] = dfw[,4] %>% gsub(pattern = '%',replacement = "",x=.) %>%
-    as.numeric()
-  dfw[4] = (dfw[,4] %>% percent(format = "f",digits = 2))*.01
-  
+  for (i in 1:(length(ticker)-2)) {
+    url = paste0('https://finance.yahoo.com/quote/',ticker[i],'/')
+    
+    dfw[i,1] = url %>% read_html() %>% html_nodes(xpath = '//*[@id="quote-header-info"]/div[2]/div[1]/div[1]/h1') %>% html_text(trim=TRUE)
+    dfw[i,2] = url %>%
+      read_html() %>% html_nodes(xpath = '//*[@id="quote-header-info"]/div[3]/div[1]/div/span[1]') %>%
+      html_text(trim = TRUE) %>%
+      gsub(x=.,",","") %>% as.numeric()
+    
+    cp = url %>%
+      read_html() %>% html_nodes(xpath = '//*[@id="quote-header-info"]/div[3]/div[1]/div/span[2]') %>%
+      html_text(trim = TRUE) %>% strsplit(x=.," ") %>% .[[1]]
+    
+    dfw[i,3] = cp[1]  
+    dfw[i,4] = cp[2] %>% gsub(x=.,"\\(|)","")
+  }
+  colnames(dfw) = c("indices","Last Price","Chg","% Change")
   dfw$"Vol" = NA
   dfw$"Vol_Bar" = NA
   dfw$"Intraday Chart" = NA
@@ -111,70 +114,64 @@ market_intra = function(wticker){
 }
 
 
-try({
-  for (i in 1:11) {
-    
-    dfw[i,5] = market_intra(ticker[i])[[6]] %>% tail(.,n=1)
-    dfw[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(ticker[i])[[6]],type =
-                                                           'bar',width = 100)))
-    dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(ticker[i])[[5]],type =
-                                                           'line',width = 100)))
-    
-    url = paste0("https://finance.yahoo.com/quote/",ticker[i],"?p=",ticker[i])
-    tex = url %>%
-      read_html() %>%
-      html_nodes(xpath = '//*[@id="quote-market-notice"]/span') %>%
-      html_text()
-    
-    dfw[i,8] = ifelse(grepl(pattern = "close",x=tex)==TRUE,"CLOSE","OPEN")
-  }
+for (i in 1:11) {
+  try({
+  dfw[i,5] = market_intra(ticker[i])[[6]] %>% tail(.,n=1)
+  dfw[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(ticker[i])[[6]],type =
+                                                         'bar',width = 100)))
+  dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(ticker[i])[[5]],type =
+                                                         'line',width = 100)))
   
-  dfw = formattable(dfw, align = c("l","r","c","c","r","c","c","c"), list(
-    Name = formatter("span",style = x~style(font.weight = "bold")),
-    Change = formatter("span", style = x ~ style(
-      font.weight = "bold",
-      color = ifelse(x > 0,"#2a9688", ifelse(x < 0, "#e35d5d", "black")))),
-    `% Change` = formatter("span",
-                           style = x ~ style(color = ifelse(x < 0 , "red", "green")),
-                           x ~ icontext(ifelse(x < 0, "arrow-down", "arrow-up"), x)),
-    MARKET = formatter("span",
-                       style = x ~ style(font.weight ="bold",
-                                         color = ifelse(x == "OPEN","green","red")))))
-},silent = T)
+  url = paste0("https://finance.yahoo.com/quote/",ticker[i],"?p=",ticker[i])
+  tex = url %>%
+    read_html() %>%
+    html_nodes(xpath = '//*[@id="quote-market-notice"]/span') %>%
+    html_text()
+  
+  dfw[i,8] = ifelse(grepl(pattern = "close",x=tex)==TRUE,"CLOSE","OPEN")
+  },silent = T)
+}
 
-dfc = 'https://finance.yahoo.com/commodities' %>%
-  read_html() %>%
-  html_nodes(xpath = '//*[@id="yfin-list"]/div[2]/div/div/table') %>%
-  html_table() %>%
-  .[[1]] %>%
-  .[grep('GC=F|CL=F',.[,1]),] %>% .[-2,] %>% .[,-1] %>% .[,c(1,2,4,5,6)]
+dfw[which(is.na(dfw[5])),5] = 0
 
+dfc = data.frame()
+for (i in 12:13) {
+  url = paste0('https://finance.yahoo.com/quote/',ticker[i],'?p=',ticker[i],'&.tsrc=fin-srch')
+  
+  dfc[i-11,1] = url %>% read_html() %>% html_nodes(xpath = '//*[@id="quote-header-info"]/div[2]/div[1]/div[1]/h1') %>% html_text(trim=TRUE)
+  dfc[i-11,2] = url %>%
+    read_html() %>% html_nodes(xpath = '//*[@id="quote-header-info"]/div[3]/div[1]/div/span[1]') %>%
+    html_text(trim = TRUE) %>%
+    gsub(x=.,",","") %>% as.numeric()
+  
+  cp = url %>%
+    read_html() %>% html_nodes(xpath = '//*[@id="quote-header-info"]/div[3]/div[1]/div/span[2]') %>%
+    html_text(trim = TRUE) %>% strsplit(x=.," ") %>% .[[1]]
+  
+  dfc[i-11,3] = cp[1]  
+  dfc[i-11,4] = cp[2] %>% gsub(x=.,"\\(|)","")
+  dfc[i-11,5] = url %>%
+    read_html() %>%
+    html_nodes(xpath = '//*[@id="quote-summary"]/div[2]/table/tbody/tr[3]/td[2]/span') %>%
+    html_text(trim = TRUE) %>% gsub(x=.,",","") %>% as.numeric()
+}
+
+
+
+
+colnames(dfc) = c("indices","Last Price","Chg","% Change","Volume")
 dfc$"Intraday Chart" = NA
 dfc$"MARKET" = NA
-row.names(dfc) = NULL
-dfc[4] = (dfc[,4] %>% percent(format = "f",digits = 2))*.01
 
 
 for (i in c(12,13)) {
-  tex = paste0('https://finance.yahoo.com/quote/',ticker[i],'?p=',ticker[i],'&.tsrc=fin-srch') %>%
+  tex = paste0('https://finance.yahoo.com/quote/',ticker[12],'?p=',ticker[12],'&.tsrc=fin-srch') %>%
     read_html() %>%
     html_nodes(xpath = '//*[@id="quote-market-notice"]/span') %>%
     html_text()
   dfc[i-11,7] = ifelse(grepl(pattern = "close",x=tex)==TRUE,"CLOSE","OPEN")
 }
 
-dfc = formattable(dfc,align = c("l","r","c","c","r","c","c"), list(
-  Name = formatter("span",style = x~style(font.weight = "bold")),
-  Change = formatter("span", style = x ~ style(
-    font.weight = "bold",
-    color = ifelse(x > 0,"#2a9688", ifelse(x < 0, "#e35d5d", "black")))),
-  `% Change` = formatter("span",
-                         style = x ~ style(color = ifelse(x < 0 , "red", "green")),
-                         x ~ icontext(ifelse(x < 0, "arrow-down", "arrow-up"), x)),
-  MARKET = formatter("span",
-                     style = x~style(font.weight = "bold",
-                                     color = ifelse(x == "OPEN","green","red")))
-))
 
 for (i in c(12,13)) {
   dfc[i-11,6] = as.character(htmltools::as.tags(sparkline(market_intra(ticker[i])[[5]],type =
@@ -189,38 +186,42 @@ for (i in c(12,13)) {
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-df = dfw[1:3,]
+dfus = dfw[1:3,]
 
-out = as.htmlwidget(formattable(df))
+dfus = formattable(dfus, align = c("l","r","c","c","r","c","c","c"), list(
+  indices = formatter("span",style = x~style(font.weight = "bold")),
+  Chg = formatter("span", style = x ~ style(
+    font.weight = "bold",
+    color = ifelse(grepl(x=dfus[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfus[,3],"-")==TRUE, "#e35d5d", "black")))),
+  `% Change` = formatter("span",
+                         style = x ~ style(color = ifelse(grepl(x=dfus[,4],"-")==TRUE , "red", "green")),
+                         x ~ icontext(ifelse(grepl(x=dfus[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+  MARKET = formatter("span",
+                     style = x ~ style(font.weight ="bold",
+                                       color = ifelse(x == "OPEN","green","red")))))
+
+out = as.htmlwidget(formattable(dfus))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
 out
 
 ####################################################################################
 ####################################################################################
 
-library(rvest)
-
-url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%eb%89%b4%ec%9a%95-%ec%a6%9d%ec%8b%9c/' %>%
+url = 'http://www.nanumtrading.com/마켓뉴스/뉴욕-증시/' %>%
   read_html() %>%
-  html_nodes('a') %>%
-  html_attr('href') %>%
-  .[78]
-
+  html_nodes('a') %>% html_attr('href') %>% .[78]
 
 tex = url %>% 
   read_html() %>%
   html_nodes(xpath = '//*[@id="content"]/div[1]') %>%
-  html_text(trim = TRUE) %>% 
-  strsplit(x=.,"\n") %>% .[[1]] %>%
+  html_nodes("p") %>%
+  html_text(trim = TRUE) %>%
   .[-which(.=="")] %>%
-  .[-which(nchar(.)==0|nchar(.)==1)] %>%
-  .[c(1,grep(pattern = "현지시간",x=.):(grep(pattern = "NEXT|PREVIOUS",x=.)[1]-1))]
+  .[grep("현지시간",.):length(.)]
 
-
-cat(sprintf("**%s**<br><br>",tex[1]))
-
-for (i in 2:(length(tex)-2)){
-  cat(sprintf("%s<br><br>",tex[i]))
+for (i in 1:length(tex)) {
+  cat(tex[i],"\n")
+  cat("\n")
 }
 
 ```
@@ -234,35 +235,42 @@ for (i in 2:(length(tex)-2)){
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-df = dfw[4:6,c(1:ncol(dfw))]
+dfeu = dfw[4:6,]
 
-out = as.htmlwidget(formattable(df))
+dfeu = formattable(dfeu, align = c("l","r","c","c","r","c","c","c"), list(
+  indices = formatter("span",style = x~style(font.weight = "bold")),
+  Chg = formatter("span", style = x ~ style(
+    font.weight = "bold",
+    color = ifelse(grepl(x=dfeu[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfeu[,3],"-")==TRUE, "#e35d5d", "black")))),
+  `% Change` = formatter("span",
+                         style = x ~ style(color = ifelse(grepl(x=dfeu[,4],"-")==TRUE , "red", "green")),
+                         x ~ icontext(ifelse(grepl(x=dfeu[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+  MARKET = formatter("span",
+                     style = x ~ style(font.weight ="bold",
+                                       color = ifelse(x == "OPEN","green","red")))))
+
+out = as.htmlwidget(formattable(dfeu))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
 out
 
 ####################################################################################
 ####################################################################################
 
-url = 'http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%ec%9c%a0%eb%9f%bd-%ec%a6%9d%ec%8b%9c/' %>%
+url = 'http://www.nanumtrading.com/마켓뉴스/유럽-증시/' %>%
   read_html() %>%
-  html_nodes('a') %>%
-  html_attr('href') %>%
-  .[78]
+  html_nodes('a') %>% html_attr('href') %>% .[78]
 
 tex = url %>% 
   read_html() %>%
   html_nodes(xpath = '//*[@id="content"]/div[1]') %>%
-  html_text(trim = TRUE) %>% 
-  strsplit(x=.,"\n") %>% .[[1]] %>%
+  html_nodes("p") %>%
+  html_text(trim = TRUE) %>%
   .[-which(.=="")] %>%
-  .[-which(nchar(.)==0|nchar(.)==1)] %>%
-  .[c(1,grep(pattern = "현지시간",x=.):(grep(pattern = "NEXT|PREVIOUS",x=.)[1]-1))]
+  .[grep("현지시간",.):length(.)]
 
-
-cat(sprintf("**%s**<br><br>",tex[1]))
-
-for (i in 2:(length(tex)-2)){
-  cat(sprintf("%s<br><br>",tex[i]))
+for (i in 1:length(tex)) {
+  cat(tex[i],"\n")
+  cat("\n")
 }
 
 ```
@@ -275,34 +283,42 @@ for (i in 2:(length(tex)-2)){
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-df = dfc[1,]
-out = as.htmlwidget(formattable(df))
+dfg = dfc[1,]
+dfg = formattable(dfg,align = c("l","r","c","c","r","c","c"), list(
+  indices = formatter("span",style = x~style(font.weight = "bold")),
+  Chg = formatter("span", style = x ~ style(
+    font.weight = "bold",
+    color = ifelse(grepl(x=dfg[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfg[,3],"-")==TRUE, "#e35d5d", "black")))),
+  `% Change` = formatter("span",
+                         style = x ~ style(color = ifelse(grepl(x=dfg[,3],"-")==TRUE , "red", "green")),
+                         x ~ icontext(ifelse(grepl(x=dfg[,3],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+  MARKET = formatter("span",
+                     style = x~style(font.weight = "bold",
+                                     color = ifelse(x == "OPEN","green","red")))
+))
+out = as.htmlwidget(formattable(dfg))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
 out
 
 ####################################################################################
 ####################################################################################
 
-url ='http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%ec%a3%bc%ec%9a%94-%ea%b2%bd%ec%a0%9c-%eb%89%b4%ec%8a%a4/' %>%
+url = 'http://www.nanumtrading.com/마켓뉴스/주요-경제-뉴스/' %>%
   read_html() %>%
-  html_nodes('h4') %>%
-  .[grep(pattern = "금값",x=.)[1]] %>%
-  html_nodes("a") %>%
-  html_attr("href")
+  html_nodes('a') %>%
+  .[grep("금값",.)] %>% html_attr("href") %>% .[1]
 
 tex = url %>% 
   read_html() %>%
   html_nodes(xpath = '//*[@id="content"]/div[1]') %>%
-  html_text(trim = TRUE) %>% 
-  strsplit(x=.,"\n") %>% .[[1]] %>%
+  html_nodes("p") %>%
+  html_text(trim = TRUE) %>%
   .[-which(.=="")] %>%
-  .[-which(nchar(.)==0|nchar(.)==1)] %>%
-  .[c(1,grep(pattern = "현지시간",x=.):(grep(pattern = "NEXT|PREVIOUS",x=.)[1]-1))]
+  .[grep("현지시간",.):length(.)]
 
-cat(sprintf("**%s**<br><br>",tex[1]))
-
-for (i in 2:(length(tex)-2)){
-  cat(sprintf("%s<br><br>",tex[i]))
+for (i in 1:length(tex)) {
+  cat(tex[i],"\n")
+  cat("\n")
 }
 
 ```
@@ -315,36 +331,45 @@ for (i in 2:(length(tex)-2)){
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-df = dfc[2,]
-
-out = as.htmlwidget(formattable(df))
+dfcl = dfc[2,]
+dfcl = formattable(dfcl,align = c("l","r","c","c","r","c","c"), list(
+  indices = formatter("span",style = x~style(font.weight = "bold")),
+  Chg = formatter("span", style = x ~ style(
+    font.weight = "bold",
+    color = ifelse(grepl(x=dfcl[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfcl[,3],"-")==TRUE, "#e35d5d", "black")))),
+  `% Change` = formatter("span",
+                         style = x ~ style(color = ifelse(grepl(x=dfcl[,3],"-")==TRUE , "red", "green")),
+                         x ~ icontext(ifelse(grepl(x=dfcl[,3],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+  MARKET = formatter("span",
+                     style = x~style(font.weight = "bold",
+                                     color = ifelse(x == "OPEN","green","red")))
+))
+out = as.htmlwidget(formattable(dfcl))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
 out
 
+
 ####################################################################################
 ####################################################################################
 
-url ='http://www.nanumtrading.com/%eb%a7%88%ec%bc%93%eb%89%b4%ec%8a%a4/%ec%a3%bc%ec%9a%94-%ea%b2%bd%ec%a0%9c-%eb%89%b4%ec%8a%a4/' %>%
+url = 'http://www.nanumtrading.com/마켓뉴스/주요-경제-뉴스/' %>%
   read_html() %>%
-  html_nodes('h4') %>%
-  .[grep(pattern = "국제유가",x=.)[1]] %>%
-  html_nodes("a") %>%
-  html_attr("href")
+  html_nodes('a') %>%
+  .[grep("국제유가",.)] %>% html_attr("href") %>% .[1]
 
 tex = url %>% 
   read_html() %>%
   html_nodes(xpath = '//*[@id="content"]/div[1]') %>%
-  html_text(trim = TRUE) %>% 
-  strsplit(x=.,"\n") %>% .[[1]] %>%
+  html_nodes("p") %>%
+  html_text(trim = TRUE) %>%
   .[-which(.=="")] %>%
-  .[-which(nchar(.)==0|nchar(.)==1)] %>%
-  .[c(1,grep(pattern = "현지시간",x=.):(grep(pattern = "NEXT|PREVIOUS",x=.)[1]-1))]
+  .[grep("현지시간",.):length(.)]
 
-cat(sprintf("**%s**<br><br>",tex[1]))
-
-for (i in 2:(length(tex)-2)){
-  cat(sprintf("%s<br><br>",tex[i]))
+for (i in 1:length(tex)) {
+  cat(tex[i],"\n")
+  cat("\n")
 }
+
 
 ```
 
@@ -356,9 +381,20 @@ for (i in 2:(length(tex)-2)){
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-df = dfw[7:8,]
+dfcn = dfw[7:8,]
+dfcn = formattable(dfcn, align = c("l","r","c","c","r","c","c","c"), list(
+  indices = formatter("span",style = x~style(font.weight = "bold")),
+  Chg = formatter("span", style = x ~ style(
+    font.weight = "bold",
+    color = ifelse(grepl(x=dfcn[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfcn[,3],"-")==TRUE, "#e35d5d", "black")))),
+  `% Change` = formatter("span",
+                         style = x ~ style(color = ifelse(grepl(x=dfcn[,4],"-")==TRUE , "red", "green")),
+                         x ~ icontext(ifelse(grepl(x=dfcn[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+  MARKET = formatter("span",
+                     style = x ~ style(font.weight ="bold",
+                                       color = ifelse(x == "OPEN","green","red")))))
 
-out = as.htmlwidget(formattable(df))
+out = as.htmlwidget(formattable(dfcn))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
 out
 
@@ -386,10 +422,9 @@ tex = url[which(!is.na(url))[1]] %>%
 
 tex[1] = substr(x=tex[1],gregexpr(pattern = '=뉴스핌',text=tex[1])[[1]][1]+14,nchar(tex[1]))
 
-cat(sprintf("**%s**<br><br>",tex[1]))
-
-for (i in 2:(length(tex)-2)){
-  cat(sprintf("%s<br><br>",tex[i]))
+for (i in 1:length(tex)) {
+  cat(tex[i],"\n")
+  cat("\n")
 }
 
 ```
@@ -402,39 +437,46 @@ for (i in 2:(length(tex)-2)){
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-df = dfw[9,]
+dfjp = dfw[9,]
+dfjp = formattable(dfjp, align = c("l","r","c","c","r","c","c","c"), list(
+  indices = formatter("span",style = x~style(font.weight = "bold")),
+  Chg = formatter("span", style = x ~ style(
+    font.weight = "bold",
+    color = ifelse(grepl(x=dfjp[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfjp[,3],"-")==TRUE, "#e35d5d", "black")))),
+  `% Change` = formatter("span",
+                         style = x ~ style(color = ifelse(grepl(x=dfjp[,4],"-")==TRUE , "red", "green")),
+                         x ~ icontext(ifelse(grepl(x=dfjp[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+  MARKET = formatter("span",
+                     style = x ~ style(font.weight ="bold",
+                                       color = ifelse(x == "OPEN","green","red")))))
 
-out = as.htmlwidget(formattable(df))
+out = as.htmlwidget(formattable(dfjp))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
 out
 
 ####################################################################################
 ####################################################################################
 
-tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=JP' %>%
-  read_html(encoding = 'euc-kr') %>%
-  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
-  strsplit(x=.,split = '\r\n\t') %>% .[[1]] %>% .[3] %>% strsplit(x=.,split = "<br>") %>% .[[1]]
+content = "%s<br><br>"
 
+tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=JP' %>%
+    read_html(encoding = 'euc-kr') %>%
+    html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
+    strsplit(x=.,split = '\r\n\t') %>% .[[1]] %>% .[3] %>% strsplit(x=.,split = "<br>") %>% .[[1]]
 if(length(which(tex==""))==0){
   tex = tex
 } else {
   tex = tex[-which(tex=="")]
 }
-
 dat = ifelse(length(grep("작성일자",tex)) == 0,DATE,
              tex[length(tex)] %>% substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-7) %>% .[1])
-
 if(DATE == dat) {
-  cat(sprintf("**%s**<br><br>",tex[1]))
-  
-  for (i in 2:(length(tex)-2)){
-    cat(sprintf("%s<br><br>",tex[i]))
+  for (i in 1:(length(tex)-2)){
+   cat(sprintf(content,tex[i]))
   }
 } else {
-  cat(sprintf("%s<br><br>","마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
+  cat(sprintf(content,"마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
 }
-
 
 ```
 
@@ -446,19 +488,32 @@ if(DATE == dat) {
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-df = dfw[10,]
+dftw = dfw[10,]
+dftw = formattable(dftw, align = c("l","r","c","c","r","c","c","c"), list(
+  indices = formatter("span",style = x~style(font.weight = "bold")),
+  Chg = formatter("span", style = x ~ style(
+    font.weight = "bold",
+    color = ifelse(grepl(x=dftw[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dftw[,3],"-")==TRUE, "#e35d5d", "black")))),
+  `% Change` = formatter("span",
+                         style = x ~ style(color = ifelse(grepl(x=dftw[,4],"-")==TRUE , "red", "green")),
+                         x ~ icontext(ifelse(grepl(x=dftw[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+  MARKET = formatter("span",
+                     style = x ~ style(font.weight ="bold",
+                                       color = ifelse(x == "OPEN","green","red")))))
 
-out = as.htmlwidget(formattable(df))
+out = as.htmlwidget(formattable(dftw))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
 out
 
 ####################################################################################
 ####################################################################################
-tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=TW' %>%
-  read_html(encoding = 'euc-kr') %>%
-  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
-  strsplit(x=.,split = '\r\n\t') %>% .[[1]] %>% .[3] %>% strsplit(x=.,split = "<br>") %>% .[[1]]
 
+content = "%s<br><br>"
+
+tex = 'http://m.infostock.co.kr/daily/worldIndex.asp?mode=w&STYPE=TW' %>%
+    read_html(encoding = 'euc-kr') %>%
+    html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
+    strsplit(x=.,split = '\r\n\t') %>% .[[1]] %>% .[3] %>% strsplit(x=.,split = "<br>") %>% .[[1]]
 if(length(which(tex==""))==0){
   tex = tex
 } else {
@@ -468,13 +523,11 @@ dat = ifelse(length(grep("작성일자",tex)) == 0,DATE,
              tex[length(tex)] %>% substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-7) %>% .[1])
 
 if(DATE == dat) {
-  cat(sprintf("**%s**<br><br>",tex[1]))
-  
-  for (i in 2:(length(tex)-2)){
-    cat(sprintf("%s<br><br>",tex[i]))
+  for (i in 1:(length(tex)-2)){
+   cat(sprintf(content,tex[i]))
   }
 } else {
-  cat(sprintf("%s<br><br>","마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
+  cat(sprintf(content,"마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
 }
 
 ```
@@ -487,19 +540,32 @@ if(DATE == dat) {
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-df = dfw[11,]
+dfks = dfw[11,]
+dfks = formattable(dfks, align = c("l","r","c","c","r","c","c","c"), list(
+  indices = formatter("span",style = x~style(font.weight = "bold")),
+  Chg = formatter("span", style = x ~ style(
+    font.weight = "bold",
+    color = ifelse(grepl(x=dfks[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfks[,3],"-")==TRUE, "#e35d5d", "black")))),
+  `% Change` = formatter("span",
+                         style = x ~ style(color = ifelse(grepl(x=dfks[,4],"-")==TRUE , "red", "green")),
+                         x ~ icontext(ifelse(grepl(x=dfks[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+  MARKET = formatter("span",
+                     style = x ~ style(font.weight ="bold",
+                                       color = ifelse(x == "OPEN","green","red")))))
 
-out = as.htmlwidget(formattable(df))
+out = as.htmlwidget(formattable(dfks))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
 out
 
 ####################################################################################
 ####################################################################################
-tex = 'http://m.infostock.co.kr/daily/koreaIndex.asp?mode=w&STYPE=KS1' %>%
-  read_html(encoding = 'euc-kr') %>%
-  html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
-  strsplit(x=.,split = '\r\n\t') %>% .[[1]] %>% .[3] %>% strsplit(x=.,split = "<br>") %>% .[[1]]
 
+content = "%s<br><br>"
+
+tex = 'http://m.infostock.co.kr/daily/koreaIndex.asp?mode=w&STYPE=KS1' %>%
+    read_html(encoding = 'euc-kr') %>%
+    html_nodes(xpath = '//div[@class="txtContent"]') %>% as.character() %>%
+    strsplit(x=.,split = '\r\n\t') %>% .[[1]] %>% .[3] %>% strsplit(x=.,split = "<br>") %>% .[[1]]
 if(length(which(tex==""))==0){
   tex = tex
 } else {
@@ -509,13 +575,11 @@ dat = ifelse(length(grep("작성일자",tex)) == 0,DATE,
              tex[length(tex)] %>% substr(.,gregexpr('작성일자',.)[[1]][1]+7,nchar(.)-7) %>% .[1])
 
 if(DATE == dat) {
-  cat(sprintf("**%s**<br><br>",tex[1]))
-  
-  for (i in 2:(length(tex)-2)){
-    cat(sprintf("%s<br><br>",tex[i]))
+  for (i in 1:(length(tex)-2)){
+   cat(sprintf(content,tex[i]))
   }
 } else {
-  cat(sprintf("%s<br><br>","마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
+  cat(sprintf(content,"마감시황은 장 마감 후 제공됩니다. 현재 준비 중 입니다."))
 }
 
 ```
@@ -526,10 +590,14 @@ if(DATE == dat) {
 
 **REFERENCE**
 
-- ["나눔트레이딩"](http://www.nanumtrading.com/){target='blank'} <br>
-
-- ["뉴스핌"](http://www.newspim.com/){target='blank'} <br>
+- ["뉴스핌"](http://newspim.com){target='blank'} <br>
 
 - ["인포스탁"](http://infostock.co.kr/){target='blank'} <br>
 
+- ["네이버금융"](http://finance.naver.com){target='blank'} <br>
+
 - ["Finance Yahoo"](https://finance.yahoo.com/){target='blank'} <br>
+
+- ["나눔트레이딩"]('https://www.nanumtrading.com/') <br>
+
+
