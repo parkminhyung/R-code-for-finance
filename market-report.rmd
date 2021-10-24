@@ -45,10 +45,19 @@ ticker = c('%5EGSPC','%5EDJI','%5EIXIC',"%5EFTSE",'%5EGDAXI','%5EFCHI','000001.S
 ############################## FNCT ##############################
 
 market_intra = function(wticker){
-  tex = paste0('https://query1.finance.yahoo.com/v8/finance/chart/',wticker,'?region=US&lang=en-US&includePrePost=false&interval=1m&range=1d&corsDomain=finance.yahoo.com&.tsrc=finance') %>%
+  n = 1
+  tex = paste0('https://query1.finance.yahoo.com/v8/finance/chart/',wticker,'?region=US&lang=en-US&includePrePost=false&interval=1m&useYfid=true&range=',n,'d&corsDomain=finance.yahoo.com&.tsrc=finance') %>%
     read_html() %>%
     html_node('body') %>%
     html_text(trim = TRUE)
+  
+  if(grepl("open",tex) != TRUE){
+    n=2
+    tex = paste0('https://query1.finance.yahoo.com/v8/finance/chart/',wticker,'?region=US&lang=en-US&includePrePost=false&interval=1m&useYfid=true&range=',n,'d&corsDomain=finance.yahoo.com&.tsrc=finance') %>%
+      read_html() %>%
+      html_node('body') %>%
+      html_text(trim = TRUE)
+  } 
   
   a = strsplit(tex,'\\[*\\=?]')[[1]]
   
