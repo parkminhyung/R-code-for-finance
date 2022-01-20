@@ -4,6 +4,7 @@ fin_data = function(ticker){
   if(!require(rvest)) install.packages('rvest'); library(rvest)
   if(!require(qdapRegex)) install.packages('qdapRegex'); library(qdapRegex)
   if(!require(lubridate)) install.packages('lubridate'); library(lubridate)
+  if(!require(readr)) install.packages('readr'); library(readr)
   
   df1 = data.frame()
   df = data.frame()
