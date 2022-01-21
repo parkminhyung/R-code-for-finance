@@ -8,8 +8,8 @@ fin_data = function(ticker){
   
   df1 = data.frame()
   df = data.frame()
-  for (i in 1:12) {
-    
+  for (i in 1:13) {
+    #If you want to lengthen time period, adjust the above value (13 in the for loop)
     ind = paste0('https://m.stock.naver.com/api/item/getPriceDayList.nhn?code=',ticker,'&pageSize=20&page=',i)%>%
       read_html() %>%
       html_nodes('body') %>%
