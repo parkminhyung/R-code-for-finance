@@ -3,6 +3,37 @@ R code for finance <br>
 주식, 재무표, 데이터를 위해 만든 repo입니다. <br>
 https://bookdown.org/allenpark88/rport/R+port.html 사이트에 접속하시면 세계 마감시황을 열람하실 수 있습니다. source : market-report.rmd <br>
 
+# 2022.01.23 UPDATE
+1. 네이버주가데이터(Integrated) 를 추가하였습니다.
+- 국내외 시장 주가데이터 및 국내기업 주가데이터를 제공합니다 (추후 해외주가데이터도 추가할 예정)
+- 디폴트 값은 ticker, datetype = "month", time_length="1년" 으로 되어 있습니다.
+- ticker 값에 국내기업의 ticker, 혹은 마켓이름을 넣으시면 됩니다
+- datetype은 "day","month","year" 로 제공합니다. day는 하루동안의 주가변동을 나타내며, month는 n개월 동안의 주가변동을 나타내며, year은 n년 동안의 주가데이터를 나타냅니다.
+- **주의, 1년 동안의 전 영업일 주가데이터를 보고 싶으시면 ticker만 입력하시면 됩니다. ex. fin_data('005930') 디폴트로 되어있음 fin_data('005930','year','1')로 입력 시 주가는 1일이 아닌, 1주단위의 주가를 제공합니다
+- 코스피 주가를 보고 싶으시면 fin_data('kospi')를 입력하시면 됩니다. 해외 마켓도 마찬가지로 입력하시면 됩니다. 
+- 주가를 추출하고 싶으시면 fin_data(ticker)[해당주가의colnumber] 를 입력하시면 됩니다. 예를 들어 Close값은 colnum이 4, 이며, 삼성전자 1년 종가만 추출할 시 fin_data('005930')[4] 를 입력하시면 됩니다
+- 해외 개별주식의 데이터는 추후에 처리할 예정입니다. 해외 마켓 데이터는 선물과 지수만 제공합니다.
+- ticker는 대소문주 구분하지 않습니다. 자동으로 대문자로 변환되니 소문자로 입력하셔도 됩니다. 
+
+## 국내외 마켓 Ticker
+
+- 아래표는 fin_data 함수가 지원하는 국내 및 해외 시장 ticker 입니다. 만약 필라델피아반도체 1년 주가를 보고 싶으시면 fin_data('SOX') 을 입력하시면 됩니다. datetype과 time_length는 기존의 것과 동일합니다. 예, 나스닥 3년 주가 데이터 : fin_data('IXIC','year',3)
+
+|**아시아**|
+|------|
+|한국 : 코스피(kospi), 코스피200(KOSPI200), 코스닥(KOSDAQ),
+중국 : 상해(SSEC), 심천(SZSC), 상해A(SSEA), 심천A(SZSA), 상해B(SSEB), 심천B(SZSB), CSI(CSI100), CSI300(CSI300), 항셍(HSI),홍콩H(HSCE)
+기타 : 일본니케이(N225), 일본토픽스(TOPX), 대만가권(TWII), 베트남호치민(VNI), 베트남하노이(HNXI), 말레이시아(KLSE), 인도(BSESN), 인도네시아(JKSE)|
+
+|**미국**|
+|------|
+|다우(DJI), 나스닥(IXIC), 다우운송(DJT), 나스닥100(NDX), S&P500(INX), 필라델피아반도체(SOX), VIX(VIX), 브라질(BVSP), 멕시코(MXX), 아르헨티나(MERV)|
+
+|**유럽**|
+|------|
+|유로스톡스(STOXX50E), 독일DAX(GDAXI), 영국FTSE(FTSE), 프랑스CAC(FCHI), 이탈리아FTSEMIB(FTMIB), 네덜란드(AEX), 벨기에(BFX), 스페인(IBEX), 포르투갈(PSI20), 아일랜드(ISEQ), 덴마크(OMXC20), 스웨덴(OMXS30), 핀란드(OMXH25), 그리스(ATG), 헝가리(BUX), 러시아RTS(IRTS)|
+
+
 # 2022.01.17 UPDATE
 1.다이나믹 헤지전략,KRX 리스트를 추가하였습니다.
 - 다이나믹 헤지전략에 선물이론가, Protective의 Floor, 풋델타와 선물델타 그리고 동적헤지에 필요한 선물수량을 계산합니다.<br>
