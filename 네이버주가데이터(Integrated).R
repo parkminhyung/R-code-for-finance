@@ -19,25 +19,24 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL){
   
   datetype = ifelse(is.null(datetype),'month',datetype)
   time_length = ifelse(is.null(time_length),'12',time_length)
-  if(datetype=="year" & time_length>0) time_length = 10
+  if(datetype=="year" & time_length>10) time_length = 10
+  if(datetype=="day") time_length = NA
   '%ni%' = Negate('%in%')
   ticker = ifelse(ticker %ni%  FTINDEX, toupper(ticker),ticker)
   
   if(datetype!="day"){
     
-    #Domestic
-    url = ifelse(ticker %in% INDEX, 
-                 paste0('https://api.stock.naver.com/chart/domestic/index/',ticker,'?periodType=',datetype,'&range=',time_length),
-                 paste0('https://api.stock.naver.com/chart/domestic/item/',ticker,'?periodType=',datetype,'&range=',time_length))
-    
-    #Foreign
-    if(ticker %in% FINDEX) url = paste0('https://api.stock.naver.com/chart/foreign/index/.',ticker,'?periodType=',datetype,'&range=',time_length)
-    
-    #Future
-    url = ifelse(ticker == "FUT",
-                 paste0('https://api.stock.naver.com/chart/domestic/futures/FUT?periodType=',datetype,'&range=',time_length),
-                 ifelse(ticker %in% FTINDEX,
-                        paste0('https://api.stock.naver.com/chart/foreign/futures/',ticker,'?periodType=',datetype,'&range=',time_length)))
+    if(ticker %in% INDEX){
+      url = paste0('https://api.stock.naver.com/chart/domestic/index/',ticker,'?periodType=',datetype,'&range=',time_length)
+    } else if(ticker %in% FINDEX){
+      url = url = paste0('https://api.stock.naver.com/chart/foreign/index/.',ticker,'?periodType=',datetype,'&range=',time_length)
+    } else if(ticker %in% FTINDEX){
+      url = paste0('https://api.stock.naver.com/chart/foreign/futures/',ticker,'?periodType=',datetype,'&range=',time_length)
+    } else if(ticker == "FUT"){
+      url = paste0('https://api.stock.naver.com/chart/domestic/futures/FUT?periodType=',datetype,'&range=',time_length)
+    } else {
+      url = paste0('https://api.stock.naver.com/chart/domestic/item/',ticker,'?periodType=',datetype,'&range=',time_length)
+    }
     
     ind = url %>%
       read_html() %>%
@@ -61,13 +60,18 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL){
     colnames(df) = c("Open","High","Low","Close","ACC.Vol","Chg")
     
   } else if(datetype=="day"){
-    url = ifelse(ticker %in% INDEX, 
-                 paste0('https://api.stock.naver.com/chart/domestic/index/',ticker,'?periodType=day'),
-                 paste0('https://api.stock.naver.com/chart/domestic/item/',ticker,'?periodType=day'))
-    url = ifelse(ticker == "FUT",
-                 paste0('https://api.stock.naver.com/chart/domestic/futures/FUT?periodType=day'),
-                 ifelse(ticker %in% FTINDEX,
-                        paste0('https://api.stock.naver.com/chart/foreign/futures/',ticker,'?periodType=day')))
+    
+    if(ticker %in% INDEX){
+      url = paste0('https://api.stock.naver.com/chart/domestic/index/',ticker,'?periodType=day')
+    } else if(ticker %in% FINDEX){
+      url = paste0('https://api.stock.naver.com/chart/foreign/index/.',ticker,'?periodType=day')
+    } else if(ticker %in% FTINDEX){
+      url = paste0('https://api.stock.naver.com/chart/foreign/futures/',ticker,'?periodType=day')
+    } else if(ticker == "FUT"){
+      url = 'https://api.stock.naver.com/chart/domestic/futures/FUT?periodType=day'
+    } else {
+      url = paste0('https://api.stock.naver.com/chart/domestic/item/',ticker,'?periodType=day')
+    }
     
     ind = url %>%
       read_html() %>%
@@ -88,8 +92,3 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL){
   View(df)
   df
 }
-
-
-
-
-
