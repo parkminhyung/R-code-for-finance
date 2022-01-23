@@ -21,8 +21,7 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL){
   time_length = ifelse(is.null(time_length),'12',time_length)
   if(datetype=="year" & time_length>10) time_length = 10
   if(datetype=="day") time_length = NA
-  '%ni%' = Negate('%in%')
-  ticker = ifelse(ticker %ni%  FTINDEX, toupper(ticker),ticker)
+  '%ni%' = Negate('%in%'); ticker = ifelse(ticker %ni%  FTINDEX, toupper(ticker),ticker)
   
   if(datetype!="day"){
     
@@ -89,6 +88,5 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL){
     }
     colnames(df) = c("InteradayPrice","ACC.Vol")
   }
-  View(df)
   df
 }
