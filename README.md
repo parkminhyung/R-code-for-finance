@@ -22,7 +22,7 @@ https://bookdown.org/allenpark88/rport/R+port.html 사이트에 접속하시면 
 
 |**아시아**|
 |------|
-|한국 : 코스피(kospi), 코스피200(KOSPI200), 코스닥(KOSDAQ),
+|한국 : 코스피(kospi), 코스피200(KPI200), 코스닥(KOSDAQ),
 중국 : 상해(SSEC), 심천(SZSC), 상해A(SSEA), 심천A(SZSA), 상해B(SSEB), 심천B(SZSB), CSI(CSI100), CSI300(CSI300), 항셍(HSI),홍콩H(HSCE)
 기타 : 일본니케이(N225), 일본토픽스(TOPX), 대만가권(TWII), 베트남호치민(VNI), 베트남하노이(HNXI), 말레이시아(KLSE), 인도(BSESN), 인도네시아(JKSE)|
 
