@@ -15,7 +15,8 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL){
   
   FTINDEX = c('NQcv1','EScv1','RTYcv1',
               'SFCc1','HCEIc1','SSIcm1',
-              'STXEc1','FDXc1','SINc1')
+              'STXEc1','FDXc1','SINc1',
+              'GCcv1','SIcv1','CLcv1')
   
   datetype = ifelse(is.null(datetype),'month',datetype)
   time_length = ifelse(is.null(time_length),'12',time_length)
@@ -47,11 +48,7 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL){
     
     df = data.frame()
     for (i in 1:length(ind)) {
-      df[i,1] = parse_number(ind[[i]])[3]
-      df[i,2] = parse_number(ind[[i]])[4]
-      df[i,3] = parse_number(ind[[i]])[5]
-      df[i,4] = parse_number(ind[[i]])[2]
-      df[i,5] = parse_number(ind[[i]])[6]
+      df[i,c(1:5)] = parse_number(ind[[i]])[c(3,4,5,2,6)]
       df[1,6] = NA
       df[i,6] = paste0(round((df[i,4]/df[i-1,4]-1)*100,digits = 2),"%")
       rownames(df)[i] = ind[[i]][1] %>% parse_number() %>% ymd() %>% as.character()
@@ -72,21 +69,28 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL){
       url = paste0('https://api.stock.naver.com/chart/domestic/item/',ticker,'?periodType=day')
     }
     
-    ind = url %>%
+    ik = url %>%
       read_html() %>%
       html_nodes('body') %>%
-      html_text(trim = TRUE) %>%
+      html_text(trim = TRUE) 
+    
+    ind = ik %>%
       rm_between(., "[", "]", extract=TRUE) %>% .[[1]] %>% .[1] %>%
-      rm_between(., "{", "}", extract=TRUE) %>% .[[1]]  %>%
+      rm_between(., "{", "}", extract=TRUE) %>% .[[1]] %>%
       strsplit(x=.,split = ",") 
+    
+    marketstatus = ik %>%
+      rm_between(., "{", "}", extract=TRUE) %>% .[[1]] %>%
+      strsplit(x=.,split = ",") %>% .[[1]] %>% .[grep("marketStatus",x=.)] %>% 
+      rm_between(.,'\"', '\"', extract=TRUE) %>% .[[1]] %>% .[2]
     
     df = data.frame()
     for (i in 1:length(ind)) {
-      df[i,1] = parse_number(ind[[i]])[2]
-      df[i,2] = parse_number(ind[[i]])[3]
+      df[i,c(1,2)] = parse_number(ind[[i]])[c(2,3)]
+      df[i,3] = marketstatus
       row.names(df)[i] = format(ymd_hms(parse_number(ind[[i]])[1]),"%H:%M")
     }
-    colnames(df) = c("InteradayPrice","ACC.Vol")
+    colnames(df) = c("InteradayPrice","ACC.Vol","MARKET")
   }
   df
 }
