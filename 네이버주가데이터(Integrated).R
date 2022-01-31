@@ -49,11 +49,12 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL){
     df = data.frame()
     for (i in 1:length(ind)) {
       df[i,c(1:5)] = parse_number(ind[[i]])[c(3,4,5,2,6)]
-      df[1,6] = NA
-      df[i,6] = paste0(round((df[i,4]/df[i-1,4]-1)*100,digits = 2),"%")
+      df[1,c(6,7)] = NA
+      df[i,6] = ifelse(i==1,NA,df[i,4]-df[i-1,4])
+      df[i,7] = paste0(round((df[i,4]/df[i-1,4]-1)*100,digits = 2),"%")
       rownames(df)[i] = ind[[i]][1] %>% parse_number() %>% ymd() %>% as.character()
     }
-    colnames(df) = c("Open","High","Low","Close","ACC.Vol","Chg")
+    colnames(df) = c("Open","High","Low","Close","ACC.Vol","Chg","%Chg")
     
   } else if(datetype=="day"){
     
