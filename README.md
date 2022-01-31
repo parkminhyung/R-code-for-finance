@@ -36,7 +36,7 @@ https://bookdown.org/allenpark88/rport/R+port.html 사이트에 접속하시면 
 
 |**선물**|
 |------|
-|코스피200선물(FUT), 나스닥100선물(NQcv1), S&P500선물(EScv1), 러셀200선물(RTYcv1), FTSEChina A50선물(SFCc1), 홍콩H선물(HCEIc1), 니케이선물(SSIcm1), 유로스톡스선물(STXEc1), 독일DAX선물(FDXc1), Niffy선물(SINc1)|
+|코스피200선물(FUT), 나스닥100선물(NQcv1), S&P500선물(EScv1), 러셀200선물(RTYcv1), FTSEChina A50선물(SFCc1), 홍콩H선물(HCEIc1), 니케이선물(SSIcm1), 유로스톡스선물(STXEc1), 독일DAX선물(FDXc1), Niffy선물(SINc1), 금(GCcv1),은(SIcv1),WTI유(CLcv1)|
 
 # 2022.01.17 UPDATE
 1.다이나믹 헤지전략,KRX 리스트를 추가하였습니다.
