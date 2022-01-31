@@ -1,7 +1,7 @@
 ---
 title: "R+port"
 date: '`r paste0("LATEST UPDATE : (GMT+9) ",format(Sys.time(),tz = "Asia/Seoul"))`'
-author: Allen park
+author: Allen Park
 always_allow_html: true
 output:
    rmdformats::readthedown:
@@ -10,7 +10,9 @@ output:
     highlight: tango
 ---
 
+
 # 글로벌 시황
+
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'markup'}
 
@@ -40,56 +42,109 @@ if(weekdays(Sys.Date()) %ni% c("Saturday", "Sunday","Monday") & ("00:00:00" < fo
 
 library(sparkline); library(rvest); library(formattable)
 
-ticker = c('%5EGSPC','%5EDJI','%5EIXIC',"%5EFTSE",'%5EGDAXI','%5EFCHI','000001.SS','399001.SZ','%5EN225','%5ETWII','%5EKS11','GC=F','CL=F')
+ticker= c('INX','DJI','IXIC',
+          'FTSE','GDAXI','FCHI',
+          'SSEC','SZSC','N225','TWII','kospi',
+          'GCcv1','CLcv1')
 
 ############################## FNCT ##############################
 
-market_intra = function(wticker){
-  n = 1
-  tex = paste0('https://query1.finance.yahoo.com/v8/finance/chart/',wticker,'?region=US&lang=en-US&includePrePost=false&interval=1m&useYfid=true&range=',n,'d&corsDomain=finance.yahoo.com&.tsrc=finance') %>%
-    read_html() %>%
-    html_node('body') %>%
-    html_text(trim = TRUE)
+fin_data = function(ticker,datetype=NULL,time_length=NULL){
   
-  if(grepl("open",tex) != TRUE){
-    n=2
-    tex = paste0('https://query1.finance.yahoo.com/v8/finance/chart/',wticker,'?region=US&lang=en-US&includePrePost=false&interval=1m&useYfid=true&range=',n,'d&corsDomain=finance.yahoo.com&.tsrc=finance') %>%
+  if(!require(rvest)) install.packages('rvest'); library(rvest)
+  if(!require(qdapRegex)) install.packages('qdapRegex'); library(qdapRegex)
+  if(!require(lubridate)) install.packages('lubridate'); library(lubridate)
+  if(!require(readr)) install.packages('readr'); library(readr)
+  
+  INDEX = c('KOSPI','KPI200','KOSDAQ')
+  
+  FINDEX = c('DJI','IXIC','DJT','NDX','INX','SOX','VIX','SSEC','SZSC','SSEA','SZSA','SSEB','SZSB','CSI100','CSI300','HSI','HSCE','N225','TWII',
+             'TOPX','VNI','AXJO','BSESN',
+             'HNXI','STOXX50E','GDAXI','FTSE','FTMIB','AEX','FCHI',
+             'IRTS','BFX','PSI20','IBEX','ISEQ','OMXC20','OMXS30','OMXH25','ATG','BUX',
+             'KLSE','JKSE','BVSP','MXX','MERV')
+  
+  FTINDEX = c('NQcv1','EScv1','RTYcv1',
+              'SFCc1','HCEIc1','SSIcm1',
+              'STXEc1','FDXc1','SINc1',
+              'GCcv1','SIcv1','CLcv1')
+  
+  datetype = ifelse(is.null(datetype),'month',datetype)
+  time_length = ifelse(is.null(time_length),'12',time_length)
+  if(datetype=="year" & time_length>10) time_length = 10
+  if(datetype=="day") time_length = NA
+  '%ni%' = Negate('%in%'); ticker = ifelse(ticker %ni%  FTINDEX, toupper(ticker),ticker)
+  
+  if(datetype!="day"){
+    
+    if(ticker %in% INDEX){
+      url = paste0('https://api.stock.naver.com/chart/domestic/index/',ticker,'?periodType=',datetype,'&range=',time_length)
+    } else if(ticker %in% FINDEX){
+      url = url = paste0('https://api.stock.naver.com/chart/foreign/index/.',ticker,'?periodType=',datetype,'&range=',time_length)
+    } else if(ticker %in% FTINDEX){
+      url = paste0('https://api.stock.naver.com/chart/foreign/futures/',ticker,'?periodType=',datetype,'&range=',time_length)
+    } else if(ticker == "FUT"){
+      url = paste0('https://api.stock.naver.com/chart/domestic/futures/FUT?periodType=',datetype,'&range=',time_length)
+    } else {
+      url = paste0('https://api.stock.naver.com/chart/domestic/item/',ticker,'?periodType=',datetype,'&range=',time_length)
+    }
+    
+    ind = url %>%
       read_html() %>%
-      html_node('body') %>%
-      html_text(trim = TRUE)
-  } 
-  
-  a = strsplit(tex,'\\[*\\=?]')[[1]]
-  
-  indi = c("timestamp","open","high","low","close","volume")
-  
-  df = a[grep(indi[1],x=a)] %>% strsplit(.,",") %>% .[[1]] %>%
-    gsub(pattern = "[a-z]|[\":{}[]",replacement ="",x=.) %>%
-    .[-which(.[1]=="")] %>% as.data.frame()
-  
-  for (i in 2:length(indi)) {
+      html_nodes('body') %>%
+      html_text(trim = TRUE) %>%
+      rm_between(., "[", "]", extract=TRUE) %>%
+      rm_between(., "{", "}", extract=TRUE) %>% .[[1]] %>%
+      strsplit(x=.,split = ",") 
     
-    df1 = a[grep(indi[i],x=a)] %>% strsplit(.,",") %>% .[[1]] %>%
-      gsub(pattern = "[a-z]|[\":{}[]",replacement ="",x=.) %>%
-      .[-which(.[1]=="")] %>% as.numeric() %>% as.data.frame()
+    df = data.frame()
+    for (i in 1:length(ind)) {
+      df[i,c(1:5)] = parse_number(ind[[i]])[c(3,4,5,2,6)]
+      df[1,c(6,7)] = NA
+      df[i,6] = ifelse(i==1,NA,
+                       round(df[i,4]-df[i-1,4],digits = 2))
+      df[i,7] = paste0(round((df[i,4]/df[i-1,4]-1)*100,digits = 2),"%")
+      rownames(df)[i] = ind[[i]][1] %>% parse_number() %>% ymd() %>% as.character()
+    }
+    colnames(df) = c("Open","High","Low","Close","ACC.Vol","Chg","%Chg")
     
-    df = cbind(df,df1)
+  } else if(datetype=="day"){
+    
+    if(ticker %in% INDEX){
+      url = paste0('https://api.stock.naver.com/chart/domestic/index/',ticker,'?periodType=day')
+    } else if(ticker %in% FINDEX){
+      url = paste0('https://api.stock.naver.com/chart/foreign/index/.',ticker,'?periodType=day')
+    } else if(ticker %in% FTINDEX){
+      url = paste0('https://api.stock.naver.com/chart/foreign/futures/',ticker,'?periodType=day')
+    } else if(ticker == "FUT"){
+      url = 'https://api.stock.naver.com/chart/domestic/futures/FUT?periodType=day'
+    } else {
+      url = paste0('https://api.stock.naver.com/chart/domestic/item/',ticker,'?periodType=day')
+    }
+    
+    ik = url %>%
+      read_html() %>%
+      html_nodes('body') %>%
+      html_text(trim = TRUE) 
+    
+    ind = ik %>%
+      rm_between(., "[", "]", extract=TRUE) %>% .[[1]] %>% .[1] %>%
+      rm_between(., "{", "}", extract=TRUE) %>% .[[1]] %>%
+      strsplit(x=.,split = ",") 
+    
+    marketstatus = ik %>%
+      rm_between(., "{", "}", extract=TRUE) %>% .[[1]] %>%
+      strsplit(x=.,split = ",") %>% .[[1]] %>% .[grep("marketStatus",x=.)] %>% 
+      rm_between(.,'\"', '\"', extract=TRUE) %>% .[[1]] %>% .[2]
+    
+    df = data.frame()
+    for (i in 1:length(ind)) {
+      df[i,c(1,2)] = parse_number(ind[[i]])[c(2,3)]
+      df[i,3] = marketstatus
+      row.names(df)[i] = format(ymd_hms(parse_number(ind[[i]])[1]),"%H:%M")
+    }
+    colnames(df) = c("InteradayPrice","ACC.Vol","MARKET")
   }
-  
-  colnames(df) = indi
-  
-  if(wticker %in% ticker[c(1:3,12,13)]){
-    tzone = "EST"
-  } else if(wticker %in% ticker[c(4:6)]){
-    tzone = "CET"
-  } else if(wticker %in% ticker[c(7,8,10)]){
-    tzone = "Asia/Shanghai"
-  } else {
-    tzone = "Asia/Seoul"
-  }
-  
-  for (i in 1:nrow(df)) df[i,1] = format(as.POSIXct(as.numeric(df[i,1]),origin = "1970-01-01",tz=tzone),"%H:%M") 
-  
   df
 }
 
@@ -97,94 +152,34 @@ market_intra = function(wticker){
 
 dfw = data.frame()
 
-{
-  for (i in 1:(length(ticker)-2)) {
-    url = paste0('https://finance.yahoo.com/quote/',ticker[i],'/')
-    
-    dfw[i,1] = url %>% read_html() %>% html_nodes(xpath = '//*[@id="quote-header-info"]/div[2]/div[1]/div[1]/h1') %>% html_text(trim=TRUE)
-    dfw[i,2] = url %>%
-      read_html() %>% html_nodes(xpath = '//*[@id="quote-header-info"]/div[3]/div[1]/div/span[1]') %>%
-      html_text(trim = TRUE) %>%
-      gsub(x=.,",","") %>% as.numeric()
-    
-    cp = url %>%
-      read_html() %>% html_nodes(xpath = '//*[@id="quote-header-info"]/div[3]/div[1]/div/span[2]') %>%
-      html_text(trim = TRUE) %>% strsplit(x=.," ") %>% .[[1]]
-    
-    dfw[i,3] = cp[1]  
-    dfw[i,4] = cp[2] %>% gsub(x=.,"\\(|)","")
-  }
-  colnames(dfw) = c("indices","Last Price","Chg","% Change")
-  dfw$"Vol" = NA
-  dfw$"Vol_Bar" = NA
-  dfw$"Intraday Chart" = NA
-  row.names(dfw) = NULL
-  dfw$"MARKET" = NA
-}
+indices = c('S&P500', "Dow Jones Industrial Average",
+            "NASDAQ","FTSE100","DAX PERFORMANCE","CAC40",
+            "SSE Composite INDEX","ShenZhen Component",
+            "NIKKEI225", "TSEC Weighted Index","KOSPI",
+            "GOLD","WTI")
 
+dfw = data.frame("INDICES" = indices,
+                 "Last Price" = NA,
+                 "Chg" = NA,
+                 'ChgP' = NA,
+                 'Vol'=NA,
+                 'Vol_Bar' = NA,
+                 'Intraday Chart' = NA,
+                 'MARKET' = NA)
 
-for (i in 1:11) {
-  try({
-  dfw[i,5] = market_intra(ticker[i])[[6]] %>% tail(.,n=1)
-  dfw[i,6] = as.character(htmltools::as.tags(sparkline(market_intra(ticker[i])[[6]],type =
-                                                         'bar',width = 100)))
-  dfw[i,7] = as.character(htmltools::as.tags(sparkline(market_intra(ticker[i])[[5]],type =
-                                                         'line',width = 100)))
-  
-  url = paste0("https://finance.yahoo.com/quote/",ticker[i],"?p=",ticker[i])
-  tex = url %>%
-    read_html() %>%
-    html_nodes(xpath = '//*[@id="quote-market-notice"]/span') %>%
-    html_text()
-  
-  dfw[i,8] = ifelse(grepl(pattern = "close",x=tex)==TRUE,"CLOSE","OPEN")
-  },silent = T)
-}
+ticker = c('INX','DJI','IXIC',
+           'FTSE','GDAXI','FCHI',
+           'SSEC','SZSC','N225','TWII',
+           'kospi',"GCcv1","CLcv1")
 
-dfw[which(is.na(dfw[5])),5] = 0
-
-dfc = data.frame()
-for (i in 12:13) {
-  url = paste0('https://finance.yahoo.com/quote/',ticker[i],'?p=',ticker[i],'&.tsrc=fin-srch')
-  
-  dfc[i-11,1] = url %>% read_html() %>% html_nodes(xpath = '//*[@id="quote-header-info"]/div[2]/div[1]/div[1]/h1') %>% html_text(trim=TRUE)
-  dfc[i-11,2] = url %>%
-    read_html() %>% html_nodes(xpath = '//*[@id="quote-header-info"]/div[3]/div[1]/div/span[1]') %>%
-    html_text(trim = TRUE) %>%
-    gsub(x=.,",","") %>% as.numeric()
-  
-  cp = url %>%
-    read_html() %>% html_nodes(xpath = '//*[@id="quote-header-info"]/div[3]/div[1]/div/span[2]') %>%
-    html_text(trim = TRUE) %>% strsplit(x=.," ") %>% .[[1]]
-  
-  dfc[i-11,3] = cp[1]  
-  dfc[i-11,4] = cp[2] %>% gsub(x=.,"\\(|)","")
-  dfc[i-11,5] = url %>%
-    read_html() %>%
-    html_nodes(xpath = '//*[@id="quote-summary"]/div[2]/table/tbody/tr[3]/td[2]/span') %>%
-    html_text(trim = TRUE) %>% gsub(x=.,",","") %>% as.numeric()
-}
-
-
-
-
-colnames(dfc) = c("indices","Last Price","Chg","% Change","Volume")
-dfc$"Intraday Chart" = NA
-dfc$"MARKET" = NA
-
-
-for (i in c(12,13)) {
-  tex = paste0('https://finance.yahoo.com/quote/',ticker[12],'?p=',ticker[12],'&.tsrc=fin-srch') %>%
-    read_html() %>%
-    html_nodes(xpath = '//*[@id="quote-market-notice"]/span') %>%
-    html_text()
-  dfc[i-11,7] = ifelse(grepl(pattern = "close",x=tex)==TRUE,"CLOSE","OPEN")
-}
-
-
-for (i in c(12,13)) {
-  dfc[i-11,6] = as.character(htmltools::as.tags(sparkline(market_intra(ticker[i])[[5]],type =
-                                                            'line',width = 100)))
+for (i in 1:nrow(dfw)) {
+  dfw[i,c(2:5)] = tail(fin_data(ticker[i]),1)[c(4,6,7,5)]
+  dfn = fin_data(ticker[i],'day')
+  dfw[i,c(6:8)] = c(as.character(htmltools::as.tags(sparkline(dfn[2:nrow(dfn),2]-dfn[1:nrow(dfn)-1,2],
+                                                              type = "bar",width = 100))),
+                    as.character(htmltools::as.tags(sparkline(dfn[[1]],
+                                                              type = "line",width = 100))),
+                    dfn[nrow(dfn),3])
 }
 
 ```
@@ -195,19 +190,22 @@ for (i in c(12,13)) {
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-dfus = dfw[1:3,]
-
-dfus = formattable(dfus, align = c("l","r","c","c","r","c","c","c"), list(
-  indices = formatter("span",style = x~style(font.weight = "bold")),
-  Chg = formatter("span", style = x ~ style(
-    font.weight = "bold",
-    color = ifelse(grepl(x=dfus[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfus[,3],"-")==TRUE, "#e35d5d", "black")))),
-  `% Change` = formatter("span",
-                         style = x ~ style(color = ifelse(grepl(x=dfus[,4],"-")==TRUE , "red", "green")),
-                         x ~ icontext(ifelse(grepl(x=dfus[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
-  MARKET = formatter("span",
-                     style = x ~ style(font.weight ="bold",
-                                       color = ifelse(x == "OPEN","green","red")))))
+dfus = dfw[1:3,] %>%
+  formattable(.,align = c("l","r","c","c","r","c","c","c"),
+                   list(
+                     INDICES = formatter("span",style = x~style(font.weight = "bold")),
+                     Chg = formatter("span", style = x ~ style(
+                       font.weight = "bold",
+                       color = ifelse(.[[3]] > 0,"#2a9688",
+                                      ifelse(.[[3]] < 0,"#e35d5d","black")))),
+                     ChgP = formatter("span", 
+                                      style = x ~ style(color = ifelse(grepl(x=.[,4],"-")==TRUE , "red", "green")),
+                                      x ~ icontext(ifelse(grepl(x=.[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+                     MARKET = formatter("span",
+                                        style = x ~ style(font.weight ="bold",
+                                                          color = ifelse(x == "OPEN","green","red")))
+                     
+                   ))
 
 out = as.htmlwidget(formattable(dfus))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
@@ -244,19 +242,22 @@ for (i in 1:length(tex)) {
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-dfeu = dfw[4:6,]
-
-dfeu = formattable(dfeu, align = c("l","r","c","c","r","c","c","c"), list(
-  indices = formatter("span",style = x~style(font.weight = "bold")),
-  Chg = formatter("span", style = x ~ style(
-    font.weight = "bold",
-    color = ifelse(grepl(x=dfeu[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfeu[,3],"-")==TRUE, "#e35d5d", "black")))),
-  `% Change` = formatter("span",
-                         style = x ~ style(color = ifelse(grepl(x=dfeu[,4],"-")==TRUE , "red", "green")),
-                         x ~ icontext(ifelse(grepl(x=dfeu[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
-  MARKET = formatter("span",
-                     style = x ~ style(font.weight ="bold",
-                                       color = ifelse(x == "OPEN","green","red")))))
+dfeu = dfw[4:6,] %>%
+  formattable(.,align = c("l","r","c","c","r","c","c","c"),
+                   list(
+                     INDICES = formatter("span",style = x~style(font.weight = "bold")),
+                     Chg = formatter("span", style = x ~ style(
+                       font.weight = "bold",
+                       color = ifelse(.[[3]] > 0,"#2a9688",
+                                      ifelse(.[[3]] < 0,"#e35d5d","black")))),
+                     ChgP = formatter("span", 
+                                      style = x ~ style(color = ifelse(grepl(x=.[,4],"-")==TRUE , "red", "green")),
+                                      x ~ icontext(ifelse(grepl(x=.[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+                     MARKET = formatter("span",
+                                        style = x ~ style(font.weight ="bold",
+                                                          color = ifelse(x == "OPEN","green","red")))
+                     
+                   ))
 
 out = as.htmlwidget(formattable(dfeu))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
@@ -292,19 +293,23 @@ for (i in 1:length(tex)) {
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-dfg = dfc[1,]
-dfg = formattable(dfg,align = c("l","r","c","c","r","c","c"), list(
-  indices = formatter("span",style = x~style(font.weight = "bold")),
-  Chg = formatter("span", style = x ~ style(
-    font.weight = "bold",
-    color = ifelse(grepl(x=dfg[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfg[,3],"-")==TRUE, "#e35d5d", "black")))),
-  `% Change` = formatter("span",
-                         style = x ~ style(color = ifelse(grepl(x=dfg[,3],"-")==TRUE , "red", "green")),
-                         x ~ icontext(ifelse(grepl(x=dfg[,3],"-")==TRUE, "arrow-down", "arrow-up"), x)),
-  MARKET = formatter("span",
-                     style = x~style(font.weight = "bold",
-                                     color = ifelse(x == "OPEN","green","red")))
-))
+dfg = dfw[12,] %>%
+  formattable(.,align = c("l","r","c","c","r","c","c","c"),
+                   list(
+                     INDICES = formatter("span",style = x~style(font.weight = "bold")),
+                     Chg = formatter("span", style = x ~ style(
+                       font.weight = "bold",
+                       color = ifelse(.[[3]] > 0,"#2a9688",
+                                      ifelse(.[[3]] < 0,"#e35d5d","black")))),
+                     ChgP = formatter("span", 
+                                      style = x ~ style(color = ifelse(grepl(x=.[,4],"-")==TRUE , "red", "green")),
+                                      x ~ icontext(ifelse(grepl(x=.[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+                     MARKET = formatter("span",
+                                        style = x ~ style(font.weight ="bold",
+                                                          color = ifelse(x == "OPEN","green","red")))
+                     
+                   ))
+
 out = as.htmlwidget(formattable(dfg))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
 out
@@ -340,19 +345,23 @@ for (i in 1:length(tex)) {
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-dfcl = dfc[2,]
-dfcl = formattable(dfcl,align = c("l","r","c","c","r","c","c"), list(
-  indices = formatter("span",style = x~style(font.weight = "bold")),
-  Chg = formatter("span", style = x ~ style(
-    font.weight = "bold",
-    color = ifelse(grepl(x=dfcl[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfcl[,3],"-")==TRUE, "#e35d5d", "black")))),
-  `% Change` = formatter("span",
-                         style = x ~ style(color = ifelse(grepl(x=dfcl[,3],"-")==TRUE , "red", "green")),
-                         x ~ icontext(ifelse(grepl(x=dfcl[,3],"-")==TRUE, "arrow-down", "arrow-up"), x)),
-  MARKET = formatter("span",
-                     style = x~style(font.weight = "bold",
-                                     color = ifelse(x == "OPEN","green","red")))
-))
+dfcl = dfw[13,] %>%
+  formattable(.,align = c("l","r","c","c","r","c","c","c"),
+                   list(
+                     INDICES = formatter("span",style = x~style(font.weight = "bold")),
+                     Chg = formatter("span", style = x ~ style(
+                       font.weight = "bold",
+                       color = ifelse(.[[3]] > 0,"#2a9688",
+                                      ifelse(.[[3]] < 0,"#e35d5d","black")))),
+                     ChgP = formatter("span", 
+                                      style = x ~ style(color = ifelse(grepl(x=.[,4],"-")==TRUE , "red", "green")),
+                                      x ~ icontext(ifelse(grepl(x=.[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+                     MARKET = formatter("span",
+                                        style = x ~ style(font.weight ="bold",
+                                                          color = ifelse(x == "OPEN","green","red")))
+                     
+                   ))
+
 out = as.htmlwidget(formattable(dfcl))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
 out
@@ -390,18 +399,22 @@ for (i in 1:length(tex)) {
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-dfcn = dfw[7:8,]
-dfcn = formattable(dfcn, align = c("l","r","c","c","r","c","c","c"), list(
-  indices = formatter("span",style = x~style(font.weight = "bold")),
-  Chg = formatter("span", style = x ~ style(
-    font.weight = "bold",
-    color = ifelse(grepl(x=dfcn[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfcn[,3],"-")==TRUE, "#e35d5d", "black")))),
-  `% Change` = formatter("span",
-                         style = x ~ style(color = ifelse(grepl(x=dfcn[,4],"-")==TRUE , "red", "green")),
-                         x ~ icontext(ifelse(grepl(x=dfcn[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
-  MARKET = formatter("span",
-                     style = x ~ style(font.weight ="bold",
-                                       color = ifelse(x == "OPEN","green","red")))))
+dfcn = dfw[7:8,] %>%
+  formattable(.,align = c("l","r","c","c","r","c","c","c"),
+                   list(
+                     INDICES = formatter("span",style = x~style(font.weight = "bold")),
+                     Chg = formatter("span", style = x ~ style(
+                       font.weight = "bold",
+                       color = ifelse(.[[3]] > 0,"#2a9688",
+                                      ifelse(.[[3]] < 0,"#e35d5d","black")))),
+                     ChgP = formatter("span", 
+                                      style = x ~ style(color = ifelse(grepl(x=.[,4],"-")==TRUE , "red", "green")),
+                                      x ~ icontext(ifelse(grepl(x=.[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+                     MARKET = formatter("span",
+                                        style = x ~ style(font.weight ="bold",
+                                                          color = ifelse(x == "OPEN","green","red")))
+                     
+                   ))
 
 out = as.htmlwidget(formattable(dfcn))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
@@ -446,18 +459,22 @@ for (i in 1:length(tex)) {
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-dfjp = dfw[9,]
-dfjp = formattable(dfjp, align = c("l","r","c","c","r","c","c","c"), list(
-  indices = formatter("span",style = x~style(font.weight = "bold")),
-  Chg = formatter("span", style = x ~ style(
-    font.weight = "bold",
-    color = ifelse(grepl(x=dfjp[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfjp[,3],"-")==TRUE, "#e35d5d", "black")))),
-  `% Change` = formatter("span",
-                         style = x ~ style(color = ifelse(grepl(x=dfjp[,4],"-")==TRUE , "red", "green")),
-                         x ~ icontext(ifelse(grepl(x=dfjp[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
-  MARKET = formatter("span",
-                     style = x ~ style(font.weight ="bold",
-                                       color = ifelse(x == "OPEN","green","red")))))
+dfjp = dfw[9,] %>%
+  formattable(.,align = c("l","r","c","c","r","c","c","c"),
+                   list(
+                     INDICES = formatter("span",style = x~style(font.weight = "bold")),
+                     Chg = formatter("span", style = x ~ style(
+                       font.weight = "bold",
+                       color = ifelse(.[[3]] > 0,"#2a9688",
+                                      ifelse(.[[3]] < 0,"#e35d5d","black")))),
+                     ChgP = formatter("span", 
+                                      style = x ~ style(color = ifelse(grepl(x=.[,4],"-")==TRUE , "red", "green")),
+                                      x ~ icontext(ifelse(grepl(x=.[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+                     MARKET = formatter("span",
+                                        style = x ~ style(font.weight ="bold",
+                                                          color = ifelse(x == "OPEN","green","red")))
+                     
+                   ))
 
 out = as.htmlwidget(formattable(dfjp))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
@@ -497,18 +514,22 @@ if(DATE == dat) {
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-dftw = dfw[10,]
-dftw = formattable(dftw, align = c("l","r","c","c","r","c","c","c"), list(
-  indices = formatter("span",style = x~style(font.weight = "bold")),
-  Chg = formatter("span", style = x ~ style(
-    font.weight = "bold",
-    color = ifelse(grepl(x=dftw[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dftw[,3],"-")==TRUE, "#e35d5d", "black")))),
-  `% Change` = formatter("span",
-                         style = x ~ style(color = ifelse(grepl(x=dftw[,4],"-")==TRUE , "red", "green")),
-                         x ~ icontext(ifelse(grepl(x=dftw[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
-  MARKET = formatter("span",
-                     style = x ~ style(font.weight ="bold",
-                                       color = ifelse(x == "OPEN","green","red")))))
+dftw = dfw[10,] %>%
+  formattable(.,align = c("l","r","c","c","r","c","c","c"),
+                   list(
+                     INDICES = formatter("span",style = x~style(font.weight = "bold")),
+                     Chg = formatter("span", style = x ~ style(
+                       font.weight = "bold",
+                       color = ifelse(.[[3]] > 0,"#2a9688",
+                                      ifelse(.[[3]] < 0,"#e35d5d","black")))),
+                     ChgP = formatter("span", 
+                                      style = x ~ style(color = ifelse(grepl(x=.[,4],"-")==TRUE , "red", "green")),
+                                      x ~ icontext(ifelse(grepl(x=.[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+                     MARKET = formatter("span",
+                                        style = x ~ style(font.weight ="bold",
+                                                          color = ifelse(x == "OPEN","green","red")))
+                     
+                   ))
 
 out = as.htmlwidget(formattable(dftw))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
@@ -549,18 +570,22 @@ if(DATE == dat) {
 
 ```{r echo = FALSE, message = F, comment = NA, results = 'asis'}
 
-dfks = dfw[11,]
-dfks = formattable(dfks, align = c("l","r","c","c","r","c","c","c"), list(
-  indices = formatter("span",style = x~style(font.weight = "bold")),
-  Chg = formatter("span", style = x ~ style(
-    font.weight = "bold",
-    color = ifelse(grepl(x=dfks[,3],"-")!=TRUE,"#2a9688", ifelse(grepl(x=dfks[,3],"-")==TRUE, "#e35d5d", "black")))),
-  `% Change` = formatter("span",
-                         style = x ~ style(color = ifelse(grepl(x=dfks[,4],"-")==TRUE , "red", "green")),
-                         x ~ icontext(ifelse(grepl(x=dfks[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
-  MARKET = formatter("span",
-                     style = x ~ style(font.weight ="bold",
-                                       color = ifelse(x == "OPEN","green","red")))))
+dfks = dfw[11,] %>%
+  formattable(.,align = c("l","r","c","c","r","c","c","c"),
+                   list(
+                     INDICES = formatter("span",style = x~style(font.weight = "bold")),
+                     Chg = formatter("span", style = x ~ style(
+                       font.weight = "bold",
+                       color = ifelse(.[[3]] > 0,"#2a9688",
+                                      ifelse(.[[3]] < 0,"#e35d5d","black")))),
+                     ChgP = formatter("span", 
+                                      style = x ~ style(color = ifelse(grepl(x=.[,4],"-")==TRUE , "red", "green")),
+                                      x ~ icontext(ifelse(grepl(x=.[,4],"-")==TRUE, "arrow-down", "arrow-up"), x)),
+                     MARKET = formatter("span",
+                                        style = x ~ style(font.weight ="bold",
+                                                          color = ifelse(x == "OPEN","green","red")))
+                     
+                   ))
 
 out = as.htmlwidget(formattable(dfks))
 out$dependencies = c(out$dependencies, htmlwidgets:::widget_dependencies("sparkline", "sparkline"))
@@ -607,6 +632,4 @@ if(DATE == dat) {
 
 - ["Finance Yahoo"](https://finance.yahoo.com/){target='blank'} <br>
 
-- ["나눔트레이딩"]('https://www.nanumtrading.com/') <br>
-
-
+- ["나눔트레이딩"]('https://www.nanumtrading.com/'){target='blank'} <br>
