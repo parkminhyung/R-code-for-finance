@@ -632,4 +632,4 @@ if(DATE == dat) {
 
 - ["Finance Yahoo"](https://finance.yahoo.com/){target='blank'} <br>
 
-- ["나눔트레이딩"]('https://www.nanumtrading.com/'){target='blank'} <br>
+- ["나눔트레이딩"](https://www.nanumtrading.com/){target='blank'} <br>
