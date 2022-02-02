@@ -1,9 +1,12 @@
-fin_data = function(ticker,datetype=NULL,time_length=NULL){
+fin_data = function(ticker,datetype=NULL,time_length=NULL,exusd = TRUE){
+  
+  options(warn = -1)
   
   if(!require(rvest)) install.packages('rvest'); library(rvest)
-  if(!require(qdapRegex)) install.packages('qdapRegex'); library(qdapRegex)
-  if(!require(lubridate)) install.packages('lubridate'); library(lubridate)
-  if(!require(readr)) install.packages('readr'); library(readr)
+  if(!require(qdapRegex)) install.packages('qdapRegex')
+  if(!require(lubridate)) install.packages('lubridate')
+  if(!require(readr)) install.packages('readr')
+  library(rvest);library(qdapRegex); library(lubridate); library(readr)
   
   INDEX = c('KOSPI','KPI200','KOSDAQ')
   
@@ -18,26 +21,41 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL){
               'STXEc1','FDXc1','SINc1',
               'GCcv1','SIcv1','CLcv1')
   
+  ############################## FX  ##############################
+  list  = 'https://api.stock.naver.com/marketindex/exchangeWorld' %>%
+    read_html() %>%
+    html_nodes('body') %>%
+    html_text(trim = TRUE) %>%
+    rm_between(., "[", "]", extract=TRUE) %>%
+    rm_between(., "{", "}", extract=TRUE)  %>% .[[1]] %>%
+    strsplit(x=.,split = ",")
+  
+  FX = c()
+  for (i in 1:length(list)) {
+    FX = c(FX,list %>% .[[i]] %>%
+             .[grep("symbolCode",x=.)] %>%
+             rm_between(.,'\"','\"',extract = TRUE) %>% .[[1]] %>% .[2] %>% 
+             gsub(x=.,"USD","")) 
+  }
+  ##############################FX  ##############################
+  
   datetype = ifelse(is.null(datetype),'month',datetype)
   time_length = ifelse(is.null(time_length),'12',time_length)
   if(datetype=="year" & time_length>10) time_length = 10
   if(datetype=="day") time_length = NA
-  '%ni%' = Negate('%in%'); ticker = ifelse(ticker %ni%  FTINDEX, toupper(ticker),ticker)
+  '%ni%' = Negate('%in%'); ticker = ifelse(ticker %ni%  c(FTINDEX,FX), toupper(ticker),ticker)
+  
+  lub = ifelse(ticker %in% INDEX,'domestic/index/',
+               ifelse(ticker %in% FINDEX,'foreign/index/.',
+                      ifelse(ticker %in% FTINDEX,'foreign/futures/',
+                             ifelse(ticker == "FUT",'domestic/futures/',
+                                    ifelse((ticker %in% FX) & (exusd==TRUE),'foreign/exchange/USD',
+                                           ifelse((ticker %in% FX) & (exusd==FALSE),paste0('domestic/marketindex/FX_'),
+                                                  ifelse(ticker == "KRW",'domestic/marketindex/FX_USD','domestic/item/')))))))
+  
+  url = paste0('https://api.stock.naver.com/chart/',lub,ticker,ifelse(exusd==FALSE,"KRW",""),'?periodType=',ifelse(datetype=="day",'day',paste0(datetype,'&range=',time_length)))
   
   if(datetype!="day"){
-    
-    if(ticker %in% INDEX){
-      url = paste0('https://api.stock.naver.com/chart/domestic/index/',ticker,'?periodType=',datetype,'&range=',time_length)
-    } else if(ticker %in% FINDEX){
-      url = url = paste0('https://api.stock.naver.com/chart/foreign/index/.',ticker,'?periodType=',datetype,'&range=',time_length)
-    } else if(ticker %in% FTINDEX){
-      url = paste0('https://api.stock.naver.com/chart/foreign/futures/',ticker,'?periodType=',datetype,'&range=',time_length)
-    } else if(ticker == "FUT"){
-      url = paste0('https://api.stock.naver.com/chart/domestic/futures/FUT?periodType=',datetype,'&range=',time_length)
-    } else {
-      url = paste0('https://api.stock.naver.com/chart/domestic/item/',ticker,'?periodType=',datetype,'&range=',time_length)
-    }
-    
     ind = url %>%
       read_html() %>%
       html_nodes('body') %>%
@@ -58,19 +76,6 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL){
     colnames(df) = c("Open","High","Low","Close","ACC.Vol","Chg","%Chg")
     
   } else if(datetype=="day"){
-    
-    if(ticker %in% INDEX){
-      url = paste0('https://api.stock.naver.com/chart/domestic/index/',ticker,'?periodType=day')
-    } else if(ticker %in% FINDEX){
-      url = paste0('https://api.stock.naver.com/chart/foreign/index/.',ticker,'?periodType=day')
-    } else if(ticker %in% FTINDEX){
-      url = paste0('https://api.stock.naver.com/chart/foreign/futures/',ticker,'?periodType=day')
-    } else if(ticker == "FUT"){
-      url = 'https://api.stock.naver.com/chart/domestic/futures/FUT?periodType=day'
-    } else {
-      url = paste0('https://api.stock.naver.com/chart/domestic/item/',ticker,'?periodType=day')
-    }
-    
     ik = url %>%
       read_html() %>%
       html_nodes('body') %>%
@@ -93,6 +98,7 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL){
       row.names(df)[i] = format(ymd_hms(parse_number(ind[[i]])[1]),"%H:%M")
     }
     colnames(df) = c("InteradayPrice","ACC.Vol","MARKET")
+    
   }
   df
 }
