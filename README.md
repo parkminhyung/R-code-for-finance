@@ -3,6 +3,12 @@ R code for finance <br>
 주식, 재무표, 데이터를 위해 만든 repo입니다. <br>
 https://bookdown.org/allenpark88/rport/R+port.html 사이트에 접속하시면 세계 마감시황을 열람하실 수 있습니다. source : market-report.rmd <br>
 
+# 2022.02.02 UPDATE
+1. 네이버주가데이터(Integrated)에 환율데이터를 추가하였습니다.
+   - ticker부분에 환율ticker를 입력하시면 됩니다. 기본환율은 "달러기준(USD)" 이며, 한국원화기준(KRW)으로 보고 싶으시면 exusd=FALSE를 입력하시면 됩니다
+   - 예 : 중국ticker = CNY, 위안달러환율 : fin_data("CNY"), 위안한국환율 : fin_data("CNY",exusd=FALSE)
+   - datetype과 timelength는 기존것과 동일합니다. 디폴트 값은 1년데이터의 일일환율데이터를 제공합니다. 
+
 # 2022.01.23 UPDATE
 1. 네이버주가데이터(Integrated) 를 추가하였습니다.
 - 국내외 시장 주가데이터 및 국내기업 주가데이터를 제공합니다 (추후 해외주가데이터도 추가할 예정)
@@ -37,6 +43,11 @@ https://bookdown.org/allenpark88/rport/R+port.html 사이트에 접속하시면 
 |**선물**|
 |------|
 |코스피200선물(FUT), 나스닥100선물(NQcv1), S&P500선물(EScv1), 러셀200선물(RTYcv1), FTSEChina A50선물(SFCc1), 홍콩H선물(HCEIc1), 니케이선물(SSIcm1), 유로스톡스선물(STXEc1), 독일DAX선물(FDXc1), Niffy선물(SINc1), 금(GCcv1),은(SIcv1),WTI유(CLcv1)|
+
+|**환율**|
+|------|
+|중국위안화(CNY),한국달러(KRW),일본엔화(JPY),대만(TWD),홍콩달러(HKD),유로(EUR).. 그밖의 환율ticker는 네이버금융 기준을 따릅니다.|
+
 
 # 2022.01.17 UPDATE
 1.다이나믹 헤지전략,KRX 리스트를 추가하였습니다.
