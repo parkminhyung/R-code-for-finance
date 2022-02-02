@@ -2,20 +2,18 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL,exusd = TRUE){
   
   options(warn = -1)
   
-  if(!require(rvest)) install.packages('rvest'); library(rvest)
+  if(!require(rvest)) install.packages('rvest')
   if(!require(qdapRegex)) install.packages('qdapRegex')
   if(!require(lubridate)) install.packages('lubridate')
   if(!require(readr)) install.packages('readr')
   library(rvest);library(qdapRegex); library(lubridate); library(readr)
   
-  INDEX = c('KOSPI','KPI200','KOSDAQ')
-  
+  INDEX = c('KOSPI','KPI200','KOSDAQ')  
   FINDEX = c('DJI','IXIC','DJT','NDX','INX','SOX','VIX','SSEC','SZSC','SSEA','SZSA','SSEB','SZSB','CSI100','CSI300','HSI','HSCE','N225','TWII',
              'TOPX','VNI','AXJO','BSESN',
              'HNXI','STOXX50E','GDAXI','FTSE','FTMIB','AEX','FCHI',
              'IRTS','BFX','PSI20','IBEX','ISEQ','OMXC20','OMXS30','OMXH25','ATG','BUX',
-             'KLSE','JKSE','BVSP','MXX','MERV')
-  
+             'KLSE','JKSE','BVSP','MXX','MERV')  
   FTINDEX = c('NQcv1','EScv1','RTYcv1',
               'SFCc1','HCEIc1','SSIcm1',
               'STXEc1','FDXc1','SINc1',
@@ -97,8 +95,7 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL,exusd = TRUE){
       df[i,3] = marketstatus
       row.names(df)[i] = format(ymd_hms(parse_number(ind[[i]])[1]),"%H:%M")
     }
-    colnames(df) = c("InteradayPrice","ACC.Vol","MARKET")
-    
+    colnames(df) = c("InteradayPrice","ACC.Vol","MARKET")    
   }
   df
 }
