@@ -48,10 +48,10 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL,exusd = TRUE){
                       ifelse(ticker %in% FTINDEX,'foreign/futures/',
                              ifelse(ticker == "FUT",'domestic/futures/',
                                     ifelse((ticker %in% FX) & (exusd==TRUE),'foreign/exchange/USD',
-                                           ifelse((ticker %in% FX) & (exusd==FALSE),paste0('domestic/marketindex/FX_'),
+                                           ifelse((ticker %in% FX) & (exusd==FALSE),'domestic/marketindex/FX_',
                                                   ifelse(ticker == "KRW",'domestic/marketindex/FX_USD','domestic/item/')))))))
   
-  url = paste0('https://api.stock.naver.com/chart/',lub,ticker,ifelse(exusd==FALSE,"KRW",""),'?periodType=',ifelse(datetype=="day",'day',paste0(datetype,'&range=',time_length)))
+  url = 'https://api.stock.naver.com/chart/' %+% lub %+% ticker %+% ifelse(exusd==FALSE,"KRW","") %+% '?periodType=' %+% ifelse(datetype=="day",'day',datetype %+% '&range=' %+% time_length)
   
   if(datetype!="day"){
     ind = url %>%
