@@ -3,8 +3,6 @@
 #############################################################
 
 beta = function(ind,mkt){
-  library(plotly)
-  "%+%" = paste0
   options(scipen = 100)
   IND.RET = round(diff(ind)/ind,digits=5)
   MKT.RET = round(diff(mkt)/mkt,digits=5)
