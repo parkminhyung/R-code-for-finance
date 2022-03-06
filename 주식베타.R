@@ -4,8 +4,8 @@
 
 beta = function(ind,mkt){
   options(scipen = 100)
-  IND.RET = round(diff(ind)/ind,digits=5)
-  MKT.RET = round(diff(mkt)/mkt,digits=5)
+  IND.RET = round(diff(log(ind)),digits=5)
+  MKT.RET = round(diff(log(mkt)),digits=5)
   BETA = round(cov(IND.RET,MKT.RET)/var(MKT.RET),digits = 3)
 }
 
@@ -16,8 +16,8 @@ beta = function(ind,mkt){
   library(plotly)
   "%+%" = paste0
   options(scipen = 100)
-  IND.RET = round(diff(ind)/ind,digits=5)
-  MKT.RET = round(diff(mkt)/mkt,digits=5)
+  IND.RET = round(diff(log(ind)),digits=5)
+  MKT.RET = round(diff(log(mkt)),digits=5)
   BETA = round(cov(IND.RET,MKT.RET)/var(MKT.RET),digits = 3)
   
   model = lm(MKT.RET~IND.RET)
