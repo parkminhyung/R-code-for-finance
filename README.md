@@ -103,12 +103,3 @@ https://bookdown.org/allenpark88/rport/R+port.html 사이트에 접속하시면 
 - 홍콩상장기업 재무제표와 중국상장기업 재무제표 내 주식코드 테이블은 그냥 참고용이지, function과는 독립적이므로 원치 않으신 분들은 function만 import해도 됩니다. <br>
 
 - 중국상장기업 재무제표 이용방법 : cn_fs('코드번호') ex) cn_fs('000002') <br>
-
-# k-score
-- k-score는 알트만의 z-core를 본 떠 만든 한국형 모델 k-score입니다. 상장되어 있는 전 종목에 이 모델을 적용시키는 코드이며, 한눈에 기업의 부실정도를 측정가능하도록 하는 모델입니다.<br>
-reference: <br>
-[1] https://m.blog.naver.com/PostView.nhn?blogId=haan79&logNo=10158008764&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F<br>
-[2] https://finata.blog.me/221191125946
-
-- 한국상장기업 기업정보는 한국 상장기업에 대한 기본 정보를 제공합니다. 코드이용방법 : kr_get_st('6자리코드') 예) kr_get_st('005930')<br>
-
