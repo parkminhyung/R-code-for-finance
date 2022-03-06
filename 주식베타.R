@@ -1,6 +1,7 @@
 #BETA
 
 #############################################################
+#without plot 
 
 beta = function(ind,mkt){
   options(scipen = 100)
@@ -11,6 +12,7 @@ beta = function(ind,mkt){
 
 
 ##############################################################
+#With plot
 
 beta = function(ind,mkt){
   library(plotly)
