@@ -8,7 +8,7 @@ fin_data = function(ticker,datetype=NULL,time_length=NULL,exusd = TRUE){
   if(!require(readr)) install.packages('readr')
   library(rvest);library(qdapRegex); library(lubridate); library(readr)
   
-  '%+%' <- paste0
+  '%+%' = paste0
   
   INDEX = c('KOSPI','KPI200','KOSDAQ')  
   FINDEX = c('DJI','IXIC','DJT','NDX','INX','SOX','VIX','SSEC','SZSC','SSEA','SZSA','SSEB','SZSB','CSI100','CSI300','HSI','HSCE','N225','TWII',
