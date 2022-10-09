@@ -1,9 +1,10 @@
 cn_fin_data = function(ticker,start_date=NULL,end_date=NULL){
-  
   library(rvest); library(qdapRegex)
+  
   options(warn = -1)
   '%+%' = paste0
   df = data.frame()
+  
   start_date = ifelse(is.null(start_date), 
                       ifelse(format(Sys.Date(),"%m")==01,
                              (format(Sys.Date(),"%Y") %>% as.numeric() -1) %+% '0101',
@@ -15,7 +16,6 @@ cn_fin_data = function(ticker,start_date=NULL,end_date=NULL){
     format(Sys.Date(),'%Y%m%d'),
     end_date
   )
-  
   
   ls ='https://q.stock.sohu.com/hisHq?code=cn_' %+% ticker %+% '&start=' %+% start_date %+% '&end=' %+% end_date %+% '&stat=1&order=D&period=d&callback=historySearchHandler' %>% 
     read_html() %>% 
