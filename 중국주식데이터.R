@@ -28,5 +28,6 @@ cn_fin_data = function(ticker,start_date=NULL,end_date=NULL){
   rownames(df)[1] = rownames(df)[1] %>% gsub(x=.,'[','',fixed = TRUE)
   colnames(df) = c("Open","High","Low","Close","Vol","Chg%")
   df = df[nrow(df):1,] %>% .[-1,]
+  df[,1:5] = sapply(df[,1:5], as.numeric)
   df
 }
