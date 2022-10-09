@@ -2,6 +2,10 @@
 R code for finance <br>
 주식, 재무표, 데이터를 위해 만든 repo입니다. <br>
 https://bookdown.org/allenpark88/rport/R+port.html 사이트에 접속하시면 세계 마감시황을 열람하실 수 있습니다. source : market-report.rmd <br>
+# 2022.10.09 UPDATE
+1. 중국주식데이터를 추가하였습니다
+- 중국 상장기업의 주가데이터를 이용할 수 있습니다. 기본 정보는 Open, High, Low, Close, Volume, Change 값 입니다.
+
 
 # 2022.02.02 UPDATE
 1. 네이버주가데이터(Integrated)에 환율데이터를 추가하였습니다.
@@ -60,6 +64,12 @@ https://bookdown.org/allenpark88/rport/R+port.html 사이트에 접속하시면 
 - 콜옵션과 풋옵션에 대한 델타, 감마, 쎄타, 베가, 로 의 값을 도출합니다.<br>
 
 # [코드 이용방법]
+
+# 중국주식데이터
+- 기본 합수는 cn_fin_data(ticker,start_date,end_date) 입니다.
+- ticker 값에는 주식코드를 입력하시면 됩니다,
+- start_date와 end_date의 기본 디폴트 값은 NULL이며, 입력하지 않으시면 올해년도의 1월 1일부터 당일 까지 주가를 제공합니다.
+- 주가 데이터의 날짜 end_date가 1월일 시 작년 1월 1일부터 데이터 값을 제공합니다.
 
 # 옵션민감도측정
 - 기본함수는 option_sens(s,x,r,std,t,y=NULL) 입니다. <br>
