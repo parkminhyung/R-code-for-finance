@@ -4,9 +4,10 @@ list  = c("konexMkt","kosdaqMkt","stockMkt")
 url = "http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13&marketType="
 
 stock_table = data.frame()
+
 for (i in 1:length(list)) {
   dfk = paste0(url,list[i]) %>%
-    read_html() %>%
+    read_html('MS949') %>%
     html_nodes(xpath = "/html/body/table") %>%
     html_table() %>%
     .[[1]]
