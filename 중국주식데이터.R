@@ -22,6 +22,7 @@ cn_fin_data = function(ticker,start_date=NULL,end_date=NULL){
     html_nodes('body') %>% 
     rm_between('[{','}]',extract = TRUE) %>% .[[1]] %>% 
     rm_between('[',']',extract = TRUE) %>% .[[1]]
+  
   for (i in 1:length(ls)){
     lss = ls[i] %>% gsub(x=.,'\"','') %>% .[1] %>% strsplit(x=.,",") %>% .[[1]]
     df[i,1:6] = lss  %>% 
