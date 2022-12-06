@@ -163,4 +163,8 @@ normaltest_plot_factors = function(asset){
   )
 }
 normaltest_plot_factors(returns$PG.Adjusted)
+normaltest_plot_factors(returns$BAC.Adjusted)
+normaltest_plot_factors(returns$NVDA.Adjusted)
 normaltest_plot_factors(ff5$Mkt.RF)
+normaltest_plot_factors(ff5$SMB)
+normaltest_plot_factors(ff5$HML)
