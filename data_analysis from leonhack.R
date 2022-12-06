@@ -1,5 +1,5 @@
 ifelse(!require('pacman'), install.packages('pacman'),library('pacman'))
-pacman::p_load(dplyr,quantmod,plotly,frenchdata,moments)
+pacman::p_load(dplyr,quantmod,plotly,frenchdata,moments,qqplotr)
 options(scipen=999) 
 options(warn=-1) #eliminate warnings messages on the console window
 
@@ -61,7 +61,7 @@ normaltest_plot_factors = function(asset){
   
   #Boxplot
   p2= plot_ly(
-    x= rnorm(asset),
+    x= scale(asset)[,1],
     type = "box", name ="")
   
   #Density
@@ -92,7 +92,7 @@ normaltest_plot_factors = function(asset){
              gridcolor = 'ffff')) 
   
   #prob
-  p4 = rnorm(asset) %>%
+  p4 = scale(asset) %>%
     {
       ggplot(mapping = aes(sample = .)) + 
         stat_qq_point(size = 1.5,color = "blue") + 
@@ -164,17 +164,3 @@ normaltest_plot_factors = function(asset){
 }
 normaltest_plot_factors(returns$PG.Adjusted)
 normaltest_plot_factors(ff5$Mkt.RF)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
