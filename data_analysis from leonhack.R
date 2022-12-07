@@ -62,7 +62,7 @@ normaltest_plot_factors = function(asset){
   #Boxplot
   p2= plot_ly(
     x= scale(asset)[,1],
-    type = "box", name ="")
+    type = "box")
   
   #Density
   df1 = data.frame(scale(asset),"Asset") %>%
@@ -154,12 +154,12 @@ normaltest_plot_factors = function(asset){
       showarrow = FALSE 
     ))
   
-  fig = fig %>% layout(annotations = annotations, xaxis = list(tickmode = "auto"), yaxis = list(tickmode = "auto"))
+  fig = fig %>% layout(annotations = annotations)
   fig %>% print()
   
   cat(" ##### Skewness & Kurtosis #####","\n",
-      "Kurtosis is: " %+% round(kurtosis(asset),digits = 4) %+% ifelse(kurtosis(asset) >0, "  [Leptokurtic]", "  [Platykurtic]"),"\n",
-      "Skewness is :" %+% round(skewness(asset),digits = 4) %+% ifelse(skewness(asset) >0, "  [Right-Skewness]","  [Left-Skewness]")
+      "Kurtosis is: " %+% round(kurtosis(asset),digits = 4) %+% ifelse(kurtosis(asset) >0, " [Leptokurtic]", " [Platykurtic]"),"\n",
+      "Skewness is :" %+% round(skewness(asset),digits = 4) %+% ifelse(skewness(asset) >0, " [Right-Skewness]"," [Left-Skewness]")
   )
 }
 normaltest_plot_factors(returns$PG.Adjusted)
