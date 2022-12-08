@@ -1,9 +1,7 @@
-
-## reference : http://henryquant.blogspot.com/2019/02/fama-french-handa-partners.html
-## HenryQuant 
-
 ifelse(!require(pacman),install.packages('pacman'),library(pacman))
-pacman::p_load('PerformanceAnalytics','quantmod','plotly','HenryQuant','tibble','broom','stargazer')
+pacman::p_load('PerformanceAnalytics','quantmod','plotly','devtools','tibble','broom','stargazer','dplyr')
+devtools::install_github('hyunyulhenry/HenryQuant',force = TRUE)
+library('HenryQuant')
 options(scipen = 999)
 Sys.setenv(TZ = 'UTC')
 '%=%' = zeallot::`%<-%`
@@ -54,6 +52,3 @@ stargazer(data.lm,
           type = 'text',
           report = ('vc*t'), #t-value 출력
           out = 'regression_table.html')
-
-
-
