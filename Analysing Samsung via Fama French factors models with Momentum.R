@@ -1,5 +1,5 @@
-## Reference : http://henryquant.blogspot.com/2019/02/fama-french-handa-partners.html
-## HenryQuant 
+## Reference : http://henryquant.blogspot.com/2019/02/fama-french-handa-partners.html (HenryQuant)
+## Fama-French factors models data (korea), Handa Partners : https://drive.google.com/drive/folders/1_7QpRz4okL-xJCKHgfNicdjPzEAtYvhR
 
 ifelse(!require(pacman),install.packages('pacman'),library(pacman))
 pacman::p_load('PerformanceAnalytics','quantmod','plotly','devtools','tibble','broom','stargazer','dplyr','zeallot')
