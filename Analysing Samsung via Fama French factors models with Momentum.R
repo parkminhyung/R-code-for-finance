@@ -1,7 +1,10 @@
+
+## reference : http://henryquant.blogspot.com/2019/02/fama-french-handa-partners.html
+## HenryQuant 
+
 ifelse(!require(pacman),install.packages('pacman'),library(pacman))
-pacman::p_load('PerformanceAnalytics','quantmod','plotly','devtools','tibble','broom','stargazer','dplyr','zeallot')
-devtools::install_github('hyunyulhenry/HenryQuant',force = TRUE)
-library('HenryQuant')
+pacman::p_load('PerformanceAnalytics','quantmod','plotly','devtools','tibble','broom','stargazer','dplyr')
+devtools::install_github('hyunyulhenry/HenryQuant')
 options(scipen = 999)
 Sys.setenv(TZ = 'UTC')
 '%=%' = zeallot::`%<-%`
@@ -49,6 +52,31 @@ data.lm = lm((Samsung-Rf)~MKT + SMB + HML + MOM,
 
 broom::tidy(data.lm)
 stargazer(data.lm,
+          type = 'text',
+          report = ('vc*t'), #t-value 출력
+          out = 'regression_table.html') # 디렉토리에 regression_table 저장
+
+##### Analyse Samsung via Fama-French 5 factors model with Momemtum 
+
+factor_data2 = merge(ff5kr,ffmom[,2],by = "row.names",all.x = TRUE) %>% 
+  .[,-1] %>% 
+  rename(Date = X, MOM=y) %>% 
+  column_to_rownames(var="Date") %>% 
+  as.xts()
+
+plot_cumulative(factor_data2,ylog = TRUE)
+factor_data2 = factor_data2["2002::"] # From 2002
+
+plot_cumulative(factor_data2,ylog = TRUE)
+
+data.df2 = merge(ss.ret, factor_data2) %>% na.omit()
+plot_cumulative(data.df2, ylog = TRUE)
+
+data.lm2 = lm((Samsung-Rf) ~ SMB + HML + RMW + CMA + MOM, data = data.df2)
+
+
+broom::tidy(data.lm2) %>% View()
+stargazer(data.lm2,
           type = 'text',
           report = ('vc*t'), #t-value 출력
           out = 'regression_table.html')
