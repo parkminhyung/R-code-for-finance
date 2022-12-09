@@ -1,5 +1,4 @@
-
-## reference : http://henryquant.blogspot.com/2019/02/fama-french-handa-partners.html
+## Reference : http://henryquant.blogspot.com/2019/02/fama-french-handa-partners.html
 ## HenryQuant 
 
 ifelse(!require(pacman),install.packages('pacman'),library(pacman))
