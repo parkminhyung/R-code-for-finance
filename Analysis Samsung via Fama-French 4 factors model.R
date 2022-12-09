@@ -1,5 +1,5 @@
 ifelse(!require(pacman),install.packages('pacman'),library(pacman))
-pacman::p_load('PerformanceAnalytics','quantmod','plotly','devtools','tibble','broom','stargazer','dplyr')
+pacman::p_load('PerformanceAnalytics','quantmod','plotly','devtools','tibble','broom','stargazer','dplyr','zeallot')
 devtools::install_github('hyunyulhenry/HenryQuant',force = TRUE)
 library('HenryQuant')
 options(scipen = 999)
