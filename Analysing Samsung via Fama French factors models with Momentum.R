@@ -4,6 +4,7 @@
 ifelse(!require(pacman),install.packages('pacman'),library(pacman))
 pacman::p_load('PerformanceAnalytics','quantmod','plotly','devtools','tibble','broom','stargazer','dplyr')
 devtools::install_github('hyunyulhenry/HenryQuant')
+library('HenryQuant')
 options(scipen = 999)
 Sys.setenv(TZ = 'UTC')
 '%=%' = zeallot::`%<-%`
