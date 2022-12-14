@@ -4,7 +4,6 @@
 ifelse(!require('pacman'),install.packages('pacman'),library('pacman'))
 pacman::p_load('tidyquant','tidyverse','timetk','broom','frenchdata','plotly')
 options(scipen = 999, warn = -1)
-detach("package:<packageName>", unload=TRUE)
 
 tickers = c("SPY",'EFA','IJS','EEM','AGG')
 
