@@ -84,7 +84,9 @@ p1 = ff_band %>%
     error_y = list(
       array = list(.$conf.high),
       arrayminus = list(.$estimate-.$conf.low)
-    ),name = .$term) 
+    ),name = .$term) %>% 
+  layout(yaxis = list(title = "Estimate"),
+         legend = list(title = list(text='<b> Term </b>')))
 
 logreturns = log(portfolio_returns$returns+1) %>% 
   cumsum()
@@ -100,7 +102,9 @@ p2 = portfolio_returns %>%
   add_lines(y = logreturns,
             type = 'scatter',
             mode = 'line',
-            line = list(dash = "dash"),name = "cumulative log returns") 
+            line = list(dash = "dash"),name = "cumulative log returns") %>% 
+  layout(yaxis = list(title = "Return"),
+         legend = list(title = list(text='<b> Line </b>')))
 
 annotations = list( 
   list( 
