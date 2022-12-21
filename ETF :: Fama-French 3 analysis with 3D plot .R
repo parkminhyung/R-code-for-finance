@@ -5,6 +5,7 @@ p_load('quantmod','tidyquant','timetk','rvest','dplyr','frenchdata','stringr',
        'tidyr','broom','gtools','purrr','rlist','plotly','pipeR')
 
 options(scipen=999, warn=-1)
+'%+%' = paste0
 
 start_date = '2016-01-01'; end_date = '2019-11-15'
 url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
@@ -120,10 +121,11 @@ regress.df = data.frame()
 for (i in 5:length(regressionLists)) {
   df = regressionLists[[i]]$coefficients[2:4] %>% 
     as.data.frame() %>% t()
-  regress.df = rbind(regress.df,df)
-}
-
-rownames(regress.df) = names(regressionLists)[5:length(regressionLists)]
+  regress.df = rbind(regress.df,df) %>% 
+    round(x=.,digits = 5)
+  rownames(regress.df)[i-4] = names(regressionLists)[i]
+  
+} 
 
 #클러스터링 clustering
 kmeans_model = kmeans(regress.df,
@@ -145,8 +147,7 @@ regress.df %>%
                  zaxis = list(title = "HML")),
     title = "Fama-French beta 3D plot",
     showlegend = FALSE
-  )
-
-
+  ) %>% 
+  print()
 
 
