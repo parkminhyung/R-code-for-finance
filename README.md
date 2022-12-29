@@ -2,9 +2,6 @@
 R code for finance <br>
 주식, 재무표, 데이터를 위해 만든 repo입니다. <br>
 https://bookdown.org/allenpark88/rport/R+port.html 사이트에 접속하시면 세계 마감시황을 열람하실 수 있습니다. source : market-report.rmd <br>
-# 2022.10.09 UPDATE
-1. 중국주식데이터를 추가하였습니다
-- 중국 상장기업의 주가데이터를 이용할 수 있습니다. 기본 정보는 Open, High, Low, Close, Volume, Change 값 입니다.
 
 # 2022.12.30 UPDATE
 1. portfolio_assets 함수를 추가하였습니다.
@@ -16,6 +13,11 @@ num_port = 5000
 portfolio_assets(tickers,start_date,end_date,num_port)
 
 - 콘솔에 weight와 포트폴리오 수익률, 리스크 및 샤프비율을 제공합니다. plotly를 이용하여 weight와 Efficient Frontier 플롯을 제공합니다.
+
+
+# 2022.10.09 UPDATE
+1. 중국주식데이터를 추가하였습니다
+- 중국 상장기업의 주가데이터를 이용할 수 있습니다. 기본 정보는 Open, High, Low, Close, Volume, Change 값 입니다.
 
 # 2022.02.02 UPDATE
 1. 네이버주가데이터(Integrated)에 환율데이터를 추가하였습니다.
