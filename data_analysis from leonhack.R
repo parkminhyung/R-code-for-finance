@@ -1,170 +1,171 @@
-ifelse(!require('pacman'), install.packages('pacman'),library('pacman'))
-pacman::p_load(dplyr,quantmod,plotly,frenchdata,moments,qqplotr)
-options(scipen=999) 
-options(warn=-1) #eliminate warnings messages on the console window
+ifelse(!require('pacman'),
+       install.packages('pacman'),
+       library('pacman'))
 
-data_list = c("NVDA","PG","PFE","PEP","BAC","^GSPC") #market and stock tickers
+pacman::p_load("tidyquant","plotly","timetk","tidyr",'zeallot')
+'%=%' = zeallot::`%<-%`
+'%+%' = paste0
+options(scipen = 999, warn = -1)
 
-#setting date
-end_date = Sys.Date()
-start_date = (end_date - 365*20) %>% as.Date()
+tickers = c("AAPL",'AMZN',"NFLX","XOM","T")
+log_ret_xts = tq_get(
+  tickers,
+  from = '2015-01-01',
+  to = '2019-11-30',
+  get = 'stock.prices'
+) %>% 
+  group_by(symbol) %>%
+  tq_transmute(select = adjusted,
+               mutate_fun = periodReturn,
+               period = 'daily',
+               col_rename = 'ret',
+               type = 'log') %>%
+  pivot_wider(names_from = symbol, values_from = ret) %>%
+  tk_xts()
 
-#render empty dataframe
-df = data.frame()
+mean_return = colMeans(log_ret_xts) %>% round(.,digits = 5)
+cov_mat = round(cov(log_ret_xts)*252,digits=4) #annualizing, multiply 252days
 
-for (ticker in data_list) {
-  data = getSymbols(
-    Symbols = ticker,
-    from = start_date,
-    to = end_date,
-    src = "yahoo",
-    auto.assign = F,
-    verbose = F
-  ) %>% .[,6] #Extract adj.price
-  df = cbind(data,df)
+## random weights
+wts = runif(n=length(tickers)) %>% {
+  (./sum(.))
+} #sum(wts) must be 1
+
+portfolio_return = (sum(mean_return*wts)+1) ^ 252 -1
+port_risk = sqrt(t(wts) %*% (cov_mat %*% wts))
+
+#sharpe ratio
+sharpe_ratio = portfolio_return/port_risk #risk-free rate is 0
+
+
+#create 5000 random portfoilo
+num_port = 5000
+all_wts = matrix(nrow = num_port,
+                 ncol = length(tickers))
+
+c(portfolio_returns,portfolio_risk,sharpe_ratio) %=% rep(list(vector("numeric",length = num_port)),3)
+
+# random weights and portfolio return, risk and sharpe ratio, hypothesis : risk-free rate is 0
+
+for (i in 1:num_port) {
+  all_wts[i,] = runif(length(tickers)) %>% 
+    {./sum(.)}
+  portfolio_returns[i] = (1+all_wts[i,] %*% mean_return)^252 -1
+  portfolio_risk[i] = sqrt(t(all_wts[i,]) %*% (cov_mat %*% all_wts[i,]))
+  sharpe_ratio[i] = portfolio_returns[i]/portfolio_risk[i]
 }
+all_wts = all_wts %>% tk_tbl() %>% 
+  `colnames<-`(tickers %+% "_weights")
 
-#calculate returns
-returns = apply(df, 2, function(x){
-  ret = x/lag(x) -1
-  return(ret)
-}) %>% na.omit() %>% as.data.frame() 
+port_folio_values = tibble(return = portfolio_returns,
+                           risk = portfolio_risk,
+                           sharpe_ratio = sharpe_ratio) %>% 
+  cbind(all_wts,.)
 
 
-#compute portfolio returns 
-#Equal weights split portfolio
-returns$'Porfolio' = NA
-x = 1:nrow(returns)
-returns[x,7] = x %>% sapply(.,function(x){
-  sum(returns[x,2:6])/5
-})
+#Global Minimal Variance Portfolio
+risk_min = port_folio_values[which.min(port_folio_values$risk),6:8]
+risk_max = port_folio_values[which.max(port_folio_values$risk),6:8]
+tang = port_folio_values[which.max(port_folio_values$sharpe_ratio),6:8]
 
-summary(returns)
 
-#Fama-French 5 factors model, data start from "start_date"
-# you can see the list of factors model via "get_french_data_list()"
+wmin = port_folio_values[which.min(port_folio_values$risk),1:5]
+wmax = port_folio_values[which.max(port_folio_values$risk),1:5]
+wtan = port_folio_values[which.max(port_folio_values$sharpe_ratio),1:5]
 
-ff5 = download_french_data("Fama/French 5 Factors (2x3) [Daily]")$subsets$data[[1]] %>% 
-  as.data.frame() %>% 
-  .[which(.[,1]==format(start_date,"%Y%m%d")):nrow(.),] %>% 
-  {.[1:7] = data.frame(.[1],.[2:7]/100)} 
 
-normaltest_plot_factors = function(asset){
-  
-  '%+%' = paste0
-  p1 = asset %>% 
+ann = list(
+  x = risk_min$risk,
+  y = risk_min$return,
+  text = "Minimum Variance Portfolio",
+  xref = "x", yref = "y",
+  showarrow = TRUE,
+  arrowhead = 0)
+
+ann2 = list(
+  x = risk_max$risk,
+  y = risk_max$return,
+  text = "Maximum Variance Portfolio",
+  xref = "x", yref = "y",
+  showarrow = TRUE,
+  arrowhead = 0)
+
+ann3 = list(
+  x = tang$risk,
+  y = tang$return,
+  text = "Tangency Portfolio",
+  xref = "x", yref = "y",
+  showarrow = TRUE,
+  arrowhead = 0)
+
+title1 = list(
+  text = "<b> Portfolio Optimization and Efficient Frontier </b>",
+  xref = "paper",
+  yref = "paper",
+  xanchor = "center",
+  yanchor = "bottom",
+  align = "center",
+  x = 0.5,
+  y = 1,
+  showarrow = FALSE
+)
+
+title2 = list(
+  text = "<b> Portfolio Weights </b>",
+  xref = "paper",
+  yref = "paper",
+  xanchor = "center",
+  yanchor = "bottom",
+  align = "center",
+  x = 0.5,
+  y = 1,
+  showarrow = FALSE
+)
+
+#### plot ####
+fig1 = port_folio_values %>% 
+  plot_ly(x=.$risk,
+          y=.$return,
+          type = 'scatter',
+          mode = 'markers',
+          color = .$sharpe_ratio,
+          showlegend=FALSE) %>% 
+  add_markers(x = risk_min$risk,
+              y = risk_min$return,
+              markers = list(color = "#A52929")) %>% 
+  add_markers(x = risk_max$risk,
+              y = risk_max$return,
+              markers = list(color = "#A52929")) %>% 
+  add_markers(x = tang$risk,
+              y = tang$return,
+              markers = list(color = "#A52929")) %>% 
+  layout(xaxis = list(title = "\u03C3",zeroline=F),
+         yaxis = list(title = "\u00B5",zeroline=F),
+         annotations = list(title1,ann,ann2,ann3)) %>% 
+  colorbar(title = "Sharpe Ratio")
+
+fig2 =  wmin %>% 
+  round(x=.,digits=5) %>% {
     plot_ly(
-      x= 1:length(asset),
-      y = .,
-      type = 'scatter',
-      mode = 'lines')
-  
-  #Boxplot
-  p2= plot_ly(
-    x= scale(asset)[,1],
-    type = "box")
-  
-  #Density
-  df1 = data.frame(scale(asset),"Asset") %>%
-    `colnames<-` (c("x","Group"))
-  
-  df2 = data.frame(rnorm(length(asset)),"Normal")%>%
-    `colnames<-` (c("x","Group"))
-  
-  df = rbind(df1,df2) %>%
-    `colnames<-` (c("x","Group"))
-  
-  gg = ggplot(data = df ) +  
-    geom_histogram(aes(x=x, y = ..density.., fill=Group),bins = 29, alpha = 0.7) + 
-    geom_density(aes(x=x, color=Group)) + geom_rug(aes(x=x, color=Group))+ 
-    ylab("") + 
-    xlab("")
-  
-  p3 = ggplotly(gg)%>% 
-    layout(plot_bgcolor='#e5ecf6',   
-           xaxis = list(
-             zerolinecolor = '#ffff',   
-             zerolinewidth = 2,   
-             gridcolor = 'ffff'),   
-           yaxis = list(
-             zerolinecolor = '#ffff',   
-             zerolinewidth = 2,   
-             gridcolor = 'ffff')) 
-  
-  #prob
-  p4 = scale(asset) %>%
-    {
-      ggplot(mapping = aes(sample = .)) + 
-        stat_qq_point(size = 1.5,color = "blue") + 
-        stat_qq_line(color="red") + 
-        xlab("Theoretical quantiles") + ylab("Ordered Values")
-    } %>% ggplotly()
-  
-  fig = subplot(p3, p2, p1, p4, nrows = 2, titleY = TRUE, titleX = TRUE, margin = 0.1 )
-  fig = fig %>% layout(plot_bgcolor='#e5ecf6', 
-                       xaxis = list( 
-                         zerolinecolor = '#ffff', 
-                         zerolinewidth = 2, 
-                         gridcolor = 'ffff'), 
-                       yaxis = list( 
-                         zerolinecolor = '#ffff', 
-                         zerolinewidth = 2, 
-                         gridcolor = 'ffff'))
-  
-  # Update title
-  annotations = list( 
-    list( 
-      x = 0.2,  
-      y = 1.0,  
-      text = "Density",  
-      xref = "paper",  
-      yref = "paper",  
-      xanchor = "center",  
-      yanchor = "bottom",
-      showarrow = FALSE 
-    ),  
-    list( 
-      x = 0.8,  
-      y = 1,  
-      text = "Box plot",  
-      xref = "paper",  
-      yref = "paper",  
-      xanchor = "center",  
-      yanchor = "bottom",  
-      showarrow = FALSE 
-    ),  
-    list( 
-      x = 0.2,  
-      y = 0.4,  
-      text = "Simple Returns",  
-      xref = "paper",  
-      yref = "paper",  
-      xanchor = "center",  
-      yanchor = "bottom",  
-      showarrow = FALSE 
-    ),
-    list( 
-      x = 0.8,  
-      y = 0.4,  
-      text = "Probability Plot",  
-      xref = "paper",  
-      yref = "paper",  
-      xanchor = "center",  
-      yanchor = "bottom",  
-      showarrow = FALSE 
-    ))
-  
-  fig = fig %>% layout(annotations = annotations)
-  fig %>% print()
-  
-  cat(" ##### Skewness & Kurtosis #####","\n",
-      "Kurtosis is: " %+% round(kurtosis(asset),digits = 4) %+% ifelse(kurtosis(asset) >0, " [Leptokurtic]", " [Platykurtic]"),"\n",
-      "Skewness is :" %+% round(skewness(asset),digits = 4) %+% ifelse(skewness(asset) >0, " [Right-Skewness]"," [Left-Skewness]")
-  )
-}
-normaltest_plot_factors(returns$PG.Adjusted)
-normaltest_plot_factors(returns$BAC.Adjusted)
-normaltest_plot_factors(returns$NVDA.Adjusted)
-normaltest_plot_factors(ff5$Mkt.RF)
-normaltest_plot_factors(ff5$SMB)
-normaltest_plot_factors(ff5$HML)
+      x = colnames(.),
+      y = as.numeric(.[1:5]),
+      type = 'bar',
+      name = "Minimum Weights",
+      marker = list(color = '#3246AB')) %>% 
+      add_trace(
+        y = as.numeric(wmax),
+        name = "Maximum Weights",
+        marker = list(color = '#E82712')) %>% 
+      add_trace(
+        y = as.numeric(wtan),
+        name = "Tangency Weights",
+        marker = list(color = '#12B7C3')) %>% 
+      layout(
+        annotations = title2,
+        yaxis = list(title = "Weights"),
+        barmode = "group"
+      )
+  } 
+
+subplot(fig1, fig2, nrows = 2, titleY= TRUE, titleX = TRUE, margin = 0.1, heights = c(0.6,0.4))
+
