@@ -61,12 +61,18 @@ port_folio_values = tibble(return = portfolio_returns,
                            risk = portfolio_risk,
                            sharpe_ratio = sharpe_ratio) %>% 
   cbind(all_wts,.)
-  
+
 
 #Global Minimal Variance Portfolio
 risk_min = port_folio_values[which.min(port_folio_values$risk),6:8]
 risk_max = port_folio_values[which.max(port_folio_values$risk),6:8]
 tang = port_folio_values[which.max(port_folio_values$sharpe_ratio),6:8]
+
+
+wmin = port_folio_values[which.min(port_folio_values$risk),1:5]
+wmax = port_folio_values[which.max(port_folio_values$risk),1:5]
+wtan = port_folio_values[which.max(port_folio_values$sharpe_ratio),1:5]
+
 
 ann = list(
   x = risk_min$risk,
@@ -92,6 +98,30 @@ ann3 = list(
   showarrow = TRUE,
   arrowhead = 0)
 
+title1 = list(
+  text = "<b> Portfolio Optimization and Efficient Frontier </b>",
+  xref = "paper",
+  yref = "paper",
+  xanchor = "center",
+  yanchor = "bottom",
+  align = "center",
+  x = 0.5,
+  y = 1,
+  showarrow = FALSE
+)
+
+title2 = list(
+  text = "<b> Portfolio Weights </b>",
+  xref = "paper",
+  yref = "paper",
+  xanchor = "center",
+  yanchor = "bottom",
+  align = "center",
+  x = 0.5,
+  y = 1,
+  showarrow = FALSE
+)
+
 #### plot ####
 fig1 = port_folio_values %>% 
   plot_ly(x=.$risk,
@@ -101,23 +131,18 @@ fig1 = port_folio_values %>%
           color = .$sharpe_ratio,
           showlegend=FALSE) %>% 
   add_markers(x = risk_min$risk,
-            y = risk_min$return,
-            markers = list(color = "#A52929")) %>% 
+              y = risk_min$return,
+              markers = list(color = "#A52929")) %>% 
   add_markers(x = risk_max$risk,
               y = risk_max$return,
               markers = list(color = "#A52929")) %>% 
   add_markers(x = tang$risk,
               y = tang$return,
               markers = list(color = "#A52929")) %>% 
-  layout(title = "<b> Portfolio optimization and Efficient Frontier </b>",
-         xaxis = list(size = 10, title = "\u03C3"),
-         yaxis = list(fontsize = 10, title = "\u00B5"),
-         annotations = list(ann,ann2,ann3)) %>% 
+  layout(xaxis = list(title = "\u03C3",zeroline=F),
+         yaxis = list(title = "\u00B5",zeroline=F),
+         annotations = list(title1,ann,ann2,ann3)) %>% 
   colorbar(title = "Sharpe Ratio")
-
-wmin = port_folio_values[which.min(port_folio_values$risk),1:5]
-wmax = port_folio_values[which.max(port_folio_values$risk),1:5]
-wtan = port_folio_values[which.max(port_folio_values$sharpe_ratio),1:5]
 
 fig2 =  wmin %>% 
   round(x=.,digits=5) %>% {
@@ -136,10 +161,11 @@ fig2 =  wmin %>%
         name = "Tangency Weights",
         marker = list(color = '#12B7C3')) %>% 
       layout(
+        annotations = title2,
         yaxis = list(title = "Weights"),
         barmode = "group"
       )
   } 
 
-subplot(fig1, fig2, nrows = 2)
+subplot(fig1, fig2, nrows = 2, titleY= TRUE, titleX = TRUE, margin = 0.1, heights = c(0.5,0.5))
 
