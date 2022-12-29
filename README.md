@@ -6,6 +6,16 @@ https://bookdown.org/allenpark88/rport/R+port.html 사이트에 접속하시면 
 1. 중국주식데이터를 추가하였습니다
 - 중국 상장기업의 주가데이터를 이용할 수 있습니다. 기본 정보는 Open, High, Low, Close, Volume, Change 값 입니다.
 
+# 2022.12.30 UPDATE
+1. portfolio_assets 함수를 추가하였습니다.
+- function의 정보는 portfolio_assets(tickers,start_date,end_date,num_port)이며, tickers는 주식티커, start_date와 end_date는 각각 주식데이터의 시작시점과 끝시점을 나타냅니다. num_port는 포트폴리오 개수를 의미합니다.
+- 예 : 
+tickers = c("TXN","RTX","AAPL","T","BABA","SPG","F","NGG")
+start_date='2013-01-01'; end_date = '2022-11-30'
+num_port = 5000
+portfolio_assets(tickers,start_date,end_date,num_port)
+
+- 콘솔에 weight와 포트폴리오 수익률, 리스크 및 샤프비율을 제공합니다. plotly를 이용하여 weight와 Efficient Frontier 플롯을 제공합니다.
 
 # 2022.02.02 UPDATE
 1. 네이버주가데이터(Integrated)에 환율데이터를 추가하였습니다.
