@@ -10,8 +10,8 @@ portfolio_assets = function(tickers,start_date,end_date,num_port){
   
   log_ret_xts = tq_get(
     tickers,
-    from = '2015-01-01',
-    to = '2019-11-30',
+    from = start_date,
+    to = end_date,
     get = 'stock.prices'
   ) %>% 
     group_by(symbol) %>%
