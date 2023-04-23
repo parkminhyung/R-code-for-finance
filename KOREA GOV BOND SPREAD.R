@@ -62,7 +62,6 @@ f3 = kr_spread %>%
           mode = "line",
           name = "KOSPI") 
 
-
 f4= plot_ly() %>%
   add_trace(x = kr_spread$date,
             y = kr_spread$spread10.2,
