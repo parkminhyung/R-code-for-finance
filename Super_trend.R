@@ -5,7 +5,7 @@ super_trend = function(df,n=NULL,Multiplier=NULL){
   n = ifelse(is.null(n),10,n); Multiplier =  ifelse(is.null(Multiplier),3,Multiplier)
   
   ifelse(!require(pacman),install.packages('pacman'),library(pacman))
-  pacman::p_load("dplyr")
+  pacman::p_load("dplyr","quantmod")
   df$TR = NA
   for (i in 1:(nrow(df)-1)) {
     df$TR[i+1] = max(abs(df$high[i+1] - df$low[i+1]), 
