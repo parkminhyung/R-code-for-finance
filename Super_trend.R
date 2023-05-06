@@ -1,4 +1,4 @@
-#components of df must be followed as "open", "high","low","close" 
+#Make sure to set the colnames of the dataframe to : open, high,low, close, vol, adjcl
 
 super_trend = function(df,n=NULL,Multiplier=NULL){
   options(warn=-1)
