@@ -14,7 +14,7 @@ super_trend = function(df,n=NULL,Multiplier=NULL){
       round(.,digits = 2)
   }
   
-  df = df %>%
+  df = df %>% as.data.frame() %>%
     mutate(ATR = SMA(.$TR, n=n)) %>%
     mutate(UPPER_ATR_CLOSE = .$close + Multiplier*.$ATR) %>%
     mutate(LOWER_ATR_CLOSE = .$close - Multiplier*.$ATR) %>%
