@@ -1,5 +1,5 @@
 #Make sure to set the colnames of the dataframe to : open, high,low, close, vol, adjcl
-
+#Super Trend
 super_trend = function(df,n=NULL,Multiplier=NULL){
   options(warn=-1)
   n = ifelse(is.null(n),10,n); Multiplier =  ifelse(is.null(Multiplier),3,Multiplier)
