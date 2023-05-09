@@ -28,17 +28,19 @@ for (i in 1:nrow(WI_list)) {
   
   percent =  round(((data$value[nrow(data)]/data$value[nrow(data)-1])-1)*100,digits = 3) %>%
     paste0(.,"%")
+  
   plot_list[[i]] = data %>% plot_ly(
     x = ~Date,
     y = ~value,
     type = 'scatter',
-    mode = "line") %>% 
-    add_lines(.,y=~SMA9) %>% 
-    add_lines(.,y=~SMA25) %>% 
+    mode = "line",
+    name = "value") %>% 
+    add_lines(.,y=~SMA9,name = "SMA-9") %>% 
+    add_lines(.,y=~SMA25,name = "SMA-25") %>% 
     layout(
-    annotations =  list(x = 0.2,  
+    annotations =  list(x = 0.3,  
                         y = 1.1,  
-                        text = paste0(head$idx_nm," (",percent,")"),
+                        text = paste0(head$idx_nm," (",data$value[nrow(data)],"pt, ",percent,")"),
                         xref = "paper",  
                         yref = "paper",  
                         xanchor = "center",  
@@ -49,3 +51,4 @@ subplot(plot_list,nrows = 6)  %>%
   layout(title = paste0(format(Sys.Date(),"%Y.%m.%d"),' WICS 산업'),
          margin = list(t=50,b=100),
          showlegend = F)
+
