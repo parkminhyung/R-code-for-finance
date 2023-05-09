@@ -13,8 +13,6 @@ df %>% plot_ly(
   y = .$전일대비,
   type = 'bar',
   marker = list(color = ifelse(.$전일대비>0,"red","blue"))
-) %>% layout(title = "WI26 업종별 등락",
+) %>% layout(title = paste0("WI26 업종별 등락"," (",Sys.Date(),")"),
              margin = list(t=50,b=100),
              xaxis = list(categoryorder = "total descending")) 
-
-
