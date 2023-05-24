@@ -163,30 +163,3 @@ portfolio_assets = function(tickers,start_date,end_date,num_port){
   t(wmin) %>% round(x=.,digits = 3) %>% `colnames<-`("Weight") %>% kable() %>% print() 
   
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
