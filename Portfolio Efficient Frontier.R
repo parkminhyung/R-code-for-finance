@@ -1,3 +1,7 @@
+# tickers : stock tickers based on yahoo-finance 
+# start_date, end_date: data length
+# num_port: the number of portfolios you want to create, normally 5000 
+
 portfolio_assets = function(tickers,start_date,end_date,num_port){ 
   ifelse(!require('pacman'), install.packages('pacman'), library('pacman')) 
   pacman::p_load("tidyquant","plotly","timetk","tidyr",'zeallot','knitr') 
