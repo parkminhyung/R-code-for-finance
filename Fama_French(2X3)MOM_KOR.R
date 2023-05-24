@@ -1,7 +1,6 @@
 ifelse(!require('pacman'),install.packages('pacman'),library('pacman'))
 pacman::p_load("dplyr","lubridate","tibble","readxl","plotly")
 
-#파마프렌치2x3 한국모델 + Momentum
 #Famafrenchmodel : Size & Momentum (2X3)
 #download Fama-French 2X3 model from fnguide 
 urls = c('http://www.fnindex.co.kr/factordetail/excel/3FM.2M3.B',
@@ -50,4 +49,5 @@ FF_model_2x3M %>%
   add_lines(y = ~MOM,name = "MOM") %>%
   add_lines(y = ~SMB,name = "SMB") %>%
   layout(title = "<b> Fama-French Model (2x3) MoM </b>",
+         margin = list(t=50,b=100),
          xaxis = list(title = "Date"), yaxis = list(title = "Value"))
