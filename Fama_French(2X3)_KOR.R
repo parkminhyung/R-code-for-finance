@@ -48,5 +48,5 @@ FF_model_2x3 %>%
   add_lines(y = ~LOW_S,name = "LOW_S") %>%
   add_lines(y = ~HML,name = "HML") %>%
   add_lines(y = ~SMB,name = "SMB") %>%
-  layout(title = "<b> Fama-French Model (2x3) </b>",
-         xaxis = list(title = "Value"), yaxis = list(title = "Date"))
+  layout(title = "<b> Fama-French Model (2x3) MoM </b>",
+         xaxis = list(title = "Date"), yaxis = list(title = "Value"))
