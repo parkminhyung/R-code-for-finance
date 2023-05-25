@@ -6,16 +6,16 @@ pacman::p_load("dplyr","lubridate","tibble","readxl","plotly")
 urls = c('http://www.fnindex.co.kr/factordetail/excel/3FM.2M3.B',
          'http://www.fnindex.co.kr/factordetail/excel/3FM.2M3.S',
          'http://www.fnindex.co.kr/factordetail/excel/3FM.2M3.X')
-filenames = c("FFmodel(2X3)MB.xlsx",
+filelist = c("FFmodel(2X3)MB.xlsx",
               "FFmodel(2X3)MS.xlsx",
               "FFmodel(2X3)MX.xlsx")
 for (i in 1:length(urls)) {
   download.file(urls[i],
-                destfile = filenames[i])
+                destfile = filelist[i])
 }
 
 #load files and preprocess data
-filelist = filenames %>%
+filelist = filelist %>%
   sapply(.,function(x) {
     read_excel(x) %>%
       as.data.frame(.) %>%
@@ -33,21 +33,15 @@ FF_model_2x3M = FF_model_2x3M %>%
   column_to_rownames("일자")
 
 #visualize
-FF_model_2x3M %>%
-  plot_ly(
-    x = rownames(.),
-    y = ~UP_B ,
-    type = 'scatter',
-    mode = 'line',
-    name = "UP_B"
-  ) %>%
-  add_lines(y = ~DOWN_B,name = "DOWN_B") %>%
-  add_lines(y = ~MEDIUM_B,name = "MEDIUM_B") %>%
-  add_lines(y = ~UP_S,name = "UP_S") %>%
-  add_lines(y = ~DOWN_S,name = "DOWN_S") %>%
-  add_lines(y = ~MEDIUM_S,name = "MEDIUM_S") %>%
-  add_lines(y = ~MOM,name = "MOM") %>%
-  add_lines(y = ~SMB,name = "SMB") %>%
-  layout(title = "<b> Fama-French Model (2x3) MoM </b>",
+pig = plot_ly()
+for (i in 1:ncol(FF_model_2x3M)) {
+  pig = pig %>% 
+    add_lines(data = FF_model_2x3M,
+              x = rownames(FF_model_2x3M),
+              y = FF_model_2x3M[,i], 
+              name = names(FF_model_2x3M)[i])
+}
+pig %>% 
+  layout(title = "<b> Fama-French Model (2x3) MOM </b>",
          margin = list(t=50,b=100),
          xaxis = list(title = "Date"), yaxis = list(title = "Value"))
