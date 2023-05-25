@@ -7,8 +7,8 @@ urls = c('http://www.fnindex.co.kr/factordetail/excel/3FM.2B3.B',
          'http://www.fnindex.co.kr/factordetail/excel/3FM.2B3.S',
          'http://www.fnindex.co.kr/factordetail/excel/3FM.2B3.X')
 filelist = c("FFmodel(2X3)B.xlsx",
-              "FFmodel(2X3)S.xlsx",
-              "FFmodel(2X3)X.xlsx")
+             "FFmodel(2X3)S.xlsx",
+             "FFmodel(2X3)X.xlsx")
 
 for (i in 1:length(urls)) download.file(urls[i],destfile = filelist[i])
 
@@ -31,15 +31,15 @@ FF_model_2x3 = FF_model_2x3 %>%
   column_to_rownames("일자")
 
 #visualize
-pig = plot_ly()
+fig = plot_ly()
 for (i in 1:ncol(FF_model_2x3)) {
-  pig = pig %>% 
+  fig = fig %>% 
     add_lines(data = FF_model_2x3,
               x = rownames(FF_model_2x3),
               y = FF_model_2x3[,i], 
               name = names(FF_model_2x3)[i])
 }
-pig %>% 
+fig %>% 
   layout(title = "<b> Fama-French Model (2x3) </b>",
          margin = list(t=50,b=100),
          xaxis = list(title = "Date"), yaxis = list(title = "Value"))
