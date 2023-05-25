@@ -30,6 +30,7 @@ for (i in 2:length(filelist)) FF_model_2x3 = merge(FF_model_2x3, filelist[[i]], 
 FF_model_2x3 = FF_model_2x3 %>% 
   column_to_rownames("일자")
 
+#visualize
 pig = plot_ly()
 for (i in 1:ncol(FF_model_2x3)) {
   pig = pig %>% 
