@@ -47,15 +47,15 @@ FF_model_5x5M = FF_model_5x5M %>%
 
 #visualize
 
-pig = plot_ly()
+fig = plot_ly()
 for (i in 1:ncol(FF_model_5x5M)) {
-  pig = pig %>% 
+  fig = fig %>% 
     add_lines(data = FF_model_5x5M,
               x = rownames(FF_model_5x5M),
               y = FF_model_5x5M[,i], 
               name = names(FF_model_5x5M)[i])
 }
-pig %>% 
+fig %>% 
   layout(title = "<b> Fama-French Model MOM (5x5) </b>",
          margin = list(t=50,b=100),
          xaxis = list(title = "Date"), yaxis = list(title = "Value"))
