@@ -5,11 +5,11 @@ pacman::p_load("dplyr","lubridate","tibble","readxl","plotly")
 #download Fama-French 5X5 model from fnguide 
 
 urls = c('http://www.fnindex.co.kr/factordetail/excel/3FM.5B5.B',
-        'http://www.fnindex.co.kr/factordetail/excel/3FM.5B5.M',
-        'http://www.fnindex.co.kr/factordetail/excel/3FM.5B5.MB',
-        'http://www.fnindex.co.kr/factordetail/excel/3FM.5B5.MS',
-        'http://www.fnindex.co.kr/factordetail/excel/3FM.5B5.S',
-        'http://www.fnindex.co.kr/factordetail/excel/3FM.5B5.X')
+         'http://www.fnindex.co.kr/factordetail/excel/3FM.5B5.M',
+         'http://www.fnindex.co.kr/factordetail/excel/3FM.5B5.MB',
+         'http://www.fnindex.co.kr/factordetail/excel/3FM.5B5.MS',
+         'http://www.fnindex.co.kr/factordetail/excel/3FM.5B5.S',
+         'http://www.fnindex.co.kr/factordetail/excel/3FM.5B5.X')
 
 filelist = c("FFmodel(5X5)B.xlsx",
              "FFmodel(5X5)M.xlsx",
@@ -47,15 +47,15 @@ FF_model_5x5 = FF_model_5x5 %>%
 
 #visualize
 
-pig = plot_ly()
+fig = plot_ly()
 for (i in 1:ncol(FF_model_5x5)) {
-  pig = pig %>% 
+  fig = fig %>% 
     add_lines(data = FF_model_5x5,
               x = rownames(FF_model_5x5),
               y = FF_model_5x5[,i], 
               name = names(FF_model_5x5)[i])
 }
-pig %>% 
+fig %>% 
   layout(title = "<b> Fama-French Model (5x5) </b>",
          margin = list(t=50,b=100),
          xaxis = list(title = "Date"), yaxis = list(title = "Value"))
