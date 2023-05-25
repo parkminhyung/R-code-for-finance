@@ -1,6 +1,10 @@
 ifelse(!require('pacman'),install.packages('pacman'),library('pacman'))
 pacman::p_load("dplyr","lubridate","tibble","readxl","plotly")
 
+dir = getwd()
+dir.create("./FFModel")
+setwd("./FFModel")
+
 #Famafrenchmodel : Size & Momentum(5X5)
 #download Fama-French 5X5 MOM model from fnguide 
 
@@ -59,3 +63,5 @@ fig %>%
   layout(title = "<b> Fama-French Model MOM (5x5) </b>",
          margin = list(t=50,b=100),
          xaxis = list(title = "Date"), yaxis = list(title = "Value"))
+
+setwd(dir)
