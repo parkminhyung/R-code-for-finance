@@ -1,3 +1,6 @@
+#在上证，深证，创业板等的市场上市公司的列表
+#상해 심천 창업판 상장기업 목록
+
 pacman::p_load("rvest","dplyr")
 
 markets = c("hs","ss","bj","cyb","kcb")
