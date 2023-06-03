@@ -41,7 +41,3 @@ for (market in markets) {
 }
 
 df = df[c(2,1,10,3:9)]
-
-df %>% 
-  filter(시장=="과창판") %>%
-  View()
