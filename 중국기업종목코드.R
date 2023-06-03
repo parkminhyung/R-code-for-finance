@@ -1,4 +1,4 @@
- #在上证A,深证A,科创板,京证,创业板上市企业的列表(含)
+#在上证A,深证A,科创板,京证,创业板上市企业的列表(含)
 #提供企业名,现价,交易量等的数据
 #상해,심천 등 상장회사 정보 제공
 
@@ -24,7 +24,7 @@ for (market in markets) {
       read_html() %>%
       html_table() %>% .[[1]] %>%
       `colnames<-`(c("x","종목코드","회사명","현재주가","등락률","등락","x",
-                     "x","x","x","거래량","유통주식수","시가총액","PER","x")) %>%
+                     "x","x","x","거래량","유통주식수","유통시가","PER","x")) %>%
       select(-x) %>% 
       mutate(종목코드 = sprintf("%06d", 종목코드)) %>%
       mutate(등락률 = 등락률 %+% "%") %>%
@@ -33,7 +33,7 @@ for (market in markets) {
                                 ifelse(market == "bj","북경A",
                                        ifelse(market == "cyb","창업판",
                                               ifelse(market == "kcb","과창판",NA)))))) %>%
-      rbind(.,df)
+      rbind(df,.)
   }
   
   df = df %>%
@@ -41,3 +41,7 @@ for (market in markets) {
 }
 
 df = df[c(2,1,10,3:9)]
+
+df %>% 
+  filter(시장=="과창판") %>%
+  View()
