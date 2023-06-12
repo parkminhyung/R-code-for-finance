@@ -1,8 +1,10 @@
 #normally data is from "quantmod"
 #Example
-# df = quantmod::getSymbols("AAPL") %>% heikin_ashi()
+#df = quantmod::getSymbols("AAPL",auto.assign = FALSE) %>% heikin_ashi()
 
 heikin_ashi = function(data) {
+  ifelse(!require(pacman),install.packages('pacman'),library(pacman))
+  pacman::p_load("quantmod")
   
   if(!quantmod::is.OHLC(data)) stop("data must contain OHLC columns")
   
