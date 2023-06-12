@@ -1,3 +1,7 @@
+#normally data is from "quantmod"
+#Example
+# df = quantmod::getSymbols("AAPL") %>% heikin_ashi()
+
 heikin_ashi = function(data) {
   
   if(!quantmod::is.OHLC(data)) stop("data must contain OHLC columns")
