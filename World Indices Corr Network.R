@@ -1,4 +1,4 @@
-#World Indices Network Analysis 
+#World Indices Correlation Network Analysis 
 #Plot created by networkD3
 
 ifelse(!require(pacman),
