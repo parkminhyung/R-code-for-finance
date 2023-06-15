@@ -67,7 +67,8 @@ edges_df = edges_df %>%
   mutate(from = setNames(nodes_df$index, nodes_df$id)[edges_df[,1]]) %>%
   mutate(to = setNames(nodes_df$index, nodes_df$id)[edges_df[,2]])
 
-#3D Network Plot
+# 3D Network Plot
+# higly recommend that you open the network plot in the new window (through web browser)
 
 forceNetwork(
   Links = edges_df,
