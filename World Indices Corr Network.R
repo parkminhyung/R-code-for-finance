@@ -1,12 +1,8 @@
-#World Indices Correlation Network Analysis 
-#Plot created by networkD3
-
 ifelse(!require(pacman),
        install.packages("pacman"),
        library(pacman))
 pacman::p_load("networkD3","dplyr","igraph","quantmod")
 
-#data from ChatGPT
 world_data = data.frame(
   'Name' = c('SNP500','NASDAQ','Tokyo','Shanghai',
              'HongKong','London','EuronextParis',
@@ -72,6 +68,7 @@ edges_df = edges_df %>%
   mutate(to = setNames(nodes_df$index, nodes_df$id)[edges_df[,2]])
 
 #3D Network Plot
+
 forceNetwork(
   Links = edges_df,
   Nodes = nodes_df,
@@ -80,12 +77,13 @@ forceNetwork(
   Value = "value",
   NodeID = "id",
   Group = "group",
-  fontSize = 12,
+  fontSize = 14, 
+  fontFamily = "Arial Black", 
   zoom = TRUE,
   legend = TRUE,
   opacity = 0.8,
   bounded = TRUE,
   opacityNoHover = TRUE,
-  linkDistance = 450
+  linkDistance = 450,
+  linkWidth = JS("function(d) { return Math.abs(d.value) * 5; }"),
 )
-
