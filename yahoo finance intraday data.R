@@ -4,8 +4,12 @@
 #example, if you want to extract S&P500 intraday data, yf_data_intra("^GSPC")[[1]], ticker is based on yahoo-finance 
 
 yf_data_intra = function(ticker) {
-  pacman::p_load("jsonlite","dplyr")
+  ifelse(!require(pacman),
+         install.packages('pacman'),
+         library(pacman))
   
+  pacman::p_load("jsonlite","dplyr")
+  "%+%" = paste0
   options(scipen = 999)
   ticker= toupper(ticker)
   
