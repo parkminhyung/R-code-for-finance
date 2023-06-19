@@ -4,7 +4,7 @@
 #example, if you want to extract S&P500 intraday data, yf_data_intra("^GSPC")[[1]], ticker is based on yahoo-finance 
 
 yf_data_intra = function(ticker) {
-  pacman::p_load("rvest","jsonlite","tidyr","lubridate")
+  pacman::p_load("jsonlite","dplyr")
   
   options(scipen = 999)
   ticker= toupper(ticker)
@@ -31,7 +31,7 @@ yf_data_intra = function(ticker) {
 pacman::p_load("plotly","quantmod","tibble")
 
 '%+%' = paste0
-ticker = "^ks11"
+ticker = "^n225"
 
 data1 = yf_data_intra(ticker)[[1]]
 data1$vol[which.max(data1$vol)] = 0
@@ -96,8 +96,8 @@ preprice = base$chart$result$meta$previousClose
     ) %>%
     add_annotations(
       text = (" Ticker info: " %+% toupper(ticker) %+% " <br>" %+% 
-        " Price: " %+% round(data1$close[nrow(data1)],digits = 3) %+% "pt" %+% "<br>" %+%
-        " Chg(%): " %+% paste0(round(((data1$close[nrow(data1)]/preprice)-1)*100,digits=3),"%")),
+                " Price: " %+% round(data1$close[nrow(data1)],digits = 3) %+% "pt" %+% "<br>" %+%
+                " Chg(%): " %+% paste0(round(((data1$close[nrow(data1)]/preprice)-1)*100,digits=3),"%")),
       align='left',
       showarrow= FALSE,
       xref='paper',
@@ -115,4 +115,5 @@ preprice = base$chart$result$meta$previousClose
   subplot(f2,f1,nrows = 2,heights = c(.4,.6),shareX = FALSE) %>%
     layout(xaxis = list(rangeslider = list(visible = FALSE))) 
 }
+
 
