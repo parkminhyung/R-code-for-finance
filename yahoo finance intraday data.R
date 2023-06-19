@@ -28,10 +28,10 @@ yf_data_intra = function(ticker) {
 
 
 #### intraday and 6month price Plot ####
-pacman::p_load("plotly","quantmod","tibble")
+pacman::p_load("plotly","quantmod","tibble","lubridate")
 
 '%+%' = paste0
-ticker = "^n225"
+ticker = "^ks11"
 
 data1 = yf_data_intra(ticker)[[1]]
 data1$vol[which.max(data1$vol)] = 0
@@ -115,5 +115,4 @@ preprice = base$chart$result$meta$previousClose
   subplot(f2,f1,nrows = 2,heights = c(.4,.6),shareX = FALSE) %>%
     layout(xaxis = list(rangeslider = list(visible = FALSE))) 
 }
-
 
