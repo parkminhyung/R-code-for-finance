@@ -1,6 +1,5 @@
 ## 원문 : https://r2bit.com/book_tm/view-text.html
 
-
 ifelse(!require(pacman),install.packages('pacman'),library('pacman'))
 pacman::p_load("rvest","reticulate","zeallot")
 
