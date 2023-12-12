@@ -70,7 +70,9 @@ plot_df = tibble(
       TRUE ~ "else"
     )
   )
-
+            
+theme_set(theme_minimal())
+            
 ggplot(plot_df) +
   aes(x = HML, y = SMB, color = class) +
   geom_point() + 
