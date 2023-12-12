@@ -70,9 +70,9 @@ plot_df = tibble(
       TRUE ~ "else"
     )
   )
-            
+
 theme_set(theme_minimal())
-            
+
 ggplot(plot_df) +
   aes(x = HML, y = SMB, color = class) +
   geom_point() + 
@@ -85,9 +85,9 @@ ggplot(plot_df) +
             check_overlap = T)  + 
   geom_vline(aes(xintercept = 0), color = "black", linetype = "dashed") +
   geom_hline(aes(yintercept = 0), color = "black", linetype = "dashed") +
-  ggtitle("Morningstar Style Box : Risk factor Exposure") +  
-  annotate("text", x = 0, y = min(plot_df$SMB)-0.125, label = "Large", angle = 0, hjust = 0.5) +  
-  annotate("text", x = 0, y = max(plot_df$SMB)+0.125, label = "Small", angle = 0,hjust = 0.5) +  
+  ggtitle("Morningstar Style Box : Risk Factor Exposure") +  
+  annotate("text", x = 0, y = min(plot_df$SMB)-0.125, label = "Large Cap", angle = 0, hjust = 0.5) +  
+  annotate("text", x = 0, y = max(plot_df$SMB)+0.125, label = "Small Cap", angle = 0,hjust = 0.5) +  
   annotate("text", x = max(plot_df$HML)+0.125, y = 0, label = "Value", angle = 270, hjust = 0.5) +  
   annotate("text", x = min(plot_df$HML)-0.125, y = 0, label = "Growth", angle = 90,hjust = 0.5) 
 
