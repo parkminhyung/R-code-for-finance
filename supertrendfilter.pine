@@ -1,0 +1,21 @@
+//@version=2
+study("Supertrend Filter",overlay=true)
+//
+Pd=input(200)
+Factor=input(0.9)
+//
+P = pow(Pd,2)
+a = 2/(P+1)
+d = abs(close - nz(Tsl[0],hl2))
+t = a*d+(1-a)*nz(t[1],d)
+src = Factor*nz(Tsl[0],hl2) + (1-Factor)*close
+Up=nz(Tsl[0],hl2)-t
+Dn=nz(Tsl[0],hl2)+t
+//
+TrendUp=src[1]>TrendUp[1]? max(Up,TrendUp[1]) : Up
+TrendDown=src[1]<TrendDown[1]? min(Dn,TrendDown[1]) : Dn
+//
+Trend = src > TrendDown[1] ? 1: src< TrendUp[1]? -1: nz(Trend[1],1)
+Tsl = Trend==1? TrendDown : TrendUp
+css = Tsl > Tsl[1] ? #0080FF : Tsl < Tsl[1] ? #FF0040 : na
+plot(Tsl,color=fixnan(css),transp=0)
