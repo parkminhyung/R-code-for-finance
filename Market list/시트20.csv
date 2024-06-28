@@ -1,0 +1,864 @@
+JK,Issue code,Issue name,Listing date,Provider,Yield(The past year),Underlying index,Tracking error,AUM,Disparate ratio,Volatility,Replication method,TER,Taxation type
+,466400,1Q 25-08 Corp Bond(A+) Active,2023/09/19,Hana Asset Management,0,KIS 2025-08 A+ Credit Bond(Total Return),0.16,113821329770,0.04,Very low,Physical(Active),0.1,Dividend income tax(tax on holding period)
+,472350,1Q China H(H),2023/12/12,Hana Asset Management,0,HSCEI(Hang Seng China Enterprise Index),0.77,20855714271,-1.95,High,Physical(Passive),0.11,Dividend income tax(tax on holding period)
+,451060,1Q K200 Active,2023/01/31,Hana Asset Management,14.56,KOSPI 200,0.8,153586015393,-0.28,Normal,Physical(Active),0.18,Dividend income tax(tax on holding period)
+,479080,1Q Money Market Active,2024/04/02,Hana Asset Management,0,KIS-HANA MMF Index(Total Return),0.05,282941800427,0.03,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,463290,1Q Short-term Financial Bond Active,2023/08/03,Hana Asset Management,0,MK Money Market Index(Total Return),0.07,130718454869,0.03,Very low,Physical(Active),0.08,Dividend income tax(tax on holding period)
+,365780,ACE 10Y KTB,2020/10/15,KOREA INVESTMENT TR,2.45,KIS 10Y KTB Index(Total Return),0.15,213445114278,-0.01,Very low,Physical(Passive),0.02,Dividend income tax(tax on holding period)
+,105190,ACE 200,2008/09/25,KOREA INVESTMENT TR,12.69,KOSPI 200,0.72,503854388281,-0.45,Normal,Physical(Passive),0.09,Non taxable
+,332500,ACE 200TR,2019/08/28,KOREA INVESTMENT TR,14.62,KOSPI 200 TR,0.17,42496135320,-0.57,Normal,Physical(Passive),0.03,Dividend income tax(tax on holding period)
+,448880,ACE 24-12 Term Corporate Bond Active,2022/11/22,KOREA INVESTMENT TR,-1.1,"KIS Target Maturity Total Return Index 2024-12(Corp, Financial, above AA-)",0.15,235364911521,0.04,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,461260,ACE 25-06 Term Coporate Bond Active,2023/06/20,KOREA INVESTMENT TR,4.99,"KIS Target Maturity Total Return Index 2025-06(Corp, Financial, above AA-)",0.14,98046377853,-0.01,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,461270,ACE 26-06 Term Coporate Bond Active,2023/06/20,KOREA INVESTMENT TR,5.92,"KIS Target Maturity Total Return Index 2026-06(Corp, Financial, above AA-)",0.21,151125105351,0.05,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,469150,ACE AI Semiconductor Focus,2023/10/17,KOREA INVESTMENT TR,0,FnGuide AI Semiconductor Focus Index(Price Return),0.34,56141986088,-0.38,Very high,Physical(Passive),0.3,Non taxable
+,272910,ACE Active Korea Treasury&Agency Bond,2017/06/29,KOREA INVESTMENT TR,5.18,KIS Korea Treasury & Agency Bonds 1-10Y,0.24,36642685123,-0.01,Very low,Physical(Active),0.08,Dividend income tax(tax on holding period)
+,483420,ACE Apple Value Chain Active,2024/06/11,KOREA INVESTMENT TR,0,Bloomberg Top 30 Supply Chain Plus Apple Price Return Index,14.28,37646921208,-0.43,Very high,Physical(Active),0.45,Dividend income tax(tax on holding period)
+,475280,ACE Aug Rollover Corporate Bond Active,2024/01/23,KOREA INVESTMENT TR,0,KAP Aug Maturity Rollover Corp Bond TR Index(above AA-),0.03,30826633814,0.06,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,435040,ACE Bloomberg Global Brand TOP10,2022/06/28,KOREA INVESTMENT TR,30.52,Bloomberg Global Select Industry Leaders TOP10 Index(PR),1.61,14071184222,0.39,Low,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,168580,ACE CHINA A CSI300,2012/11/29,KOREA INVESTMENT TR,-4.43,CSI 300 Index,1.53,109483049626,-0.88,Low,Physical(Passive),0.7,Dividend Income Tax(Foreign Stock Investment ETF)
+,371870,ACE China Hang Seng TECH,2020/12/16,KOREA INVESTMENT TR,-3.85,Hang Seng TECH Index,0.6,5525881153,-2.73,Very high,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,416090,ACE China STAR50,2022/01/13,KOREA INVESTMENT TR,-24.9,STAR 50 Index(Price Return),0.79,4409036233,-2.56,High,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,385590,ACE ESG Active,2021/05/25,KOREA INVESTMENT TR,14.68,MSCI Korea Country ESG Leaders Custom Capped Price return Index,5.37,27679728548,-0.23,Normal,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,385600,ACE EV Value Chain Active,2021/05/25,KOREA INVESTMENT TR,0.81,FnGuide Electric Vehicles Value Chain Index,17.81,21331999309,0.29,Very high,Physical(Active),0.29,Dividend income tax(tax on holding period)
+,475260,ACE Feb Rollover Corporate Bond Active,2024/01/23,KOREA INVESTMENT TR,0,KAP Feb Maturity Rollover Corp Bond TR Index(above AA-),0.07,118208679974,0.05,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,380340,ACE Fn5G Plus,2021/04/02,KOREA INVESTMENT TR,41.98,FnGuide 5G Plus Price return Index,0.71,7586675150,0.02,Very high,Physical(Passive),0.35,Non taxable
+,414270,ACE G2 EV&AV Active,2022/02/15,KOREA INVESTMENT TR,-1.68,FactSet US-China Electric&Autonomous Vehicle Price Return Index,12.48,64174148124,-0.75,High,Physical(Active),0.29,Dividend income tax(tax on holding period)
+,411050,ACE Global Metaverse tech Active,2021/12/22,KOREA INVESTMENT TR,59.9,Bloomberg Global Digital Media & Tech Select Price Return Index,12.68,20052598246,-0.36,Normal,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,483340,ACE Google Value Chain Active,2024/06/11,KOREA INVESTMENT TR,0,KEDI Global AI Cloud Index,7.47,35127660311,0.47,High,Physical(Active),0.45,Dividend income tax(tax on holding period)
+,145670,ACE INVERSE,2011/09/08,KOREA INVESTMENT TR,-9.87,F-KOSPI 200,0.21,2512187872,0.01,Normal,Physical(Passive),0.15,Dividend income tax(tax on holding period)
+,196030,ACE Japan Leverage(H),2014/06/16,KOREA INVESTMENT TR,58.55,TOPIX,4.24,22978641266,-0.92,Very high,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,238720,ACE Japan Nikkei225(H),2016/03/03,KOREA INVESTMENT TR,24.92,Nikkei 225,1.04,30755053788,-0.68,Normal,Physical(Passive),0.3,Dividend Income Tax(Foreign Stock Investment ETF)
+,469160,ACE Japan Semiconductor,2023/10/17,KOREA INVESTMENT TR,0,Bloomberg Japan Semiconductor Select Top 25 Index(Price Return),0.67,25813138501,-1.06,High,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,356540,ACE KIS Active Bond Composite,2020/07/21,KOREA INVESTMENT TR,6.4,KIS All Bond Index (higher than AA- Grade),0.28,860167325555,-0.07,Very low,Physical(Active),0.02,Dividend income tax(tax on holding period)
+,354500,ACE KOSDAQ150,2020/05/07,KOREA INVESTMENT TR,2.82,KOSDAQ 150,0.1,21928427037,-0.37,Very high,Physical(Passive),0.02,Non taxable
+,305050,ACE KOSPI,2018/10/05,KOREA INVESTMENT TR,9.01,KOSPI,0.61,7177179732,0.13,Normal,Physical(Passive),0.02,Non taxable
+,475050,ACE KPOP Focus,2024/01/30,KOREA INVESTMENT TR,0,iSelect K-POP Focus Index(Price Return),0.06,18696986054,-0.18,Very high,Physical(Passive),0.3,Non taxable
+,411060,ACE KRX Physical Gold,2021/12/15,KOREA INVESTMENT TR,26.6,KRX Gold Spot Index,0.06,238260334879,0.29,Normal,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,226380,ACE Korean Culture,2015/08/19,KOREA INVESTMENT TR,4.01,FnGuide Growth and Consumption-Driven Stock Index,0.56,6223206851,0.03,Normal,Physical(Passive),0.5,Non taxable
+,152500,ACE Leverage,2012/01/27,KOREA INVESTMENT TR,22.8,KOSPI 200,3.25,10918856580,-0.29,Very high,Physical(Passive),0.3,Dividend income tax(tax on holding period)
+,190620,ACE MONEY MARKET,2013/12/23,KOREA INVESTMENT TR,0.19,KIS MSB Short-term Index(Total Return),0.04,166393007409,0.02,Very low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,256440,ACE MSCI Indonesia(Synth),2016/11/01,KOREA INVESTMENT TR,-12.54,MSCI Indonesia Index,0.31,50001576454,1.3,Low,Synthetic(Passive),0.7,Dividend income tax(tax on holding period)
+,291130,ACE MSCI MEXICO(Synth),2018/03/09,KOREA INVESTMENT TR,-3.7,MSCI MEXICO IMI 25/50 Price return Index,1.36,12396768774,0.19,High,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,261920,ACE MSCI Philippines(Synth),2016/12/28,KOREA INVESTMENT TR,-2.05,MSCI Philippines IMI Index,0.12,5128023244,0.39,Low,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,265690,ACE MSCI Russia(Synth),2017/03/21,KOREA INVESTMENT TR,-1.51,MSCI Russia 25% Capped Price Return Index,1.89,85971387,20224.94,Very low,Synthetic(Passive),0,Dividend income tax(tax on holding period)
+,475270,ACE May Rollover Corporate Bond Active,2024/01/23,KOREA INVESTMENT TR,0,KIS May Maturity Rollover Corp Bond TR Index(above AA-),0.06,73957835984,0.02,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,483330,ACE Microsoft Value Chain Active,2024/06/11,KOREA INVESTMENT TR,0,KEDI Global Generative AI Index,12.91,33192893049,0.45,High,Physical(Active),0.45,Dividend income tax(tax on holding period)
+,438100,ACE NASDAQ100 3070 Blend,2022/08/26,KOREA INVESTMENT TR,21.04,NASDAQ-100 US T-Bills 30/70 Index,2.92,31009305141,0.17,Very low,Physical(Active),0.15,Dividend income tax(tax on holding period)
+,448540,ACE NVIDIA30 Blend Bloomberg,2022/11/29,KOREA INVESTMENT TR,50.45,Bloomberg Blended NVIDIA Equity and Korean Bond Index,0.74,153945114823,-0.59,Normal,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,447430,ACE Next level Value Active,2022/11/15,KOREA INVESTMENT TR,12.2,FnGuide Korea All-round Value Index,7.93,16734968064,0.01,Low,Physical(Active),0.7,Dividend income tax(tax on holding period)
+,473440,ACE Nov Rollover Corporate Bond Active,2023/12/19,KOREA INVESTMENT TR,0,KIS Nov Maturity Rollover Corp Bond TR Index(above AA-),0.07,125683250308,0.03,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,433500,ACE Nuclear Power Theme,2022/06/28,KOREA INVESTMENT TR,51.18,DeepSearch Nuclear-Power Theme Price Return Index,0.6,15541751746,-0.11,Very high,Physical(Passive),0.3,Non taxable
+,483320,ACE Nvidia Value Chain Active,2024/06/11,KOREA INVESTMENT TR,0,KEDI Global AI Semiconductor Index,17.18,149116952337,-0.38,Very high,Physical(Active),0.45,Dividend income tax(tax on holding period)
+,469170,ACE POSCO Group Focus,2023/10/17,KOREA INVESTMENT TR,0,FnGuide POSCO Group Focus Index(Price Return),0.77,43521190544,-0.34,Very high,Physical(Passive),0.3,Non taxable
+,143460,ACE RAFI Large,2011/06/21,KOREA INVESTMENT TR,17.83,FnGuide-RAFI Korea Large Index,1.07,6256897450,-0.17,Normal,Physical(Passive),0.15,Non taxable
+,277540,ACE S&P ASIA TOP50,2017/08/23,KOREA INVESTMENT TR,20.33,S&P ASIA50 Price Return Index,3.05,23065101815,-1.28,Normal,Physical(Passive),0.7,Dividend income tax(tax on holding period)
+,402970,ACE S&P US Dividend 100,2021/10/21,KOREA INVESTMENT TR,14.52,Dow Jones U.S. Dividend 100 Price Return Index,0.7,351464761078,-0.03,Low,Physical(Passive),0.01,Dividend income tax(tax on holding period)
+,360200,ACE S&P500,2020/08/07,KOREA INVESTMENT TR,33.69,S&P 500,0.13,1128086266659,-0.14,Low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,438080,ACE S&P500 3070 Blend,2022/08/26,KOREA INVESTMENT TR,19,S&P500 and Short-Term Treasury 30/70 Blend Index,1.96,79624832648,0.13,Very low,Physical(Active),0.15,Dividend income tax(tax on holding period)
+,219900,ACE SYNTH-China Leverage,2015/05/28,KOREA INVESTMENT TR,-16.75,CSI 300 Index,3.07,5778006434,-2.08,Very high,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,205720,ACE SYNTH-Japan Inverse(H),2014/09/29,KOREA INVESTMENT TR,-22.69,TOPIX,1.34,6911191552,-0.18,Normal,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,181480,ACE SYNTH-USRET(H),2013/08/01,KOREA INVESTMENT TR,1.32,Dow Jones U.S. Real Estate Index,1.26,12280342379,-0.13,Normal,Synthetic(Passive),0.3,Dividend Income Tax(Separate Taxation Real Estate ETF)
+,131890,ACE Samsung Group EW,2010/09/17,KOREA INVESTMENT TR,10.25,MKF SAMs EW Index,0.85,8740401744,0,Normal,Physical(Passive),0.15,Non taxable
+,108450,ACE Samsung Group SW,2009/02/03,KOREA INVESTMENT TR,-3.55,MKF SAMs SW,0.38,54415325473,-0.23,Normal,Physical(Passive),0.15,Non taxable
+,440640,ACE Short term Bond Alpha Active,2022/08/23,KOREA INVESTMENT TR,3.86,KIS Short-term Alpha Bond Total Return Index(higher than AA- Grade),0.09,54732426424,0.03,Very low,Physical(Active),0.15,Dividend income tax(tax on holding period)
+,316300,ACE Singapore REITs,2019/01/29,KOREA INVESTMENT TR,-2.24,Morningstar Singapore REIT Yield Focus Index(PR),1.14,5921379440,-0.7,Low,Physical(Passive),0.4,Dividend Income Tax(Separate Taxation Real Estate ETF)
+,322150,ACE Smart High Beta,2019/04/16,KOREA INVESTMENT TR,7.25,FnGuide Smart HighBeta Index,0.55,2809636407,-0.49,Normal,Physical(Passive),0.19,Non taxable
+,322130,ACE Smart LowVol,2019/04/16,KOREA INVESTMENT TR,16.99,FnGuide Smart LowVol Index,0.9,3398129528,-0.33,Normal,Physical(Passive),0.19,Non taxable
+,272220,ACE Smart Momentum,2017/07/11,KOREA INVESTMENT TR,15.02,FnGuide Smart Momentum Index,0.79,3268268719,-0.41,Normal,Physical(Passive),0.19,Non taxable
+,322120,ACE Smart Quality,2019/04/16,KOREA INVESTMENT TR,10.11,FnGuide Smart Quality Index,0.53,3349253447,-0.46,Normal,Physical(Passive),0.19,Non taxable
+,272230,ACE Smart Value,2017/07/11,KOREA INVESTMENT TR,20.72,FnGuide Smart Value Index,0.83,3103504665,-0.15,Normal,Physical(Passive),0.19,Non taxable
+,460960,ACE Solactive Global Income TOP10,2023/07/11,KOREA INVESTMENT TR,0,Solactive Global Superior Income TOP 10 Price Return Index,1.22,19322746636,0.28,Very low,Physical(Passive),0.24,Dividend income tax(tax on holding period)
+,446770,ACE Solactive Global Semiconductor TOP4,2022/11/15,KOREA INVESTMENT TR,81.35,Solactive Global Semiconductor TOP4 Plus Price Return Index,2.23,451021548157,-0.47,Very high,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,225130,ACE Synth-Gold Futures Leverage(H),2015/07/28,KOREA INVESTMENT TR,21.9,S&P GSCI GOLD Index Excess Return,0.44,10001162121,-0.36,Very high,Synthetic(Passive),0.49,Dividend income tax(tax on holding period)
+,114460,ACE TB,2009/07/31,KOREA INVESTMENT TR,0.71,KTB INDEX (Gross Price),0.16,18432234788,-0.02,Very low,Physical(Passive),0.15,Dividend income tax(tax on holding period)
+,457480,ACE Tesla Value Chain Active,2023/05/16,KOREA INVESTMENT TR,-13.19,Bloomberg EV Supporters Plus Tesla Price Return Index,20.88,306927332996,-0.86,Very high,Physical(Active),0.29,Dividend income tax(tax on holding period)
+,453850,ACE U.S. Long Term T-Bond Active(H),2023/03/14,KOREA INVESTMENT TR,-13.05,Bloomberg U.S Treasury 20+ Year Total Return Index,4.14,1291017988601,-0.1,Normal,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,452250,ACE U.S. Ultra T-Bond Futures 2X(Syn H),2023/02/07,KOREA INVESTMENT TR,-24.38,S&P Ultra T-Bond Futures Index(ER),0.37,76858778754,-0.57,Very high,Synthetic(Passive),0.25,Dividend income tax(tax on holding period)
+,480030,ACE US 500 15% Premium(Syn),2024/04/23,KOREA INVESTMENT TR,0,Bloomberg US 500 Large Cap Premium Decrement 15% Distribution Index,0.65,65045008273,0.02,Very low,Synthetic(Passive),0.45,Dividend income tax(tax on holding period)
+,465620,ACE US Big Tech 7 Plus Inverse(Synth),2023/09/12,KOREA INVESTMENT TR,0,Solactive US Big Tech Top 7 Plus Price Return Index,0.45,12205856809,0.07,High,Synthetic(Passive),0.6,Dividend income tax(tax on holding period)
+,465610,ACE US Big Tech 7 Plus Leverage(Synth),2023/09/12,KOREA INVESTMENT TR,0,Solactive US Big Tech Top 7 Plus Price Return Index,0.39,52265173294,-0.11,Very high,Synthetic(Passive),0.6,Dividend income tax(tax on holding period)
+,465580,ACE US Big Tech TOP 7 Plus,2023/09/12,KOREA INVESTMENT TR,0,Solactive US Big Tech Top 7 Plus Price Return Index,0.15,375018242964,-0.15,High,Physical(Passive),0.3,Dividend income tax(tax on holding period)
+,480020,ACE US BigTech Top7Plus 15% Premium(Syn),2024/04/23,KOREA INVESTMENT TR,0,Bloomberg US Big Tech Top 7 Plus Premium Decrement 15% Distribution Index,0.65,99060691161,0.1,High,Synthetic(Passive),0.45,Dividend income tax(tax on holding period)
+,473590,ACE US Equity Best Seller,2023/12/27,KOREA INVESTMENT TR,0,FnGuide US Equity Best Seller Price Return Index,0.58,13727614805,-0.27,High,Physical(Passive),0.3,Dividend income tax(tax on holding period)
+,391600,ACE US Green Theme,2021/08/05,KOREA INVESTMENT TR,-12.21,Indxx US Green Infrastructure Price return Index,0.5,20041177888,-1.54,High,Physical(Passive),0.7,Dividend income tax(tax on holding period)
+,455660,ACE US High Yield Active(H),2023/04/18,KOREA INVESTMENT TR,0.56,Markit iBoxx USD Liquid High Yield Total Return Index,3.1,8915756485,0.24,Very low,Physical(Active),0.24,Dividend income tax(tax on holding period)
+,280320,ACE US INTERNET(Synth H),2017/10/17,KOREA INVESTMENT TR,25.33,Dow Jones Internet Composite Price return Index,0.97,12982429724,-0.6,High,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,476760,ACE US Long Term T-Bond Active,2024/03/12,KOREA INVESTMENT TR,0,Bloomberg U.S Treasury 20+ Year Total Return Index,1.65,25579106027,-0.16,Low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,476750,ACE US Long Term T-Bond JPYKRW Active(H),2024/03/12,KOREA INVESTMENT TR,0,Bloomberg U.S. Treasury 20+ Year Total Return Index T1530 JPY Currency Hedged,15.03,71223467593,-0.21,Low,Physical(Active),0.15,Dividend income tax(tax on holding period)
+,367380,ACE US NASDAQ100,2020/10/29,KOREA INVESTMENT TR,42.11,NASDAQ 100,0.12,918649277154,-0.23,Low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,391590,ACE US SPAC&IPO INDXX,2021/08/05,KOREA INVESTMENT TR,-10.2,Indxx SPAC & NEXTGEN IPO Price return Index,3.62,1507555380,-1.89,High,Physical(Passive),0.7,Dividend income tax(tax on holding period)
+,480040,ACE US Semiconductor 15% Premium(Syn),2024/04/23,KOREA INVESTMENT TR,0,Bloomberg US Listed Semiconductor Premium Decrement 15% Distribution Index,0.66,60867950864,-0.17,Very high,Synthetic(Passive),0.45,Dividend income tax(tax on holding period)
+,440650,ACE US Short Term Bond Active,2022/08/23,KOREA INVESTMENT TR,11.79,Bloomberg Short-Term Treasury Total Return Index,0.37,11037340835,0.07,Very low,Physical(Active),0.3,Dividend income tax(tax on holding period)
+,309230,ACE US Wide Moat,2018/10/25,KOREA INVESTMENT TR,18.93,MorningStar Wide Moat Focus Index,0.38,102988030257,0.04,Low,Physical(Passive),0.4,Dividend income tax(tax on holding period)
+,456880,ACE USD SOFR(Synth),2023/04/25,KOREA INVESTMENT TR,12.37,Solactive SOFR Daily Total Return Index,0.04,117066464640,0.07,Very low,Synthetic(Passive),0.05,Dividend income tax(tax on holding period)
+,371130,ACE Vietnam VN30 Futures Leverage(H),2020/11/25,KOREA INVESTMENT TR,13.15,Bloomberg VN30 Futures Excess Return Index,3.47,6773157330,-0.12,Very high,Physical(Passive),0.7,Dividend income tax(tax on holding period)
+,245710,ACE VietnamVN30(Synth),2016/07/01,KOREA INVESTMENT TR,11.9,VN30 Index(PR),0.22,293760414244,-0.7,Normal,Synthetic(Passive),0.7,Dividend income tax(tax on holding period)
+,461460,ARIRANG 10-Year Treasury Bond Active,2023/07/18,Hanwha Asset Mgt.,0,KAP KTB 10-Year Equal Weighted Index(TR),0.17,103494168964,-0.03,Very low,Physical(Active),0.045,Dividend income tax(tax on holding period)
+,152100,ARIRANG 200,2012/01/10,Hanwha Asset Mgt.,12.72,KOSPI 200,0.7,705359241660,-0.42,Normal,Physical(Passive),0.017,Non taxable
+,253160,ARIRANG 200 Futures Inverse 2X,2016/09/22,Hanwha Asset Mgt.,-24,F-KOSPI 200,0.38,6044767458,-0.12,Very high,Physical(Passive),0.06,Dividend income tax(tax on holding period)
+,253150,ARIRANG 200 Futures Leverage,2016/09/29,Hanwha Asset Mgt.,22.26,F-KOSPI 200,0.8,9571942200,-0.22,Very high,Physical(Passive),0.06,Dividend income tax(tax on holding period)
+,451600,ARIRANG 30-Year Treasury Bond Active,2023/02/07,Hanwha Asset Mgt.,11.6,KAP KTB 30-Year Index(TR),0.29,220127595970,0.3,Low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,278620,ARIRANG ACTIVE SHORT TERM BOND,2017/09/26,Hanwha Asset Mgt.,4.19,"KAP Invetable Credit Bond 1Y Index (A- or Higher, Total Return)",0.23,179709480290,0.03,Very low,Physical(Active),0.07,Dividend income tax(tax on holding period)
+,421320,ARIRANG Aero&UAM iSelect,2022/03/29,Hanwha Asset Mgt.,23.27,iSelect Acrospace&UAM Index,0.46,63500235158,-0.23,High,Physical(Passive),0.45,Non taxable
+,447660,ARIRANG Apple Balanced,2022/11/29,Hanwha Asset Mgt.,9.03,FnGuide APPLE Balanced Index,1.31,13064695402,-0.35,Very low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,239660,ARIRANG CREDIT BOND50,2016/03/22,Hanwha Asset Mgt.,3.89,KOBI HALF CREDIT Index(Total Retrun),0.15,13955020338,0.02,Very low,Physical(Passive),0.135,Dividend income tax(tax on holding period)
+,256450,ARIRANG ChiNext(Synth),2016/11/08,Hanwha Asset Mgt.,-18.27,SZSE ChiNext Price Index,0.98,3733047453,-1.76,High,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,395760,ARIRANG ESG Growth Active,2021/07/30,Hanwha Asset Mgt.,12.97,FnGuide Hanhwa ESG Growth Index,3.02,4566454286,0.13,Normal,Physical(Active),0.105,Dividend income tax(tax on holding period)
+,395750,ARIRANG ESG Value Active,2021/07/30,Hanwha Asset Mgt.,10.94,FnGuide Hanhwa ESG Value Index,2.25,14342793877,0.12,Normal,Physical(Active),0.105,Dividend income tax(tax on holding period)
+,438210,ARIRANG Global AI MV,2022/08/17,Hanwha Asset Mgt.,18.67,BlueStar Artificial Intelligence Index(Price Retun),1.27,6027483668,-0.62,Normal,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,442580,ARIRANG Global HBM,2022/09/22,Hanwha Asset Mgt.,74.57,iSelect Global HBM Semiconductor Index,2.34,12513268142,-0.75,Very high,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,251590,ARIRANG HDivLowVol,2016/08/11,Hanwha Asset Mgt.,17.66,FnGuide High Dividend Low Vol 50 Index,1.12,6848575893,0.06,Low,Physical(Passive),0.23,Non taxable
+,251600,ARIRANG High Dividend Bond Balanced ETF,2016/08/11,Hanwha Asset Mgt.,14.77,FnGuide High Dividend Bananced Index,0.92,29391586165,-0.05,Very low,Physical(Passive),0.2,Dividend income tax(tax on holding period)
+,161510,ARIRANG High Dividend ETF,2012/08/29,Hanwha Asset Mgt.,30.19,FnGuide Dividend Index,2.21,374305130432,-0.17,Normal,Physical(Passive),0.23,Non taxable
+,419650,ARIRANG Hydrogen NextGen Fuel Cell MV,2022/02/15,Hanwha Asset Mgt.,-36.17,BlueStar Hydrogen and NextGen Fuel Cell Index (Price Return),5.99,10335277665,-0.94,Very high,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,464920,ARIRANG Japan SEMICON M&E Solactive,2023/08/31,Hanwha Asset Mgt.,0,Solactive Japan Semiconductor Materials and Equipment Index PR,0.76,43807308323,-1.81,Very high,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,449450,ARIRANG K-Defense Industry Fn,2023/01/05,Hanwha Asset Mgt.,27.01,FnGuide K-Defense Industry Index,0.22,131345230660,0.09,Very high,Physical(Passive),0.45,Non taxable
+,429740,ARIRANG K-REITs Fn,2022/05/24,Hanwha Asset Mgt.,-1.69,FnGuide REITs Index,1.74,7636053864,-0.24,Low,Physical(Passive),0.25,Dividend Income Tax(Separate Taxation Real Estate ETF)
+,436180,ARIRANG K-Unicorn Active,2022/07/13,Hanwha Asset Mgt.,4.61,FnGuide K-Unicorn Investment Company Index,2.24,3490751240,0.11,Normal,Physical(Active),0.45,Dividend income tax(tax on holding period)
+,453010,ARIRANG KOFR,2023/03/14,Hanwha Asset Mgt.,3.53,KOFR Index,0.24,94982941542,-0.01,Very low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,301400,ARIRANG KOSDAQ150,2018/07/05,Hanwha Asset Mgt.,2.77,KOSDAQ 150,0.34,5504423011,-0.12,Very high,Physical(Passive),0.15,Non taxable
+,301410,ARIRANG KOSDAQ150 F-Inverse,2018/07/11,Hanwha Asset Mgt.,-11.71,F-KOSDAQ150 Index,0.57,3054853500,-0.26,Very high,Physical(Passive),0.29,Dividend income tax(tax on holding period)
+,227830,ARIRANG KOSPI,2015/09/23,Hanwha Asset Mgt.,8.55,KOSPI,0.6,7230068032,0.14,Normal,Physical(Passive),0.2,Non taxable
+,328370,ARIRANG KOSPI TR,2019/06/25,Hanwha Asset Mgt.,10.64,KOSPI TR,0.19,189666049370,0.18,Normal,Physical(Passive),0.15,Dividend income tax(tax on holding period)
+,122090,ARIRANG KOSPI50,2010/01/07,Hanwha Asset Mgt.,13.68,KOSPI 50,0.82,9612388769,0.05,Normal,Physical(Passive),0.33,Non taxable
+,333950,ARIRANG KS LowSize Tilt TR,2019/09/05,Hanwha Asset Mgt.,8.78,FnGuide KS LowSize Tilt TR Index,0.28,8569590272,0.12,Normal,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,333940,ARIRANG KS LowVol Tilt TR,2019/09/05,Hanwha Asset Mgt.,18.42,FnGuide KS LowVol Tilt TR Index,0.48,7872849528,0.14,Normal,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,333960,ARIRANG KS Momentum Tilt TR,2019/09/05,Hanwha Asset Mgt.,19.28,FnGuide KS Momentum Tilt TR Index,0.36,8987961028,0.14,High,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,333980,ARIRANG KS Quality Tilt TR,2019/09/05,Hanwha Asset Mgt.,13.73,FnGuide KS Quality Tilt TR Index,0.32,1580333282,0.11,Normal,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,333970,ARIRANG KS Value Tilt TR,2019/09/05,Hanwha Asset Mgt.,15.22,FnGuide KS Value Tilt TR Index,0.45,8631127444,0.19,Normal,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,289670,ARIRANG KTB 10Y Futures,2018/02/07,Hanwha Asset Mgt.,4.24,F-LKTB Index,0.28,6011691912,0.01,Very low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,298340,ARIRANG KTB 3Y Futures,2018/06/08,Hanwha Asset Mgt.,3.63,F-KTB Index,0.17,6590764702,0.01,Very low,Physical(Passive),0.1,Dividend income tax(tax on holding period)
+,280920,ARIRANG Leading,2017/10/17,Hanwha Asset Mgt.,23.9,FnGuide Leading Industry Index,0.81,6185979553,0.02,High,Physical(Passive),0.23,Non taxable
+,373530,ARIRANG MSCI EM Inverse(SYNTH H),2020/12/16,Hanwha Asset Mgt.,-4.82,MSCI EM Index,1.85,5689267047,0.13,Normal,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,266550,ARIRANG MidLVol,2017/03/28,Hanwha Asset Mgt.,19.6,FnGuide Mid-Cap Low Volatility 50 Index,0.73,6252920302,0.03,Normal,Physical(Passive),0.23,Non taxable
+,477050,ARIRANG Money Market Active,2024/03/26,Hanwha Asset Mgt.,0,KAP Mark-to-market MMF Index(TR),0.02,305261354819,0.04,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,287180,ARIRANG NASDAQ Tech,2017/12/13,Hanwha Asset Mgt.,46.07,NASDAQ 100 Technology Sector Index,0.2,29914260230,-0.22,Normal,Physical(Passive),0.5,Dividend Income Tax(Foreign Stock Investment ETF)
+,415920,ARIRANG RareEarth Company MV,2022/01/18,Hanwha Asset Mgt.,-48.04,MVIS Global Rare Earth/Strategic Metals Index (Price Return),7.25,2304307830,1.2,Very high,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,429760,ARIRANG S&P 500,2022/05/31,Hanwha Asset Mgt.,32.57,S&P 500,0.59,19824035615,-0.11,Low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,269530,ARIRANG S&P Global Infra,2017/05/16,Hanwha Asset Mgt.,12.19,S&P Global Infrastructure Index,3.01,7585218723,-0.17,Low,Physical(Passive),0.3,Dividend Income Tax(Foreign Stock Investment ETF)
+,269540,ARIRANG S&P500(H),2017/05/16,Hanwha Asset Mgt.,24.27,S&P 500,1.05,66991034965,-0.14,Low,Physical(Passive),0.3,Dividend Income Tax(Foreign Stock Investment ETF)
+,238670,ARIRANG SMARTBETA Quality Balanced,2016/02/24,Hanwha Asset Mgt.,1.03,WISE-KAP Smartbeta Quality Conservative Balanced Index,0.25,4298478699,0.04,Very low,Physical(Passive),0.2,Dividend income tax(tax on holding period)
+,189400,ARIRANG SYNTH-AC World(H),2013/12/10,Hanwha Asset Mgt.,18.88,MSCI ACWI Index,0.35,9645214804,-0.12,Low,Synthetic(Passive),0.4,Dividend income tax(tax on holding period)
+,195970,ARIRANG SYNTH-EAFE(H),2014/05/13,Hanwha Asset Mgt.,10.15,MSCI EAFE Index,0.74,14717103092,-0.57,Normal,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,195980,ARIRANG SYNTH-EM(H),2014/05/13,Hanwha Asset Mgt.,7.41,MSCI EM Index,0.59,71480401305,-0.84,Normal,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,213630,ARIRANG SYNTH-US High Dividend(H),2015/01/26,Hanwha Asset Mgt.,8.01,Dow Jones U.S Select Dividend Index,0.84,13384206469,0.15,Low,Synthetic(Passive),0.4,Dividend income tax(tax on holding period)
+,457990,ARIRANG Solar&ESS Fn,2023/06/20,Hanwha Asset Mgt.,8.59,FnGuide Solar & ESS Index,0.94,6331451631,0.07,Very high,Physical(Passive),0.45,Non taxable
+,433850,ARIRANG TDF2030 Active,2022/06/30,Hanwha Asset Mgt.,12.05,Morningstar Korea Lifetime Allocation Moderate 2030 Index (Gross Return),2.39,2336113164,0.29,Very low,Physical(Active),0.14,Dividend income tax(tax on holding period)
+,433860,ARIRANG TDF2040 Active,2022/06/30,Hanwha Asset Mgt.,12.96,Morningstar Korea Lifetime Allocation Moderate 2040 Index (Gross Return),2.22,2525069887,-0.7,Low,Physical(Active),0.16,Dividend income tax(tax on holding period)
+,433870,ARIRANG TDF2050 Active,2022/06/30,Hanwha Asset Mgt.,20.61,Morningstar Korea Lifetime Allocation Moderate 2050 Index (Gross Return),3.37,2314412887,0.37,Low,Physical(Active),0.18,Dividend income tax(tax on holding period)
+,433880,ARIRANG TDF2060 Active,2022/06/30,Hanwha Asset Mgt.,23.39,Morningstar Korea Lifetime Allocation Moderate 2060 Index (Gross Return),4.11,4456115859,-0.4,Low,Physical(Active),0.2,Dividend income tax(tax on holding period)
+,426410,ARIRANG Top10 US Listed Alt Managers MV,2022/05/11,Hanwha Asset Mgt.,48.63,BlueStar Top 10 US Listed Alternative Asset Managers Index (Price Return),3.09,8367305774,0.27,Normal,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,451000,ARIRANG Total Market Bond Active,2023/01/10,Hanwha Asset Mgt.,6.38,"KAP Total Market Bond Index(AA- or higher, Total Return)",0.16,436472769179,0.03,Very low,Physical(Active),0.045,Dividend income tax(tax on holding period)
+,456200,ARIRANG US Dollar SOFR Active(SYNTH),2023/05/09,Hanwha Asset Mgt.,12.4,Solactive SOFR Daily Total Return Index,0.04,8247721320,0.08,Very low,Synthetic(Active),0.09,Dividend income tax(tax on holding period)
+,332620,ARIRANG US Long-term Credit,2019/08/20,Hanwha Asset Mgt.,5.74,ICE BofaAML 15+ Year AAA-A US Corporate Index(Total Return),3.78,30957856056,0.14,Low,Physical(Passive),0.315,Dividend income tax(tax on holding period)
+,332610,ARIRANG US Short-term Credit(AAA~A),2019/08/20,Hanwha Asset Mgt.,11.48,ICE BofaAML 1-3 Year AAA-A US Corporate Index(Total Return),0.69,29642728900,0.19,Very low,Physical(Passive),0.315,Dividend income tax(tax on holding period)
+,461910,ARIRANG US Tech 10 2X iSelect(SYNTH),2023/07/18,Hanwha Asset Mgt.,0,iSelect U.S. Tech 10 Index,7.53,11379252800,-0.78,Very high,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,461900,ARIRANG US Tech 10 iSelect,2023/07/18,Hanwha Asset Mgt.,0,iSelect U.S. Tech 10 Index,0.24,10948170631,-0.23,Normal,Physical(Passive),0.01,Dividend income tax(tax on holding period)
+,464470,ARIRANG US Treasury Bond 30-Year Active,2023/08/22,Hanwha Asset Mgt.,0,ICE U.S. Treasury 20+ Year Bond Index(Total Return),4.06,35746396638,-0.13,Normal,Physical(Active),0.15,Dividend income tax(tax on holding period)
+,474920,Assetplus China LeadingCo Focus10 Active,2024/01/16,ASSETPLUS,0,"MSCI China Index(USD, Price Return)",12.14,11619106946,-0.83,Normal,Physical(Active),0.99,Dividend income tax(tax on holding period)
+,433220,Assetplus Global Blacksmith Active,2022/06/28,ASSETPLUS,34.35,S&P 500,8.97,8110196162,-0.07,Normal,Physical(Active),0.99,Dividend income tax(tax on holding period)
+,462340,Assetplus Global Dynamic Senior Active,2023/07/25,ASSETPLUS,0,S&P 500,6.48,6529554030,-1.33,Low,Physical(Active),0.99,Dividend income tax(tax on holding period)
+,407830,Assetplus Global Platform Active,2021/11/16,ASSETPLUS,31.53,S&P 500,14.55,42351081825,-0.78,Normal,Physical(Active),0.99,Dividend income tax(tax on holding period)
+,451150,Assetplus Global Young Age Active,2023/01/31,ASSETPLUS,17.38,S&P 500,8.08,6700362534,-0.23,Low,Physical(Active),0.99,Dividend income tax(tax on holding period)
+,477490,Assetplus GlobalLeadingCo Focus10 Active,2024/03/19,ASSETPLUS,0,MSCI World,10.22,9526411053,-0.19,Normal,Physical(Active),0.99,Dividend income tax(tax on holding period)
+,442090,Assetplus Korea Blacksmith Active,2022/09/20,ASSETPLUS,-2.19,FnGuide Blacksmith Index (Price Return),16.31,9280642818,0.08,High,Physical(Active),0.975,Dividend income tax(tax on holding period)
+,407820,Assetplus Korea Platform Active,2021/11/16,ASSETPLUS,-5.64,FnGuide Platform Index(Price Return),12.02,14955970740,-0.27,Low,Physical(Active),0.975,Dividend income tax(tax on holding period)
+,470320,BNK 24-11 Corporate Bond Active,2023/11/14,BNK ASSETMANAGEMENT,0,KAP 24-11 Corporate Bond TR Index(AA- or higher),0.07,110171192404,0.04,Very low,Physical(Active),0.1,Dividend income tax(tax on holding period)
+,457930,BNK Future Strategic Technology Active,2023/06/20,BNK ASSETMANAGEMENT,12.19,iSelect Future Strategic Technology Index (PR),0.52,8384005807,0.01,Normal,Physical(Active),0.495,Dividend income tax(tax on holding period)
+,466810,BNK Secondary Battery Cathode,2023/10/19,BNK ASSETMANAGEMENT,0,iSelect Secondary Battery Cathode Materials Index,0.39,5309779216,0.07,Very high,Physical(Passive),0.395,Non taxable
+,445690,BNK Shareholder Yield Active,2022/10/27,BNK ASSETMANAGEMENT,19.53,FnGuide Shareholder Yield Index,5.04,15645101757,-0.16,Normal,Physical(Active),0.495,Dividend income tax(tax on holding period)
+,486240,DAISHIN343 AI Semicon&Infra Active,2024/06/18,DAM,0,FnGuide AI Semiconductor&Infrastructure Index,3.81,29825359318,0.1,High,Physical(Active),0.36,Dividend income tax(tax on holding period)
+,434960,DAISHIN343 K200,2022/06/28,DAM,12.36,KOSPI 200,0.71,36720506596,-0.38,Normal,Physical(Passive),0.1,Non taxable
+,448570,FOCUS AI KOREA Active,2022/11/15,VI Asset Management,13.77,KOSPI,4.37,15869007024,-0.33,High,Physical(Active),0.455,Dividend income tax(tax on holding period)
+,285690,FOCUS ESG Leaders,2017/12/13,VI Asset Management,15.08,KRX ESG Leaders 150,0.71,9090944985,0.06,Normal,Physical(Passive),0.1,Non taxable
+,402520,FOCUS Innovation Active,2021/09/30,VI Asset Management,11.99,KOSPI,8.12,937394937,0.17,Normal,Physical(Active),0.66,Dividend income tax(tax on holding period)
+,292730,FOCUS KRX300,2018/03/26,VI Asset Management,14.59,KRX 300,0.65,11126613694,-0.05,Normal,Physical(Passive),0.1,Non taxable
+,293180,HANARO 200,2018/03/30,NH-Amundi,12.52,KOSPI 200,0.71,513383576646,-0.48,Normal,Physical(Passive),0.036,Non taxable
+,407310,HANARO 200 TOP10,2021/11/24,NH-Amundi,2,KOSPI 200 Top 10 Index,0.91,13037234862,-0.42,High,Physical(Passive),0.15,Non taxable
+,306520,HANARO 200F Inverse,2018/09/18,NH-Amundi,-9.54,F-KOSPI 200,0.16,4209571734,0.86,Normal,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,304780,HANARO 200F Leverage,2018/08/14,NH-Amundi,22.16,F-KOSPI 200,0.87,43727379184,-0.24,Very high,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,332930,HANARO 200TR,2019/08/28,NH-Amundi,14.75,KOSPI 200 TR,0.15,97496447369,-0.6,Normal,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,367740,HANARO 5G Industry,2020/10/29,NH-Amundi,24.99,FnGuide 5G Industry Index,1.13,5780121064,-0.14,Normal,Physical(Passive),0.45,Non taxable
+,314700,HANARO Agribusiness,2018/12/21,NH-Amundi,-14.6,FnGuide Agriculture Business Industry Index(Excess Return),0.75,4000496429,-0.01,Normal,Physical(Passive),0.5,Non taxable
+,454320,HANARO CAPEX,2023/04/18,NH-Amundi,32.1,iSelect CAPEX Index(Price Return),0.35,105472710956,0.06,Very high,Physical(Passive),0.45,Non taxable
+,471290,HANARO CD Active(Synth),2023/11/14,NH-Amundi,0,iSelect CD Index(TR),0.01,11758823899,0,Very low,Synthetic(Active),0.02,Dividend income tax(tax on holding period)
+,456100,HANARO EURO Treasury 25+ Year(Synth H),2023/05/16,NH-Amundi,-2.98,Bloomberg Euro Treasury 50bn 25+ Year Bond Index,0.04,3070537458,0.01,Normal,Synthetic(Passive),0.2,Dividend income tax(tax on holding period)
+,381560,HANARO Electric&Hydrogen Vehicle,2021/04/02,NH-Amundi,-6.78,FnGuide Electric&Hydrogen Vehicle Index (Price Return),0.99,20538239301,0,High,Physical(Passive),0.45,Non taxable
+,368190,HANARO Fn K-NewDeal Digital Plus,2020/11/10,NH-Amundi,-18.05,FnGuide K-NewDeal Digital Plus Index,0.24,34665794802,0.16,Very high,Physical(Passive),0.45,Non taxable
+,401590,HANARO Global Carbon Futures (Synth),2021/09/30,NH-Amundi,-8.86,ICE Global Carbon Futures Index(Excess Return),0.36,9699552191,0.2,Very high,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,461340,HANARO Global Generative AI Active,2023/07/11,NH-Amundi,0,Solactive United States Technology 100 Index(Price Return),11.44,13395731110,0.13,High,Physical(Active),0.6,Dividend income tax(tax on holding period)
+,473640,HANARO Global Gold Miner,2024/01/18,NH-Amundi,0,NYSE Arca Gold Miners Index (Price Return),2.31,6723647683,-1.27,Very high,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,354350,HANARO Global Luxury S&P (Synth),2020/05/12,NH-Amundi,-0.84,S&P Global Luxury Index,0.39,32808798735,-0.47,Low,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,464060,HANARO Global Semicon TOP10 SOLACTIVE,2023/08/01,NH-Amundi,0,Solactive Semiconductor Top 10 Index PR,0.33,9583536357,-0.11,Very high,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,407300,HANARO Golf Theme,2021/11/24,NH-Amundi,-11.12,FnGuide Golf Theme Index,0.39,3180293986,-0.47,Normal,Physical(Passive),0.45,Non taxable
+,381570,HANARO Green Energy,2021/04/02,NH-Amundi,-11.96,FnGuide Green Energy Index (Price Return),0.26,4908780272,0.35,Very high,Physical(Passive),0.45,Non taxable
+,375760,HANARO Green-Newdeal,2021/02/05,NH-Amundi,11.12,S&P/KRX Carbon Efficient Capped,0.64,9479379159,-0.42,Normal,Physical(Passive),0.2,Non taxable
+,322410,HANARO High Dividend,2019/04/23,NH-Amundi,16.69,FnGuide High Dividend Alpha Index,2.25,5808965506,-0.34,Low,Physical(Passive),0.25,Non taxable
+,479850,HANARO K-Beauty,2024/04/16,NH-Amundi,0,FnGuide K-Beauty Index,0.09,8813691726,-0.33,Very high,Physical(Passive),0.45,Non taxable
+,438900,HANARO K-Food,2022/08/17,NH-Amundi,29.3,FnGuide K-Food Index (Price Return),0.28,19289126239,0.04,High,Physical(Passive),0.45,Non taxable
+,395280,HANARO K-Game,2021/07/30,NH-Amundi,-11.92,FnGuide K-Game Index,0.33,13345925810,0.11,Very high,Physical(Passive),0.45,Non taxable
+,473380,HANARO K-MediTech,2023/12/21,NH-Amundi,0,iSelect K-MediTech Index(PR),0.94,4456910646,-0.44,Very high,Physical(Passive),0.45,Non taxable
+,402460,HANARO K-Metaverse MZ,2021/10/13,NH-Amundi,-6.98,FnGuide K-Metaverse MZ Index(Price Return),0.59,5498084215,0.06,Normal,Physical(Passive),0.45,Non taxable
+,395290,HANARO K-POP&Media,2021/07/30,NH-Amundi,-35.97,FnGuide K-POP & Media Index,0.16,115418504046,-0.07,Very high,Physical(Passive),0.45,Non taxable
+,395270,HANARO K-Semiconductor,2021/07/30,NH-Amundi,43.9,FnGuide K-Semiconductor Index,0.4,162622667504,-0.06,High,Physical(Passive),0.45,Non taxable
+,346000,HANARO KAP Ultra Long-term KTB,2020/01/16,NH-Amundi,4.79,KAP Ultra-long KTB Index(Total Return),0.27,8050462606,0.02,Low,Physical(Passive),0.2,Dividend income tax(tax on holding period)
+,453060,HANARO KOFR Active(Synth),2023/03/14,NH-Amundi,3.67,KOFR Index,0,12570360918,0.01,Very low,Synthetic(Active),0.05,Dividend income tax(tax on holding period)
+,304770,HANARO KOSDAQ150,2018/08/14,NH-Amundi,2.61,KOSDAQ 150,0.16,18006187311,-0.74,Very high,Physical(Passive),0.2,Non taxable
+,306530,HANARO KOSDAQ150F Leverage,2018/09/18,NH-Amundi,0.34,F-KOSDAQ150 Index,1.89,2730095305,-0.62,Very high,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,404470,HANARO KRX Climate Change Solutions,2021/10/29,NH-Amundi,-2.91,KRX Climate Change Solutions,0.53,6709099365,-0.31,Very high,Physical(Passive),0.25,Non taxable
+,304760,HANARO KRX300,2018/08/14,NH-Amundi,13.25,KRX 300,0.66,6232939152,-0.44,Normal,Physical(Passive),0.05,Non taxable
+,448510,HANARO MSCI Global New Energy(Synth),2022/11/30,NH-Amundi,-18.28,MSCI ACWI IMI New Energy ESG Filtered (Price Return),0.23,4017620709,0.07,High,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,424460,HANARO MSCI Global Water(Synth),2022/04/19,NH-Amundi,20.92,MSCI ACWI IMI Water ESG Filtered (Price Return),0.25,7757280000,0.16,Low,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,332940,HANARO MSCI Korea TR,2019/08/28,NH-Amundi,12.3,MSCI Korea TR Index,0.25,194723840602,-0.42,Normal,Physical(Passive),0.12,Dividend income tax(tax on holding period)
+,432850,HANARO MSCI Virology,2022/06/08,NH-Amundi,15.51,MSCI World IMI Virology Select Index,1.48,4759075354,0.15,Normal,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,434730,HANARO Nuclear Power,2022/06/28,NH-Amundi,66.77,iSelect Nuclear Power Index (Price Return),0.35,48131814477,-0.23,Very high,Physical(Passive),0.45,Non taxable
+,448490,HANARO Oct 2032 Treasury,2022/11/22,NH-Amundi,5.12,KAP 32-10 Government Bond 10Y TR Index,0.22,49124130418,-0.02,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,432840,HANARO S&P500,2022/06/08,NH-Amundi,32.63,S&P 500,0.23,8553381736,-0.5,Low,Physical(Passive),0.045,Dividend income tax(tax on holding period)
+,476260,HANARO Semicon Core Process Tech Leaders,2024/02/27,NH-Amundi,0,FnGuide Semiconductor Core Process tech Index,0.66,4483652007,0.11,Very high,Physical(Passive),0.45,Non taxable
+,482870,HANARO Shareholder Value Growth Active,2024/06/11,NH-Amundi,0,iSelect Shareholder value growth index,7.61,9582351071,-0.49,Low,Physical(Active),0.6,Dividend income tax(tax on holding period)
+,441540,HANARO Shipping,2022/09/15,NH-Amundi,13.42,FnGuide Shipbuilding & Shipping Industry Index,0.58,44697063809,0.03,Very high,Physical(Passive),0.45,Non taxable
+,390950,HANARO Short-Term Bond Active,2021/06/25,NH-Amundi,3.44,KAP Short-Term MSB Index(Total Return),0.04,5351451670,0.01,Very low,Physical(Active),0.1,Dividend income tax(tax on holding period)
+,461500,HANARO Total Market Bond(AA-) Active,2023/10/26,NH-Amundi,0,KAP Total Market Bond TR Index(AA- or higher),0.17,74009954658,0.08,Very low,Physical(Active),0.02,Dividend income tax(tax on holding period)
+,472490,HANARO US Agtech,2023/11/28,NH-Amundi,0,iSelect US AgTech Index (PR),0.39,3195454267,-0.3,High,Physical(Passive),0.4,Dividend income tax(tax on holding period)
+,419170,HANARO US Metaverse,2022/02/22,NH-Amundi,39.72,iSelect US Metaverse PR Index,0.24,5908320409,-0.21,Normal,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,322400,HANARO e-Commerce,2019/04/23,NH-Amundi,-5.18,FnGuide E-Commerce Index,0.31,47389096143,0.19,High,Physical(Passive),0.45,Non taxable
+,464230,HEROES 24-09 TERM CORPORATE BOND ACTIVE,2023/08/17,KIWOOM AM,0,KIS Korea Corporate Bond Target Day Index 24-09(AA- or higher)(Total Return),0.09,145744833465,0.02,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,467620,HEROES 25-09 US Term Bond Active,2023/10/17,KIWOOM AM,0,USD AA3 Above Select September 2025 Maturity Index(Total Return),0.8,13835345338,-0.04,Very low,Physical(Active),0.29,Dividend income tax(tax on holding period)
+,464240,HEROES 26-09 TERM CORPORATE BOND ACTIVE,2023/08/17,KIWOOM AM,0,KIS Korea Corporate Bond Target Day Index 24-09(AA- or higher)(Total Return),0.15,70753688694,-0.03,Very low,Physical(Active),0.07,Dividend income tax(tax on holding period)
+,471460,HEROES 30-Year Treasury Bond Active,2023/11/07,KIWOOM AM,0,KIS-KIWOOM Government 30Y Index,0.38,9330144585,0.18,Low,Physical(Active),0.035,Dividend income tax(tax on holding period)
+,458210,HEROES CD Active(Synth),2023/05/23,KIWOOM AM,3.59,FnGuide CD91 Interest Rates Index(Total Return),0.05,111957512860,0.02,Very low,Synthetic(Active),0.03,Dividend income tax(tax on holding period)
+,437550,HEROES Global REITs IGIS Active,2022/07/29,KIWOOM AM,12.89,S&P Global REIT Index,3.36,5466151324,-0.44,Normal,Physical(Active),0.73,Dividend Income Tax(Separate Taxation Real Estate ETF)
+,476450,HEROES Money Market Active,2024/02/29,KIWOOM AM,0,KIS-KIWOOM MMF Index(Total Return Index),0.04,350153548133,0.02,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,429870,HEROES REITs IGIS Active,2022/05/24,KIWOOM AM,3.9,iSelect REITs Index,3.55,4245712232,0.07,Low,Physical(Active),0.52,Dividend Income Tax(Separate Taxation Real Estate ETF)
+,419890,HEROES Short-Term Bond ESG Active,2022/03/03,KIWOOM AM,4.7,KIS ESG 9M~1.5Y,0.14,91388908799,0,Very low,Physical(Active),0.15,Dividend income tax(tax on holding period)
+,435530,HEROES TDF 2030 Active,2022/06/30,KIWOOM AM,18.26,Dow Jones Target 2030 Index (Total Return),3.8,6219320135,-0.27,Very low,Physical(Active),0.3,Dividend income tax(tax on holding period)
+,435540,HEROES TDF 2040 Active,2022/06/30,KIWOOM AM,22.97,Dow Jones Target 2040 Index (Total Return),3.54,6616440565,-0.29,Very low,Physical(Active),0.34,Dividend income tax(tax on holding period)
+,435550,HEROES TDF 2050 Active,2022/06/30,KIWOOM AM,24.35,Dow Jones Target 2050 Index (Total Return),3.31,7366626929,-0.29,Very low,Physical(Active),0.38,Dividend income tax(tax on holding period)
+,454780,HEROES Total Market Bond Active,2023/04/11,KIWOOM AM,6.66,KIS All Bond Market Index(AA- or higher)(Total Return),0.34,140839145837,0.01,Very low,Physical(Active),0.025,Dividend income tax(tax on holding period)
+,460270,HEROES US Dollar SOFR Active(Synth),2023/06/20,KIWOOM AM,12.26,Solactive SOFR Daily Total Return Index,0.1,9302002129,0.1,Very low,Synthetic(Active),0.05,Dividend income tax(tax on holding period)
+,459790,HEROES US Growth 30 Active,2023/06/27,KIWOOM AM,30.99,MSCI USA Index(Price Return),5.87,10180740939,-4.42,Normal,Physical(Active),0.76,Dividend income tax(tax on holding period)
+,391670,HK Best11 Active,2021/07/06,HKAM,23.98,KOSPI 200,9.13,4907532823,-0.46,Normal,Physical(Active),0.3,Dividend income tax(tax on holding period)
+,391680,HK HighVol Active,2021/07/06,HKAM,6.22,KOSPI 200,5.44,4764505572,-0.44,Normal,Physical(Active),0.3,Dividend income tax(tax on holding period)
+,215620,HK S&P Korea LowVol,2015/03/25,HKAM,16.58,S&P Korea Low-Volatility(KRW) Index (Price Return),2.64,6284388953,-0.1,Low,Physical(Passive),0.4,Non taxable
+,472920,HK Total Market Bond Active,2023/11/28,HKAM,0,KAP Total Market Bond AA- or higher Index(PR),0.22,111563645143,0.2,Very low,Physical(Active),0.036,Dividend income tax(tax on holding period)
+,472840,ITF KS200,2023/12/21,IBK Asset Management,0,KOSPI 200,0.74,12485832350,-0.44,Normal,Physical(Passive),0.08,Non taxable
+,481430,KBSTAR 10Y T-Bond Active,2024/05/21,KB ASSET MANAGEMENT,0,KAP KTB 10Y Index(Total Return),0.11,64344259999,-0.06,Very low,Physical(Active),0.012,Dividend income tax(tax on holding period)
+,148020,KBSTAR 200,2011/10/20,KB ASSET MANAGEMENT,12.71,KOSPI 200,0.74,1223129343632,-0.38,Normal,Physical(Passive),0.017,Non taxable
+,284980,KBSTAR 200 Financials,2017/12/08,KB ASSET MANAGEMENT,37.91,KOSPI 200 Financials,2.01,6345611145,-0.25,High,Physical(Passive),0.19,Non taxable
+,252410,KBSTAR 200 Futures Inverse,2016/09/12,KB ASSET MANAGEMENT,-10.39,F-KOSPI 200,0.32,9837640495,-0.05,Normal,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,252420,KBSTAR 200 Futures Inverse 2X,2016/09/22,KB ASSET MANAGEMENT,-23.97,F-KOSPI 200,0.78,20084665581,0.17,Very high,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,252400,KBSTAR 200 Futures Leverage,2016/09/12,KB ASSET MANAGEMENT,22.09,F-KOSPI 200,0.78,19027219953,-0.06,Very high,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,290080,KBSTAR 200 Hi Div Co Call,2018/02/27,KB ASSET MANAGEMENT,10.33,C-KOSPI 200 LVHD-A Index(Price Return),4.96,10099820219,0.33,Low,Physical(Passive),0.4,Dividend income tax(tax on holding period)
+,475720,KBSTAR 200 Weekly Covered Call,2024/03/05,KB ASSET MANAGEMENT,0,KOSPI 200 Weekly Covered Call ATM Index,1.54,99839856684,-0.48,Low,Physical(Passive),0.3,Dividend income tax(tax on holding period)
+,361580,KBSTAR 200TR,2020/08/21,KB ASSET MANAGEMENT,14.83,KOSPI 200 TR,0.24,260364815176,-0.48,Normal,Physical(Passive),0.012,Dividend income tax(tax on holding period)
+,385560,KBSTAR 30Y T-Bond Enhanced ETF,2021/05/26,KB ASSET MANAGEMENT,8.6,KIS KTB 30Y Enhanced Index(Gross Price),0.45,404966662441,0.12,Normal,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,472870,KBSTAR 30Y US T-Bond(JPY)(SYNTH H),2023/12/27,KB ASSET MANAGEMENT,0,KIS 30Y US Treasury Bond Index(JPY)(TR),0.33,293526735075,-1.03,Normal,Synthetic(Passive),0.15,Dividend income tax(tax on holding period)
+,469070,KBSTAR AI&Robotics,2023/10/24,KB ASSET MANAGEMENT,0,iSelect AI&Robotics Index(Price Return),0.96,42210476408,0.15,Very high,Physical(Passive),0.4,Non taxable
+,385540,KBSTAR Active Bond ETF,2021/05/26,KB ASSET MANAGEMENT,6.35,KIS Korea Total Bond Market Index(A- or higher)(Total Return),0.1,1346090555030,0.02,Very low,Physical(Active),0.012,Dividend income tax(tax on holding period)
+,385550,KBSTAR Active Short Term Bond ETF,2021/05/26,KB ASSET MANAGEMENT,4.15,KIS Korea Short Term Bond Market Index(AA- or higher)(Total Return),0.06,118899790451,0.02,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,446700,KBSTAR Battery Recycling,2022/11/01,KB ASSET MANAGEMENT,-24.18,iSelect Battery Recycling Index(Price Return),4.4,19170250054,0.16,Very high,Physical(Passive),0.4,Non taxable
+,475350,KBSTAR Berkshire Portfolio TOP10,2024/02/27,KB ASSET MANAGEMENT,0,Solactive Berkshire Portfolio Top10 Index(TR),0.15,16686782779,0.5,Low,Physical(Passive),0.35,Dividend income tax(tax on holding period)
+,477080,KBSTAR CD Rate Active(SYNTH),2024/03/26,KB ASSET MANAGEMENT,0,FnGuide CD Interest Rate Investment Index(Total Return),0.02,388892094445,0.03,Very low,Synthetic(Active),0.02,Dividend income tax(tax on holding period)
+,174360,KBSTAR CSI100,2013/06/04,KB ASSET MANAGEMENT,-4.67,CSI 100,0.62,68568593572,-0.85,Low,Physical(Passive),0.65,Dividend Income Tax(Foreign Stock Investment ETF)
+,291680,KBSTAR China H Fut Inv,2018/03/23,KB ASSET MANAGEMENT,-2.76,Hang Seng China Enterprises Futures Index(Price Return),1.4,5963194839,2,Very high,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,250730,KBSTAR China HSCEI(H),2016/08/10,KB ASSET MANAGEMENT,-2.49,HSCEI(Hang Seng China Enterprise Index),1.41,38809382653,-2.03,High,Physical(Passive),0.021,Dividend Income Tax(Foreign Stock Investment ETF)
+,371150,KBSTAR China Hang Seng TECH,2020/12/16,KB ASSET MANAGEMENT,-4.36,Hang Seng TECH Index,0.75,8031451046,-2.96,Very high,Physical(Passive),0.14,Dividend income tax(tax on holding period)
+,463300,KBSTAR China Mainland CSI300,2023/08/08,KB ASSET MANAGEMENT,0,CSI 300 Index,2.94,33919207664,-0.9,Normal,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,388280,KBSTAR Contact Leader,2021/06/10,KB ASSET MANAGEMENT,-26.71,FnGuide Leader of Contact Index(Price Return),0.61,35173298972,0.11,Normal,Physical(Passive),0.45,Non taxable
+,136340,KBSTAR Credit,2011/04/15,KB ASSET MANAGEMENT,0.91,KOBI Credit Index(Total Return),0.13,61496263356,-0.01,Very low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,326230,KBSTAR Domestic Consumption Plus,2019/06/20,KB ASSET MANAGEMENT,4.41,FnGuide Domestic Consumption Plus Index,0.59,26267334965,0.03,Normal,Physical(Passive),0.4,Non taxable
+,290130,KBSTAR ESG SRI,2018/02/27,KB ASSET MANAGEMENT,19.63,KRX ESG Social Index,1.19,239172820623,-0.1,Normal,Physical(Passive),0.3,Non taxable
+,379790,KBSTAR EURO STOXX 50(H),2021/04/09,KB ASSET MANAGEMENT,16.82,EURO STOXX 50 Index,0.54,8856805018,-0.08,Low,Physical(Passive),0.021,Dividend income tax(tax on holding period)
+,183710,KBSTAR Equity Balanced,2013/10/17,KB ASSET MANAGEMENT,10.04,KRX Moderate Balanced Index(MOBIX),0.62,8457721865,0.05,Low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,140570,KBSTAR Exporter,2011/04/15,KB ASSET MANAGEMENT,8.42,MKF Exporters Index,0.56,4890350279,0.03,High,Physical(Passive),0.4,Non taxable
+,275750,KBSTAR F-KOSDAQ150 Inverse,2017/08/01,KB ASSET MANAGEMENT,-12.35,F-KOSDAQ150 Index,0.27,2390239273,0.35,Very high,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,278240,KBSTAR F-KOSDAQ150 Leverage,2017/08/31,KB ASSET MANAGEMENT,2.33,F-KOSDAQ150 Index,2.73,99887636509,-0.31,Very high,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,397420,KBSTAR FKTB 5Y Dur ff,2021/08/31,KB ASSET MANAGEMENT,3.86,F-KTB5 Duration Following Index,0.14,5099346154,0.04,Very low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,397410,KBSTAR FKTB 5Y Dur ff Inv,2021/08/31,KB ASSET MANAGEMENT,1.94,F-KTB5 Duration Following Index,0.24,50699371767,0.05,Very low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,336160,KBSTAR Fin Bond Act,2019/10/29,KB ASSET MANAGEMENT,-0.13,KIS Financials Bond Index (Total Return),0.24,35049599542,0.02,Very low,Physical(Active),0.07,Dividend income tax(tax on holding period)
+,183700,KBSTAR Fixed Income Balanced,2013/10/17,KB ASSET MANAGEMENT,5.74,KRX Conservative Balanced Index(COBIX),0.34,15013184818,-0.16,Very low,Physical(Passive),0.2,Dividend income tax(tax on holding period)
+,367770,KBSTAR Fn Hydrogen Econ,2020/10/29,KB ASSET MANAGEMENT,-1.49,FnGuide Hydrogen Economy Theme Index,0.94,262396332481,-0.21,High,Physical(Passive),0.45,Non taxable
+,367760,KBSTAR Fn5G Tech,2020/10/29,KB ASSET MANAGEMENT,39.82,FnGuide 5G Tech Index,1.25,47315557035,0.05,Very high,Physical(Passive),0.45,Non taxable
+,300640,KBSTAR Game Industry,2018/07/24,KB ASSET MANAGEMENT,-12.81,WISE Game Theme Index (Price Return),0.55,56980005450,0.13,Very high,Physical(Passive),0.3,Non taxable
+,276650,KBSTAR Global 4IR IT(SYNTH H),2017/08/17,KB ASSET MANAGEMENT,42.37,S&P Global 1200 Information Technology and Interactive Media & Services(PR),0.76,23038100062,-0.24,Normal,Synthetic(Passive),0.4,Dividend income tax(tax on holding period)
+,437370,KBSTAR Global Agribusiness,2022/07/29,KB ASSET MANAGEMENT,-5.18,MVIS Global Agribusiness Index(Price Return),2.09,6155098092,-0.03,Normal,Physical(Passive),0.4,Dividend income tax(tax on holding period)
+,461490,KBSTAR Global Asset Allocation Active,2023/06/27,KB ASSET MANAGEMENT,17.45,Bloomberg Multi-Asset Weighted (KRW ETFs) Index(Price Return),0.66,64537343341,0.09,Very low,Physical(Active),0.2,Dividend income tax(tax on holding period)
+,399580,KBSTAR Global Clean Energy S&P,2021/10/21,KB ASSET MANAGEMENT,-20.42,S&P Global Clean Energy Index (Price Return),4.21,8444187149,-0.31,High,Physical(Passive),0.4,Dividend income tax(tax on holding period)
+,375270,KBSTAR Global Data Center REITs(SYNTH),2021/01/14,KB ASSET MANAGEMENT,7.36,Kelly Data Center & Tech Infrastructure Net Total Return Index,3.47,7476227531,0.37,Normal,Synthetic(Passive),0.4,Dividend income tax(tax on holding period)
+,459750,KBSTAR Global Equity Allocation Active,2023/06/27,KB ASSET MANAGEMENT,26.76,Bloomberg Global Equity Market Weighted Index(Price Return),4.54,10685189105,0.23,Low,Physical(Active),0.2,Dividend income tax(tax on holding period)
+,417450,KBSTAR Global H2 Econ,2022/02/15,KB ASSET MANAGEMENT,-13.86,Indxx Hydrogen Economy Index (Net Total Return),5.72,8904469424,-0.12,Very high,Physical(Passive),0.4,Dividend income tax(tax on holding period)
+,411720,KBSTAR Global Metaverse Moorgate,2021/12/22,KB ASSET MANAGEMENT,68.83,Global Metaverse Index(Price Return),5.41,8313415017,-0.04,Normal,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,442320,KBSTAR Global Nuclear Power,2022/10/13,KB ASSET MANAGEMENT,71.32,iSelect Global Nuclear Power Index(Price Return),3.03,60054768656,0.1,Very high,Physical(Passive),0.4,Dividend income tax(tax on holding period)
+,476310,KBSTAR Global Obesity Industry TOP2+,2024/02/27,KB ASSET MANAGEMENT,0,KEDI Global Obesity Care Industry Top2+ Index(Price Return),0.37,10994452315,-0.63,Normal,Physical(Passive),0.35,Dividend income tax(tax on holding period)
+,475380,KBSTAR Global Realty Income,2024/02/20,KB ASSET MANAGEMENT,0,Solactive Global Realty Income Index(Price Return),2.37,44742281970,0.12,Low,Physical(Passive),0.09,Dividend Income Tax(Separate Taxation Real Estate ETF)
+,253280,KBSTAR HealthCare,2016/09/23,KB ASSET MANAGEMENT,15.67,FnGuide Healthcare Index,0.41,6873138083,0.15,Very high,Physical(Passive),0.4,Non taxable
+,253290,KBSTAR HealthCare Fixed Income Balanced,2016/09/23,KB ASSET MANAGEMENT,5.75,FnGuide Healthcare Balanced Index,0.87,13807025118,-0.09,Low,Physical(Passive),0.35,Dividend income tax(tax on holding period)
+,266160,KBSTAR High Dividend,2017/04/14,KB ASSET MANAGEMENT,23.1,FnGuide High Dividend Focus Index,1.48,44177823573,0.07,Normal,Physical(Passive),0.2,Non taxable
+,326240,KBSTAR IT Plus,2019/06/20,KB ASSET MANAGEMENT,2.07,FnGuide IT Plus Index,0.39,160343084293,-0.19,High,Physical(Passive),0.4,Non taxable
+,483230,KBSTAR Jun2025 Term Bank Credit Active,2024/06/18,KB ASSET MANAGEMENT,0,KIS Korea Bank Bond June 2025 Index(AA+ or higher)(TR),0.07,29037364641,0.03,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,479520,KBSTAR KOFR Active(SYNTH),2024/04/30,KB ASSET MANAGEMENT,0,KOFR Index,0.3,42339445146,0.01,Very low,Synthetic(Active),0.02,Dividend income tax(tax on holding period)
+,270810,KBSTAR KOSDAQ150,2017/06/16,KB ASSET MANAGEMENT,2.98,KOSDAQ 150,0.37,102140038890,-0.15,Very high,Physical(Passive),0.18,Non taxable
+,302450,KBSTAR KOSPI,2018/07/24,KB ASSET MANAGEMENT,8.41,KOSPI,0.66,111253843612,-0.25,Normal,Physical(Passive),0.14,Non taxable
+,270800,KBSTAR KQ High Dividend,2017/07/07,KB ASSET MANAGEMENT,-5.21,FnGuide KQ High Dividend Focus Index,0.67,7216019638,-0.18,Normal,Physical(Passive),0.3,Non taxable
+,292050,KBSTAR KRX300,2018/03/26,KB ASSET MANAGEMENT,13.6,KRX 300,0.74,8375020982,-0.11,Normal,Physical(Passive),0.05,Non taxable
+,114100,KBSTAR KTB,2009/07/29,KB ASSET MANAGEMENT,0.83,KTB INDEX (Gross Price),0.17,33537822752,-0.01,Very low,Physical(Passive),0.115,Dividend income tax(tax on holding period)
+,295020,KBSTAR KTB 10Y Fut Inv,2018/05/11,KB ASSET MANAGEMENT,0.4,F-LKTB Index,0.22,52406750715,0.05,Very low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,295000,KBSTAR KTB 10Y Futures,2018/05/11,KB ASSET MANAGEMENT,4.54,F-LKTB Index,0.37,5399306940,0.04,Very low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,451670,KBSTAR KTB 30Y Leverage (SYNTH),2023/02/14,KB ASSET MANAGEMENT,16,KAP KTB 30Y TR Index(Total Return),0.3,10397451677,0.05,Very high,Synthetic(Passive),0.1,Dividend income tax(tax on holding period)
+,282000,KBSTAR KTB 3Y Fur Inv,2017/11/09,KB ASSET MANAGEMENT,2.2,F-KTB Index,0.14,100590582291,0.02,Very low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,432600,KBSTAR KTB 3Y Futures,2022/06/14,KB ASSET MANAGEMENT,3.55,F-KTB Index,0.12,7165164271,0.03,Very low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,315960,KBSTAR Large Cap High Dividend10TR,2019/01/22,KB ASSET MANAGEMENT,38.63,WISE Large Cap High Dividend 10 TR Index,0.73,55814298092,0.04,High,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,310080,KBSTAR MSCI China(H),2018/11/28,KB ASSET MANAGEMENT,-5.18,MSCI China NTR Index(USD) (Net Total Return),3.97,11167261373,-1.38,High,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,464540,KBSTAR Mar2025 Term Credit,2023/08/17,KB ASSET MANAGEMENT,0,KIS Korea Corporate Bond March 2025 Index(AA- or higher)(Price Return),0.11,227119304230,0.03,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,281990,KBSTAR Mid Small High Dividend,2017/11/02,KB ASSET MANAGEMENT,-2.58,FnGuide Mid Small Cap High Dividend Focus Index,0.79,5479121781,0.11,Normal,Physical(Passive),0.3,Non taxable
+,272570,KBSTAR Mid-long KTB Active,2017/06/29,KB ASSET MANAGEMENT,4.69,KIS KTB 4¡­5Y Index(Total Return),0.18,22745899697,0.02,Very low,Physical(Active),0.07,Dividend income tax(tax on holding period)
+,455890,KBSTAR Money Market Active,2023/05/09,KB ASSET MANAGEMENT,4.37,KIS Money Market Index (Total Return),0.04,1676965948311,0.02,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,388420,KBSTAR NM Semicond Actv,2021/06/10,KB ASSET MANAGEMENT,38.8,iSelect System Semiconductor Index(Price Return),5.06,314581974552,-0.03,Very high,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,448600,KBSTAR Nov2025 Term Credit,2022/11/22,KB ASSET MANAGEMENT,-0.47,KIS Korea Corporate Bond 2025 Index(AA- or higher)(Price Return),0.27,72895976641,0.03,Very low,Physical(Active),0.07,Dividend income tax(tax on holding period)
+,334690,KBSTAR PALL futures(H),2019/09/24,KB ASSET MANAGEMENT,-32.79,S&P GSCI Palladium Excess Return Index,2.02,5747883617,-0.1,Very high,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,334700,KBSTAR Pall Inv Fut(H),2019/09/24,KB ASSET MANAGEMENT,26.86,S&P GSCI Palladium Excess Return Index,2.38,3314949084,0.45,Very high,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,427120,KBSTAR Platform Theme,2022/05/17,KB ASSET MANAGEMENT,-3.09,FnGuide Platform Theme Index(Price Return),0.38,3466835974,0.08,Very high,Physical(Passive),0.45,Non taxable
+,140580,KBSTAR Prime Industry,2011/04/15,KB ASSET MANAGEMENT,20.42,MKF Leading Industry Blue Chip Index,0.72,6300182341,-0.08,Normal,Physical(Passive),0.4,Non taxable
+,379780,KBSTAR S&P500,2021/04/09,KB ASSET MANAGEMENT,33.33,S&P 500,0.28,436141934325,-0.12,Low,Physical(Passive),0.021,Dividend income tax(tax on holding period)
+,453330,KBSTAR S&P500(H),2023/03/21,KB ASSET MANAGEMENT,22.4,S&P 500,0.24,36615005981,-0.08,Low,Physical(Passive),0.021,Dividend income tax(tax on holding period)
+,219390,KBSTAR SYNTH-US Oil&Gas E&P(H),2015/06/02,KB ASSET MANAGEMENT,16.3,S&P Oil & Gas Exploration & Production Select Industry Index(PR),0.81,15612885528,-1.19,High,Synthetic(Passive),0.25,Dividend income tax(tax on holding period)
+,448630,KBSTAR Samsung Group Top3 Equity&K-Bond,2022/11/29,KB ASSET MANAGEMENT,0.05,Bloomberg Blended Samsung Group Fixed Top 3 Equity and Korean Bond Index,1.07,16314006198,-0.11,Very low,Physical(Passive),0.2,Dividend income tax(tax on holding period)
+,422420,KBSTAR Secondary Cell Active,2022/04/08,KB ASSET MANAGEMENT,-28.08,iSelect Secondary Cell Index (Price Return),7.75,219699679971,-0.05,Very high,Physical(Active),0.35,Dividend income tax(tax on holding period)
+,465330,KBSTAR Secondary Cell TOP10,2023/09/12,KB ASSET MANAGEMENT,0,iSelect Secondary Cell TOP10 Index(PR),0.49,39478503014,-0.05,Very high,Physical(Passive),0.07,Non taxable
+,465350,KBSTAR Secondary Cell TOP10 Inv(SYNTH),2023/09/12,KB ASSET MANAGEMENT,0,iSelect Secondary Cell TOP10 Index(PR),0.57,86591661784,-0.88,Very high,Synthetic(Passive),0.49,Dividend income tax(tax on holding period)
+,272560,KBSTAR Short KTB Active,2017/06/29,KB ASSET MANAGEMENT,3.81,KIS KTB 3M¡­1.5Y Index(Total Return),0.09,167447269861,0.03,Very low,Physical(Active),0.07,Dividend income tax(tax on holding period)
+,196230,KBSTAR Short-Term MSB,2014/05/19,KB ASSET MANAGEMENT,3.55,KIS MSB 5M Index(Total Return),0.07,582847536280,0,Very low,Physical(Passive),0.13,Dividend income tax(tax on holding period)
+,442550,KBSTAR TDF2030 Active,2022/09/22,KB ASSET MANAGEMENT,15.08,iSelect Tactical Asset Allocation TDF 2030 Index,1.16,5973366743,-0.01,Very low,Physical(Active),0.18,Dividend income tax(tax on holding period)
+,442560,KBSTAR TDF2040 Active,2022/09/22,KB ASSET MANAGEMENT,17.72,iSelect Tactical Asset Allocation TDF 2040 Index,1.2,6146811663,-0.03,Very low,Physical(Active),0.18,Dividend income tax(tax on holding period)
+,442570,KBSTAR TDF2050 Active,2022/09/22,KB ASSET MANAGEMENT,19.3,iSelect Tactical Asset Allocation TDF 2050 Index,1.27,13095299023,0.11,Very low,Physical(Active),0.18,Dividend income tax(tax on holding period)
+,105780,KBSTAR Top5 Group,2008/10/22,KB ASSET MANAGEMENT,4.72,MKF Top5 Group,0.79,13801976877,-0.38,High,Physical(Passive),0.4,Non taxable
+,449580,KBSTAR US Big Data Top3 Equity&K-Bond,2022/12/20,KB ASSET MANAGEMENT,12.21,iSelect US Big Data Top3 Fixed Income Balanced Index (Price Return),1.44,10519955555,0.65,Low,Physical(Passive),0.24,Dividend income tax(tax on holding period)
+,460660,KBSTAR US Dividend Kings,2023/06/27,KB ASSET MANAGEMENT,6.28,S&P Dividend Monarchs Index(Price Return),0.62,8921543932,0.8,Low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,368590,KBSTAR US NASDAQ100,2020/11/06,KB ASSET MANAGEMENT,41.84,NASDAQ 100,0.19,606083364025,-0.25,Low,Physical(Passive),0.021,Dividend income tax(tax on holding period)
+,354240,KBSTAR US Pfd ICE TR,2020/05/19,KB ASSET MANAGEMENT,15.96,ICE BofAML Core Plus Fixed Rate Preferred Securities Index,1.31,15545501906,0.1,Low,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,469060,KBSTAR US Semiconductor,2023/10/24,KB ASSET MANAGEMENT,0,NYSE Semicondoctor Index(Price Return),0.32,16471664533,-0.16,Very high,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,469050,KBSTAR US Semiconductor(H),2023/10/24,KB ASSET MANAGEMENT,0,NYSE Semicondoctor Index(Price Return),0.41,66308295838,-0.59,Very high,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,437350,KBSTAR US Short-Term IG Corp Bond,2022/07/29,KB ASSET MANAGEMENT,12.46,Bloomberg US Corporate 1-5 Years Total Return Index,0.73,78606581902,0.05,Very low,Physical(Active),0.1,Dividend income tax(tax on holding period)
+,481340,KBSTAR US T-Bond 30Y Active,2024/05/28,KB ASSET MANAGEMENT,0,Bloomberg U.S Treasury 20+ Year Total Return Index,5.18,10363972352,-0.33,Normal,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,472830,KBSTAR US T-Bond 30Y Covered Call,2023/12/14,KB ASSET MANAGEMENT,0,Bloomberg U.S. Treasury 20+ Year (TLT) 2% OTM Covered Call Index(TR),0.34,37901283745,-0.2,Low,Synthetic(Passive),0.25,Dividend income tax(tax on holding period)
+,267490,KBSTAR US T-Bond Futures 2X(Synth H),2017/04/20,KB ASSET MANAGEMENT,-17.21,S&P U.S. Treasury Bond Futures Excess Return Index,1.45,9509844060,-0.41,Very high,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,267450,KBSTAR US T-Bond Futures Inverse(H),2017/04/20,KB ASSET MANAGEMENT,8.58,S&P U.S. Treasury Bond Futures Excess Return Index,1.19,5350637728,-0.67,Normal,Physical(Passive),0.4,Dividend income tax(tax on holding period)
+,267440,KBSTAR US T-Bond Futures(H),2017/04/20,KB ASSET MANAGEMENT,-6.35,S&P U.S. Treasury Bond Futures Excess Return Index,0.67,13833596410,-0.19,Low,Physical(Passive),0.4,Dividend income tax(tax on holding period)
+,469530,KBSTAR USD Futures Inverse,2023/11/09,KB ASSET MANAGEMENT,0,F-USDKRW,0.38,6144003319,-0.02,Very low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,469580,KBSTAR USD Korean Paper Active,2023/11/09,KB ASSET MANAGEMENT,0,KIS USD Korean Paper Index(Total Return),0.29,55784090484,0.1,Very low,Physical(Active),0.09,Dividend income tax(tax on holding period)
+,455960,KBSTAR USD SOFR Active(SYNTH),2023/05/16,KB ASSET MANAGEMENT,12.03,KAP SOFR Index,2.17,40383241483,0.15,Very low,Synthetic(Active),0.05,Dividend income tax(tax on holding period)
+,234310,KBSTAR V&S Select Value,2016/02/02,KB ASSET MANAGEMENT,9.25,FnGuide Select Value Index,0.96,7593348174,-0.08,Normal,Physical(Passive),0.3,Non taxable
+,241390,KBSTAR V&S Select Value Fixed Income Bal,2016/04/12,KB ASSET MANAGEMENT,4.31,FnGuide Select Value Balanced Index,0.7,14551567605,-0.13,Very low,Physical(Passive),0.23,Dividend income tax(tax on holding period)
+,427110,KBSTAR Venture Capital Company,2022/05/17,KB ASSET MANAGEMENT,20.16,FnGuide Venture Capital Index(Price Return),2,4970556588,0.12,Very high,Physical(Passive),0.45,Non taxable
+,401170,KBSTAR iSelect METAVERSE,2021/10/13,KB ASSET MANAGEMENT,-18.96,iSelect Metaverse Index(Price Return),0.41,114839737640,0.11,High,Physical(Passive),0.45,Non taxable
+,407170,KCGI SC Active,2021/11/16,KCGI Asset Management,22.49,FnGuide Smart Commerce Index,9.85,4349409428,-0.45,Normal,Physical(Active),0.445,Dividend income tax(tax on holding period)
+,407160,KCGI TMT Active,2021/11/16,KCGI Asset Management,16.65,FnGuide TMT Index,9.04,5505623128,-0.25,Normal,Physical(Active),0.445,Dividend income tax(tax on holding period)
+,483570,KCGI US S&P500 TOP10,2024/05/28,KCGI Asset Management,0,S&P500 Top10 25% Capped Index(PR),0.56,10915378345,0.09,Low,Physical(Passive),0.36,Dividend income tax(tax on holding period)
+,471230,KODEX 10-Years Treasury Bond Active,2023/11/14,SAMSUNG ASSET,0,KAP KTB 10Y Index(TR),0.82,185427949820,-0.05,Very low,Physical(Active),0.015,Dividend income tax(tax on holding period)
+,152380,KODEX 10Y F-LKTB,2012/01/20,SAMSUNG ASSET,5.14,F-LKTB Index,0.13,58581414769,0.01,Very low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,176950,KODEX 10Y F-LKTB INVERSE,2013/05/31,SAMSUNG ASSET,0.83,F-LKTB Index,0.11,6850574863,-0.04,Very low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,481050,KODEX 1Y Bank CD Plus Active(SYNTH),2024/04/23,SAMSUNG ASSET,0,KAP 1Y Bank CD+Additional Rate Index(Total return),0.02,917192979499,0.01,Very low,Synthetic(Active),0.05,Dividend income tax(tax on holding period)
+,069500,KODEX 200,2002/10/14,SAMSUNG ASSET,12.54,KOSPI 200,0.72,6490374609433,-0.46,Normal,Physical(Passive),0.15,Non taxable
+,252650,KODEX 200 EW,2016/09/20,SAMSUNG ASSET,8.58,KOSPI 200 EWI,0.48,5632585111,-0.05,Low,Physical(Passive),0.21,Non taxable
+,252670,KODEX 200 Futures Inverse 2X,2016/09/22,SAMSUNG ASSET,-24.32,F-KOSPI 200,0.43,1577050941107,-0.1,Very high,Physical(Passive),0.64,Dividend income tax(tax on holding period)
+,223190,KODEX 200 Intrinsic Value,2015/06/26,SAMSUNG ASSET,22.24,KOSPI 200 Intrinsic Value Index,1.2,13169437986,0.06,Normal,Physical(Passive),0.26,Non taxable
+,237350,KODEX 200 Large,2016/01/27,SAMSUNG ASSET,12.8,KOSPI 100,0.76,23732421633,-0.32,Normal,Physical(Passive),0.15,Non taxable
+,226980,KODEX 200 Mid-Small,2015/09/01,SAMSUNG ASSET,13.82,KOSPI 200 MidSmallCap,0.51,10993481514,-0.23,Normal,Physical(Passive),0.3,Non taxable
+,278530,KODEX 200 TR,2017/11/21,SAMSUNG ASSET,14.73,KOSPI 200 TR,0.22,2315269968466,-0.5,Normal,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,337160,KODEX 200ESG,2019/11/14,SAMSUNG ASSET,17.42,KOSPI 200 ESG,0.85,37671801878,-0.2,Normal,Physical(Passive),0.09,Non taxable
+,363580,KODEX 200IT TR,2020/09/25,SAMSUNG ASSET,12.89,KOSPI200 IT TR,0.12,104251443202,-0.32,High,Physical(Passive),0.15,Dividend income tax(tax on holding period)
+,360140,KODEX 200LONGKOSDAQ150SHORT Futures,2020/08/21,SAMSUNG ASSET,1.81,F-KOSPI 200 Long 100% F-KOSDAQ 150 Short 100% Index,1.7,26022531534,0.12,High,Physical(Passive),0.64,Dividend income tax(tax on holding period)
+,337150,KODEX 200exTOP,2019/11/14,SAMSUNG ASSET,11.89,KOSPI 200 Ex-TOP,0.67,16301819954,-0.6,Normal,Physical(Passive),0.3,Non taxable
+,465680,KODEX 24-12 Bank Bond(AA+) Active,2023/09/12,SAMSUNG ASSET,0,KAP 24-12 Bank Bond TR Index,0.06,2293408261429,0.05,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,476810,KODEX 25-11 Bank Bond(AA-) Plus Active,2024/03/05,SAMSUNG ASSET,0,"KAP 25-11 Bank Bond Plus TR Index(AA- or higher, TR)",0.14,765622522953,0.08,Very low,Physical(Active),0.09,Dividend income tax(tax on holding period)
+,467940,KODEX 25-11 Corporate Bond(A+) Active,2023/10/11,SAMSUNG ASSET,0,KAP 25-11 Corporate Bond TR Index,0.11,378717383003,0.08,Very low,Physical(Active),0.09,Dividend income tax(tax on holding period)
+,473290,KODEX 26-12 Corporate Bond(AA-) Active,2023/12/12,SAMSUNG ASSET,0,KAP 26-12 Corporate Bond TR Index(AA- or higher),0.38,238098366411,0,Very low,Physical(Active),0.09,Dividend income tax(tax on holding period)
+,284430,KODEX 2TN Balanced,2017/11/30,SAMSUNG ASSET,8.1,KOSPI 200 and U.S. Bond Balanced Index,1.68,78470489277,0.15,Very low,Physical(Passive),0.31,Dividend income tax(tax on holding period)
+,461950,KODEX 2ndary Battery Core Materials 10,2023/07/04,SAMSUNG ASSET,0,FnGuide Secondary Battery Core Materials 10 Index,0.5,178046286176,-0.03,Very high,Physical(Passive),0.39,Non taxable
+,439870,KODEX 30-Years Treasury Bond Active,2022/08/23,SAMSUNG ASSET,11.71,KAP Gov't Bond 30 years TR Index,0.42,301709769985,0.05,Low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,457690,KODEX 33-06 Treasury Bond Active,2023/05/31,SAMSUNG ASSET,5.41,KAP 33-06 Gov't Bond TR Index,0.35,15575386925,-0.04,Very low,Physical(Active),0.15,Dividend income tax(tax on holding period)
+,292770,KODEX 3Y F-KTB INVERSE,2018/04/13,SAMSUNG ASSET,2.47,F-KTB Index,0.11,6870971479,-0.03,Very low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,457700,KODEX 53-09 Treasury Bond Active,2023/05/31,SAMSUNG ASSET,11.01,KAP 53-09 Gov't Bond TR Index,0.77,16898209133,0.16,Low,Physical(Active),0.15,Dividend income tax(tax on holding period)
+,471990,KODEX AI Semiconductor Core Equipment,2023/11/21,SAMSUNG ASSET,0,iSelect AI Semiconductor Core Equipment Index,0.79,210037477027,-0.13,Very high,Physical(Passive),0.39,Non taxable
+,446690,KODEX ASIA AI SEMICON exChina Active,2023/02/01,SAMSUNG ASSET,67.28,iSelect Asia Semiconductor Manufacturing Ecosystem Index(Price Return),9.8,10444379935,-2.22,Very high,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,091180,KODEX AUTOs,2006/06/27,SAMSUNG ASSET,18.87,KRX Autos,1.61,609406056311,-0.34,High,Physical(Passive),0.45,Non taxable
+,273130,KODEX Active Bond,2017/06/29,SAMSUNG ASSET,6.43,"KAP Korea Total Market Bond Index(AA- or higher, Total return)",0.1,2852830916158,0.01,Very low,Physical(Active),0.045,Dividend income tax(tax on holding period)
+,273140,KODEX Active FRN,2017/06/29,SAMSUNG ASSET,3.73,"KAP Korea Short-Term Bank FRN Index(AAA, Total return)",0.06,330755853292,0.01,Very low,Physical(Active),0.15,Dividend income tax(tax on holding period)
+,363570,KODEX Active KAP Long Term Bond,2020/09/25,SAMSUNG ASSET,7.93,"KAP Korea Long Term Total Market Bond Index(AA- or Higher, Total Return)",0.17,174083829457,0.03,Very low,Physical(Active),0.045,Dividend income tax(tax on holding period)
+,437070,KODEX Asia USD Bond ESG Plus Active,2022/08/09,SAMSUNG ASSET,12.44,Bloomberg MSCI EM Asia Investment Grade Credit SRI Index(Total Return),2.02,70875262323,0.08,Very low,Physical(Active),0.18,Dividend income tax(tax on holding period)
+,091170,KODEX BANKs,2006/06/27,SAMSUNG ASSET,35.65,KRX Banks,2.75,287371597289,-0.18,High,Physical(Passive),0.3,Non taxable
+,244580,KODEX BIO,2016/05/13,SAMSUNG ASSET,1.53,FnGuide Bio Index,0.65,142218952051,-0.4,Very high,Physical(Passive),0.419,Non taxable
+,459580,KODEX CD Rate Active(SYNTH),2023/06/08,SAMSUNG ASSET,3.73,KAP CD Index(Total Return),0.09,9142496616772,0.02,Very low,Synthetic(Active),0.02,Dividend income tax(tax on holding period)
+,375770,KODEX Carbon Efficient Green New Deal,2021/02/05,SAMSUNG ASSET,11.94,S&P/KRX Carbon Efficient Capped,0.67,28757281802,-0.27,Normal,Physical(Passive),0.09,Non taxable
+,256750,KODEX ChiNext ETF(Synth),2016/11/08,SAMSUNG ASSET,-20.37,SZSE ChiNext Price Index,0.19,21294490169,-2.84,High,Synthetic(Passive),0.43,Dividend income tax(tax on holding period)
+,283580,KODEX China CSI300,2017/12/13,SAMSUNG ASSET,-6.6,CSI 300 Index,1.33,91354354747,-0.65,Low,Physical(Passive),0.12,Dividend Income Tax(Foreign Stock Investment ETF)
+,099140,KODEX China H,2007/10/10,SAMSUNG ASSET,2.87,HSCEI(Hang Seng China Enterprise Index),1.45,52385284434,-1.93,High,Physical(Passive),0.12,Dividend Income Tax(Foreign Stock Investment ETF)
+,204450,KODEX China H Leverage(H),2014/09/12,SAMSUNG ASSET,-16.06,HSCEI(Hang Seng China Enterprise Index),4.12,77133512437,-4.05,Very high,Physical(Passive),0.64,Dividend income tax(tax on holding period)
+,372330,KODEX China Hang Seng TECH,2020/12/16,SAMSUNG ASSET,-3.14,Hang Seng TECH Index,0.46,191017176950,-2.08,Very high,Physical(Passive),0.11,Dividend income tax(tax on holding period)
+,428510,KODEX China Metaverse Active,2022/05/17,SAMSUNG ASSET,15.19,Bloomberg Greater China Media & Tech Index(Price Return),8.66,5464306020,-1.45,High,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,415340,KODEX China STAR 50(SYNTH),2022/01/13,SAMSUNG ASSET,-24.55,STAR 50 Index(Price Return),1.35,14508964548,-2.56,High,Synthetic(Passive),0.09,Dividend income tax(tax on holding period)
+,117700,KODEX Constructions,2009/10/30,SAMSUNG ASSET,-12.5,KRX Constructions,0.74,22441211401,-0.06,High,Physical(Passive),0.45,Non taxable
+,266390,KODEX Consumer Discretionary,2017/03/28,SAMSUNG ASSET,-5.96,KRX Consumer Discretionary,0.53,5154022505,0.12,Normal,Physical(Passive),0.45,Non taxable
+,266410,KODEX Consumer Staples,2017/03/28,SAMSUNG ASSET,10.12,KRX Consumer Staples,0.63,12743446368,-0.14,Normal,Physical(Passive),0.45,Non taxable
+,138910,KODEX Copper Futures(H),2011/03/15,SAMSUNG ASSET,9.96,S&P GSCI North American Copper Index(TR),1.34,14326579653,-0.47,Normal,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,211900,KODEX Dividend Growth,2014/12/17,SAMSUNG ASSET,24.58,KOSPI Growth Dividend 50,0.94,20712204084,-0.42,Low,Physical(Passive),0.15,Non taxable
+,325020,KODEX Dividend Value,2019/05/31,SAMSUNG ASSET,19.01,FnGuide SLV Dividend Value Index,1.34,122649309129,-0.22,Normal,Physical(Passive),0.3,Non taxable
+,117460,KODEX ENERGY&CHEMICALS,2009/10/12,SAMSUNG ASSET,-25.64,KRX Energy & Chemicals,0.57,19796367079,-0.2,Very high,Physical(Passive),0.45,Non taxable
+,439860,KODEX ESG Total Bond Active,2022/08/23,SAMSUNG ASSET,6.02,"KAP ESG Total Market Bond Index(A- or higher, Total return)",0.22,281252715265,-0.14,Very low,Physical(Active),0.07,Dividend income tax(tax on holding period)
+,456250,KODEX Europe Luxury TOP10 STOXX,2023/04/25,SAMSUNG ASSET,3.78,STOXX Europe Luxury 10 Index(Price Return),0.85,17292703141,-0.02,Normal,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,400570,KODEX EuropeCarbonAllowanceFuturesICE(H),2021/09/30,SAMSUNG ASSET,-23.81,ICE EUA Carbon Futures Index(Excess Return),1.6,44860954197,0.44,Very high,Physical(Passive),0.64,Dividend income tax(tax on holding period)
+,169950,KODEX FTSE CHINA A50,2013/01/21,SAMSUNG ASSET,4.38,FTSE China A50 Index,1.67,22276150685,-0.48,Low,Physical(Passive),0.12,Dividend Income Tax(Foreign Stock Investment ETF)
+,325010,KODEX Fn Growth,2019/05/31,SAMSUNG ASSET,8.67,FnGuide Growth Index(PR),0.34,92770533742,-0.37,High,Physical(Passive),0.3,Non taxable
+,368680,KODEX Fn K-NewDeal Digital Plus,2020/11/10,SAMSUNG ASSET,-17.65,FnGuide K-NewDeal Digital Plus Index,0.27,8121340233,0.16,Very high,Physical(Passive),0.09,Non taxable
+,337120,KODEX Fn Multi Factor,2019/11/14,SAMSUNG ASSET,9.25,FnGuide Multi-Factor Index,0.67,8170956063,-0.28,Low,Physical(Passive),0.3,Non taxable
+,395160,KODEX Fn System Semiconductor,2021/07/30,SAMSUNG ASSET,36.08,FnGuide System Semiconductor Index,0.54,54164780028,0.04,Very high,Physical(Passive),0.45,Non taxable
+,395170,KODEX Fn Top10 EW,2021/07/30,SAMSUNG ASSET,-0.75,FnGuide TOP10 EW Index,0.84,56105388937,-0.31,High,Physical(Passive),0.15,Non taxable
+,395150,KODEX Fn Webtoon & Drama,2021/07/30,SAMSUNG ASSET,-20.35,FnGuide Webtoon & Drama Index,0.44,26142419102,0.29,Very high,Physical(Passive),0.45,Non taxable
+,280940,KODEX GLDI(H),2017/11/09,SAMSUNG ASSET,-10.59,S&P GSCI GOLD Index Excess Return,1.44,3125898407,-0.03,Normal,Physical(Passive),0.41,Dividend income tax(tax on holding period)
+,237370,KODEX GROWTH DIV BAL,2016/01/27,SAMSUNG ASSET,11.04,KRX Growth Dividend Balanced Index,0.88,23446946108,-0.05,Very low,Physical(Passive),0.16,Dividend income tax(tax on holding period)
+,300950,KODEX Game Industry,2018/07/24,SAMSUNG ASSET,-9.62,FnGuide Game Industry Index,0.39,22255258440,0.65,Very high,Physical(Passive),0.45,Non taxable
+,476070,KODEX Global Obesity Treatment TOP2 Plus,2024/02/14,SAMSUNG ASSET,0,iSelect Global Obesity Treatment TOP2 Plus Index(PR),0.57,146351899061,-0.28,Very high,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,132030,KODEX Gold Futures(H),2010/10/01,SAMSUNG ASSET,14.62,S&P GSCI Gold Index(TR),0.64,154089033972,-0.02,Low,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,271060,KODEX Grains Futures(H),2017/06/13,SAMSUNG ASSET,-27.99,S&P GSCI Grains Select Index ER,1.42,22558101770,0.23,Normal,Physical(Passive),0.51,Dividend income tax(tax on holding period)
+,266420,KODEX Healthcare,2017/03/28,SAMSUNG ASSET,24.65,KRX Health Care,1.65,63988774357,-0.19,Very high,Physical(Passive),0.09,Non taxable
+,279530,KODEX High Dividend,2017/10/17,SAMSUNG ASSET,15.52,FnGuide High Dividend Plus Index,1.46,26461214697,-0.17,Low,Physical(Passive),0.26,Non taxable
+,140700,KODEX INSURANCE,2011/04/26,SAMSUNG ASSET,38.71,KRX Insurance,2.88,25240137742,-0.26,Very high,Physical(Passive),0.45,Non taxable
+,114800,KODEX INVERSE,2009/09/16,SAMSUNG ASSET,-10.43,F-KOSPI 200,0.13,649857359901,-0.16,Normal,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,266370,KODEX IT,2017/03/28,SAMSUNG ASSET,17.6,KRX IT,0.42,28488919354,-0.13,High,Physical(Passive),0.45,Non taxable
+,453810,KODEX India Nifty50,2023/04/21,SAMSUNG ASSET,32.47,Nifty 50 Index,0.69,442411030952,0.48,Low,Physical(Passive),0.19,Dividend income tax(tax on holding period)
+,453820,KODEX India Nifty50 Leverage(SYNTH),2023/04/21,SAMSUNG ASSET,64.84,Nifty 50 Index,0.79,53602554300,1.11,Very high,Synthetic(Passive),0.39,Dividend income tax(tax on holding period)
+,477730,KODEX India Tata Group,2024/05/08,SAMSUNG ASSET,0,Nifty India Corporate Group Index - Tata Group 25% Cap(PR),1.51,82473046243,-0.18,High,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,364690,KODEX Inno-Tech Active,2020/09/29,SAMSUNG ASSET,18.63,KOSPI,4.42,8737595848,-0.09,High,Physical(Active),0.3,Dividend income tax(tax on holding period)
+,473460,KODEX Investor's Choice US TOP 25,2023/12/27,SAMSUNG ASSET,0,iSelect Investor's Choice US TOP 25 Index (Price Return),0.79,13362789596,-0.32,High,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,101280,KODEX Japan,2008/02/20,SAMSUNG ASSET,19.36,TOPIX100,1.58,29385945790,-0.6,Normal,Physical(Passive),0.37,Dividend Income Tax(Foreign Stock Investment ETF)
+,352540,KODEX Japan REITs(H),2020/05/13,SAMSUNG ASSET,-7.95,Tokyo Stock Exchange REIT Index,1.44,13682771438,-1.56,Low,Physical(Passive),0.3,Dividend Income Tax(Separate Taxation Real Estate ETF)
+,445150,KODEX K-Eco Ship Active,2022/11/15,SAMSUNG ASSET,5.69,FnGuide K-Eco Ship Index,8.77,32450545554,0.08,Very high,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,385520,KODEX K-Future Car Active,2021/05/25,SAMSUNG ASSET,-1.8,FnGuide K-Future Car Index,7.12,26864311593,-0.27,High,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,373490,KODEX K-Innovation Active,2020/12/24,SAMSUNG ASSET,23.99,FnGuide K-Innovation Index,18.21,6889320285,-0.43,Very high,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,401470,KODEX K-Metaverse Active,2021/10/13,SAMSUNG ASSET,-15.53,FnGuide K-Metaverse Index,7.09,138643577723,-0.32,High,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,385510,KODEX K-Renewable Energy Active,2021/05/25,SAMSUNG ASSET,33.77,FnGuide K-Renewable Energy Plus Index,22.19,53151417621,0.07,Very high,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,445290,KODEX K-Robot Active,2022/11/15,SAMSUNG ASSET,8.74,iSelect K-Robot Theme Index,6.3,167067515113,-0.23,High,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,423160,KODEX KOFR Active(SYNTH),2022/04/26,SAMSUNG ASSET,3.67,KOFR Index,0.06,5062068489803,0.01,Very low,Synthetic(Active),0.05,Dividend income tax(tax on holding period)
+,476800,KODEX KOREA REITs Infra,2024/03/05,SAMSUNG ASSET,0,KRX REITs Infra Index,3.6,53272749560,-0.35,Very low,Physical(Passive),0.09,Non taxable
+,229200,KODEX KOSDAQ 150,2015/10/01,SAMSUNG ASSET,2.84,KOSDAQ 150,0.17,829554735177,-0.37,Very high,Physical(Passive),0.21,Non taxable
+,461450,KODEX KOSDAQ Global,2023/06/29,SAMSUNG ASSET,0,KOSDAQ Global Index,0.21,11909064081,-0.58,Very high,Physical(Passive),0.09,Non taxable
+,251340,KODEX KOSDAQ150 INVERSE,2016/08/10,SAMSUNG ASSET,-10.59,F-KOSDAQ150 Index,0.7,350544092210,-0.15,Very high,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,233740,KODEX KOSDAQ150 LEVERAGE,2015/12/17,SAMSUNG ASSET,-3.88,KOSDAQ 150,8.51,1183830200546,-0.73,Very high,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,360150,KODEX KOSDAQ150LONGKOSPI200SHORT Futures,2020/08/21,SAMSUNG ASSET,-4.28,F-KOSDAQ 150 Long 100% F-KOSPI 200 Short 100% Index,1.07,7529077984,-0.23,High,Physical(Passive),0.64,Dividend income tax(tax on holding period)
+,226490,KODEX KOSPI,2015/08/24,SAMSUNG ASSET,8,KOSPI,0.63,346082410688,-0.34,Normal,Physical(Passive),0.15,Non taxable
+,337140,KODEX KOSPI LargeCap,2019/11/14,SAMSUNG ASSET,7.79,KOSPI LargeCap,0.69,14744268849,-0.44,Normal,Physical(Passive),0.15,Non taxable
+,359210,KODEX KOSPI TR,2020/07/21,SAMSUNG ASSET,10.75,KOSPI TR,0.16,27662523762,-0.15,Normal,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,450180,KODEX KR CH New Energy Vehicles(SYNTH),2022/12/22,SAMSUNG ASSET,-22.8,KRX CSI Korea China New Energy Vehicles Index,0.1,6025609296,-1.08,High,Synthetic(Passive),0.25,Dividend income tax(tax on holding period)
+,153130,KODEX KRW CASH,2012/02/22,SAMSUNG ASSET,3.57,KRW Cash Index (Total Return),0.07,747407092893,0.02,Very low,Physical(Passive),0.15,Dividend income tax(tax on holding period)
+,214980,KODEX KRW CASH PLUS,2015/03/03,SAMSUNG ASSET,3.84,KRW Cash PLUS Index(Total Return),0.07,1359964382553,0.01,Very low,Physical(Passive),0.15,Dividend income tax(tax on holding period)
+,404260,KODEX KRX Climate Change Solutions,2021/10/29,SAMSUNG ASSET,-2.67,KRX Climate Change Solutions,0.59,19526993885,-0.08,Very high,Physical(Passive),0.09,Non taxable
+,292190,KODEX KRX300,2018/03/26,SAMSUNG ASSET,13.14,KRX 300,0.7,21652168504,-0.27,Normal,Physical(Passive),0.05,Non taxable
+,306950,KODEX KRX300 Leverage,2018/10/16,SAMSUNG ASSET,23.75,KRX 300,4.92,16970570642,-1.3,Very high,Physical(Passive),0.64,Dividend income tax(tax on holding period)
+,229720,KODEX KTOP30,2015/10/14,SAMSUNG ASSET,-1.02,KTOP 30,0.64,8791817638,-0.22,Normal,Physical(Passive),0.21,Non taxable
+,450190,KODEX Korea China Semiconductor(SYNTH),2022/12/22,SAMSUNG ASSET,21,KRX CSI Korea China Semiconductor Index,0.08,8409698260,-0.72,High,Synthetic(Passive),0.25,Dividend income tax(tax on holding period)
+,298770,KODEX Korea Taiwan IT Premier,2018/06/11,SAMSUNG ASSET,39.88,Korea Taiwan IT Premier Index,2.07,47966384071,-0.37,Normal,Physical(Passive),0.55,Dividend income tax(tax on holding period)
+,122630,KODEX LEVERAGE,2010/02/22,SAMSUNG ASSET,21.7,KOSPI 200,3.48,2090047469489,-1.2,Very high,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,102960,KODEX MACHINARY & EQUIPMENT,2008/05/29,SAMSUNG ASSET,-3.49,KRX Machinery & Equipment,0.37,9671705012,0.02,Very high,Physical(Passive),0.45,Non taxable
+,419430,KODEX MSCI China Batteries(SYNTH),2022/03/22,SAMSUNG ASSET,-28.58,MSCI China all shares IMI Select Batteries Index(Price Return),1.52,21963625872,-3.21,Very high,Synthetic(Passive),0.25,Dividend income tax(tax on holding period)
+,291890,KODEX MSCI EM Futures(H),2018/03/23,SAMSUNG ASSET,5.2,iEdge Emerging Markets Futures Index(ER),0.58,5799823728,0.12,Normal,Physical(Passive),0.41,Dividend income tax(tax on holding period)
+,156080,KODEX MSCI Korea,2012/04/30,SAMSUNG ASSET,9.68,MSCI Korea Index,0.77,14445466662,-0.54,Normal,Physical(Passive),0.09,Non taxable
+,289040,KODEX MSCI Korea ESG Universal,2018/02/07,SAMSUNG ASSET,10.63,MSCI Korea ESG Universal Capped Index,1.06,14481087645,-0.49,Normal,Physical(Passive),0.26,Non taxable
+,278540,KODEX MSCI Korea TR,2017/11/09,SAMSUNG ASSET,12.3,MSCI Korea TR Index,0.25,434547393267,-0.3,Normal,Physical(Passive),0.09,Dividend income tax(tax on holding period)
+,275280,KODEX MSCI Momentum,2017/07/11,SAMSUNG ASSET,24.1,MSCI Korea IMI Momentum Capped,0.75,8500322886,-0.58,Very high,Physical(Passive),0.26,Non taxable
+,275300,KODEX MSCI Quality,2017/07/11,SAMSUNG ASSET,15.17,MSCI Korea IMI Quality Capped,1.26,4809525504,-0.56,Normal,Physical(Passive),0.26,Non taxable
+,275290,KODEX MSCI Value,2017/07/11,SAMSUNG ASSET,4.91,MSCI Korea IMI Enhanced Value Capped,1.74,7020857189,-0.52,Low,Physical(Passive),0.26,Non taxable
+,251350,KODEX MSCI World,2016/08/17,SAMSUNG ASSET,29.17,MSCI World,1.39,362434440987,0.09,Low,Physical(Passive),0.3,Dividend Income Tax(Foreign Stock Investment ETF)
+,266360,KODEX Media & Entertainment,2017/03/28,SAMSUNG ASSET,-16.49,KRX Media&Entertainment,0.58,39183583303,0.01,High,Physical(Passive),0.45,Non taxable
+,279540,KODEX Min Vol,2017/10/17,SAMSUNG ASSET,8.41,KRX Minimum volatility,0.73,3364509818,0,Low,Physical(Passive),0.26,Non taxable
+,244620,KODEX Momentum Plus,2016/05/13,SAMSUNG ASSET,26.58,FnGuide Momentum Plus Index,0.43,8892208986,-0.07,High,Physical(Passive),0.3,Non taxable
+,321410,KODEX Multi-Asset High Income(H),2019/06/05,SAMSUNG ASSET,4.55,Morningstar Multi-Asset High Income 10% Capped Index,1.49,4760088685,0.1,Low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,244660,KODEX Quality Plus,2016/05/13,SAMSUNG ASSET,11.37,FnGuide Quality Plus Index,0.53,4503101196,0.04,Low,Physical(Passive),0.3,Non taxable
+,276990,KODEX Robo ETF-SYNTH,2017/08/17,SAMSUNG ASSET,1.85,ROBO Global Robotics & Automation UCITS Price Return Index,0.67,27584974974,-0.21,Normal,Synthetic(Passive),0.26,Dividend income tax(tax on holding period)
+,269420,KODEX S&P GINFRA-SYNTH,2017/05/16,SAMSUNG ASSET,13.24,S&P Global Infrastructure Index,0.37,25369931669,-0.39,Normal,Synthetic(Passive),0.22,Dividend income tax(tax on holding period)
+,463690,KODEX S&P500 Communication Services,2023/08/01,SAMSUNG ASSET,0,S&P Communication Services Select Sector Index(Price Return),0.3,12901060437,-0.41,Normal,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,453660,KODEX S&P500 Consumer Discretionary,2023/03/21,SAMSUNG ASSET,19.12,S&P Consumer Discretionary Select Sector Index(Price Return),0.29,11040119091,-0.22,Normal,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,453630,KODEX S&P500 Consumer Staples,2023/03/21,SAMSUNG ASSET,12.55,S&P Consumer Staples Select Sector Index(Price Return),0.55,10936122795,-0.28,Low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,453650,KODEX S&P500 Financial,2023/03/21,SAMSUNG ASSET,34.52,S&P Financial Select Sector Index(Price Return),0.23,13464465928,-0.06,Low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,219480,KODEX S&P500 Futures(H),2015/05/29,SAMSUNG ASSET,22.15,S&P 500 Futures Total Return Index,0.56,142924771698,-0.14,Low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,453640,KODEX S&P500 Health Care,2023/03/21,SAMSUNG ASSET,19.48,S&P Health Care Select Sector Index(Price Return),0.24,17986983824,0.12,Low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,463680,KODEX S&P500 Technology,2023/08/01,SAMSUNG ASSET,0,S&P Technology Select Sector Index(Price Return),0.18,17223501174,-0.21,Normal,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,463640,KODEX S&P500 Utilities,2023/08/01,SAMSUNG ASSET,0,S&P Utilities Select Sector Index(Price Return),0.44,29166851809,-0.47,High,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,449180,KODEX S&P500(H),2022/12/02,SAMSUNG ASSET,22.13,S&P 500,0.23,252514039163,-0.18,Low,Physical(Passive),0.009,Dividend income tax(tax on holding period)
+,379800,KODEX S&P500TR,2021/04/09,SAMSUNG ASSET,35.8,S&P 500 Total Return Index,0.17,1409251338673,-0.11,Low,Physical(Passive),0.009,Dividend income tax(tax on holding period)
+,091160,KODEX SEMICON,2006/06/27,SAMSUNG ASSET,39.11,KRX Semicon,0.38,578898571409,-0.2,Very high,Physical(Passive),0.45,Non taxable
+,144600,KODEX SILVER FUTURES(H),2011/07/18,SAMSUNG ASSET,18.68,S&P GSCI Silver Index(TR),1.19,78353352431,-0.47,Very high,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,117680,KODEX STEELS,2009/10/30,SAMSUNG ASSET,-3.77,KRX Steels,1.13,22719543525,-0.01,Very high,Physical(Passive),0.45,Non taxable
+,185680,KODEX SYNTH-US BIO,2013/10/31,SAMSUNG ASSET,17.24,S&P Biotechnology Select Industry Index,0.34,18642101283,-0.56,Very high,Synthetic(Passive),0.21,Dividend income tax(tax on holding period)
+,218420,KODEX SYNTH-US Energy,2015/04/28,SAMSUNG ASSET,22.31,S&P Select Sector Energy Index,0.14,50938402580,-0.16,High,Synthetic(Passive),0.21,Dividend income tax(tax on holding period)
+,200030,KODEX SYNTH-US INDUSTRIAL,2014/06/12,SAMSUNG ASSET,24.23,S&P Select Sector Industrial Index,0.11,14509579233,-0.31,Low,Synthetic(Passive),0.21,Dividend income tax(tax on holding period)
+,213610,KODEX Sams Value,2015/01/08,SAMSUNG ASSET,-3.18,WISE Samsung Group Value Index,0.36,89136768673,-0.06,Normal,Physical(Passive),0.09,Non taxable
+,102780,KODEX Samsung,2008/05/21,SAMSUNG ASSET,0.16,Samsung Group,0.5,1402689182250,-0.24,Normal,Physical(Passive),0.22,Non taxable
+,305720,KODEX Secondary Battery Industry,2018/09/12,SAMSUNG ASSET,-36.19,FnGuide Secondary Battery Industry Index,0.45,1171353427630,0.01,Very high,Physical(Passive),0.46,Non taxable
+,462330,KODEX Secondary Battery Industry 2X,2023/07/04,SAMSUNG ASSET,0,FnGuide Secondary Battery Industry Index,3.2,201687652147,-0.59,Very high,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,102970,KODEX Securities,2008/05/29,SAMSUNG ASSET,17.27,KRX Securities,1.46,38951076508,-0.33,High,Physical(Passive),0.45,Non taxable
+,138920,KODEX Soybeans Futures(H),2011/03/15,SAMSUNG ASSET,-17.08,S&P GSCI Soybeans Index(TR),1.32,7260108623,0.33,Normal,Physical(Passive),0.6,Dividend income tax(tax on holding period)
+,308620,KODEX T-note Futures,2018/10/19,SAMSUNG ASSET,2.96,S&P 10-Year U.S. Treasury Note Futures KRW(ER),1.83,53956620172,-0.13,Very low,Physical(Passive),0.09,Dividend income tax(tax on holding period)
+,114260,KODEX TBOND,2009/07/29,SAMSUNG ASSET,4.22,MKF TB Index (Total Return),0.1,363231326960,0,Very low,Physical(Passive),0.15,Dividend income tax(tax on holding period)
+,433970,KODEX TDF 2030 ACTIVE,2022/06/30,SAMSUNG ASSET,13.39,Samsung Korea Target Date 2030 Index (Price Return),2.28,12769233513,-0.09,Very low,Physical(Active),0.2,Dividend income tax(tax on holding period)
+,433980,KODEX TDF 2040 ACTIVE,2022/06/30,SAMSUNG ASSET,17.09,Samsung Korea Target Date 2040 Index (Price Return),3.04,12797037496,-0.13,Very low,Physical(Active),0.25,Dividend income tax(tax on holding period)
+,434060,KODEX TDF 2050 ACTIVE,2022/06/30,SAMSUNG ASSET,20.01,Samsung Korea Target Date 2050 Index (Price Return),3.88,78311350156,-0.14,Very low,Physical(Active),0.3,Dividend income tax(tax on holding period)
+,140710,KODEX TRANSPORTATION,2011/04/26,SAMSUNG ASSET,6.34,KRX Transportation,0.8,12102249069,-0.25,High,Physical(Passive),0.45,Non taxable
+,329650,KODEX TRF3070,2019/07/04,SAMSUNG ASSET,13.62,FnGuide TRF 3070 Index,0.94,164467173846,0.08,Very low,Physical(Passive),0.24,Dividend income tax(tax on holding period)
+,329660,KODEX TRF5050,2019/07/04,SAMSUNG ASSET,18.2,FnGuide TRF 5050 Index,1.17,32777746781,0.28,Very low,Physical(Passive),0.17,Dividend income tax(tax on holding period)
+,329670,KODEX TRF7030,2019/07/04,SAMSUNG ASSET,23.4,FnGuide TRF 7030 Index,2.67,35947984194,0.27,Very low,Physical(Passive),0.1,Dividend income tax(tax on holding period)
+,475080,KODEX TSLA IncomePremium Balanced Active,2024/01/23,SAMSUNG ASSET,0,KEDI Tesla Income Premium Balanced Index(TR),4.07,169349386228,0.28,Low,Physical(Active),0.39,Dividend income tax(tax on holding period)
+,459560,KODEX Tesla Value Chain FactSet,2023/06/08,SAMSUNG ASSET,23,FactSet TSLA Value Chain Index(PR),4.87,9424558820,0.23,High,Physical(Passive),0.18,Dividend income tax(tax on holding period)
+,315930,KODEX Top5PlusTR,2019/01/22,SAMSUNG ASSET,44.48,FnGuide TOP 5 Plus Total Return Index,0.64,1226613010450,-0.25,High,Physical(Passive),0.145,Dividend income tax(tax on holding period)
+,314250,KODEX U.S. Big Tech 10(H),2019/01/10,SAMSUNG ASSET,45.58,NYSE U.S. Big TECH 10 INDEX,0.3,567518119240,-0.41,High,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,485540,KODEX US AI TECH TOP10,2024/06/25,SAMSUNG ASSET,0,KEDI US AI Tech TOP10 Index(PR),0.06,30188509238,-0.13,Very high,Physical(Passive),0.3,Dividend income tax(tax on holding period)
+,483280,KODEX US AI TECH TOP10+15% PREMIUM,2024/05/28,SAMSUNG ASSET,0,KEDI US AI Tech TOP10+15% Premium Index(Total Return),2.04,231513107782,-0.22,Normal,Physical(Passive),0.39,Dividend income tax(tax on holding period)
+,437080,KODEX US Bond ESG Active(H),2022/08/09,SAMSUNG ASSET,2.97,Bloomberg MSCI US Aggregate 2bn ex Securitized SRI Capped Index(Total Return),1.87,80062785597,0.03,Very low,Physical(Active),0.18,Dividend income tax(tax on holding period)
+,419420,KODEX US Clean Energy Nasdaq,2022/03/22,SAMSUNG ASSET,-22.95,Nasdaq Clean Edge Green Energy Index (Price Return),0.47,9637499820,-0.7,Very high,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,441640,KODEX US Dividend Premium Active,2022/09/27,SAMSUNG ASSET,12.69,S&P 500,7.33,67179667323,-0.04,Very low,Physical(Active),0.19,Dividend income tax(tax on holding period)
+,483290,KODEX US Dividend+10% Premium Dow Jones,2024/05/28,SAMSUNG ASSET,0,Dow Jones U.S. Dividend 100 10% Premium Covered Call Index(Total Return),0.62,41698703493,-0.03,Low,Physical(Passive),0.39,Dividend income tax(tax on holding period)
+,428560,KODEX US ETF Industry Top10 Indxx,2022/05/17,SAMSUNG ASSET,27.07,Indxx US ETF Industry Top10 Index(Price Return),0.3,8364504362,-0.15,Low,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,411420,KODEX US Metaverse Nasdaq Active,2021/12/22,SAMSUNG ASSET,51.46,Nasdaq CB Insights Metaverse US Index (Price Return),10.24,56317827518,-0.4,High,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,409810,KODEX US NASDAQ100 Futures Inverse(H),2021/12/09,SAMSUNG ASSET,-21.5,NASDAQ 100,0.67,16905655903,0.24,Normal,Physical(Passive),0.3,Dividend income tax(tax on holding period)
+,409820,KODEX US NASDAQ100 Leverage(SYNTH H),2021/12/09,SAMSUNG ASSET,64.53,NASDAQ 100,0.6,206887452747,-0.57,Very high,Synthetic(Passive),0.3,Dividend income tax(tax on holding period)
+,449190,KODEX US NASDAQ100(H),2022/12/02,SAMSUNG ASSET,29.57,NASDAQ 100,0.24,231377935934,-0.27,Normal,Physical(Passive),0.009,Dividend income tax(tax on holding period)
+,379810,KODEX US NASDAQ100TR,2021/04/09,SAMSUNG ASSET,43.15,NASDAQ-100 Total Return Index,0.13,1080534545046,-0.23,Low,Physical(Passive),0.009,Dividend income tax(tax on holding period)
+,304940,KODEX US Nasdaq100 Futures(H),2018/08/30,SAMSUNG ASSET,29.03,NASDAQ 100,0.65,123604848409,-0.14,Normal,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,352560,KODEX US Real Estate ETF(H),2020/05/13,SAMSUNG ASSET,-1.36,Dow Jones U.S. Real Estate PR Index,0.96,21275120574,0.11,Normal,Physical(Passive),0.09,Dividend Income Tax(Separate Taxation Real Estate ETF)
+,280930,KODEX US Russell 2000(H),2017/11/09,SAMSUNG ASSET,6.21,FTSE Russell 2000 Index,1.13,24666943490,-0.15,High,Physical(Passive),0.41,Dividend income tax(tax on holding period)
+,276970,KODEX US S&P DCC-SYNTH(H),2017/08/10,SAMSUNG ASSET,-9.53,S&P500 Dividend Aristocrats Covered Call(7.2% Premium) Index,0.14,37999577386,0.37,Very low,Synthetic(Passive),0.26,Dividend income tax(tax on holding period)
+,390390,KODEX US Semiconductor MV,2021/06/30,SAMSUNG ASSET,88.13,MVIS US Listed Semiconductor 25 Index,0.19,552542234037,-0.23,Very high,Physical(Passive),0.09,Dividend income tax(tax on holding period)
+,390400,KODEX US Smart Mobility S&P,2021/06/30,SAMSUNG ASSET,-5.94,S&P Kensho Smart Transportation,0.59,8884144515,-0.23,High,Physical(Passive),0.09,Dividend income tax(tax on holding period)
+,481060,KODEX US T-Bond 30Y+12% Premium(SYNTH H),2024/04/30,SAMSUNG ASSET,0,Bloomberg U.S.Treasury 20+ Year(TLT)+ 12% Premium Covered Call index(TR),0.27,114026142305,-0.14,Low,Synthetic(Passive),0.25,Dividend income tax(tax on holding period)
+,484790,KODEX US Treasury 20+ Yr Bond Active(H),2024/06/18,SAMSUNG ASSET,0,KEDI-KAP US Treasury 20+ Index(TR),1.47,198469771224,0,Low,Physical(Active),0.015,Dividend income tax(tax on holding period)
+,261240,KODEX USD Futures,2016/12/27,SAMSUNG ASSET,11.95,F-USDKRW,0.46,57887292170,-0.06,Very low,Physical(Passive),0.21,Dividend income tax(tax on holding period)
+,261270,KODEX USD Futures Inverse,2016/12/27,SAMSUNG ASSET,-6.46,F-USDKRW,0.43,44833829681,-0.08,Very low,Physical(Passive),0.41,Dividend income tax(tax on holding period)
+,261260,KODEX USD Futures Inverse2X,2016/12/27,SAMSUNG ASSET,-15.85,F-USDKRW,0.86,159869756368,-0.12,Normal,Physical(Passive),0.41,Dividend income tax(tax on holding period)
+,261250,KODEX USD Futures Leverage,2016/12/27,SAMSUNG ASSET,20.38,F-USDKRW,1.04,34512131345,-0.12,Normal,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,455030,KODEX USD SOFR Active(SYNTH),2023/04/04,SAMSUNG ASSET,12.56,Bloomberg SOFR Daily Total Return Index,0.23,354206655558,0.05,Very low,Synthetic(Active),0.15,Dividend income tax(tax on holding period)
+,304670,KODEX Ultra T-bond Futures Inverse(H),2018/09/12,SAMSUNG ASSET,11.56,S&P Ultra T-Bond Futures Index(ER),1.4,6756709125,0.26,Normal,Physical(Passive),0.26,Dividend income tax(tax on holding period)
+,304660,KODEX Ultra T-bond Futures(H),2018/09/12,SAMSUNG ASSET,-9.26,S&P Ultra T-Bond Futures Index(ER),0.45,326576891299,-0.24,Normal,Physical(Passive),0.26,Dividend income tax(tax on holding period)
+,244670,KODEX Value Plus,2016/05/13,SAMSUNG ASSET,4.88,FnGuide Value Plus Index,0.49,4248299289,-0.02,Normal,Physical(Passive),0.3,Non taxable
+,271050,KODEX WTI Crude Oil Futures Inverse(H),2017/06/13,SAMSUNG ASSET,-22.34,S&P GSCI Crude Oil Index ER,1.11,40549950072,0.24,Very high,Physical(Passive),0.35,Dividend income tax(tax on holding period)
+,261220,KODEX WTIOILF(H),2016/12/27,SAMSUNG ASSET,24.12,S&P GSCI Crude Oil Index ER,0.82,57588481887,-0.05,Very high,Physical(Passive),0.31,Dividend income tax(tax on holding period)
+,448330,KODEX Wise Samsung Electronics Balanced,2022/11/29,SAMSUNG ASSET,7.16,Wise Samsung Electronics Balanced Index,0.44,47414009443,-0.3,Very low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,468380,KODEX iShares US HY Active,2023/10/19,SAMSUNG ASSET,0,ICE BofAML US HY Constrained Index(Total Return),3.23,25087753330,0.09,Very low,Physical(Active),0.15,Dividend income tax(tax on holding period)
+,468630,KODEX iShares US IG CorporateBond Active,2023/10/19,SAMSUNG ASSET,0,Markit iBoxx USD Liquid Investment Grade Index(Total Return),1.79,15087740572,-0.07,Very low,Physical(Active),0.1,Dividend income tax(tax on holding period)
+,468370,KODEX iShares US TIPS Bond Active,2023/10/19,SAMSUNG ASSET,0,ICE U.S. Treasury Inflation Linked Bond Index(Total Return),0.76,8402579763,0.04,Very low,Physical(Active),0.1,Dividend income tax(tax on holding period)
+,153270,KOSEF 100,2012/02/28,KIWOOM AM,13.7,KOSPI 100,0.79,7545360370,0.1,Normal,Physical(Passive),0.195,Non taxable
+,148070,KOSEF 10YKTB,2011/10/20,KIWOOM AM,2.51,KIS 10Y KTB Index(Total Return),0.22,415823240989,-0.12,Very low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,167860,KOSEF 10YKTB LEVERAGE,2012/10/30,KIWOOM AM,3.45,KIS 10Y KTB Index(Total Return),1.14,14140805333,-0.21,Low,Physical(Passive),0.3,Dividend income tax(tax on holding period)
+,069660,KOSEF 200,2002/10/14,KIWOOM AM,12.64,KOSPI 200,0.71,334518553194,-0.37,Normal,Physical(Passive),0.13,Non taxable
+,253240,KOSEF 200 Futures Inverse,2016/09/12,KIWOOM AM,-10.45,F-KOSPI 200,0.3,2612456876,0,Normal,Physical(Passive),0.46,Dividend income tax(tax on holding period)
+,253230,KOSEF 200 Futures Inverse 2X,2016/09/22,KIWOOM AM,-23.99,F-KOSPI 200,0.54,5379070193,0.1,Very high,Physical(Passive),0.46,Dividend income tax(tax on holding period)
+,253250,KOSEF 200 Futures Leverage,2016/09/12,KIWOOM AM,22.21,F-KOSPI 200,0.43,9400652599,0.1,Very high,Physical(Passive),0.46,Dividend income tax(tax on holding period)
+,294400,KOSEF 200 TR,2018/04/23,KIWOOM AM,14.96,KOSPI 200 TR,0.17,715395280811,-0.35,Normal,Physical(Passive),0.012,Dividend income tax(tax on holding period)
+,483020,KOSEF AI Medical Technology,2024/05/28,KIWOOM AM,0,FnGuide AI medical technology Index,2.13,10996289118,-0.04,Very high,Physical(Passive),0.49,Non taxable
+,104520,KOSEF Bluechip,2008/07/29,KIWOOM AM,6.51,MKF Blue Chip,0.6,9919608196,-0.02,Normal,Physical(Passive),0.4,Non taxable
+,445950,KOSEF China A50 Connect -1X MSCI(SynthH),2022/10/25,KIWOOM AM,2.17,MSCI China A50 Connect Index,0.25,5022766962,0.89,Normal,Synthetic(Passive),0.35,Dividend income tax(tax on holding period)
+,445930,KOSEF China A50 Connect 2X MSCI(Synth H),2022/10/25,KIWOOM AM,-13.32,MSCI China A50 Connect Index,0.47,4016211881,-2.4,Very high,Synthetic(Passive),0.35,Dividend income tax(tax on holding period)
+,441330,KOSEF China A50 Connect MSCI,2022/09/20,KIWOOM AM,1.43,MSCI China A50 Connect Index,0.74,9064804249,-1.19,Normal,Physical(Passive),0.2,Dividend income tax(tax on holding period)
+,454180,KOSEF China Domestic Consumer Top CSI,2023/04/04,KIWOOM AM,-7.42,CSI SH-HK-SZ Consumer Top Index,2.03,4465259035,-1.71,Normal,Physical(Passive),0.42,Dividend income tax(tax on holding period)
+,130730,KOSEF Enhanced Cash,2010/07/29,KIWOOM AM,0.15,MK Money Market Index(Total Return),0.06,102150731922,0.03,Very low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,460280,KOSEF Genetic Innovation Technology,2023/06/27,KIWOOM AM,-13.09,FnGuide Genetic Innovation Technology Index,0.59,6650043645,-0.02,Very high,Physical(Passive),0.4,Non taxable
+,411860,KOSEF Germany DAX,2021/12/22,KIWOOM AM,16.28,DAX Index(PR),0.95,6020421361,0.53,Low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,473490,KOSEF Global AI Semiconductor,2023/12/21,KIWOOM AM,0,Solactive Global AI Semiconductor Index (Price Return),0.46,42047194321,-0.86,Very high,Physical(Passive),0.4,Dividend income tax(tax on holding period)
+,394340,KOSEF Global Digital Economy,2021/07/20,KIWOOM AM,28.84,MSCI ACWI IMI Digital Economy & Metaverse ESG Filtered,5.45,5416301763,-2.05,Normal,Physical(Passive),0.31,Dividend income tax(tax on holding period)
+,394350,KOSEF Global Future Mobility,2021/07/20,KIWOOM AM,4.02,MSCI ACWI IMI Future Mobility ESG Filtered Price Return Index,5.9,29855332561,0.49,High,Physical(Passive),0.31,Dividend income tax(tax on holding period)
+,473500,KOSEF Global Power Semiconductor,2023/12/21,KIWOOM AM,0,Solactive Global Power Semiconductor Index (Price Return),1.25,5591648399,-1.28,Very high,Physical(Passive),0.4,Dividend income tax(tax on holding period)
+,104530,KOSEF H Dividend,2008/07/29,KIWOOM AM,22.08,MKF Wealth High Dividend,2.63,12439346895,-0.25,Normal,Physical(Passive),0.4,Non taxable
+,469790,KOSEF K-TechTOP10,2023/10/31,KIWOOM AM,0,Solactive K-TechTOP10 Index(PR),0.82,3692341337,-0.23,Normal,Physical(Passive),0.39,Non taxable
+,467540,KOSEF KOSDAQ Global,2023/10/24,KIWOOM AM,0,KOSDAQ Global Index,4.25,8814312352,0.14,Very high,Physical(Passive),0.07,Non taxable
+,316670,KOSEF KOSDAQ150,2019/01/22,KIWOOM AM,2.43,KOSDAQ 150,0.18,14682200509,-0.7,Very high,Physical(Passive),0.15,Non taxable
+,291620,KOSEF KOSDAQ150F Inverse,2018/03/16,KIWOOM AM,-11.3,F-KOSDAQ150 Index,0.22,3417701219,0.41,Very high,Physical(Passive),0.09,Dividend income tax(tax on holding period)
+,291630,KOSEF KOSDAQ150F Leverage,2018/03/16,KIWOOM AM,0.78,F-KOSDAQ150 Index,1.88,2666608833,-0.64,Very high,Physical(Passive),0.09,Dividend income tax(tax on holding period)
+,100910,KOSEF KRX100,2008/01/23,KIWOOM AM,13.01,KRX 100,0.69,14409993418,-0.15,Normal,Physical(Passive),0.23,Non taxable
+,114470,KOSEF KTB,2009/07/31,KIWOOM AM,0.93,KTB INDEX (Gross Price),0.16,16378194730,-0.05,Very low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,122260,KOSEF MSB,2010/01/14,KIWOOM AM,1,MK MSB Index(Total Return),0.06,40638455911,0.02,Very low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,331910,KOSEF Mid Small Cap,2019/08/13,KIWOOM AM,7.81,FnGuide-KWAM Smart Mid Small Cap Index,0.52,7711072850,0.09,Normal,Physical(Passive),0.3,Non taxable
+,453080,KOSEF NASDAQ100(H),2023/03/14,KIWOOM AM,31.39,NASDAQ 100,1.59,19485205687,-0.11,Normal,Physical(Passive),0.04,Dividend income tax(tax on holding period)
+,449770,KOSEF S&P500,2022/12/20,KIWOOM AM,34.25,S&P 500,0.46,51667890582,-0.17,Low,Physical(Passive),0.021,Dividend income tax(tax on holding period)
+,449780,KOSEF S&P500(H),2022/12/20,KIWOOM AM,24.81,S&P 500,1.46,11178633820,-0.1,Low,Physical(Passive),0.04,Dividend income tax(tax on holding period)
+,450120,KOSEF SK Group Leaders,2022/12/23,KIWOOM AM,24.27,FnGuide SK Group Leaders Index,0.87,6143882916,0.12,High,Physical(Passive),0.14,Non taxable
+,200250,KOSEF SYNTH-INDIA,2014/06/26,KIWOOM AM,32.88,Nifty 50 Index,1.26,233009727857,0.52,Low,Synthetic(Passive),0.29,Dividend income tax(tax on holding period)
+,430500,KOSEF TIPS KIS,2022/05/31,KIWOOM AM,6.79,KIS TIPS Index (Total Return),0.41,11214545615,-0.06,Very low,Physical(Passive),0.15,Dividend income tax(tax on holding period)
+,483030,KOSEF US Blockbuster Biotech Drugs Plus,2024/05/28,KIWOOM AM,0,Solactive Blockbuster Biotech Drugs Index(PR),0.36,11397972160,0.37,Low,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,373790,KOSEF US LVDA NASDAQ,2020/12/24,KIWOOM AM,8.63,Nasdaq US Low Volatility Dividend Achievers Index,0.68,7112495853,-0.46,Low,Physical(Passive),0.4,Dividend income tax(tax on holding period)
+,474800,KOSEF US Oil&Energy,2024/01/16,KIWOOM AM,0,MSCI US IMI Energy 25/50 Index(Price Return),0.79,27410886842,-0.08,Normal,Physical(Passive),0.29,Dividend income tax(tax on holding period)
+,426330,KOSEF USA ETF Industry STOXX,2022/04/26,KIWOOM AM,24.14,STOXX USA ETF Industry Index (KRW),0.53,4362683982,-0.56,Normal,Physical(Passive),0.52,Dividend income tax(tax on holding period)
+,138230,KOSEF USD Futures,2011/02/24,KIWOOM AM,7.07,F-USDKRW,0.58,34692089146,-0.06,Very low,Physical(Passive),0.37,Dividend income tax(tax on holding period)
+,230480,KOSEF USD Futures Inverse 2X,2015/11/16,KIWOOM AM,-15.75,F-USDKRW,0.87,13186100082,-0.02,Normal,Physical(Passive),0.64,Dividend income tax(tax on holding period)
+,225800,KOSEF USD Futures Leverage,2015/08/10,KIWOOM AM,19.86,F-USDKRW,0.92,16927289311,-0.08,Normal,Physical(Passive),0.64,Dividend income tax(tax on holding period)
+,139660,KOSEF USD Inverse Futures,2011/04/01,KIWOOM AM,-6.31,F-USDKRW,0.51,8695999314,0.11,Very low,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,462900,KoAct Bio Healthcare Active,2023/08/03,Samsung Active Asset Management,0,iSelect Bio healthcare PR Index,10.94,144797353336,-0.02,Very high,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,476850,KoAct Dividend Growth Active,2024/02/27,Samsung Active Asset Management,0,KOSPI,9.56,146635977868,-0.33,Normal,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,471040,KoAct Global AI&Robotics Active,2023/11/21,Samsung Active Asset Management,0,iSelect Global AI&Robotics PR Index,13.29,28005966758,-0.4,High,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,475070,KoAct Global Climate Tech Infra Active,2024/01/18,Samsung Active Asset Management,0,Solactive Global Climate Technology Infrastructure PR Index,10.36,32591181947,-1.08,Very high,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,482030,KoAct Tech materials supply chain Active,2024/05/14,Samsung Active Asset Management,0,iSelect Tech materials supply chain index,9.79,8851239370,-0.35,Very high,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,403790,MIDAS KoreaStock Active,2021/10/13,Midas asset,13.16,KOSPI,2.61,50810735444,-0.25,Normal,Physical(Active),0.62,Dividend income tax(tax on holding period)
+,438740,MIDAS KoreaStock Mid/Small-Cap Active,2022/08/17,Midas asset,3.38,KOSPI MidCap,12.05,8486429906,-0.05,Normal,Physical(Active),0.62,Dividend income tax(tax on holding period)
+,465780,Mighty 26-09 Special Bond Active,2023/09/21,DB ASSET,0,KAP 26-09 Special Bond Index(TR),0.14,76661004431,0.05,Very low,Physical(Active),0.06,Dividend income tax(tax on holding period)
+,442260,Mighty Dynamic Quant Active,2022/10/25,DB ASSET,15.57,KOSPI 200,2.66,18954531110,0.04,Normal,Physical(Active),0.3,Dividend income tax(tax on holding period)
+,159800,Mighty K100,2012/07/05,DB ASSET,14.69,KOSPI 100,1.07,15373612920,0.09,Very high,Physical(Passive),0.39,Non taxable
+,140950,POWER K100,2011/05/03,KAIM,12.78,KOSPI 100,0.75,14017743919,-0.44,Very high,Physical(Passive),0.155,Non taxable
+,152870,POWER K200,2012/02/13,KAIM,12.89,KOSPI 200,0.71,29089215801,-0.45,Normal,Physical(Passive),0.145,Non taxable
+,192720,Power LVHD,2014/02/20,KAIM,15.17,KOSPI 200 Low Volatility High Dividend Index,1.27,7512288729,-0.29,Normal,Physical(Passive),0.23,Non taxable
+,295040,SOL 200 TR,2018/04/23,SHINHAN AMC,14.53,KOSPI 200 TR,0.12,225507410876,-0.65,Normal,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,411540,SOL 200 Top10,2021/12/09,SHINHAN AMC,2.25,KOSPI 200 Top 10 Index,0.91,12406853118,-0.08,High,Physical(Passive),0.15,Non taxable
+,469820,SOL 24-12 Credit Bond Active,2023/11/07,SHINHAN AMC,0,KAP 24-12 Credit Bond(AA- or higher) Index(TR),0.06,159165833032,0.02,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,462540,SOL 25-09 Credit Bond Active,2023/08/08,SHINHAN AMC,0,KAP 25-09 Credit Bond(AA- or higher) Index(TR),0.11,126598671114,0.04,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,464600,SOL Automobile Materials & Equipment,2023/08/22,SHINHAN AMC,0,FnGuide Automobile Materials & Equipment Index(PR),0.34,17613955789,-0.26,High,Physical(Passive),0.45,Non taxable
+,466930,SOL Automobile TOP3 Plus,2023/10/05,SHINHAN AMC,0,FnGuide Automobile TOP3 Plus Index(PR),2.1,41002033703,-0.32,Very high,Physical(Passive),0.45,Non taxable
+,415760,SOL China Fostering Industry Active,2022/01/13,SHINHAN AMC,-24.91,STAR 50 Index(Price Return),0.48,6160173721,-3.13,High,Synthetic(Active),0.55,Dividend income tax(tax on holding period)
+,413220,SOL China Photovoltaic CSI(Synthetic),2021/12/22,SHINHAN AMC,-42.84,CSI Photovoltaic Industry Index(PR),0.34,3891987282,-2.62,Very high,Synthetic(Passive),0.5,Dividend income tax(tax on holding period)
+,459370,SOL EUA Inverse ICE(H),2023/06/20,SHINHAN AMC,20.27,ICE EUA Carbon Futures Custom Roll Index(Excess Return),0.75,6335228548,0,Very high,Physical(Passive),0.55,Dividend income tax(tax on holding period)
+,484880,SOL Financial Group Plus High Dividend,2024/06/25,SHINHAN AMC,0,fnGuide Financial Group Plus High Dividend Index(PR),9.48,8161150396,-0.11,Very low,Physical(Passive),0.3,Non taxable
+,400590,SOL ICE Global Carbon,2021/09/30,SHINHAN AMC,-1.78,ICE Global Carbon Futures Index(Excess Return),0.18,16158511897,0.08,Very high,Synthetic(Passive),0.55,Dividend income tax(tax on holding period)
+,429980,SOL K-Global EV&Battery Active,2022/06/14,SHINHAN AMC,5.16,FactSet Global Electric Vehicle and Rechargeable Battery Korea-Tilted Index(PR),4.3,6018138623,-0.27,Normal,Physical(Active),0.55,Dividend income tax(tax on holding period)
+,429990,SOL K-Global Platform&Metaverse Active,2022/06/14,SHINHAN AMC,27.75,Dow Jones Internet Korea Tilted Index(PR),10.68,6799422604,-1.83,Normal,Physical(Active),0.55,Dividend income tax(tax on holding period)
+,423170,SOL K-Global Semiconductor Active,2022/04/12,SHINHAN AMC,68.95,S&P Global Semiconductor Korea Tilted Index(PR),9.27,57788352007,-0.28,High,Physical(Active),0.55,Dividend income tax(tax on holding period)
+,444200,SOL KEDI Mega Tech Active,2022/10/18,SHINHAN AMC,23.72,KEDI Mega Tech Index(PR),7.79,11754152496,0.02,High,Physical(Active),0.55,Dividend income tax(tax on holding period)
+,363510,SOL KIS MSB,2020/09/09,SHINHAN AMC,3.42,KIS Short Term MSB(Total Return),0.04,33709939184,0.02,Very low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,450910,SOL KOSDAQ 150,2023/01/31,SHINHAN AMC,2.69,KOSDAQ 150,0.33,25661177496,-0.08,Very high,Physical(Passive),0.15,Non taxable
+,404650,SOL KRX Climate Change Solutions,2021/10/29,SHINHAN AMC,-3.95,KRX Climate Change Solutions,0.55,7345350316,-0.75,Very high,Physical(Passive),0.15,Non taxable
+,292500,SOL KRX300,2018/03/26,SHINHAN AMC,13.31,KRX 300,0.64,12825125926,-0.77,Normal,Physical(Passive),0.05,Non taxable
+,438570,SOL KTB 10Y,2022/09/06,SHINHAN AMC,2.67,KAP Gov't Bond 10Y Index(Total Return),0.19,126153267588,-0.07,Very low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,474390,SOL KTB 30Y Active,2024/01/16,SHINHAN AMC,0,KAP Gov't Bond 30Y Index TR,0.66,10087584263,0.09,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,438560,SOL KTB 3Y,2022/09/06,SHINHAN AMC,0.99,KAP Gov't Bond 3Y Index(Total Return),0.05,25891486277,-0.13,Very low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,484890,SOL MMF Active,2024/06/25,SHINHAN AMC,0,KAP Mark-to-market MMF Index(TR),0,125054331069,0.02,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,464610,SOL Medical Device Materials&Equipment,2023/08/22,SHINHAN AMC,0,FnGuide Medical Device Materials & Equipment Index(PR),0.37,9177651379,-0.11,High,Physical(Passive),0.45,Non taxable
+,476030,SOL NASDAQ100,2024/03/12,SHINHAN AMC,0,NASDAQ 100,0.16,20275871714,-0.23,Low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,400580,SOL S&P EUA(H),2021/09/30,SHINHAN AMC,-24.04,S&P GSCI Carbon Emission Allowances(EUA)(EUR)ER,0.57,9968995290,0.31,Very high,Physical(Passive),0.55,Dividend income tax(tax on holding period)
+,433330,SOL S&P500,2022/06/21,SHINHAN AMC,33.84,S&P 500,0.14,93101409055,-0.13,Low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,399110,SOL S&P500ESG,2021/09/14,SHINHAN AMC,35.32,S&P500 ESG(PR),0.28,40775403038,-0.05,Low,Physical(Passive),0.15,Dividend income tax(tax on holding period)
+,455860,SOL SecondaryBattery Materials Equipment,2023/04/25,SHINHAN AMC,-34.23,FnGuide Secondary Battery Materials & Equipment(PR),0.42,177621760181,-0.09,Very high,Physical(Passive),0.45,Non taxable
+,475310,SOL Semiconductor Back-End Process,2024/02/14,SHINHAN AMC,0,FnGuide Semiconductor Back-End Process Index(PR),1.02,15335039982,-0.03,Very high,Physical(Passive),0.45,Non taxable
+,475300,SOL Semiconductor Front-End Process,2024/02/14,SHINHAN AMC,0,FnGuide Semiconductor Front-End Process Index(PR),0.29,13990497072,0.06,Very high,Physical(Passive),0.45,Non taxable
+,455850,SOL Semiconductor Materials & Equipment,2023/04/25,SHINHAN AMC,35.43,FnGuide Semiconductor Materials & Equipment Index(PR),0.36,399885078663,0.05,Very high,Physical(Passive),0.45,Non taxable
+,466920,SOL Shipbuilding TOP3 Plus,2023/10/05,SHINHAN AMC,0,FnGuide Shipbuilding TOP3 Plus Index(PR),0.2,195784756792,-0.16,Very high,Physical(Passive),0.45,Non taxable
+,469830,SOL Short Term Money Market Active,2023/11/07,SHINHAN AMC,0,KAP Short Term Money Index,0.06,484102087880,0.03,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,220130,SOL Synth-CSI500(H),2015/06/08,SHINHAN AMC,-16.43,CSI 500 Small Cap Index(Price Return),3.32,3139914109,-1.53,Normal,Synthetic(Passive),0.6,Dividend income tax(tax on holding period)
+,436140,SOL Total Bond Active(AA-Higher),2022/08/09,SHINHAN AMC,6.59,"KAP K-Total Market Bond Index(AA- or higher, Total return)",0.24,841015823622,0.02,Very low,Physical(Active),0.04,Dividend income tax(tax on holding period)
+,479620,SOL US AI Semiconductor Chip Makers,2024/04/16,SHINHAN AMC,0,Solactive US AI Semiconductor Chip Makers Index(PR),0.49,43954882846,-0.63,Very high,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,481180,SOL US AI Software,2024/05/14,SHINHAN AMC,0,KEDI US AI Software Index(PR),0.29,35457935456,-0.42,Normal,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,446720,SOL US Dividend Equity,2022/11/15,SHINHAN AMC,14.99,Dow Jones U.S. Dividend 100 Price Return Index,0.62,573593875676,-0.14,Low,Physical(Passive),0.01,Dividend income tax(tax on holding period)
+,452360,SOL US Dividend Equity(H),2023/03/21,SHINHAN AMC,5.33,Dow Jones U.S. Dividend 100 Price Return Index,0.67,165561038347,-0.11,Low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,447620,SOL US TOP5 Blended 40,2022/11/29,SHINHAN AMC,15.22,Solactive US TOP5 Balanced40 Index,0.71,42356457330,-0.04,Very low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,481190,SOL US Tech Top 10,2024/05/21,SHINHAN AMC,0,Solactive US Tech TOP 10 Custom Index(PR),1.73,78601323779,-0.52,Normal,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,481200,SOL US Tech Top 10 Inverse,2024/05/21,SHINHAN AMC,0,Solactive US Tech TOP 10 Custom Index(PR),1.01,6981089984,0.1,Normal,Synthetic(Passive),0.05,Dividend income tax(tax on holding period)
+,473330,SOL UST 30y 2% OTM BuyWrite(Synthetic),2023/12/27,SHINHAN AMC,0,KEDI US Treasury 20y+ 2% OTM BuyWrite Index(NTR),1.45,166282119705,-0.08,Very low,Synthetic(Passive),0.25,Dividend income tax(tax on holding period)
+,461600,Shinhan SOL US TB 30Y Active(H),2023/07/11,SHINHAN AMC,0,KAP US Treasury 20+ Years Bond Index(PR),4.55,20569389101,0.16,Normal,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,305080,TIGER 10Y U.S. T-NOTE FUTURES,2018/08/30,Mirae Asset,5.32,S&P 10-Year U.S. Treasury Note Futures(ER),1.07,128095645708,-0.12,Very low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,139220,TIGER 200 CONSTRUCTIONS,2011/04/06,Mirae Asset,-6.43,KOSPI 200 Constructions,0.75,16846176158,-0.06,High,Physical(Passive),0.4,Non taxable
+,227560,TIGER 200 CONSUMER STAPLES,2015/09/23,Mirae Asset,14.51,KOSPI 200 Consumer Staples,0.64,8962884445,-0.31,Normal,Physical(Passive),0.4,Non taxable
+,289480,TIGER 200 COVERED CALL ATM,2018/02/09,Mirae Asset,7.72,KOSPI 200 Covered Call ATM Index,0.94,26230424404,-0.25,Low,Physical(Passive),0.38,Dividend income tax(tax on holding period)
+,139290,TIGER 200 DISCRETIONARY,2011/04/06,Mirae Asset,18.23,KOSPI 200 Consumer Discretionary,1.55,7287289344,-0.32,High,Physical(Passive),0.4,Non taxable
+,139250,TIGER 200 ENERGY&,2011/04/06,Mirae Asset,-21.69,KOSPI 200 Energy & Chemicals,0.6,16427366671,-0.03,Very high,Physical(Passive),0.34,Non taxable
+,243890,TIGER 200 ENERGY& LEVERAGE,2016/05/13,Mirae Asset,-43.92,KOSPI 200 Energy & Chemicals,11.54,3135761004,1.12,Very high,Physical(Passive),0.69,Dividend income tax(tax on holding period)
+,252000,TIGER 200 EW,2016/09/20,Mirae Asset,8.47,KOSPI 200 EWI,0.58,5282149841,-0.2,Normal,Physical(Passive),0.21,Non taxable
+,139270,TIGER 200 FINANCIALS,2011/04/06,Mirae Asset,36.33,KOSPI 200 Financials,1.96,13221885163,-0.13,High,Physical(Passive),0.4,Non taxable
+,267770,TIGER 200 FUTURES LEVERAGE,2017/04/25,Mirae Asset,22.33,F-KOSPI 200,0.84,87340011577,0.03,Very high,Physical(Passive),0.022,Dividend income tax(tax on holding period)
+,252710,TIGER 200 Futures Inverse 2X,2016/09/22,Mirae Asset,-24.11,F-KOSPI 200,0.49,83398279829,0.04,Very high,Physical(Passive),0.022,Dividend income tax(tax on holding period)
+,227540,TIGER 200 HEALTH CARE,2015/09/23,Mirae Asset,4.19,KOSPI 200 Health Care,1.69,36962029811,0.09,Very high,Physical(Passive),0.4,Non taxable
+,139230,TIGER 200 HEAVY INDUSTRY,2011/04/06,Mirae Asset,23.62,KOSPI 200 Heavy Industries,0.56,86969754525,0.08,Very high,Physical(Passive),0.34,Non taxable
+,227550,TIGER 200 INDUSTRIALS,2015/09/23,Mirae Asset,7.17,KOSPI 200 Industrials,3.54,3474829606,0,High,Physical(Passive),0.4,Non taxable
+,139260,TIGER 200 IT,2011/04/06,Mirae Asset,12.06,KOSPI 200 IT,0.38,780589375562,-0.28,High,Physical(Passive),0.4,Non taxable
+,243880,TIGER 200 IT LEVERAGE,2016/05/13,Mirae Asset,15.86,KOSPI 200 IT,9.03,33535897421,-0.08,Very high,Physical(Passive),0.63,Dividend income tax(tax on holding period)
+,139240,TIGER 200 STEEL&,2011/04/06,Mirae Asset,-6.26,KOSPI 200 Steels & Materials,1.06,9561688710,-0.1,Very high,Physical(Passive),0.34,Non taxable
+,310960,TIGER 200 TR,2018/11/20,Mirae Asset,14.77,KOSPI 200 TR,0.25,19578371529,-0.32,Normal,Physical(Passive),0.09,Dividend income tax(tax on holding period)
+,315270,TIGER 200CS,2019/01/15,Mirae Asset,-5.54,KOSPI 200 Communication Service,0.84,5269666338,-0.14,High,Physical(Passive),0.4,Non taxable
+,447820,TIGER 24-10 CORPORATE ACTIVE,2022/11/22,Mirae Asset,4.45,"KIS target day index 24-10(Corp, Financial A+, Total Return)",0.1,762113658070,0.03,Very low,Physical(Active),0.1,Dividend income tax(tax on holding period)
+,470260,TIGER 24-12 FINANCIAL,2023/11/21,Mirae Asset,0,"KIS target day index 24-12(Financial between AA+ and AA-, Total Return)",0.15,1553980908697,0.01,Very low,Physical(Passive),0.1,Dividend income tax(tax on holding period)
+,453540,TIGER 25-10 CORPORATE ACTIVE,2023/03/23,Mirae Asset,5.06,"KIS target day index 25-10(Corp, Financial A+, Total Return)",0.14,802897429758,0.01,Very low,Physical(Active),0.1,Dividend income tax(tax on holding period)
+,480260,TIGER 27-04 CORPORATE ACTIVE,2024/04/23,Mirae Asset,0,KIS Corp. 2704 target day index (Total Return),0.17,128029248543,-0.01,Very low,Physical(Active),0.1,Dividend income tax(tax on holding period)
+,476550,TIGER 30Y US TREASURY PREMIUM ACTIVE(H),2024/02/27,Mirae Asset,0,KEDI US Treasury 30Y Weekly Covered Call 30 Index(Total Return),0.73,542447204844,-0.21,Low,Physical(Active),0.39,Dividend income tax(tax on holding period)
+,451540,TIGER AGGREGATE BOND ACTIVE,2023/02/01,Mirae Asset,6.75,KIS All Bond Index (higher than AA- Grade),0.18,634671510196,0.02,Very low,Physical(Active),0.03,Dividend income tax(tax on holding period)
+,365040,TIGER AI KOR GWTH ACTV,2020/09/29,Mirae Asset,10.76,KOSPI,1.69,12040839188,-0.36,Normal,Physical(Active),0.4,Dividend income tax(tax on holding period)
+,471760,TIGER AI Semiconductor Core Tech,2023/11/21,Mirae Asset,0,iSelect AI Semiconductor Core Tech Index,1.24,183712054640,-0.1,Very high,Physical(Passive),0.45,Non taxable
+,137610,TIGER Agriculture,2011/01/11,Mirae Asset,-24.26,S&P GSCI Agriculture Enhanced Index(ER),0.68,16328782286,0.4,Normal,Physical(Passive),0.69,Dividend income tax(tax on holding period)
+,091220,TIGER BANKS ETF,2006/06/27,Mirae Asset,35.54,KRX Banks,2.63,9291813589,-0.26,Very high,Physical(Passive),0.46,Non taxable
+,364960,TIGER BBIG NEWDEAL,2020/10/07,Mirae Asset,-12.19,KRX BBIG Index,0.85,150864246619,-0.02,Very high,Physical(Passive),0.4,Non taxable
+,412560,TIGER BBIG NEWDEAL LEVERAGE,2021/12/15,Mirae Asset,-30.02,KRX BBIG Index,9.52,1618433664,-0.21,Very high,Physical(Passive),0.59,Dividend income tax(tax on holding period)
+,364970,TIGER BIO NEWDEAL,2020/10/07,Mirae Asset,3.88,KRX Bio TOP 10 Index,0.86,111071683758,0.08,Very high,Physical(Passive),0.4,Non taxable
+,466940,TIGER Bank High Dividend Plus TOP 10,2023/10/17,Mirae Asset,0,FnGuide Bank High Dividend Plus Top 10 Index (PR),3.15,253080652475,-0.12,Very high,Physical(Passive),0.3,Non taxable
+,166400,TIGER C200,2012/10/25,Mirae Asset,14.17,KOSPI 200 Covered Call 5% OTM,0.77,7007276842,-0.53,Normal,Physical(Passive),0.38,Dividend income tax(tax on holding period)
+,376410,TIGER CARBON EFFICIENT,2021/02/05,Mirae Asset,11.8,S&P/KRX Carbon Efficient Capped,0.67,17187234512,-0.25,Normal,Physical(Passive),0.09,Non taxable
+,357870,TIGER CD (SYNTH),2020/07/07,Mirae Asset,3.72,KIS CD Index(Total Return),0.03,6782180168731,0.03,Very low,Synthetic(Passive),0.03,Dividend income tax(tax on holding period)
+,192090,TIGER CHINA A300,2014/02/17,Mirae Asset,-4.94,CSI 300 Index,1.89,162730490053,-0.81,Normal,Physical(Passive),0.63,Dividend Income Tax(Foreign Stock Investment ETF)
+,371470,TIGER CHINA BIOTECH SOLACTIVE,2020/12/08,Mirae Asset,-17.88,Solactive China Biotech Index(Net Total Return),3.15,33251719118,-1.45,Very high,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,396510,TIGER CHINA CLEAN ENERGY SOLACTIVE,2021/08/10,Mirae Asset,-25.63,Solactive China Clean Energy Index(Net Total Return),1.34,18975457209,-2.26,High,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,150460,TIGER CHINA CONSUMER,2011/12/16,Mirae Asset,14.41,FnGuide China Consumption Theme Index,0.94,113916983389,-1.16,High,Physical(Passive),0.5,Non taxable
+,371460,TIGER CHINA ELECTRIC VEHICLE SOLACTIVE,2020/12/08,Mirae Asset,-26.75,Solactive China Electric Vehicle and Battery Index(Net Total Return),2.12,1786255786618,-1.84,Very high,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,245360,TIGER CHINA H-SHARE,2016/06/16,Mirae Asset,5.52,HSCEI(Hang Seng China Enterprise Index),1.38,52554026516,-1.9,High,Physical(Passive),0.29,Dividend Income Tax(Foreign Stock Investment ETF)
+,396520,TIGER CHINA SEMICONDUCTOR FACTSET,2021/08/10,Mirae Asset,-12.95,FactSet China Semiconductor Index(Net Total Return),1.6,17505846306,-0.51,Very high,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,414780,TIGER CHINA STAR50,2022/01/13,Mirae Asset,-25.05,STAR 50 Index(Price Return),0.24,109207877027,-3.47,High,Synthetic(Passive),0.09,Dividend income tax(tax on holding period)
+,237440,TIGER CONSUMER GOODS BALANCED,2016/01/27,Mirae Asset,4.24,KRX Consumer Goods Balanced Index,0.52,7285451013,-0.07,Very low,Physical(Passive),0.18,Dividend income tax(tax on holding period)
+,228790,TIGER COSMETICS,2015/10/07,Mirae Asset,61.22,WISE Cosmetic index,0.36,156515223628,-0.11,Very high,Physical(Passive),0.5,Non taxable
+,117690,TIGER China,2009/10/21,Mirae Asset,12.34,Hang Seng China (Hong Kong-listed) 25 Index,2,6862509630,-2.07,High,Physical(Passive),0.4,Dividend Income Tax(Foreign Stock Investment ETF)
+,371160,TIGER China Hang Seng TECH,2020/12/16,Mirae Asset,-3.49,Hang Seng TECH Index,0.4,594710308774,-2.46,Very high,Physical(Passive),0.09,Dividend income tax(tax on holding period)
+,211560,TIGER DIV GROWTH,2014/12/17,Mirae Asset,24.87,KOSPI Growth Dividend 50,1.11,19817094446,-0.16,Low,Physical(Passive),0.115,Non taxable
+,472150,TIGER DIVIDEND PREMIUM ACTIVE,2023/12/12,Mirae Asset,0,KOSPI 200 Covered Call 5% OTM,2.41,122513512014,-0.37,Low,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,245340,TIGER DOW JONES 30,2016/07/01,Mirae Asset,22.38,Dow Jones Industrial Average,0.27,98773274930,-0.15,Low,Physical(Passive),0.35,Dividend Income Tax(Foreign Stock Investment ETF)
+,245350,TIGER EURO STOXX DIVIDEND 30,2016/07/01,Mirae Asset,10.64,Euro STOXX Select Dividend 30,1.81,14711184950,0.94,Low,Physical(Passive),0.35,Dividend Income Tax(Foreign Stock Investment ETF)
+,387280,TIGER FUTURE MOBILITY ACTIVE,2021/05/25,Mirae Asset,-13.79,FnGuide Future Mobility Index,11.93,21743943636,0.01,High,Physical(Active),0.77,Dividend income tax(tax on holding period)
+,377990,TIGER Fn RENEWABLE ENERGY,2021/03/05,Mirae Asset,-7.88,FnGuide Renewable Energy Index,0.34,21142700531,0.09,Very high,Physical(Passive),0.5,Non taxable
+,396500,TIGER Fn Semiconductor TOP10,2021/08/10,Mirae Asset,56.64,FnGuide Semiconductor TOP10 Index,0.44,793562821068,0.04,Very high,Physical(Passive),0.45,Non taxable
+,364990,TIGER GAME NEWDEAL,2020/10/07,Mirae Asset,-7.73,KRX Game TOP 10 Index,0.5,19191708329,-0.15,Very high,Physical(Passive),0.4,Non taxable
+,466950,TIGER GLOBAL AI ACTIVE,2023/10/11,Mirae Asset,0,Indxx Artificial Intelligence and Big Data Index(Net Total Return),11,161013403779,-1.56,Very high,Physical(Active),0.79,Dividend income tax(tax on holding period)
+,394660,TIGER GLOBAL AUTONOMOUS & EV SOLACTIVE,2021/07/20,Mirae Asset,3.72,Solactive Autonomous & Electric Vehicles Index(Net Total Return),2.61,320449686039,-0.5,Normal,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,387270,TIGER GLOBAL BBIG ACTIVE,2021/05/25,Mirae Asset,41.67,NASDAQ 100,3.55,26852690240,-0.31,Normal,Physical(Active),0.55,Dividend income tax(tax on holding period)
+,371450,TIGER GLOBAL CLOUD COMPUTING INDXX,2020/12/08,Mirae Asset,6.35,Indxx Global Cloud Computing Index(Net Total Return),1.06,39452421457,-0.27,Normal,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,418670,TIGER GLOBAL CYBERSECURITY INDXX,2022/02/22,Mirae Asset,29.04,Indxx Cybersecurity Index (Total Return),1.34,15822520037,0.65,High,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,412770,TIGER GLOBAL METAVERSE ACTIVE,2021/12/22,Mirae Asset,39,Indxx Global Metaverse Index (Price Return),5.49,122511528665,-0.82,Normal,Physical(Active),0.79,Dividend income tax(tax on holding period)
+,476690,TIGER GLOBAL OBESITY TREATMENT TOP2 PLUS,2024/02/29,Mirae Asset,0,Indxx Global Obesity Treatment Top 2 Plus Index (Price Return),1.19,80458707801,0.5,Normal,Physical(Passive),0.45,Dividend income tax(tax on holding period)
+,480310,TIGER GLOBAL ON DEVICE AI ETF,2024/04/16,Mirae Asset,0,Mirae Asset Global On-Device AI Index (Price Return),1.45,115821992957,-0.04,Very high,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,319640,TIGER GOLD FUTURES(H),2019/04/09,Mirae Asset,14.33,S&P GSCI Gold Index(TR),0.9,41162334904,-0.03,Low,Physical(Passive),0.39,Dividend income tax(tax on holding period)
+,139320,TIGER GOLD&SILVER,2011/04/08,Mirae Asset,13.29,S&P GSCI Precious Metals Index(TR),1.2,8105353637,-0.25,Normal,Physical(Passive),0.69,Dividend income tax(tax on holding period)
+,464310,TIGER Global AI & Robotics,2023/08/17,Mirae Asset,0,Indxx Global Robotics & Artificial Intelligence Thematic Index(Net Total Return),3.71,67041933233,0,Normal,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,464930,TIGER Global Innovative Bluechip Top 10,2023/08/29,Mirae Asset,0,Mirae Asset Global Innovative Bluechip Top 10 Index(NTR),0.39,149955295122,-0.51,Normal,Physical(Passive),0.48,Dividend income tax(tax on holding period)
+,143860,TIGER HEALTH CARE,2011/07/18,Mirae Asset,21.73,KRX Health Care,0.27,280955868108,-0.35,Very high,Physical(Passive),0.4,Non taxable
+,307510,TIGER HEALTHCARE EQUIP,2018/11/08,Mirae Asset,-12.38,FnGuide Healthcare Equipment Index,0.3,7215140488,-0.42,High,Physical(Passive),0.5,Non taxable
+,210780,TIGER HIGH DIVIDEND,2014/12/05,Mirae Asset,9.39,KOSPI High Dividend Yield 50,1.95,24626753617,-0.3,Low,Physical(Passive),0.24,Non taxable
+,307520,TIGER HOLDINGS COMPANY,2018/11/08,Mirae Asset,18.24,FnGuide Holdings Company Index,0.7,5249996730,0,High,Physical(Passive),0.5,Non taxable
+,138540,TIGER HYUNDAI GROUP+,2011/03/10,Mirae Asset,26.41,MKF Hyundai Motor Group+ FW,1.86,130031152177,-0.15,High,Physical(Passive),0.15,Non taxable
+,479730,TIGER INDIA BILLION CONSUMER,2024/05/14,Mirae Asset,0,Mirae Asset India Billion Consumer Index,3.72,169316667835,0.4,High,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,417630,TIGER INNOVATOR ESG30,2022/02/08,Mirae Asset,-5.8,KEDI Innovator ESG 30 Index (Price Return),0.45,22589698230,-0.02,High,Physical(Passive),0.5,Non taxable
+,365000,TIGER INTERNET NEWDEAL,2020/10/07,Mirae Asset,3.56,KRX Internet TOP 10 Index,2.82,38649008379,-0.24,Very high,Physical(Passive),0.4,Non taxable
+,438330,TIGER INV GRADE CORP ACTIVE,2022/08/23,Mirae Asset,6.85,KIS Investment Grade Corporate Bond Index(Total Return),0.35,172085324913,0.02,Very low,Physical(Active),0.1,Dividend income tax(tax on holding period)
+,453870,TIGER India Nifty 50,2023/04/14,Mirae Asset,31.47,Nifty 50 Index,0.94,410976945508,0.45,Low,Physical(Passive),0.19,Dividend income tax(tax on holding period)
+,292560,TIGER JPYKRW FUTURES,2018/04/17,Mirae Asset,-5.76,F-JPYKRW,1.95,144109119607,0.25,Very low,Physical(Passive),0.21,Dividend income tax(tax on holding period)
+,465660,TIGER Japan Semiconductor FACTSET,2023/09/19,Mirae Asset,0,FactSet Japan Semiconductor Index(PR),0.87,59801081213,-2.34,Very high,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,300610,TIGER K-GAME,2018/07/24,Mirae Asset,-13.45,WISE K-Game Theme Index,0.39,13271659464,0.15,Very high,Physical(Passive),0.5,Non taxable
+,449680,TIGER KOREA-CHINA EV,2022/12/22,Mirae Asset,-22.57,KRX CSI Korea China New Energy Vehicles Index,0.22,7973973797,-1.12,High,Synthetic(Passive),0.35,Dividend income tax(tax on holding period)
+,449690,TIGER KOREA-CHINA SEMICONDUCTOR,2022/12/22,Mirae Asset,20.43,KRX CSI Korea China Semiconductor Index,0.16,11774110731,-1.49,High,Synthetic(Passive),0.35,Dividend income tax(tax on holding period)
+,461580,TIGER KOSDAQ GLOBAL,2023/06/29,Mirae Asset,0,KOSDAQ Global Index,3.44,7293875817,-0.55,Very high,Physical(Passive),0.15,Non taxable
+,232080,TIGER KOSDAQ150,2015/11/12,Mirae Asset,2.99,KOSDAQ 150,0.33,100985985997,-0.3,Very high,Physical(Passive),0.19,Non taxable
+,250780,TIGER KOSDAQ150 INVERSE,2016/08/10,Mirae Asset,-11.82,F-KOSDAQ150 Index,0.23,12767893706,0.19,Very high,Physical(Passive),0.32,Dividend income tax(tax on holding period)
+,233160,TIGER KOSDAQ150 LEVERAGE,2015/12/17,Mirae Asset,-1.66,KOSDAQ 150,8.43,50159752868,0.15,Very high,Physical(Passive),0.32,Dividend income tax(tax on holding period)
+,261070,TIGER KOSDAQ150BIOTECH,2016/12/15,Mirae Asset,53.38,KOSDAQ 150 Health Care,0.81,26461461725,-0.62,Very high,Physical(Passive),0.4,Non taxable
+,261060,TIGER KOSDAQ150IT,2016/12/15,Mirae Asset,9.2,KOSDAQ 150 Information Technology,0.35,7936490811,-0.18,Very high,Physical(Passive),0.4,Non taxable
+,277630,TIGER KOSPI,2017/08/31,Mirae Asset,8.66,KOSPI,0.67,116851033634,-0.16,Normal,Physical(Passive),0.12,Non taxable
+,277640,TIGER KOSPI LARGECAP,2017/08/31,Mirae Asset,8.08,KOSPI LargeCap,0.7,5566968330,-0.05,Normal,Physical(Passive),0.24,Non taxable
+,277650,TIGER KOSPI MIDCAP,2017/08/31,Mirae Asset,11.16,KOSPI MidCap,0.46,6185944353,-0.16,Low,Physical(Passive),0.24,Non taxable
+,404540,TIGER KRX Climate Change Solutions,2021/10/29,Mirae Asset,-2.88,KRX Climate Change Solutions,0.54,12939799016,-0.23,Very high,Physical(Passive),0.09,Non taxable
+,292160,TIGER KRX300,2018/03/26,Mirae Asset,13.25,KRX 300,0.65,9103893666,-0.48,Normal,Physical(Passive),0.07,Non taxable
+,302190,TIGER KTB 3-10,2018/07/20,Mirae Asset,4.11,KIS 3Y10Y KTB Index(Gross Price Index),0.13,310716576398,0.01,Very low,Physical(Passive),0.13,Dividend income tax(tax on holding period)
+,114820,TIGER KTB3Y,2009/08/27,Mirae Asset,0.76,KTB INDEX (Gross Price),0.16,70081575254,-0.07,Very low,Physical(Passive),0.15,Dividend income tax(tax on holding period)
+,228820,TIGER KTOP30,2015/10/14,Mirae Asset,-0.79,KTOP 30,0.64,7519833509,-0.25,Normal,Physical(Passive),0.21,Non taxable
+,471780,TIGER Korea Tech Active,2023/11/28,Mirae Asset,0,KRX IT,8.47,12951685205,0.05,High,Physical(Active),0.77,Dividend income tax(tax on holding period)
+,105010,TIGER LATIN,2008/08/27,Mirae Asset,1.06,BNY Latin America 35 ADR,1.98,5525122957,0.59,Normal,Physical(Passive),0.49,Dividend Income Tax(Foreign Stock Investment ETF)
+,138530,TIGER LG GROUP+,2011/03/10,Mirae Asset,-19.66,MKF LG Group+ FW,0.92,10798173429,0.02,Normal,Physical(Passive),0.15,Non taxable
+,174350,TIGER LOW VOLATILITY,2013/06/20,Mirae Asset,18.63,FnGuide Low Vol Index,1.2,8282245991,-0.27,Low,Physical(Passive),0.4,Non taxable
+,098560,TIGER MDIA&TELCM,2007/09/07,Mirae Asset,-6.75,KRX Media & Telecom,1.72,3086625099,-0.15,Low,Physical(Passive),0.46,Non taxable
+,228810,TIGER MEDIA CONTENTS,2015/10/07,Mirae Asset,-30.01,WISE Media Contents Index,0.51,75304848962,0.19,Very high,Physical(Passive),0.44,Non taxable
+,139310,TIGER METAL,2011/04/08,Mirae Asset,2.86,S&P GSCI Industrial Metals Select Index(TR),4.66,3593378519,-0.98,Normal,Physical(Passive),0.69,Dividend income tax(tax on holding period)
+,445910,TIGER MKF Dividend Aristocrats ETF,2022/10/18,Mirae Asset,21.53,MKF Dividend Nobility Index(PR),0.6,8777060587,-0.1,Normal,Physical(Passive),0.2,Non taxable
+,147970,TIGER MOMENTUM,2011/10/26,Mirae Asset,25.6,FnGuide Momentum Index,0.45,4280344004,-0.09,Normal,Physical(Passive),0.23,Non taxable
+,157450,TIGER MONEY MARKET,2012/05/16,Mirae Asset,3.48,KIS MSB 6M(Total Return),0.04,773506734552,0.02,Very low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,272580,TIGER MONEY MARKET ACTIVE,2017/06/29,Mirae Asset,3.73,KIS MSB 6M PLUS Index,0.07,567102968739,0.02,Very low,Physical(Active),0.06,Dividend income tax(tax on holding period)
+,289260,TIGER MSCI KOREA ESG LEADERS,2018/02/07,Mirae Asset,8.13,MSCI Korea Country ESG Leaders Capped Index,0.86,16910538184,-0.51,High,Physical(Passive),0.4,Non taxable
+,289250,TIGER MSCI KOREA ESG UNIVERSAL,2018/02/07,Mirae Asset,11.31,MSCI Korea ESG Universal Index,1.04,6696377081,-0.32,Normal,Physical(Passive),0.4,Non taxable
+,310970,TIGER MSCI Korea TR,2018/11/20,Mirae Asset,12.65,MSCI Korea TR Index,0.25,1267370029058,-0.31,Normal,Physical(Passive),0.12,Dividend income tax(tax on holding period)
+,400970,TIGER Metaverse,2021/10/13,Mirae Asset,-24.25,FnGuide Metaverse Theme Index,0.42,106096976559,-0.07,High,Physical(Passive),0.45,Non taxable
+,440340,TIGER Multi Asset TIF Active ETF,2022/08/30,Mirae Asset,13.43,INDXX Multi Asset Income Index(PR Index),1.97,29655413534,-0.13,Very low,Physical(Active),0.55,Dividend income tax(tax on holding period)
+,448300,TIGER NASDAQ 100 TR ETF(H),2022/11/25,Mirae Asset,30.86,NASDAQ-100 Total Return Index,0.52,155405657360,-0.21,Normal,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,203780,TIGER NASDAQ BIO,2014/08/27,Mirae Asset,17.49,NASDAQ Biotechnology Index(Price Return),0.51,46946113500,-0.56,Normal,Physical(Passive),0.3,Dividend Income Tax(Foreign Stock Investment ETF)
+,429010,TIGER NASDAQ NEXT 100,2022/05/17,Mirae Asset,17.29,Nasdaq Next Generation 100 Index (Price Return),0.47,10584724392,-0.58,Normal,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,133690,TIGER NASDAQ100,2010/10/18,Mirae Asset,42.05,NASDAQ 100,0.19,3631920481109,-0.21,Low,Physical(Passive),0.07,Dividend Income Tax(Foreign Stock Investment ETF)
+,241180,TIGER NIKKEI225,2016/03/31,Mirae Asset,16.45,Nikkei 225,1.37,296623831152,-0.77,Normal,Physical(Passive),0.29,Dividend Income Tax(Foreign Stock Investment ETF)
+,435420,TIGER Nasdap100 TR Balanced,2022/07/06,Mirae Asset,12.38,FnGuide NASDAQ100 Balanced Index(Total Return),0.42,94922653706,0.14,Very low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,441680,TIGER Nasdaq100 Covered Call ETF,2022/09/22,Mirae Asset,5.31,Cboe Nasdaq-100 BuyWrite V2 Index (Total Return),0.22,420178602516,-0.4,Very low,Synthetic(Passive),0.37,Dividend income tax(tax on holding period)
+,160580,TIGER PHYSICAL COPPER,2012/12/17,Mirae Asset,18.96,S&P GSCI Cash Copper Index,4.18,30832421414,0.42,High,Physical(Passive),0.83,Dividend income tax(tax on holding period)
+,261140,TIGER PREFERRED STOCK,2017/01/06,Mirae Asset,9.43,KOSPI Preferred Stock Index,1.93,7673225882,-0.15,Normal,Physical(Passive),0.29,Non taxable
+,227570,TIGER QUALITY VALUE,2015/09/23,Mirae Asset,12,FnGuide Quality Value Index,1.06,7454336683,-0.23,Normal,Physical(Passive),0.35,Non taxable
+,341850,TIGER REITS AND BOND TR,2020/05/22,Mirae Asset,-1.12,KIS REITS REAL ESTATE INFRA BOND TR INDEX,2.3,20426511495,-0.17,Very low,Physical(Passive),0.22,Dividend Income Tax(Separate Taxation Real Estate ETF)
+,329200,TIGER REITS REAL ESTATE INFRA,2019/07/19,Mirae Asset,-3.29,FnGuide REITs Real Estate Infrastructure Index,2.29,467798019968,-0.19,Very low,Physical(Passive),0.29,Non taxable
+,360750,TIGER S&P500,2020/08/07,Mirae Asset,33.7,S&P 500,0.25,3898128443511,-0.09,Low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,143850,TIGER S&P500,2011/07/18,Mirae Asset,21.16,S&P 500 Futures Index(ER),0.52,195023468982,-0.12,Low,Physical(Passive),0.23,Dividend income tax(tax on holding period)
+,429000,TIGER S&P500 DIVIDEND ARISTOCRATS,2022/05/17,Mirae Asset,10.51,S&P 500 Dividend Aristocrats Index (Price Return),0.28,57030791405,0.03,Low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,225030,TIGER S&P500 INVERSE(H),2015/07/29,Mirae Asset,-16.29,S&P 500 Futures Total Return Index,0.45,6830172994,0.17,Low,Physical(Passive),0.59,Dividend income tax(tax on holding period)
+,448290,TIGER S&P500 TR ETF(H),2022/11/25,Mirae Asset,24.42,S&P 500 Total Return Index,0.5,235392856990,-0.12,Low,Physical(Passive),0.07,Dividend income tax(tax on holding period)
+,138520,TIGER SAMSUNG GROUP,2011/03/07,Mirae Asset,11.21,MKF SAMs FW,0.6,31375550133,-0.37,Normal,Physical(Passive),0.113,Non taxable
+,364980,TIGER SECBTRY NEWDEAL,2020/10/07,Mirae Asset,-41.34,KRX Secondary Battery TOP 10 Index,0.43,333302466389,-0.37,Very high,Physical(Passive),0.4,Non taxable
+,412570,TIGER SECBTRY NEWDEAL LEVERAGE,2021/12/15,Mirae Asset,-74.04,KRX Secondary Battery TOP 10 Index,8.94,67278882010,0.09,Very high,Physical(Passive),0.29,Dividend income tax(tax on holding period)
+,305540,TIGER SECONDARY CELL,2018/09/12,Mirae Asset,-30.74,WISE Secondary Cell Theme Index,0.4,1163435570586,-0.05,Very high,Physical(Passive),0.44,Non taxable
+,157500,TIGER SECURITIES,2012/05/16,Mirae Asset,32.25,FnGuide Security Index,1.12,6364318513,-0.32,High,Physical(Passive),0.4,Non taxable
+,091230,TIGER SEMICON ETF,2006/06/27,Mirae Asset,38.78,KRX Semicon,0.36,235420772077,-0.02,Very high,Physical(Passive),0.46,Non taxable
+,157490,TIGER SOFTWARE,2012/05/16,Mirae Asset,-7.57,FnGuide Softwrae Index,0.26,90900809046,0.06,High,Physical(Passive),0.4,Non taxable
+,139280,TIGER STAPLES,2011/04/06,Mirae Asset,9.96,KOSPI 200 Consumer Goods,0.64,60440317550,0.08,Normal,Physical(Passive),0.4,Non taxable
+,475630,TIGER SYNTH CD 1Y RATE ACTIVE,2024/02/06,Mirae Asset,0,KIS Certificate of Deposit 1Y Total Return Index,0.01,1050279000414,0.03,Very low,Synthetic(Active),0.009,Dividend income tax(tax on holding period)
+,275980,TIGER SYNTH ETECH(H),2017/08/01,Mirae Asset,5.64,MorningStar Exponential Technologies Index(PR),0.87,130131642686,-0.34,Normal,Synthetic(Passive),0.4,Dividend income tax(tax on holding period)
+,394670,TIGER SYNTH GLOBAL LITHIUM SOLACTIVE,2021/07/20,Mirae Asset,-33.39,Solactive Global Lithium Index(Net Total Return),1.02,267756816080,-1,High,Synthetic(Passive),0.49,Dividend income tax(tax on holding period)
+,217780,TIGER SYNTH-CHINA A INVERSE,2015/06/10,Mirae Asset,1.67,CSI 300 Index,1.32,16035862990,-0.83,Low,Synthetic(Passive),0.58,Dividend income tax(tax on holding period)
+,204480,TIGER SYNTH-CHINA A LEVERAGE,2014/09/01,Mirae Asset,-15.66,CSI 300 Index,1.34,82942229917,-2.76,Very high,Synthetic(Passive),0.58,Dividend income tax(tax on holding period)
+,456680,TIGER SYNTH-China EV LEVERAGE,2023/05/09,Mirae Asset,-52.35,Solactive China Electric Vehicle and Battery Index(Net Total Return),2.18,36531697327,-4.54,Very high,Synthetic(Passive),0.58,Dividend income tax(tax on holding period)
+,438320,TIGER SYNTH-China HSTECH LEVERAGE(H),2022/08/23,Mirae Asset,-31.19,Hang Seng TECH Index,2.26,31024766128,-4.08,Very high,Synthetic(Passive),0.58,Dividend income tax(tax on holding period)
+,225060,TIGER SYNTH-EMERGING MARKET LEVERAGE(H),2015/07/29,Mirae Asset,9.57,MSCI EM Index,1.1,8838237056,-0.93,Very high,Synthetic(Passive),0.58,Dividend income tax(tax on holding period)
+,225050,TIGER SYNTH-EURO STOXX 50 LEVERAGE(H),2015/07/29,Mirae Asset,23.42,EURO STOXX 50 Index,2.52,9196353572,0.39,Very high,Synthetic(Passive),0.58,Dividend income tax(tax on holding period)
+,195930,TIGER SYNTH-EURO STOXX 50(H),2014/04/30,Mirae Asset,15.95,EURO STOXX 50 Index,0.4,43292025638,-0.45,Low,Synthetic(Passive),0.24,Dividend income tax(tax on holding period)
+,248270,TIGER SYNTH-GLOBAL HEALTHCARE,2016/07/01,Mirae Asset,18.84,S&P Global 1200 Health Care Index,0.46,37721032556,0.32,Low,Synthetic(Passive),0.4,Dividend income tax(tax on holding period)
+,182490,TIGER SYNTH-HY(H),2014/03/24,Mirae Asset,5.17,Markit iBoxx USD Liquid High Yield 0-5 year Index,0.39,16620385948,0.31,Very low,Synthetic(Passive),0.24,Dividend income tax(tax on holding period)
+,236350,TIGER SYNTH-INDIA LEVERAGE,2016/05/13,Mirae Asset,68.31,Nifty 50 Index,3.01,66972536625,0.77,Very high,Synthetic(Passive),0.58,Dividend income tax(tax on holding period)
+,195920,TIGER SYNTH-JAPAN(H),2014/04/30,Mirae Asset,23.92,TOPIX,1.22,12428028543,-1.49,Normal,Synthetic(Passive),0.24,Dividend income tax(tax on holding period)
+,449170,TIGER SYNTH-KOFR ACTIVE,2022/11/30,Mirae Asset,3.66,KOFR Index,0.03,3753681075180,0.01,Very low,Synthetic(Active),0.03,Dividend income tax(tax on holding period)
+,182480,TIGER SYNTH-MSCI US REIT(H),2013/10/10,Mirae Asset,0.04,MSCI US REIT Index,0.68,122070605967,-0.29,Normal,Synthetic(Passive),0.24,Dividend Income Tax(Separate Taxation Real Estate ETF)
+,418660,TIGER SYNTH-NASDAQ 100 LEVERAGE,2022/02/22,Mirae Asset,91.29,NASDAQ 100,1.86,75067930491,-0.57,Very high,Synthetic(Passive),0.25,Dividend income tax(tax on holding period)
+,269370,TIGER SYNTH-S&P GLOBAL INFRASTRUCTURE,2017/05/16,Mirae Asset,9.78,S&P Global Infrastructure Index,0.68,8499917807,0.02,Low,Synthetic(Passive),0.4,Dividend income tax(tax on holding period)
+,225040,TIGER SYNTH-S&P500 LEVERAGE(H),2015/07/29,Mirae Asset,47.22,S&P 500,0.53,62282432315,-0.48,High,Synthetic(Passive),0.27,Dividend income tax(tax on holding period)
+,276000,TIGER SYNTH-UP NR(H),2017/08/01,Mirae Asset,1.9,MorningStar Global Upstream Resources Index(PR),1,12812358284,-0.39,Normal,Synthetic(Passive),0.4,Dividend income tax(tax on holding period)
+,423920,TIGER SYNTH-US PHLX Semiconductor 2X,2022/04/19,Mirae Asset,141.59,PHLX Semiconductor Sector Index,1.61,269140300998,-0.6,Very high,Synthetic(Passive),0.58,Dividend income tax(tax on holding period)
+,462010,TIGER Secondary Battery Material,2023/07/13,Mirae Asset,0,FnGuide Secondary Battery Material Price Return Index,0.55,637297245999,-0.06,Very high,Physical(Passive),0.39,Non taxable
+,463250,TIGER Space Tech,2023/07/25,Mirae Asset,0,iSelect Space Tech Index,0.29,17699661884,0.13,Very high,Physical(Passive),0.45,Non taxable
+,458250,TIGER T-BOND 30Y STRIPS SYNTH ACTIVE(H),2023/05/31,Mirae Asset,-16.6,ICE BofA Long US Treasury Principal STRIPS Index,1.99,428098765081,-0.36,Very high,Synthetic(Active),0.15,Dividend income tax(tax on holding period)
+,451530,TIGER T-BOND 30YR STRIPS ACTIVE,2023/02/01,Mirae Asset,15.87,KIS STRIP 30Y Index(Total Return),1.28,151696303513,0.05,High,Physical(Active),0.15,Dividend income tax(tax on holding period)
+,447770,TIGER TESLA Balanced,2022/11/29,Mirae Asset,-1.84,FnGuide Tesla Balanced Index,1,126444496820,-0.07,Normal,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,292150,TIGER TOP10,2018/03/30,Mirae Asset,16.72,FnGuide TOP10 Index,0.83,1243679702174,-0.17,High,Physical(Passive),0.15,Non taxable
+,228800,TIGER TOUR LEISURE,2015/10/07,Mirae Asset,-13.63,WISE Tour Leisure Index,0.79,119246473425,-0.11,High,Physical(Passive),0.5,Non taxable
+,453950,TIGER TSMC Value Chain FACTSET,2023/04/04,Mirae Asset,66.39,FactSet TSMC Value Chain Index(Price Return),2.02,30140469231,0.23,High,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,465670,TIGER U.S. Cash Cow 100,2023/09/19,Mirae Asset,0,Global X U.S. Cash Flow Kings 100 Index(TR),0.29,20470690448,-0.02,Low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,458730,TIGER U.S. Dividend Equity,2023/06/20,Mirae Asset,15.18,Dow Jones U.S. Dividend 100 Price Return Index,0.51,1045130493447,-0.11,Low,Physical(Passive),0.01,Dividend income tax(tax on holding period)
+,458750,TIGER US Dividend +3% Premium,2023/06/20,Mirae Asset,8.45,DowJones U.S. Dividend 100 3% Premium Covered Call Index (TR),0.86,58310120482,-0.17,Low,Physical(Passive),0.39,Dividend income tax(tax on holding period)
+,458760,TIGER US Dividend +7% Premium,2023/06/20,Mirae Asset,0.8,DowJones U.S. Dividend 100 7% Premium Covered Call Index (TR),1.43,779707772325,-0.14,Low,Physical(Passive),0.39,Dividend income tax(tax on holding period)
+,458260,TIGER US IG CORP. BOND ACTIVE(H),2023/05/31,Mirae Asset,-3.02,iBoxx USD Liquid Investment Grade Index(Price Return),2.35,88154761193,0.03,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,486290,TIGER US NASDAQ100+15% DAILY OPTION,2024/06/25,Mirae Asset,0,NASDAQ 100 Daily Covered Call Target Premium 15% Index(TR),0.13,100011706470,-0.26,High,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,381180,TIGER US PHLX Semiconductor Nasdaq,2021/04/09,Mirae Asset,62.38,PHLX Semiconductor Sector Index,0.37,2818354515032,-0.29,Very high,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,482730,TIGER US S&P500+10%PREMIUM DAILY OPTION,2024/05/21,Mirae Asset,0,S&P500 10% Daily Premium Covered Call Index(TR),0.28,103153414295,-0.19,Very low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,474220,TIGER US Tech TOP10+10% Premium,2024/01/16,Mirae Asset,0,Bloomberg U.S. Tech Top10+10% Premium Covered Call Index,0.26,390772835087,-0.23,Normal,Physical(Passive),0.5,Dividend income tax(tax on holding period)
+,472170,TIGER US Tech Top10 Balanced,2023/12/05,Mirae Asset,0,FnGuide US Tech Top10 Balanced Index,0.22,80161803046,0.09,Low,Physical(Passive),0.25,Dividend income tax(tax on holding period)
+,381170,TIGER US Tech Top10 INDXX,2021/04/09,Mirae Asset,63.02,Indxx US Tech Top 10 Index,0.29,2674925825085,-0.12,Normal,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,472160,TIGER US Tech Top10 INDXX(H),2023/12/05,Mirae Asset,0,Indxx US Tech Top 10 Index,0.51,131765242165,-0.18,High,Physical(Passive),0.49,Dividend income tax(tax on holding period)
+,261120,TIGER USD Futures Inverse2X,2016/12/27,Mirae Asset,-15.17,F-USDKRW,0.97,25665087988,0.21,Normal,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,261110,TIGER USD Futures Leverage,2016/12/27,Mirae Asset,19.09,F-USDKRW,1.21,8922225421,-0.17,Normal,Physical(Passive),0.05,Dividend income tax(tax on holding period)
+,329750,TIGER USD MM ACTIVE,2019/07/24,Mirae Asset,9.2,KIS U.S. TREASURY BOND 0-1Y Index(Total Retrun),0.45,594304375331,-0.02,Very low,Physical(Active),0.3,Dividend income tax(tax on holding period)
+,456610,TIGER USD SYNTH-SOFR ACTIVE,2023/05/09,Mirae Asset,12.1,Solactive SOFR Daily Total Return Index,0.26,360476406434,0.01,Very low,Synthetic(Active),0.05,Dividend income tax(tax on holding period)
+,130680,TIGER WTI Futures,2010/08/02,Mirae Asset,21.27,S&P GSCI Crude Oil Enhanced Index ER,5.07,22421068322,0.08,Very high,Physical(Passive),0.69,Dividend income tax(tax on holding period)
+,217770,TIGER WTI INVERSE(H),2015/04/29,Mirae Asset,-23.84,S&P GSCI Crude Oil Index ER,1.37,12711852432,-0.17,Very high,Physical(Passive),0.69,Dividend income tax(tax on holding period)
+,102110,TIGER200,2008/04/03,Mirae Asset,12.64,KOSPI 200,0.7,2226875755395,-0.42,Normal,Physical(Passive),0.05,Non taxable
+,123310,TIGER200 Inverse,2010/03/29,Mirae Asset,-10.23,F-KOSPI 200,0.74,36653751029,-0.11,Normal,Physical(Passive),0.022,Dividend income tax(tax on holding period)
+,123320,TIGER200 Leverage,2010/04/09,Mirae Asset,23.36,KOSPI 200,3.18,38846708049,-0.17,Very high,Physical(Passive),0.022,Dividend income tax(tax on holding period)
+,404120,TIMEFOLIO CarbonZero Active,2021/10/29,TIMEFOLIO,15.45,KRX Climate Change Solutions,17.02,9106139128,-0.31,High,Physical(Active),0.8,Dividend income tax(tax on holding period)
+,456600,TIMEFOLIO Global AI Active,2023/05/16,TIMEFOLIO,76.37,Solactive Global Artificial Intelligence Index(Price Return),16.91,241612027065,-0.16,Very high,Physical(Active),0.8,Dividend income tax(tax on holding period)
+,478150,TIMEFOLIO Global SpaceTechDefense Active,2024/04/23,TIMEFOLIO,0,Solactive Aerospace and Defense USD Index PR,8.93,12600635828,0.38,Low,Physical(Active),0.8,Dividend income tax(tax on holding period)
+,385710,TIMEFOLIO Innovation Active,2021/05/25,TIMEFOLIO,-1.87,KRX BBIG Index,17.79,9276285182,-0.33,Very high,Physical(Active),0.8,Dividend income tax(tax on holding period)
+,463050,TIMEFOLIO Kbio Active,2023/08/17,TIMEFOLIO,0,KRX Health Care,21.33,129289228700,0.27,Very high,Physical(Active),0.8,Dividend income tax(tax on holding period)
+,410870,TIMEFOLIO Kculture Active,2021/12/15,TIMEFOLIO,20.74,FnGuide K-Culture Index,18.53,12125308084,-0.44,Very high,Physical(Active),0.8,Dividend income tax(tax on holding period)
+,441800,TIMEFOLIO Korea Plus Dividend Active,2022/09/27,TIMEFOLIO,37.59,KOSPI 200,11.73,48386188371,-0.27,Normal,Physical(Active),0.8,Dividend income tax(tax on holding period)
+,385720,TIMEFOLIO Kstock Active,2021/05/25,TIMEFOLIO,17.11,KOSPI,7.62,28844722605,-0.36,Normal,Physical(Active),0.8,Dividend income tax(tax on holding period)
+,426030,TIMEFOLIO US NASDAQ100 Active,2022/05/11,TIMEFOLIO,68.41,NASDAQ 100,11.66,82187390496,-0.18,High,Physical(Active),0.8,Dividend income tax(tax on holding period)
+,426020,TIMEFOLIO US S&P500 Active,2022/05/11,TIMEFOLIO,57.31,S&P 500,10.47,21629481916,-0.19,Normal,Physical(Active),0.8,Dividend income tax(tax on holding period)
+,108590,TREX 200,2009/01/23,yurieasset,12.07,KOSPI 200,0.8,7790901642,-0.36,Normal,Physical(Passive),0.325,Non taxable
+,145850,TREX Fundamental 200,2011/09/23,yurieasset,16.58,FnGuide-RAFI Korea200 Index,1.01,10637872965,0.14,Normal,Physical(Passive),0.34,Non taxable
+,472720,TRUSTON Shareholder Value Active,2023/12/14,TRUSTON ASSET,0,KOSPI 200,12.37,9492422506,-0.64,Normal,Physical(Active),0.785,Dividend income tax(tax on holding period)
+,470310,UNICORN GEN AI SMALL GIANT ACTIVE,2023/11/21,HYUNDAI ASSET MANAGE,0,iSelect AI Index,12.92,52228820934,0.08,Very high,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,476000,UNICORN POST IPO ACTIVE,2024/02/27,HYUNDAI ASSET MANAGE,0,iSelect Post IPO Index,16.55,5136879336,0.33,Very high,Physical(Active),0.5,Dividend income tax(tax on holding period)
+,433250,UNICORN R&D ACTIVE,2022/07/06,HYUNDAI ASSET MANAGE,10.49,KOSPI 200,4.49,5567398885,0.02,Normal,Physical(Active),0.355,Dividend income tax(tax on holding period)
+,422260,VITA MZ consumption Active,2022/03/29,KOREA VALUE ASSET,18.42,FnGuide MZ Consumption Index,12.61,14563003148,-1.69,High,Physical(Active),0.6,Dividend income tax(tax on holding period)
+,452440,VITA Value Alpha Active,2023/02/21,KOREA VALUE ASSET,27.82,FnGuide Value Alpha Index,12.18,9852006094,-0.1,Low,Physical(Active),0.6,Dividend income tax(tax on holding period)
+,468820,WOORI 25-09 Corporate Bond(AA-) Active,2023/10/19,WOORIAM,0,KAP 25-09 Corporate Bond TR Index(AA- or higher),0.19,105627709989,0.04,Very low,Physical(Active),0.05,Dividend income tax(tax on holding period)
+,413930,WOORI AI ESG Active,2022/01/05,WOORIAM,16.69,MK-iSelect AI ESG Index(Price Return),3.58,8108068758,-0.3,Normal,Physical(Active),0.31,Dividend income tax(tax on holding period)
+,448100,WOORI KS200,2022/12/16,WOORIAM,13,KOSPI 200,0.75,7814952466,-0.54,Normal,Physical(Passive),0.05,Non taxable
+,426150,WOORI KTB Active,2022/05/11,WOORIAM,7.21,KAP KOR Gov't Bond TR Index,0.38,38437024952,0.05,Very low,Physical(Active),0.07,Dividend income tax(tax on holding period)
+,480460,WOORI Korea Real Estates TOP3 Plus,2024/04/30,WOORIAM,0,DeepSearch Korea Real Estates Quality Top3 Index,3.42,10385659722,-0.01,Low,Physical(Passive),0.25,Dividend Income Tax(Separate Taxation Real Estate ETF)
+,474590,WOORI Semiconductor Value Chain Active,2024/01/16,WOORIAM,0,FnGuide Semiconductor Value Chain Price Return Index,8.91,82399533850,-0.19,Very high,Physical(Active),0.31,Dividend income tax(tax on holding period)
+,458030,WOORI Short Term Gov Bond Active,2023/05/31,WOORIAM,3.91,KAP Short term Government and Special Bank Bond TR Index,0.03,43783621278,0.02,Very low,Physical(Active),0.065,Dividend income tax(tax on holding period)
+,440910,WOORI US Aerospace Defense,2022/08/26,WOORIAM,28.59,S&P Aerospace & Defense Select Industry Index(PR),0.47,6681141534,0.32,Normal,Physical(Passive),0.35,Dividend income tax(tax on holding period)
+,444490,WOORI US500,2022/10/06,WOORIAM,35.32,S&P 500,0.43,17786585327,-0.1,Low,Physical(Passive),0.05,Dividend income tax(tax on holding period)
