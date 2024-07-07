@@ -1,5 +1,5 @@
 
-# Black_scholes model for call and put option 
+# Black scholes model for call and put option 
 # s : asset price 
 # x : strike price 
 # rf : risk-free rate 
