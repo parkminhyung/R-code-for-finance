@@ -8,7 +8,7 @@
 # y : dividend yield 
 # D : dividend 
 # r : interest rate 
-# tyoe : "C" is call option , "p" is put option price
+# type : "c" is call option , "p" is put option price
 
 black_scholes = function(s, x, rf, sigma, tau, y = NULL, D = NULL, r = NULL,show_price = FALSE,type ="c") {
   calculate_d = function(s_adj) {
