@@ -33,7 +33,6 @@ bs_model = function(s,x,rf,tau,sigma,y=0,show_price = FALSE,option_type = "c"){
 }
 
 ## Example
-
 s = 182.28
 x = 180
 tau = 2
@@ -42,5 +41,8 @@ rf  = .0435
 y = 0
 
 bs_model(s,x,rf,tau,sigma,option_type = "c")
+#call price [1] 5.210762
+
 bs_model(s,x,rf,tau,sigma,option_type = "p")
+#put price : [1] 2.887863
 
