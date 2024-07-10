@@ -1,39 +1,22 @@
 
-# Black scholes model for call and put option 
-# s : asset price 
-# x : strike price 
-# rf : risk-free rate 
-# sigma : volatility of asset price 
-# tau : time to maturity 
-# y : dividend yield 
-# D : dividend 
-# r : interest rate 
-# type : "c" is call option , "p" is put option price
+## Black-Scholes Model for call and put option 
+# s : Asset price 
+# x : Strike Price 
+# tau = time to maturity
+# sigma : volatility
+# rf : risk-free rate
+# y : dividend yield, default value is 0
+# option_type : "c" ~ call price, "p" ~ put price. default value is "c"
 
-black_scholes = function(s, x, rf, sigma, tau, y = NULL, D = NULL, r = NULL,show_price = FALSE,type ="c") {
-  calculate_d = function(s_adj) {
-    d1 = (log(s_adj / x) + (rf + sigma^2 / 2) * tau) / (sigma * sqrt(tau))
-    d2 = d1 - (sigma * sqrt(tau))
-    list(d1 = d1, d2 = d2)
-  }
 
-  if (!is.null(y)) {
-    # Dividend rate is y
-    s_adj = s * exp(-y * tau)
-    d = calculate_d(s_adj)
-  } else if (!is.null(D)) {
-    # Dividends is D
-    k = if (is.null(r)) 1 else (1 + r)^tau
-    s_adj = s - D / k
-    d = calculate_d(s_adj)
-  } else {
-    # No dividends
-    s_adj = s
-    d = calculate_d(s_adj)
-  }
-
-  call_price = s_adj * pnorm(d$d1) - x * exp(-rf * tau) * pnorm(d$d2)
-  put_price = x * exp(-rf * tau) * pnorm(-d$d2) - s_adj * pnorm(-d$d1)
+bs_model = function(s,x,rf,tau,sigma,y=0,show_price = FALSE,option_type = "c"){
+  
+  tau = tau/365 #dividend 365 days
+  d1 = (log(s/x) + (rf + (sigma^2)/2)*tau)/(sigma*sqrt(tau))
+  d2 = d1 - sigma*sqrt(tau)
+  
+  call_price = s*pnorm(d1)*exp(-y*tau) - x*exp(-rf*tau)*pnorm(d2)
+  put_price = x*exp(-rf*tau)*pnorm(-d2) - s*pnorm(-d1)*exp(-y*tau)
 
   if(show_price == TRUE) {
     cat("===============================================\n")
@@ -42,23 +25,22 @@ black_scholes = function(s, x, rf, sigma, tau, y = NULL, D = NULL, r = NULL,show
     cat("===============================================\n")
   }
 
-
-  value = ifelse(type == "c",
-    list(call_price),ifelse(type == "p",
-    list(put_price),cat("type = c or p")))
+  value = ifelse(option_type == "c",
+    list(call_price),ifelse(option_type == "p",
+    list(put_price),cat("option_type = c or p")))
   
   return(value[[1]])
 }
 
 ## Example
-# stock price: $50
-# strike price: $45
-# time to expiration: 80 days
-# risk-free interest rate: 2%
-# implied volatility: 30%
 
-call = black_scholes(50,45,0.02,sigma = .3, tau = 80/365,type = "c")
-put = black_scholes(50,45,0.02,sigma = .3, tau = 80/365,type = "p")
+s = 182.28
+x = 180
+tau = 2
+sigma = .7369
+rf  = .0435
+y = 0
 
-call 
-put
+bs_model(s,x,rf,tau,sigma,option_type = "c")
+bs_model(s,x,rf,tau,sigma,option_type = "p")
+
