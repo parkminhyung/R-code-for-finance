@@ -1,10 +1,13 @@
 #Sensitivity Analysis of Option Premium
 
-option_sens = function(s,x,r,std,t,y=NULL){
-  y=ifelse(is.null(y)!=TRUE,y,0)
+option_greeks = function(s,k,rf,sigma,tau,y=0){
+  tau = tau/365
+  sigma = sigma/100
+  rf = rf/100
+  y = y/100
   
-  d1 = (log(s/x)+(r-y+std^2/2)*t)/(std*sqrt(t))
-  d2 = d1-(std*sqrt(t)) 
+  d1 = (log(s/k)+(rf-y+sigma^2/2)*tau)/(sigma*sqrt(tau))
+  d2 = d1-(sigma*sqrt(tau)) 
   
   nd1 = (1/(sqrt(2*pi)))*exp(-(d1^2/2))
   
@@ -13,18 +16,18 @@ option_sens = function(s,x,r,std,t,y=NULL){
   put.Delta = pnorm(d1)-1
   
   #Gamma
-  Gam = nd1/(s*std*sqrt(t))
+  Gam = nd1/(s*sigma*sqrt(tau))
   
   #theta
-  call.Th = -((s*std)/(2*sqrt(t)))*nd1-x*exp(-r*t)*r*pnorm(d2)
-  put.Th = -((s*std)/(2*sqrt(t)))*nd1-x*exp(-r*t)*r*(pnorm(d2)-1)
+  call.Th = (-((s*sigma)/(2*sqrt(tau)))*nd1-k*exp(-rf*tau)*rf*pnorm(d2))*(1/365)
+  put.Th = (-((s*sigma)/(2*sqrt(tau)))*nd1-k*exp(-rf*tau)*rf*(pnorm(d2)-1))*(1/365)
   
   #rho
-  call.rh = x*t*exp(-r*t)*pnorm(d2)
-  put.rh = x*t*exp(-r*t)*(pnorm(d2)-1)
+  call.rh = k*tau*exp(-rf*tau)*pnorm(d2)*(1/100)
+  put.rh = k*tau*exp(-rf*tau)*(pnorm(d2)-1)*(1/100)
   
   #Vega
-  Vega = s*sqrt(t)*nd1
+  Vega = s*sqrt(tau)*nd1*(1/100)
   
   cat("=========== Sensitivity Analysis of Option ===========","\n")
   cat("\n")
@@ -48,3 +51,41 @@ option_sens = function(s,x,r,std,t,y=NULL){
   cat("\n")
   cat("===============================================","\n")
 }
+
+
+# Example
+
+s = 222.66
+k = 222.5
+tau = 9 #days
+sigma = 24.99 #percent
+rf  = 4.12 #percent
+y= 0.044 #percent
+
+option_greeks(s,k,rf,sigma,tau)
+
+
+# Outcomes: 
+# =========== Sensitivity Analysis of Option =========== 
+
+# ##### Delta ##### 
+# Call Delta :  0.5254462 
+# Put Delta : -0.4745538 
+
+# ##### Gamma ##### 
+# Call/Put Gamma : 0.04556613 
+
+# ##### Vega ##### 
+# Call/Put Vega : 0.139201 
+
+# ##### Theta ##### 
+# Call Theta : -0.2060483 
+# Put Theta : -0.1809587 
+
+# ##### Rho ##### 
+# Call Rho : 0.02794118 
+# Put Rho : -0.02686612 
+
+# =============================================== 
+
+
