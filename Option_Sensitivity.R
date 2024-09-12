@@ -1,5 +1,7 @@
 #Sensitivity Analysis of Option Premium
 
+library(stats)
+
 option_greeks = function(s,k,rf,sigma,tau,y=0){
   tau = tau/365
   sigma = sigma/100
