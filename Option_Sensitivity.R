@@ -57,12 +57,12 @@ option_greeks = function(s,k,rf,sigma,tau,y=0){
 
 # Example
 
-s = 222.66
-k = 222.5
+s = 222.66 #underlying price
+k = 222.5 #strike price
 tau = 9 #days
 sigma = 24.99 #percent
-rf  = 4.12 #percent
-y= 0.044 #percent
+rf  = 4.12 #risk-free rate (percent)
+y= 0.044 #dividend yield (percent)
 
 option_greeks(s,k,rf,sigma,tau)
 
