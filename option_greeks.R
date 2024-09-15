@@ -2,56 +2,56 @@
 
 library(stats)
 
-option_greeks = function(s,k,rf,sigma,tau,y=0){
-  tau = tau/365
-  sigma = sigma/100
-  rf = rf/100
-  y = y/100
-  
-  d1 = (log(s/k)+(rf-y+sigma^2/2)*tau)/(sigma*sqrt(tau))
-  d2 = d1-(sigma*sqrt(tau)) 
-  
-  nd1 = (1/(sqrt(2*pi)))*exp(-(d1^2/2))
-  
-  #delta
-  call.Delta = pnorm(d1)
-  put.Delta = pnorm(d1)-1
-  
-  #Gamma
-  Gam = nd1/(s*sigma*sqrt(tau))
-  
-  #theta
-  call.Th = (-((s*sigma)/(2*sqrt(tau)))*nd1-k*exp(-rf*tau)*rf*pnorm(d2))*(1/365)
-  put.Th = (-((s*sigma)/(2*sqrt(tau)))*nd1-k*exp(-rf*tau)*rf*(pnorm(d2)-1))*(1/365)
-  
-  #rho
-  call.rh = k*tau*exp(-rf*tau)*pnorm(d2)*(1/100)
-  put.rh = k*tau*exp(-rf*tau)*(pnorm(d2)-1)*(1/100)
-  
-  #Vega
-  Vega = s*sqrt(tau)*nd1*(1/100)
-  
-  cat("=========== Sensitivity Analysis of Option ===========","\n")
+option_greeks <- function(s, k, rf, sigma, tau, y = 0) {
+  tau <- tau / 365
+  sigma <- sigma / 100
+  rf <- rf / 100
+  y <- y / 100
+
+  d1 <- (log(s / k) + (rf - y + sigma^2 / 2) * tau) / (sigma * sqrt(tau))
+  d2 <- d1 - (sigma * sqrt(tau))
+
+  nd1 <- (1 / (sqrt(2 * pi))) * exp(-(d1^2 / 2))
+
+  # delta
+  call.Delta <- pnorm(d1)*exp(-y*tau)
+  put.Delta <- (pnorm(d1) - 1)*exp(-y*tau)
+
+  # Gamma
+  Gam <- (nd1*exp(-y*tau)) / (s * sigma * sqrt(tau))
+
+  # theta
+  call.Th <- (-((s * sigma*exp(-y*tau)) / (2 * sqrt(tau))) * nd1 - k * exp(-rf * tau) * rf * pnorm(d2)) * (1 / 365)
+  put.Th <- (-((s * sigma*exp(-y*tau)) / (2 * sqrt(tau))) * nd1 - k * exp(-rf * tau) * rf * (pnorm(d2) - 1)) * (1 / 365)
+
+  # rho
+  call.rh <- k * tau * exp(-rf * tau) * pnorm(d2) * (1 / 100)
+  put.rh <- k * tau * exp(-rf * tau) * (pnorm(d2) - 1) * (1 / 100)
+
+  # Vega
+  Vega <- s * sqrt(tau) * nd1 * (1 / 100)
+
+  cat("=========== Sensitivity Analysis of Option ===========", "\n")
   cat("\n")
-  cat("##### Delta #####","\n")
-  cat("Call Delta : ",call.Delta,"\n")
-  cat("Put Delta :",put.Delta,"\n")
+  cat("##### Delta #####", "\n")
+  cat("Call Delta : ", call.Delta, "\n")
+  cat("Put Delta :", put.Delta, "\n")
   cat("\n")
-  cat("##### Gamma #####","\n")
-  cat("Call/Put Gamma :",Gam,"\n")
+  cat("##### Gamma #####", "\n")
+  cat("Call/Put Gamma :", Gam, "\n")
   cat("\n")
-  cat("##### Vega #####","\n")
-  cat("Call/Put Vega :",Vega,"\n")
+  cat("##### Vega #####", "\n")
+  cat("Call/Put Vega :", Vega, "\n")
   cat("\n")
-  cat("##### Theta #####","\n")
-  cat("Call Theta :",call.Th,"\n")
-  cat("Put Theta :",put.Th,"\n")
+  cat("##### Theta #####", "\n")
+  cat("Call Theta :", call.Th, "\n")
+  cat("Put Theta :", put.Th, "\n")
   cat("\n")
-  cat("##### Rho #####","\n")
-  cat("Call Rho :",call.rh,"\n")
-  cat("Put Rho :",put.rh,"\n")
+  cat("##### Rho #####", "\n")
+  cat("Call Rho :", call.rh, "\n")
+  cat("Put Rho :", put.rh, "\n")
   cat("\n")
-  cat("===============================================","\n")
+  cat("===============================================", "\n")
 }
 
 
