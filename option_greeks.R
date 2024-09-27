@@ -1,6 +1,6 @@
 option_greeks <- function(s, k, rf, sigma, tau, y) {
 
-  T = T
+  T = 252
   tau <- tau / T
   sigma <- sigma / 100
   rf <- rf / 100
