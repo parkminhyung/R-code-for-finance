@@ -11,7 +11,7 @@
 
 bs_model = function(s,x,rf,tau,sigma,y=0,show_price = FALSE,option_type = "c"){
   
-  tau = tau/365 #dividend 365 days
+  tau = tau/252
   d1 = (log(s/x) + (rf + (sigma^2)/2)*tau)/(sigma*sqrt(tau))
   d2 = d1 - sigma*sqrt(tau)
   
