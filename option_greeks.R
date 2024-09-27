@@ -1,6 +1,6 @@
 option_greeks <- function(s, k, rf, sigma, tau, y) {
 
-  T = 252
+  T = T
   tau <- tau / T
   sigma <- sigma / 100
   rf <- rf / 100
@@ -12,15 +12,15 @@ option_greeks <- function(s, k, rf, sigma, tau, y) {
   nd1 <- (1 / (sqrt(2 * pi))) * exp(-(d1^2 / 2))
 
   # delta
-  call_delta <- pnorm(d1) * exp(-y * tau)
-  put_delta <- (pnorm(d1) - 1) * exp(-y * tau)
+  call_delta <- pnorm(d1) 
+  put_delta <- (pnorm(d1) - 1) 
 
   # Gamma
-  gamma <- (nd1 * exp(-y * tau)) / (s * sigma * sqrt(tau))
+  gamma <- (nd1 ) / (s * sigma * sqrt(tau))
 
   # theta
-  call_theta <- (-((s * sigma * exp(-y * tau)) / (2 * sqrt(tau))) * nd1 - k * exp(-rf * tau) * rf * pnorm(d2)) * (1 / T)
-  put_theta <- (-((s * sigma * exp(-y * tau)) / (2 * sqrt(tau))) * nd1 - k * exp(-rf * tau) * rf * (pnorm(d2) - 1)) * (1 / T)
+  call_theta <- (-((s * sigma ) / (2 * sqrt(tau))) * nd1 - k * exp(-rf * tau) * rf * pnorm(d2)) * (1 / T)
+  put_theta <- (-((s * sigma ) / (2 * sqrt(tau))) * nd1 - k * exp(-rf * tau) * rf * (pnorm(d2) - 1)) * (1 / T)
 
   # rho
   call_rho <- k * tau * exp(-rf * tau) * pnorm(d2) * (1 / 100)
