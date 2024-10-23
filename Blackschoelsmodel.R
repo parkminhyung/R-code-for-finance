@@ -7,8 +7,8 @@
 # rf : risk-free rate
 # y : dividend yield, default value is 0
 # option_type : "c" ~ call price, "p" ~ put price. default value is "c"
-# ...$pofp : probability of profit 
-
+# ...$call_pofp : probability of profit for call option
+# ...$put_pofp : probability of profit for put option
 
 bs_model <- function(s, k, rf, tau, sigma, y, option_type = "c") {
   
@@ -47,9 +47,9 @@ bs_model <- function(s, k, rf, tau, sigma, y, option_type = "c") {
   put_price = k*exp(-rf*tau)*pnorm(-d2) - s*pnorm(-d1)*exp(-y*tau)
   
   if (option_type == "c") {
-    return(list(call_price = call_price, pofp = pofp)) 
+    return(list(call_price = call_price, call_pofp = pofp)) 
   } else if (option_type == "p") {
-    return(list(put_price = put_price, pofp = pofp))  
+    return(list(put_price = put_price, put_pofp = pofp))  
   } else {
     return(list(call_price = call_price, 
                 put_price = put_price,
@@ -61,10 +61,9 @@ bs_model <- function(s, k, rf, tau, sigma, y, option_type = "c") {
 
 
 k = bs_model(100,100,4,12,.25,.01,"c")
-k$call_price
-k$pofp
+k$call_pofp
 
 k = bs_model(100,100,4,12,.25,.01,"p")
 k$put_price
-k$pofp
+k$put_pofp
 
