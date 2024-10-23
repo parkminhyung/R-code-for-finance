@@ -1,48 +1,70 @@
 
 ## Black-Scholes Model for call and put option 
 # s : Asset price 
-# x : Strike Price 
+# k : Strike Price 
 # tau = time to maturity
 # sigma : volatility
 # rf : risk-free rate
 # y : dividend yield, default value is 0
 # option_type : "c" ~ call price, "p" ~ put price. default value is "c"
+# ...$pofp : probability of profit 
 
 
-bs_model = function(s,x,rf,tau,sigma,y=0,show_price = FALSE,option_type = "c"){
+bs_model <- function(s, k, rf, tau, sigma, y, option_type = "c") {
   
-  tau = tau/252
-  d1 = (log(s/x) + (rf + (sigma^2)/2)*tau)/(sigma*sqrt(tau))
-  d2 = d1 - sigma*sqrt(tau)
+  T = 252    
+  pct = 100  
+  tau <- tau / T
+  sigma <- sigma / pct
+  rf <- rf / pct
+  y <- y / pct
   
-  call_price = s*pnorm(d1)*exp(-y*tau) - x*exp(-rf*tau)*pnorm(d2)
-  put_price = x*exp(-rf*tau)*pnorm(-d2) - s*pnorm(-d1)*exp(-y*tau)
-
-  if(show_price == TRUE) {
-    cat("===============================================\n")
-    cat("Call price is", round(call_price, digits = 3), "\n","\n")
-    cat("Put price is", round(put_price, digits = 3), "\n")
-    cat("===============================================\n")
+  if (tau == 0) {
+    if (option_type == "c") {
+      return(max(s - k, 0))  
+    } else if (option_type == "p") {
+      return(max(k - s, 0))  
+    } else {
+      return(list(call_price = max(s - k, 0), 
+                  put_price = max(k - s, 0),
+                  pofp = NA))  
+    }
   }
-
-  value = ifelse(option_type == "c",
-    list(call_price),ifelse(option_type == "p",
-    list(put_price),cat("option_type = c or p")))
   
-  return(value[[1]])
+  d1 <- (log(s/k) + (rf + (sigma^2)/2)*tau)/(sigma*sqrt(tau))
+  d2 <- d1 - sigma*sqrt(tau)
+  
+  # probability of profit for each option
+  if (option_type == "c") {
+    pofp <- pnorm(d2)  
+  } else if (option_type == "p") {
+    pofp <- pnorm(-d2) 
+  } else {
+    pofp <- NA  
+  }
+  
+  call_price = s*pnorm(d1)*exp(-y*tau) - k*exp(-rf*tau)*pnorm(d2)
+  put_price = k*exp(-rf*tau)*pnorm(-d2) - s*pnorm(-d1)*exp(-y*tau)
+  
+  if (option_type == "c") {
+    return(list(call_price = call_price, pofp = pofp)) 
+  } else if (option_type == "p") {
+    return(list(put_price = put_price, pofp = pofp))  
+  } else {
+    return(list(call_price = call_price, 
+                put_price = put_price,
+                pofp_call = pnorm(d2),  
+                pofp_put = pnorm(-d2))) 
+  }
+  
 }
 
-## Example
-s = 182.28
-x = 180
-tau = 2
-sigma = .7369
-rf  = .0435
-y = 0
 
-bs_model(s,x,rf,tau,sigma,option_type = "c")
-#call price [1] 5.210762
+k = bs_model(100,100,4,12,.25,.01,"c")
+k$call_price
+k$pofp
 
-bs_model(s,x,rf,tau,sigma,option_type = "p")
-#put price : [1] 2.887863
+k = bs_model(100,100,4,12,.25,.01,"p")
+k$put_price
+k$pofp
 
