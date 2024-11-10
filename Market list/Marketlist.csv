@@ -1,7 +1,7 @@
-countries,type,name,ticker
-AM,Market,S&P500,^GSPC
-AM,Market,NASDAQ,^IXIC
-AM,Market,DOW JONES,^DJI
+countries,type,nUSe,ticker
+US,Market,S&P500,^GSPC
+US,Market,NASDAQ,^IXIC
+US,Market,DOW JONES,^DJI
 CA,Market,S&P/TSX,^GSPTSE
 EU,Market,STOXX 50,^STOXX50E
 GB,Market,FTSE 100 Index,^FTSE
@@ -24,7 +24,7 @@ SA,Market,Tadawul Share,^TASI.SR
 BR,Market,Bovespa Index,^BVSP
 MX,Market,S&P/BMV IPC,^MXX
 AR,Market,S&P MERVAL Index,^MERV
-AM,Currency,US Dollar INDEX,^DXY
+US,Currency,US Dollar INDEX,^DXY
 EU,Currency,EUR Index,^XDE
 GB,Currency,British Pound Index,^XDB
 CH,Currency,Swiss Franc Index,^XDS
@@ -35,21 +35,21 @@ NZ,Currency,NZL Dollar Index,^XDZ
 KR,Currency,USDKRW,KRW=X
 CN,Currency,USDCNY,CNY=X
 EU,Currency,USDEUR,EUR=X
-AM,Energy,Crude Oil,CL=F
-AM,Energy,Brent Oil,BZ=F
-AM,Energy,Natural Gas,NG=F
-AM,Energy,Coal,MTF=F
-AM,Energy,Propane,B0=F
-AM,Energy,Ethanol,CU=F
-AM,Metal,Gold,GC=F
-AM,Metal,Silver,SI=F
-AM,Metal,Copper,HG=F
-AM,Agricultural,Soybeans,ZS=F
-AM,Agricultural,Wheat,KE=F
-AM,Agricultural,Lumber,LBS=F
-AM,Agricultural,Coffee,KC=F
-AM,Agricultural,Cotton,CT=F
-AM,Agricultural,CoCoa,CC=F
-AM,Agricultural,Sugar,SB=F
-AM,Agricultural,Corn,ZC=F
-AM,Industrial,Platinum,PL=F
+US,Energy,Crude Oil,CL=F
+US,Energy,Brent Oil,BZ=F
+US,Energy,Natural Gas,NG=F
+US,Energy,Coal,MTF=F
+US,Energy,Propane,B0=F
+US,Energy,Ethanol,CU=F
+US,Metal,Gold,GC=F
+US,Metal,Silver,SI=F
+US,Metal,Copper,HG=F
+US,Agricultural,Soybeans,ZS=F
+US,Agricultural,Wheat,KE=F
+US,Agricultural,Lumber,LBS=F
+US,Agricultural,Coffee,KC=F
+US,Agricultural,Cotton,CT=F
+US,Agricultural,CoCoa,CC=F
+US,Agricultural,Sugar,SB=F
+US,Agricultural,Corn,ZC=F
+US,Industrial,Platinum,PL=F
