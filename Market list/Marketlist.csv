@@ -1,4 +1,4 @@
-countries,type,nUSe,ticker
+countries,type,name,ticker
 US,Market,S&P500,^GSPC
 US,Market,NASDAQ,^IXIC
 US,Market,DOW JONES,^DJI
