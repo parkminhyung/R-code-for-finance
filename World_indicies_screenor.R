@@ -32,9 +32,9 @@ kdf = tq_get(
   mutate(
     "1d" = last(adjusted)/nth(adjusted,n()-1)-1,
     "5d" = last(adjusted)/nth(adjusted,n()-5)-1,
-    "1M" = last(adjusted)/nth(adjusted,n()-25)-1,
-    "3M" = last(adjusted)/nth(adjusted,n()-50)-1,
-    "6M" = last(adjusted)/nth(adjusted,n()-132)-1,
+    "1M" = last(adjusted)/nth(adjusted,n()-22)-1,
+    "3M" = last(adjusted)/nth(adjusted,n()-63)-1,
+    "6M" = last(adjusted)/nth(adjusted,n()-124)-1,
     "YTD" = last(adjusted) / first(adjusted[year(date) == year(last(date))]) - 1,
     "1Yr" = last(adjusted)/first(adjusted)-1
   ) %>% 
