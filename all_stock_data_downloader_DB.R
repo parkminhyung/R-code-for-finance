@@ -13,11 +13,12 @@ pacman::p_load(
 )
 
 # List of target databases
-# target_DB can be obtained from my repository "python code for finance / tickers DB folder " :https://github.com/parkminhyung/python-code-for-finance/tree/main/tickers%20DB
+# target_DB can be obtained from my repository "python code for finance / tickers DB folder "
+## tickers DB folder: https://github.com/parkminhyung/python-code-for-finance/tree/main/tickers%20DB
 # Download DB.csv files and modify path like db_dir
 
 # target_DB list
-target_DBs = c("KRX_DB", "IND_DB", "JPX_DB", "HK_DB", "SSE_DB")
+target_DBs = c("KRX_DB", "IND_DB", "JPX_DB", "HK_DB", "SSE_DB","US_DB")
 
 # Set the database file path
 db_dir <- "your own path where DB file saved"
