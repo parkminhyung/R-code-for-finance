@@ -158,6 +158,6 @@ cat("\nDatabase connection closed. All updates completed for all target database
 
 ## if you want to update automatically on a regular basis, (MAC or Linux)
 ## you can use "crontab -e" via terminal and edit vim 
-## Also, you can run this code via this code on your own terminal : $ Rscipt all_stock_data_downloader_DB.R
+## Also, you can run this code via your own terminal : $ Rscipt all_stock_data_downloader_DB.R
 
 
