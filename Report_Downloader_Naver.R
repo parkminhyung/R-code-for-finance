@@ -12,17 +12,21 @@ p_load(
   rvest,
   dplyr
 )
-
 url = c("https://finance.naver.com/research/industry_list.naver",
         "https://finance.naver.com/research/economy_list.naver",
-        "https://finance.naver.com/research/debenture_list.naver")
+        "https://finance.naver.com/research/debenture_list.naver",
+      "https://finance.naver.com/research/invest_list.naver")
 
-name = c("INDUSTRY", "ECONOMICS", "BONDS")
+name = c("INDUSTRY", "ECONOMICS", "BONDS","INVEST")
 
-## date는 리포트의 기준일이며, 기본 값은 오늘 날짜를 기준으로 합니다. 
+## date는 리포트의 기준일이며, 기본 값은 오늘 날짜를 기준으로 합니다. (오늘이 주말이라면 금요일 날짜를 기준으로 합니다)
 ## 다운받고 싶은 리포트의 기준일이 있다면, date를 수정하세요.
-date = Sys.Date() %>%
-  format("%y.%m.%d")
+
+date = case_when(
+  weekdays(Sys.Date()) %in% c("Saturday","토요일") ~ (Sys.Date()-1) %>% format("%y.%m.%d"),
+  weekdays(Sys.Date()) %in% c("Sunday","일요일") ~ (Sys.Date()-1) %>% format("%y.%m.%d"),
+  TRUE ~ (Sys.Date()) %>% format("%y.%m.%d")
+)
 
 # REPORT 디렉토리 생성
 report_dir = "./REPORT" # REPORT 폴더가 생성 될  디렉토리 지정(수정필요)
