@@ -34,6 +34,8 @@ if (!dir.exists(report_dir)) {
   dir.create(report_dir)
 }
 
+
+# URL을 순차적으로 처리
 for (i in 1:length(url)) {
   
   main = url[i] %>%
@@ -53,7 +55,7 @@ for (i in 1:length(url)) {
   # 'INDUSTRY'인 경우
   if (name[i] == "INDUSTRY") {
     
-    category_folder = file.path(report_dir, paste0(Sys.Date(), "_", name[i]))
+    category_folder = file.path(report_dir, paste0(date, "_", name[i]))
     
     if (!dir.exists(category_folder)) {
       dir.create(category_folder)
@@ -72,22 +74,22 @@ for (i in 1:length(url)) {
         pull(link)
       
       # 'INDUSTRY' 폴더 안에 분류별 폴더 생성
-      category_folder_path = file.path(category_folder, paste0(Sys.Date(), "_", name[i], "_", category))
+      category_folder_path = file.path(category_folder, paste0(date, "_", name[i], "_", category))
       if (!dir.exists(category_folder_path)) {
         dir.create(category_folder_path)
       }
       
-      #산업 리포트PDF 다운로드
+      # PDF 다운로드뇬
       for (link in category_links) {
         pdf_name = file.path(category_folder_path, basename(link))
         download.file(link, pdf_name, mode = "wb")
       }
     }
     
-    # 'ECONOMICS'와 'BONDS' 는  별도로 처리
+    # 'ECONOMICS'와 'BONDS'인 경우
   } else {
     
-    category_folder = file.path(report_dir, paste0(Sys.Date(), "_", name[i]))
+    category_folder = file.path(report_dir, paste0(date, "_", name[i]))
     
     if (!dir.exists(category_folder)) {
       dir.create(category_folder)
@@ -103,4 +105,3 @@ for (i in 1:length(url)) {
     }
   }
 }
-
